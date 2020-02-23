@@ -858,7 +858,11 @@ default['private_chef']['dark_launch']['private-chef'] = true
 default['private_chef']['dark_launch']['sql_users'] = true
 default['private_chef']['dark_launch']['add_type_and_bag_to_items'] = true
 default['private_chef']['dark_launch']['reporting'] = true
-default['private_chef']['dark_launch']['actions'] = true
+# It appears that actions rabbitmw was used for oc_actions and analytics.
+# Both those products are deprecated.
+# It might be safe to turn off actions
+# After turning off actions the only dependency on rabbitmq is opscode-solr4
+default['private_chef']['dark_launch']['actions'] = false
 
 ###
 # Chef Mover

@@ -1,7 +1,7 @@
 pkg_name=bookshelf
 pkg_origin=chef
 pkg_license=('Apache-2.0')
-pkg_maintainer="The CINC Server Maintainers <support@chef.io>"
+pkg_maintainer="The CINC Server Maintainers <maintainers@cinc.sh>"
 pkg_deps=(
   core/erlang20
   core/cacerts

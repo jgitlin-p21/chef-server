@@ -132,7 +132,7 @@ def infer_migration_state(migrations, force)
       exit(0)
     else
       log "Data appears to be from a version of CINC Server before Enterprise Chef 11.1 (migration 1.13)"
-      log "Please contact Chef Support (support@chef.io) for help upgrading your Enterprise Chef installation."
+      log "Please contact Chef Support (maintainers@cinc.sh) for help upgrading your Enterprise Chef installation."
       exit(1)
     end
   end

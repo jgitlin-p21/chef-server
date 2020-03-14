@@ -288,8 +288,8 @@ EOM
 CSPG012: There is a missing or incorrect pg_hba.conf entry for the
          user '#{cs_pg_attr['db_connection_superuser'] || cs_pg_attr['db_superuser']}' and/or this originating host.
          Please ensure that pg_hba.conf entries exist to allow the superuser
-         account to connect from the Chef Server backend nodes, and to
-         allow the application accounts to connect from all Chef Server
+         account to connect from the CINC Server backend nodes, and to
+         allow the application accounts to connect from all CINC Server
          nodes.
 
          See https://docs.chef.io/error_messages.html#cspg012-incorrect-rules
@@ -310,7 +310,7 @@ EOM
 
   def err_CSPG014_bad_postgres_version(ver)
     <<~EOM
-      CSPG014: Chef Server currently requires PostgreSQL version #{REQUIRED_MAJOR}.#{REQUIRED_MINOR} or greater.
+      CSPG014: CINC Server currently requires PostgreSQL version #{REQUIRED_MAJOR}.#{REQUIRED_MINOR} or greater.
                The database you have provided is running version #{ver}.
 
                See https://docs.chef.io/error_messages.html#cspg014-incorrect-version
@@ -331,7 +331,7 @@ EOM
 
   def err_CSPG016_database_exists(dbname)
     <<~EOM
-      CSPG016: The Chef Server database named '#{dbname}' already exists on the
+      CSPG016: The CINC Server database named '#{dbname}' already exists on the
                PostgreSQL server. Please remove it before proceeding.
 
                See https://docs.chef.io/error_messages.html#cspg016-database-exists
@@ -341,11 +341,11 @@ EOM
 
   def err_CSPG017_role_exists(username)
     <<~EOM
-      CSPG017: The Chef Server database role/user named '#{username}' already exists
+      CSPG017: The CINC Server database role/user named '#{username}' already exists
                on the PostgreSQL server. If possible, please remove this user
                via 'DROP ROLE "#{username}"' before proceeding, or reference the
                troubleshooting link below for information about configuring
-               Chef Server to use an alternative user name.
+               CINC Server to use an alternative user name.
 
                See https://docs.chef.io/error_messages.html#cspg017-user-exists
                for more information.

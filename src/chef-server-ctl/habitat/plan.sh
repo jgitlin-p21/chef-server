@@ -1,6 +1,6 @@
 pkg_name=chef-server-ctl
 pkg_origin=chef
-pkg_maintainer="The Chef Server Maintainers <support@chef.io>"
+pkg_maintainer="The CINC Server Maintainers <support@chef.io>"
 pkg_license=('Apache-2.0')
 pkg_deps=(
   core/coreutils

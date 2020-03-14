@@ -35,7 +35,7 @@ prepare_all() {
 }
 
 reconfigure_and_test() {
-    echo "Testing with Chef Server $FORCE_INSTALL"
+    echo "Testing with CINC Server $FORCE_INSTALL"
     reconfigure_all_cs
     sleep 120
     opscode-reporting-ctl test --all
@@ -43,7 +43,7 @@ reconfigure_and_test() {
 }
 
 enterprise_reconfigure_and_test() {
-    echo "Testing with Chef Server $FORCE_INSTALL"
+    echo "Testing with CINC Server $FORCE_INSTALL"
     private-chef-ctl reconfigure
     opscode-reporting-ctl reconfigure
     sleep 120

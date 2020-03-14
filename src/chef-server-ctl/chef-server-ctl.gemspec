@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.version       = ChefServerCtl::VERSION
   spec.authors       = ["Mark Anderson"]
   spec.email         = ["mark@chef.io"]
-  spec.description   = %q{Commands to control Chef Server}
+  spec.description   = %q{Commands to control CINC Server}
   spec.summary       = spec.description
   spec.licenses      = "Apache-2.0"
 

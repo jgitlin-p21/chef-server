@@ -1,6 +1,6 @@
 pkg_name=chef-server-nginx
 pkg_origin=chef
-pkg_maintainer="The Chef Server Maintainers <support@chef.io>"
+pkg_maintainer="The CINC Server Maintainers <support@chef.io>"
 pkg_license=('Apache-2.0')
 pkg_deps=(
   core/curl
@@ -21,7 +21,7 @@ pkg_binds_optional=(
   [elasticsearch]="http-port"
   [oc_id]="port"
 )
-pkg_description="NGINX configuration and content for Chef Server"
+pkg_description="NGINX configuration and content for CINC Server"
 pkg_upstream_url="https://docs.chef.io/server_components.html"
 pkg_svc_run="openresty -c ${pkg_svc_config_path}/nginx.conf -p ${pkg_svc_var_path}"
 

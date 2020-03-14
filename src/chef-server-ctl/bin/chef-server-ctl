@@ -70,7 +70,7 @@ module Omnibus
           last = exec_list.shift
           connection.exec(last)
         end
-        puts "Chef Server databases and roles have been successsfully deleted from #{postgres['vip']}"
+        puts "CINC Server databases and roles have been successsfully deleted from #{postgres['vip']}"
       rescue StandardError => e
         exec_list.insert(0, last) unless last.nil?
         if exec_list.empty?
@@ -159,8 +159,8 @@ EOM
 
     def err_CLEANSE001_postgres_failed(postgres, path, last, message)
       msg = <<EOM
-CLEANSE001: While local cleanse of Chef Server succeeded, an error
-            occurred while deleting Chef Server data from the external
+CLEANSE001: While local cleanse of CINC Server succeeded, an error
+            occurred while deleting CINC Server data from the external
             PostgreSQL server at #{postgres['vip']}.
 
             The error reported was:
@@ -190,11 +190,11 @@ EOM
     end
     def warn_CLEANSE002_no_postgres_delete(sql_path, postgres)
       <<EOM
-CLEANSE002: Note that Chef Server data was not removed from your
+CLEANSE002: Note that CINC Server data was not removed from your
             remote PostgreSQL server because you did not specify
             the '--with-external' option.
 
-            If you do wish to purge Chef Server data from PostgreSQL,
+            If you do wish to purge CINC Server data from PostgreSQL,
             you can do by logging into PostgreSQL on
             #{postgres['vip']}:#{postgres['port']}
             and executing the appropriate SQL staements manually.
@@ -269,7 +269,7 @@ log_level = if ENV['CSC_LOG_LEVEL']
 
 ChefServerCtl::Log.level = log_level
 
-ctl = Omnibus::ChefServerCtl.new(cmd_name, true, "Chef Server")
+ctl = Omnibus::ChefServerCtl.new(cmd_name, true, "CINC Server")
 
 #Initialize global configuration
 ChefServerCtl::Config.init(ctl)

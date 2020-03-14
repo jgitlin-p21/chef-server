@@ -8,7 +8,7 @@ require "highline"
 # Because the shared secrets are known on all nodes in the cluster the user can
 # choose between copying the secrets file to each node in the cluster and
 # reconfiguring or by running this command on all nodes.
-add_command_under_category "rotate-credentials", "Secrets Management", "Rotate Chef Server credentials for a given service", 2 do
+add_command_under_category "rotate-credentials", "Secrets Management", "Rotate CINC Server credentials for a given service", 2 do
   ensure_configured!
 
   OptionParser.new do |opts|
@@ -47,7 +47,7 @@ add_command_under_category "rotate-credentials", "Secrets Management", "Rotate C
     if status.success?
       remove_backup_file(backup_file)
       log("#{service}'s credentials have been rotated!", :notice)
-      log("Run 'chef-server-ctl rotate-credentials #{service}' on each Chef Server", :notice)
+      log("Run 'chef-server-ctl rotate-credentials #{service}' on each CINC Server", :notice)
       exit(0)
     else
       log("Credential rotation failed", :error)
@@ -64,14 +64,14 @@ end
 # the shared secrets are known on all nodes in the cluster the user can choose
 # between copying the secrets file to each node in the cluster and reconfiguring
 # or by running this command on all nodes.
-add_command_under_category "rotate-all-credentials", "Secrets Management", "Rotate all Chef Server service credentials", 2 do
+add_command_under_category "rotate-all-credentials", "Secrets Management", "Rotate all CINC Server service credentials", 2 do
   ensure_configured!
 
   # Rotate and save the credentials
   begin
     backup_file = backup_secrets_file
 
-    log("Rotating all Chef Server service credentials...", :notice)
+    log("Rotating all CINC Server service credentials...", :notice)
     credentials.rotate_credentials
     credentials.save
   rescue => e
@@ -87,7 +87,7 @@ add_command_under_category "rotate-all-credentials", "Secrets Management", "Rota
     if status.success?
       remove_backup_file(backup_file)
       log("All credentials have been rotated!", :notice)
-      log("Run 'chef-server-ctl rotate-all-credentials' on each Chef Server", :notice)
+      log("Run 'chef-server-ctl rotate-all-credentials' on each CINC Server", :notice)
       exit(0)
     else
       log("Credential rotation failed", :error)
@@ -103,7 +103,7 @@ end
 # new service credentials for all services. It will then do a chef run to apply
 # the new credentials. As the shared secret and salt is securely and randomly
 # generated the user must copy the secrets file to all nodes in the cluster.
-add_command_under_category "rotate-shared-secrets", "Secrets Management", "Rotate the Chef Server shared secrets and all service credentials", 2 do
+add_command_under_category "rotate-shared-secrets", "Secrets Management", "Rotate the CINC Server shared secrets and all service credentials", 2 do
   ensure_configured!
 
   backup_file = backup_secrets_file
@@ -127,7 +127,7 @@ add_command_under_category "rotate-shared-secrets", "Secrets Management", "Rotat
     if status.success?
       remove_backup_file(backup_file)
       log("The shared secrets and all service credentials have been rotated!", :notice)
-      log("Please copy #{secrets_file_path} to each Chef Server and run 'chef-server-ctl reconfigure'", :notice)
+      log("Please copy #{secrets_file_path} to each CINC Server and run 'chef-server-ctl reconfigure'", :notice)
       exit(0)
     else
       log("Shared credential rotation failed", :error)
@@ -156,7 +156,7 @@ end
 # credentials the chef-client reconfigure run will re-enable/link the services,
 # restart the Chef Server and remove the sentinel file that enables the
 # pre-hook.
-add_command_under_category "require-credential-rotation", "Secrets Management", "Disable the Chef Server and require credential rotation", 2 do
+add_command_under_category "require-credential-rotation", "Secrets Management", "Disable the CINC Server and require credential rotation", 2 do
   @agree_to_disable = false
   @ui = HighLine.new
 
@@ -168,13 +168,13 @@ add_command_under_category "require-credential-rotation", "Secrets Management", 
       exit
     end
 
-    opts.on("-y", "--yes", "Agree to disable the Chef Server and require credential rotation") do
+    opts.on("-y", "--yes", "Agree to disable the CINC Server and require credential rotation") do
       @agree_to_disable = true
     end
   end.parse!(ARGV)
 
   # Agree to disable and require rotation
-  msg = "Are you sure you want to disable the Chef Server and require credential rotation?" \
+  msg = "Are you sure you want to disable the CINC Server and require credential rotation?" \
           "\n Type 'yes' to confirm: "
   exit(1) unless @agree_to_disable || @ui.ask("<%= color(%Q(#{msg}), :yellow) %>") =~ /yes/i
 
@@ -190,7 +190,7 @@ add_command_under_category "require-credential-rotation", "Secrets Management", 
   FileUtils.mkdir_p(data_path) unless File.directory?(data_path)
   FileUtils.touch(credential_rotation_required_file)
 
-  log("The Chef Server has been disabled until credentials have been rotated. "\
+  log("The CINC Server has been disabled until credentials have been rotated. "\
       "Run 'sudo chef-server-ctl rotate-shared-secrets' to rotate them.")
 
   exit(0)
@@ -206,7 +206,7 @@ add_global_pre_hook "require_credential_rotation" do
   # TODO RETHINK AS PART OF GEM CONVERSION
   return if ARGV == %w{omnibus-ctl opscode rotate-shared-secrets}
 
-  raise("You must rotate the Chef Server credentials to enable the Chef Server. "\
+  raise("You must rotate the CINC Server credentials to enable the CINC Server. "\
         "Please run 'sudo chef-server-ctl rotate-shared-secrets'")
 end
 
@@ -238,7 +238,7 @@ end
 
 def ensure_configured!
   unless running_config
-    log("You must reconfigure the Chef Server before a backup can be performed", :error)
+    log("You must reconfigure the CINC Server before a backup can be performed", :error)
     exit(1)
   end
 end

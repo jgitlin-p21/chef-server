@@ -29,7 +29,7 @@ then
 
     if [[ ! -e "/opt/$path/bin/$ctl_cmd" ]];
     then
-        echo "ERROR: Chef Server may not be installed."
+        echo "ERROR: CINC Server may not be installed."
         exit 1
     fi
 elif [[ $type == 'OSC' ]];
@@ -40,7 +40,7 @@ then
 
     if [[ ! -e "/opt/$path/bin/$ctl_cmd" ]];
     then
-        echo "ERROR: Open Source Chef Server 11 may not be installed."
+        echo "ERROR: Open Source CINC Server 11 may not be installed."
         exit 1
     fi
 
@@ -60,8 +60,8 @@ then
     echo "Gathering logs from Analytics server."
 else
     echo "Usage: gather-logs [ CS | OSC | Analytics ]"
-    echo "CS - Enterprise or Chef Server (default)"
-    echo "OSC - Open Source Chef Server 11"
+    echo "CS - Enterprise or CINC Server (default)"
+    echo "OSC - Open Source CINC Server 11"
     echo "Analytics - Opscode Analytics server"
     exit 1
 fi

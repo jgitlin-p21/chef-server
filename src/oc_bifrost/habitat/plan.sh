@@ -1,7 +1,7 @@
 pkg_name=oc_bifrost
 pkg_origin=chef
 pkg_license=('Apache-2.0')
-pkg_maintainer="The Chef Server Maintainers <support@chef.io>"
+pkg_maintainer="The CINC Server Maintainers <support@chef.io>"
 pkg_deps=(
   core/erlang20
   core/cacerts
@@ -12,7 +12,7 @@ pkg_deps=(
 )
 pkg_build_deps=(core/make core/git core/gcc core/bundler core/ruby)
 pkg_bin_dirs=(bin)
-pkg_description="Erlang implementation of the Chef Server's Auth system."
+pkg_description="Erlang implementation of the CINC Server's Auth system."
 pkg_upstream_url="https://github.com/chef/chef-server"
 pkg_exports=(
   [port]="port"

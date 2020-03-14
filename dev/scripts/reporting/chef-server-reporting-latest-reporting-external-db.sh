@@ -16,7 +16,7 @@
 
 # Assumes Chef Server Latest is installed.
 set -e
-echo "Chef Server, Reporting Latest, Shared Chef Server DB"
+echo "CINC Server, Reporting Latest, Shared CINC Server DB"
 
 source reporting-functions.sh
 prepare_all

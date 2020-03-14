@@ -4,5 +4,5 @@ maintainer: Chef Software, Inc.
 copyright: Chef Software, Inc.
 copyright_email: engineering@chef.io
 license: All Rights Reserved
-summary: Chef Server smoke tests
+summary: CINC Server smoke tests
 version: 0.1.0

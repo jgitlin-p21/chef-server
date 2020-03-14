@@ -31,7 +31,7 @@ if [[ ! -f "$cert_file" ]]; then
   openssl req \
     -newkey rsa:2048 -nodes -keyout "$key_file" \
     -x509 -days 3650 -out "$cert_file" \
-    -subj "/C=US/O=Chef Software/OU=Chef Server/CN=#{{cfg.server_name}}"
+    -subj "/C=US/O=Chef Software/OU=CINC Server/CN=#{{cfg.server_name}}"
   chmod 600 "$cert_file" "$key_file"
 fi
 

@@ -120,7 +120,7 @@ class ChefServerDataBootstrap
       serialized_object: JSON.generate(
         first_name: 'Chef',
         last_name: 'Server',
-        display_name: 'Chef Server Superuser'
+        display_name: 'CINC Server Superuser'
       ))
   end
 

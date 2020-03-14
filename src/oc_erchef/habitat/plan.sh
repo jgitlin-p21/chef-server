@@ -1,7 +1,7 @@
 pkg_name=oc_erchef
 pkg_origin=chef
 pkg_license=('Apache-2.0')
-pkg_maintainer="The Chef Server Maintainers <support@chef.io>"
+pkg_maintainer="The CINC Server Maintainers <support@chef.io>"
 pkg_deps=(
   core/erlang20
   core/cacerts
@@ -16,7 +16,7 @@ pkg_deps=(
 )
 pkg_build_deps=(core/make core/git core/gcc)
 pkg_bin_dirs=(bin)
-pkg_description="Erlang implementation of the Chef Server's REST API."
+pkg_description="Erlang implementation of the CINC Server's REST API."
 pkg_upstream_url="https://github.com/chef/chef-server"
 
 pkg_exposes=(port)

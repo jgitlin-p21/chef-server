@@ -4,7 +4,7 @@
 
 require_relative '../libraries/helper'
 
-title 'Chef Server Smoke Tests'
+title 'CINC Server Smoke Tests'
 
 %w(
   bookshelf

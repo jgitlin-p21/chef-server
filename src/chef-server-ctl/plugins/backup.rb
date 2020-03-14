@@ -3,7 +3,7 @@ require 'chef/mixin/deep_merge'
 require 'optparse'
 require 'ostruct'
 
-add_command_under_category 'backup', 'general', 'Backup the Chef Server', 2 do
+add_command_under_category 'backup', 'general', 'Backup the CINC Server', 2 do
   ensure_configured!
   ensure_rsync!
 
@@ -48,7 +48,7 @@ add_command_under_category 'backup', 'general', 'Backup the Chef Server', 2 do
   exit(0)
 end
 
-add_command_under_category 'restore', 'general', 'Restore the Chef Server from backup', 2 do
+add_command_under_category 'restore', 'general', 'Restore the CINC Server from backup', 2 do
   ensure_rsync!
 
   options = OpenStruct.new
@@ -109,7 +109,7 @@ end
 
 def ensure_configured!
   unless running_config
-    log('You must reconfigure the Chef Server before a backup can be performed', :error)
+    log('You must reconfigure the CINC Server before a backup can be performed', :error)
     exit(1)
   end
 end

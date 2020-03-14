@@ -124,7 +124,7 @@ add_command_under_category "upgrade", "general", "Upgrade your private chef inst
     bundle = File.join(base_path, "embedded", "bin", "bundle")
     status = run_command("#{bundle} exec ./bin/partybus upgrade")
     if status.success?
-      puts "Chef Server Upgraded!"
+      puts "CINC Server Upgraded!"
       exit 0
     else
       exit 1

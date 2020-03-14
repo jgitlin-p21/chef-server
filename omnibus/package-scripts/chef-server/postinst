@@ -30,7 +30,7 @@ chmod o-rwx /etc/opscode/chef-server.rb
 chown -Rh 0:0 /opt/opscode
 
 if [ -e /etc/opscode/chef-server-running.json ]; then
-  echo -e "\033[1mYou have upgraded Chef Server!\033[0m"
+  echo -e "\033[1mYou have upgraded CINC Server!\033[0m"
   echo
   echo "The next step in the upgrade process is to run:"
   echo
@@ -43,7 +43,7 @@ if [ -e /etc/opscode/chef-server-running.json ]; then
   echo
   echo "Then, to remove configuration files, logs, directories,"
   echo "users, etc. that were used by internal services that"
-  echo "have been removed from this version of Chef Server,"
+  echo "have been removed from this version of CINC Server,"
   echo "please run:"
   echo
   echo -e "\033[1;31mchef-server-ctl cleanup\033[0m"

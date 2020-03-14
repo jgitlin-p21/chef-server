@@ -957,7 +957,7 @@ Updates to these systems will hopefully resolve this conflict in the future.\
 
 \f0\fs24 \cf0 When a user first creates an org, the org is created from the org container and some\
 initial setup is done to ensure the default groups and containers are in place. \
-We then rely on Chef Manage or the chef-server-ctl org creation\
+We then rely on Chef Manage or the cinc-server-ctl org creation\
 commands to ensure the user who created the org is appropriately associated with the org\
 and added to the org's admin group.}</string>
 				<key>VerticalPad</key>

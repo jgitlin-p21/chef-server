@@ -4,7 +4,7 @@
 # All Rights Reserved
 #
 
-# TODO refactor this for gemified chef-server-ctl
+# TODO refactor this for gemified cinc-server-ctl
 require_relative "open_source_chef12_upgrade"
 require 'optparse'
 require 'ostruct'
@@ -15,7 +15,7 @@ add_command_under_category "chef12-upgrade-data-transform", "open-source-upgrade
     @options = OpenStruct.new
 
     opt_parser = OptionParser.new do |opts|
-      opts.banner = "Usage: chef-server-ctl chef12-upgrade-data-transform [options]"
+      opts.banner = "Usage: cinc-server-ctl chef12-upgrade-data-transform [options]"
 
       opts.on("-d", "--chef11-data-dir [directory]", String, "Directory of open source Chef 11 server data. (Will ask interactively if not passed)") do |chef11_dir|
         @options.chef11_data_dir = chef11_dir

@@ -58,7 +58,7 @@ module DVM
     def stop
       raise DVMArgumentError, <<-EOM unless is_running?
 "#{name} does not seem to be running from a loaded instance.
-If you want to stop the global instance, use chef-server-ctl stop #{service['name']}'"
+If you want to stop the global instance, use cinc-server-ctl stop #{service['name']}'"
 EOM
       run_command("bin/#{name} stop", "Stopping #{name}", :cwd => relpath)
     end
@@ -135,7 +135,7 @@ EOM
       end
 
       raise DVMArgumentError, "Project already loaded. Use --force to proceed." if loaded? and not options[:force]
-      run_command("chef-server-ctl stop  #{service['name']}", "Stopping #{service['name']}")
+      run_command("cinc-server-ctl stop  #{service['name']}", "Stopping #{service['name']}")
       do_build unless options[:no_build]
       disable_service
       link
@@ -158,7 +158,7 @@ EOM
       run_command("sv s #{svname}", "Enabling packaged #{name}")
       # TODO sv s should be starting it (it thinks it is) but is not.  Take a look at why
       # this extra step is needed
-      run_command("chef-server-ctl start #{svname}", "Starting packaged #{name}")
+      run_command("cinc-server-ctl start #{svname}", "Starting packaged #{name}")
 
     end
     def unload

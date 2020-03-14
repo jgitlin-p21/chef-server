@@ -26,7 +26,7 @@ pkg_build_deps=(
 )
 pkg_binds_optional=(
   [database]="port"
-  [chef-server-ctl]="secrets"
+  [cinc-server-ctl]="secrets"
 )
 pkg_exports=(
   [port]="port"

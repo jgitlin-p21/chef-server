@@ -58,11 +58,11 @@ knife config on your workstation.
     vagrant ssh
     sudo -i
     # create a user to access chef with
-    chef-server-ctl user-create -f /tmp/admin.pem admin Admin User admin@example.com password
+    cinc-server-ctl user-create -f /tmp/admin.pem admin Admin User admin@example.com password
     # create an organization
-    chef-server-ctl org-create -f /tmp/test-validator.pem test Test
+    cinc-server-ctl org-create -f /tmp/test-validator.pem test Test
     # associate the user with the organization
-    chef-server-ctl org-user-add test admin
+    cinc-server-ctl org-user-add test admin
 
 Now on your workstation, create `.chef/knife.rb` in the root of your
 chef-server checkout, with the following:
@@ -79,13 +79,13 @@ Then place `/tmp/admin.pem` from the vagrant node into the `.chef` directory.
 ### What can I do?
 
 Start editing erchef files, pedant files, cookbooks, upgrade definitions,
-and/or chef-server-ctl commands.
+and/or cinc-server-ctl commands.
 
 * Changes to erchef erlang files will be picked up and recompiled
   automatically shortly after you save them on the host.
 * To test cookbook changes, load them with `dvm load omnibus private-chef-cookbooks`.
-  Then run `chef-server-ctl reconfigure` in the VM to pick up the changes.
-* upgrades and chef-server-ctl command changes/additions will be
+  Then run `cinc-server-ctl reconfigure` in the VM to pick up the changes.
+* upgrades and cinc-server-ctl command changes/additions will be
   available very quickly after you save them on the host (< 5 seconds)
 * To run pedant tests in the VM, use `dvm run oc-chef-pedant`.  You can also provide the
   usual flags, eg `dvm run oc-chef-pedant --focus-/skip-X`, `--smoke`, `--all`, etc.

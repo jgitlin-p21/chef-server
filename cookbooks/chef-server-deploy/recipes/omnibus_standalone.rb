@@ -195,8 +195,8 @@ end
 
   # TODO: Do this in resource
   execute "add-#{user_name}-user-key" do
-    command lazy { "chef-server-ctl add-user-key #{user_name} --public-key-path /etc/opscode/users/#{user_name}-2.pem.pub --key-name #{user_name}-2" }
-    not_if "chef-server-ctl list-user-keys #{user_name} | grep #{user_name}-2"
+    command lazy { "cinc-server-ctl add-user-key #{user_name} --public-key-path /etc/opscode/users/#{user_name}-2.pem.pub --key-name #{user_name}-2" }
+    not_if "cinc-server-ctl list-user-keys #{user_name} | grep #{user_name}-2"
   end
 end
 

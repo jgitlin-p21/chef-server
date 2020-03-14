@@ -260,7 +260,7 @@ def define_chef_server(config, attributes)
     # We do a number of things that can affect the initial configuration - by
     # running reconfigure here we can ensure that they're all completed
     # first  -- no matter what kind of pre-reconfigure provisioning we doing.
-    config.vm.provision "shell", inline: "chef-server-ctl reconfigure --verbose  --chef-license accept"
+    config.vm.provision "shell", inline: "cinc-server-ctl reconfigure --verbose  --chef-license accept"
 
     if plugin_active?('chef-manage', attributes)
       config.vm.provision "shell", "inline": install_hack(m_installer, 'chef-manage')

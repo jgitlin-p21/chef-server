@@ -42,7 +42,7 @@
 - Add buildkite steps to the `integration_test` pipeline [#1874](https://github.com/chef/chef-server/pull/1874) ([christopher-snapp](https://github.com/christopher-snapp)) <!-- 13.1.30 -->
 - Bump rack from 2.0.7 to 2.0.8 in /oc-chef-pedant [#1872](https://github.com/chef/chef-server/pull/1872) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 13.1.29 -->
 - Bump rack from 1.6.11 to 1.6.12 in /src/oc-id [#1873](https://github.com/chef/chef-server/pull/1873) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 13.1.28 -->
-- Fix two small chef-server-ctl typos [#1875](https://github.com/chef/chef-server/pull/1875) ([ehershey](https://github.com/ehershey)) <!-- 13.1.27 -->
+- Fix two small cinc-server-ctl typos [#1875](https://github.com/chef/chef-server/pull/1875) ([ehershey](https://github.com/ehershey)) <!-- 13.1.27 -->
 - Fix chef-backend scenario to work on ubuntu [#1868](https://github.com/chef/chef-server/pull/1868) ([christopher-snapp](https://github.com/christopher-snapp)) <!-- 13.1.26 -->
 - Add scenario for chef-backend [#1860](https://github.com/chef/chef-server/pull/1860) ([christopher-snapp](https://github.com/christopher-snapp)) <!-- 13.1.25 -->
 - ci: disable microsoft mirror, exit bk_install script on first error [#1865](https://github.com/chef/chef-server/pull/1865) ([stevendanna](https://github.com/stevendanna)) <!-- 13.1.24 -->
@@ -94,7 +94,7 @@
 - update openresty [#1706](https://github.com/chef/chef-server/pull/1706) ([markan](https://github.com/markan))
 - Add support for testing a scenario via IPv4 or IPv6 [#1788](https://github.com/chef/chef-server/pull/1788) ([christopher-snapp](https://github.com/christopher-snapp))
 - Bump nokogiri from 1.8.5 to 1.10.4 in /src/oc-id [#1765](https://github.com/chef/chef-server/pull/1765) ([dependabot[bot]](https://github.com/dependabot[bot]))
-- [chef-server-ctl] Install only appbundled version [#1533](https://github.com/chef/chef-server/pull/1533) ([markan](https://github.com/markan))
+- [cinc-server-ctl] Install only appbundled version [#1533](https://github.com/chef/chef-server/pull/1533) ([markan](https://github.com/markan))
 - removing forcing of the doc formatter [#1469](https://github.com/chef/chef-server/pull/1469) ([lamont-granquist](https://github.com/lamont-granquist))
 - Add copy/paste execution strings for convenient builds [#1750](https://github.com/chef/chef-server/pull/1750) ([lbakerchef](https://github.com/lbakerchef))
 - Knife-tidy was newly added as a dependency to knife-ec-backup. [#1792](https://github.com/chef/chef-server/pull/1792) ([PrajaktaPurohit](https://github.com/PrajaktaPurohit))
@@ -116,12 +116,12 @@
 - Lbaker/land erlang20 final [#1813](https://github.com/chef/chef-server/pull/1813) ([PrajaktaPurohit](https://github.com/PrajaktaPurohit))
 - Upgrading to postgres 9.6.15 [#1828](https://github.com/chef/chef-server/pull/1828) ([PrajaktaPurohit](https://github.com/PrajaktaPurohit))
 - restructure terraform to make way for azure scenarios [#1829](https://github.com/chef/chef-server/pull/1829) ([christopher-snapp](https://github.com/christopher-snapp))
-- updates to chef-server-ctl gather-logs [#1814](https://github.com/chef/chef-server/pull/1814) ([moutons](https://github.com/moutons))
+- updates to cinc-server-ctl gather-logs [#1814](https://github.com/chef/chef-server/pull/1814) ([moutons](https://github.com/moutons))
 - Add Terraform scenario for Azure PostgreSQL [#1826](https://github.com/chef/chef-server/pull/1826) ([christopher-snapp](https://github.com/christopher-snapp))
 - Add ruby 2.5.6 to verify pipeline [#1831](https://github.com/chef/chef-server/pull/1831) ([christopher-snapp](https://github.com/christopher-snapp))
 - Add a scenario to test chef-server tiered upgrade  [#1830](https://github.com/chef/chef-server/pull/1830) ([christopher-snapp](https://github.com/christopher-snapp))
 - Bump Chef Infra Server version to 13.1.0 [#1832](https://github.com/chef/chef-server/pull/1832) ([PrajaktaPurohit](https://github.com/PrajaktaPurohit))
-- Add chef-server-ctl psql tests to terraform [#1834](https://github.com/chef/chef-server/pull/1834) ([christopher-snapp](https://github.com/christopher-snapp))
+- Add cinc-server-ctl psql tests to terraform [#1834](https://github.com/chef/chef-server/pull/1834) ([christopher-snapp](https://github.com/christopher-snapp))
 - Speed up Terraform Push Jobs tests [#1836](https://github.com/chef/chef-server/pull/1836) ([christopher-snapp](https://github.com/christopher-snapp))
 - Fix 502 gateway timeout errors in terraform [#1837](https://github.com/chef/chef-server/pull/1837) ([christopher-snapp](https://github.com/christopher-snapp))
 - Add standalone fresh install terraform scenario [#1838](https://github.com/chef/chef-server/pull/1838) ([christopher-snapp](https://github.com/christopher-snapp))
@@ -172,17 +172,17 @@
 - Praj/rubygems update [#1681](https://github.com/chef/chef-server/pull/1681) ([PrajaktaPurohit](https://github.com/PrajaktaPurohit))
 - Update Release Notes for release 13.0.11 [#1682](https://github.com/chef/chef-server/pull/1682) ([PrajaktaPurohit](https://github.com/PrajaktaPurohit))
 - Delete the broken link for chef-ha-drbd plugin. [#1686](https://github.com/chef/chef-server/pull/1686) ([PrajaktaPurohit](https://github.com/PrajaktaPurohit))
-- [chef-server-ctl] Fix chef dependency in hab build [#1687](https://github.com/chef/chef-server/pull/1687) ([markan](https://github.com/markan))
+- [cinc-server-ctl] Fix chef dependency in hab build [#1687](https://github.com/chef/chef-server/pull/1687) ([markan](https://github.com/markan))
 - Alter the delivery build recipe to accept the chef license. [#1688](https://github.com/chef/chef-server/pull/1688) ([markan](https://github.com/markan))
 - Do not run /_stats endpoint tests on backend of a tiered topology. [#1689](https://github.com/chef/chef-server/pull/1689) ([PrajaktaPurohit](https://github.com/PrajaktaPurohit))
-- [chef-server-ctl] Fix rabbitmq fail on first reconfigure [#1691](https://github.com/chef/chef-server/pull/1691) ([markan](https://github.com/markan))
+- [cinc-server-ctl] Fix rabbitmq fail on first reconfigure [#1691](https://github.com/chef/chef-server/pull/1691) ([markan](https://github.com/markan))
 
 ## [12.19.31](https://github.com/chef/chef-server/tree/12.19.31) (2019-03-07)
 
 #### Merged Pull Requests
 - Empty commit to rebuild hartifacts [#1625](https://github.com/chef/chef-server/pull/1625) ([ryancragun](https://github.com/ryancragun))
 - This is an empty commit to test omnibus buildkite release pipeline [#1627](https://github.com/chef/chef-server/pull/1627) ([jeremiahsnapp](https://github.com/jeremiahsnapp))
-- chef-server-ctl should leverage HAB_LISTEN_CTL envvar if available [#1628](https://github.com/chef/chef-server/pull/1628) ([jeremymv2](https://github.com/jeremymv2))
+- cinc-server-ctl should leverage HAB_LISTEN_CTL envvar if available [#1628](https://github.com/chef/chef-server/pull/1628) ([jeremymv2](https://github.com/jeremymv2))
 - Rebuild the hartifacts (OpenSSL was updated) [#1636](https://github.com/chef/chef-server/pull/1636) ([jaym](https://github.com/jaym))
 - Force a habitat rebuild to pull in new openssl [#1637](https://github.com/chef/chef-server/pull/1637) ([stevendanna](https://github.com/stevendanna))
 
@@ -202,15 +202,15 @@
 - Modernize Expeditor config; Promote harts/containers [#1542](https://github.com/chef/chef-server/pull/1542) ([schisamo](https://github.com/schisamo))
 - Update erlang to 18.3.4.9 [#1585](https://github.com/chef/chef-server/pull/1585) ([markan](https://github.com/markan))
 - Update issue template [#1588](https://github.com/chef/chef-server/pull/1588) ([markan](https://github.com/markan))
-- [chef-server-ctl] Make chef-server-ctl configurable [#1573](https://github.com/chef/chef-server/pull/1573) ([markan](https://github.com/markan))
+- [cinc-server-ctl] Make cinc-server-ctl configurable [#1573](https://github.com/chef/chef-server/pull/1573) ([markan](https://github.com/markan))
 - Server admin mutual TLS support [#1591](https://github.com/chef/chef-server/pull/1591) ([stevendanna](https://github.com/stevendanna))
 - Remove a few more couchdb configurables [#1526](https://github.com/chef/chef-server/pull/1526) ([stevendanna](https://github.com/stevendanna))
 - Add SSL configuration parameters to pedant [#1590](https://github.com/chef/chef-server/pull/1590) ([stevendanna](https://github.com/stevendanna))
 - Add note about out of date dep to trigger a rebuild [#1601](https://github.com/chef/chef-server/pull/1601) ([btm](https://github.com/btm))
-- [chef-server] Remove do_end function from chef-server-ctl hab plan [#1605](https://github.com/chef/chef-server/pull/1605) ([stevendanna](https://github.com/stevendanna))
+- [chef-server] Remove do_end function from cinc-server-ctl hab plan [#1605](https://github.com/chef/chef-server/pull/1605) ([stevendanna](https://github.com/stevendanna))
 - Pass ssl values to RestClient::Request.execute [#1608](https://github.com/chef/chef-server/pull/1608) ([btm](https://github.com/btm))
 - Use the embedded env when running escript [#1589](https://github.com/chef/chef-server/pull/1589) ([stevendanna](https://github.com/stevendanna))
-- [expeditor] Build chef-server-ctl when pedant changes [#1609](https://github.com/chef/chef-server/pull/1609) ([stevendanna](https://github.com/stevendanna))
+- [expeditor] Build cinc-server-ctl when pedant changes [#1609](https://github.com/chef/chef-server/pull/1609) ([stevendanna](https://github.com/stevendanna))
 - Lock bundler to 1.17 to defer bundler 2.0 upgrade [#1614](https://github.com/chef/chef-server/pull/1614) ([markan](https://github.com/markan))
 - Minor cleanup the omnibus setup [#1595](https://github.com/chef/chef-server/pull/1595) ([tas50](https://github.com/tas50))
 - Empty commit to force hab package builds. [#1615](https://github.com/chef/chef-server/pull/1615) ([rhass](https://github.com/rhass))
@@ -221,14 +221,14 @@
 
 #### Merged Pull Requests
 - Update release notes for 12.17.33 release. [#1476](https://github.com/chef/chef-server/pull/1476) ([rhass](https://github.com/rhass))
-- habitat mode for chef-server-ctl command [#1475](https://github.com/chef/chef-server/pull/1475) ([jeremymv2](https://github.com/jeremymv2))
+- habitat mode for cinc-server-ctl command [#1475](https://github.com/chef/chef-server/pull/1475) ([jeremymv2](https://github.com/jeremymv2))
 - Adding Habitization - this PR supersedes PR#1416 [#1472](https://github.com/chef/chef-server/pull/1472) ([jeremymv2](https://github.com/jeremymv2))
 - Add queue insertion information to statistics. [#1462](https://github.com/chef/chef-server/pull/1462) ([markan](https://github.com/markan))
 - resolve lingering issues from PR#1472 [#1477](https://github.com/chef/chef-server/pull/1477) ([jeremymv2](https://github.com/jeremymv2))
 - [upgrades] Don&#39;t early return in upgrade 1.31 [#1478](https://github.com/chef/chef-server/pull/1478) ([stevendanna](https://github.com/stevendanna))
 - Ma/update all the things [#1482](https://github.com/chef/chef-server/pull/1482) ([markan](https://github.com/markan))
 - lock to chef 13.x for habitat pkgs [#1483](https://github.com/chef/chef-server/pull/1483) ([jeremymv2](https://github.com/jeremymv2))
-- Added chef-server-ctl version functionality [#1485](https://github.com/chef/chef-server/pull/1485) ([thomascate](https://github.com/thomascate))
+- Added cinc-server-ctl version functionality [#1485](https://github.com/chef/chef-server/pull/1485) ([thomascate](https://github.com/thomascate))
 - Add sysvinitrc tag [#1488](https://github.com/chef/chef-server/pull/1488) ([markan](https://github.com/markan))
 - fix builds in privilege restricted environments like builder [#1489](https://github.com/chef/chef-server/pull/1489) ([jeremymv2](https://github.com/jeremymv2))
 - [oc-id] Commit assets to git and remove nodejs [#1487](https://github.com/chef/chef-server/pull/1487) ([markan](https://github.com/markan))
@@ -262,7 +262,7 @@
 - Update the Release Process document [#1409](https://github.com/chef/chef-server/pull/1409) ([PrajaktaPurohit](https://github.com/PrajaktaPurohit))
 - Trigger an RC build. [#1527](https://github.com/chef/chef-server/pull/1527) ([rhass](https://github.com/rhass))
 - Prepare 12.18 Chef Server release. [#1528](https://github.com/chef/chef-server/pull/1528) ([rhass](https://github.com/rhass))
-- Fix habitat build for the chef-server-ctl container [#1524](https://github.com/chef/chef-server/pull/1524) ([irvingpop](https://github.com/irvingpop))
+- Fix habitat build for the cinc-server-ctl container [#1524](https://github.com/chef/chef-server/pull/1524) ([irvingpop](https://github.com/irvingpop))
 - Update sqerl [#1537](https://github.com/chef/chef-server/pull/1537) ([jaym](https://github.com/jaym))
 - [oc-id] Update Gemfile to pick up new rubyzip [#1534](https://github.com/chef/chef-server/pull/1534) ([markan](https://github.com/markan))
 - Allow SSL configuration in bifrost sys.config [#1541](https://github.com/chef/chef-server/pull/1541) ([danielsdeleo](https://github.com/danielsdeleo))
@@ -551,7 +551,7 @@ Updated Components
 **Merged pull requests:**
 
 - Fix Chef 12 oc\_id regression [\#1244](https://github.com/chef/chef-server/pull/1244) ([stevendanna](https://github.com/stevendanna))
-- Fix "chef-server-ctl reconfigure" for ldap configuration changes [\#1240](https://github.com/chef/chef-server/pull/1240) ([jaymalasinha](https://github.com/jaymalasinha))
+- Fix "cinc-server-ctl reconfigure" for ldap configuration changes [\#1240](https://github.com/chef/chef-server/pull/1240) ([jaymalasinha](https://github.com/jaymalasinha))
 - add me \(sr\) to maintainers [\#1239](https://github.com/chef/chef-server/pull/1239) ([srenatus](https://github.com/srenatus))
 - Return 401 for requests from the future [\#1238](https://github.com/chef/chef-server/pull/1238) ([stevendanna](https://github.com/stevendanna))
 - Pull latest omnibus to fix SLES \(Suse\) x86 builds [\#1232](https://github.com/chef/chef-server/pull/1232) ([markan](https://github.com/markan))
@@ -604,14 +604,14 @@ Updated Components
 
 **Fixed bugs:**
 
-- Unset/reset SVDIR inside chef-server-ctl [\#1075](https://github.com/chef/chef-server/issues/1075)
+- Unset/reset SVDIR inside cinc-server-ctl [\#1075](https://github.com/chef/chef-server/issues/1075)
 
 **Closed issues:**
 
 - chef-backend-ctl create-cluster creates broken cluster if ipv6 is turned on [\#1111](https://github.com/chef/chef-server/issues/1111)
 - Organizations starting with "bookshelf" are unusable [\#694](https://github.com/chef/chef-server/issues/694)
-- chef-server-ctl tail: cannot follow ‘-’ by name [\#672](https://github.com/chef/chef-server/issues/672)
-- chef-server-ctl test failure: Search API endpoint using POST  [\#321](https://github.com/chef/chef-server/issues/321)
+- cinc-server-ctl tail: cannot follow ‘-’ by name [\#672](https://github.com/chef/chef-server/issues/672)
+- cinc-server-ctl test failure: Search API endpoint using POST  [\#321](https://github.com/chef/chef-server/issues/321)
 - Sporatic build failures in chef\_index\_batch tests [\#631](https://github.com/chef/chef-server/issues/631)
 
 **Merged pull requests:**
@@ -783,14 +783,14 @@ Updated Components
 
 **Fixed bugs:**
 
-- chef-server-ctl password command does not accept special characters  [\#366](https://github.com/chef/chef-server/issues/366)
+- cinc-server-ctl password command does not accept special characters  [\#366](https://github.com/chef/chef-server/issues/366)
 - Chef Server API should not allow usernames with spaces [\#90](https://github.com/chef/chef-server/issues/90)
 - Confusing error message with duplicate email address [\#59](https://github.com/chef/chef-server/issues/59)
 
 **Closed issues:**
 
 - enable fips mode with  chef-server-fips-core package [\#1024](https://github.com/chef/chef-server/issues/1024)
-- error in chef-server-ctl reconfigure in docker. [\#960](https://github.com/chef/chef-server/issues/960)
+- error in cinc-server-ctl reconfigure in docker. [\#960](https://github.com/chef/chef-server/issues/960)
 - Data bag search doesn't work correctly for encrypted arrays [\#876](https://github.com/chef/chef-server/issues/876)
 - rebar3 warning during build [\#630](https://github.com/chef/chef-server/issues/630)
 - oc\_id: email configuration [\#547](https://github.com/chef/chef-server/issues/547)
@@ -821,7 +821,7 @@ Updated Components
 - Use OpenSSL::Digest instead of Digest for FIPS [\#1035](https://github.com/chef/chef-server/pull/1035) ([btm](https://github.com/btm))
 - Start developer documentation [\#1033](https://github.com/chef/chef-server/pull/1033) ([stevendanna](https://github.com/stevendanna))
 - Pass email address along when resetting password [\#1032](https://github.com/chef/chef-server/pull/1032) ([mivok](https://github.com/mivok))
-- Ignore `-w` option on `chef-server-ctl reindex` with Elasticsearch [\#1031](https://github.com/chef/chef-server/pull/1031) ([smith](https://github.com/smith))
+- Ignore `-w` option on `cinc-server-ctl reindex` with Elasticsearch [\#1031](https://github.com/chef/chef-server/pull/1031) ([smith](https://github.com/smith))
 - Remove chef-web-downloads from RELEASE\_PROCESS [\#1030](https://github.com/chef/chef-server/pull/1030) ([stevendanna](https://github.com/stevendanna))
 - replace node\[fqdn\] with server\_name in nginx.conf [\#1029](https://github.com/chef/chef-server/pull/1029) ([srenatus](https://github.com/srenatus))
 - Return correct number of rows when searching with Elasticsearch [\#1028](https://github.com/chef/chef-server/pull/1028) ([smith](https://github.com/smith))
@@ -830,7 +830,7 @@ Updated Components
 - Retry connection errors when bootstrapping bifrost [\#1025](https://github.com/chef/chef-server/pull/1025) ([ryancragun](https://github.com/ryancragun))
 - Bump version for development [\#1019](https://github.com/chef/chef-server/pull/1019) ([stevendanna](https://github.com/stevendanna))
 - Release note version update [\#1011](https://github.com/chef/chef-server/pull/1011) ([tas50](https://github.com/tas50))
-- Accept passwords with special chars in `chef-server-ctl password` [\#1005](https://github.com/chef/chef-server/pull/1005) ([stevendanna](https://github.com/stevendanna))
+- Accept passwords with special chars in `cinc-server-ctl password` [\#1005](https://github.com/chef/chef-server/pull/1005) ([stevendanna](https://github.com/stevendanna))
 - Validate user's 'name' before 'username' [\#1004](https://github.com/chef/chef-server/pull/1004) ([stevendanna](https://github.com/stevendanna))
 - Added email host and from address configuration for oc\_id [\#553](https://github.com/chef/chef-server/pull/553) ([dissonanz](https://github.com/dissonanz))
 
@@ -863,7 +863,7 @@ Updated Components
 - Add retries to rvm install in travis [\#996](https://github.com/chef/chef-server/pull/996) ([stevendanna](https://github.com/stevendanna))
 - Simplify MAINTAINERS.md [\#994](https://github.com/chef/chef-server/pull/994) ([stevendanna](https://github.com/stevendanna))
 - Enable mixlib-install to resolve backwards compatible packages [\#992](https://github.com/chef/chef-server/pull/992) ([wrightp](https://github.com/wrightp))
-- Set environment before exec in chef-server-ctl psql [\#991](https://github.com/chef/chef-server/pull/991) ([stevendanna](https://github.com/stevendanna))
+- Set environment before exec in cinc-server-ctl psql [\#991](https://github.com/chef/chef-server/pull/991) ([stevendanna](https://github.com/stevendanna))
 - Bump version, update RELEASE\_PROCESS [\#990](https://github.com/chef/chef-server/pull/990) ([stevendanna](https://github.com/stevendanna))
 - omnibus: Add arm build support for opscode-solr4 [\#985](https://github.com/chef/chef-server/pull/985) ([elthariel](https://github.com/elthariel))
 - Security features for /data-collector/ endpoint [\#984](https://github.com/chef/chef-server/pull/984) ([sersut](https://github.com/sersut))
@@ -1095,7 +1095,7 @@ Removed Components
 
 **Closed issues:**
 
-- \[chef-server-ctl\] Incorrect error messages with `user-create` [\#844](https://github.com/chef/chef-server/issues/844)
+- \[cinc-server-ctl\] Incorrect error messages with `user-create` [\#844](https://github.com/chef/chef-server/issues/844)
 
 **Merged pull requests:**
 
@@ -1110,7 +1110,7 @@ Removed Components
 - use chef\_zero mode in vagrant for dvm [\#850](https://github.com/chef/chef-server/pull/850) ([sdelano](https://github.com/sdelano))
 - Use enterprise cookbook version that supports systemd on ubuntu 16.04 [\#848](https://github.com/chef/chef-server/pull/848) ([yzl](https://github.com/yzl))
 - Reset initialization\_options and vendor\_class after a chef\_run [\#841](https://github.com/chef/chef-server/pull/841) ([ryancragun](https://github.com/ryancragun))
-- Add chef-server-ctl require-credential-rotation command [\#840](https://github.com/chef/chef-server/pull/840) ([ryancragun](https://github.com/ryancragun))
+- Add cinc-server-ctl require-credential-rotation command [\#840](https://github.com/chef/chef-server/pull/840) ([ryancragun](https://github.com/ryancragun))
 - Update to pick up latest omnibus and omnibus software [\#839](https://github.com/chef/chef-server/pull/839) ([mmzyk](https://github.com/mmzyk))
 - Remove chef-sync from the known add on packages for the install command [\#838](https://github.com/chef/chef-server/pull/838) ([mmzyk](https://github.com/mmzyk))
 - release process updates [\#836](https://github.com/chef/chef-server/pull/836) ([patrick-wright](https://github.com/patrick-wright))
@@ -1145,8 +1145,8 @@ Updated Components
 
 **Closed issues:**
 
-- chef-server-ctl grant-server-admin-permissions needs cli help [\#806](https://github.com/chef/chef-server/issues/806)
-- chef-server-ctl cannot load such file -- chef/key \(LoadError\) [\#632](https://github.com/chef/chef-server/issues/632)
+- cinc-server-ctl grant-server-admin-permissions needs cli help [\#806](https://github.com/chef/chef-server/issues/806)
+- cinc-server-ctl cannot load such file -- chef/key \(LoadError\) [\#632](https://github.com/chef/chef-server/issues/632)
 
 **Merged pull requests:**
 
@@ -1229,7 +1229,7 @@ Updated Components
 - Add some more testing related info to README [\#777](https://github.com/chef/chef-server/pull/777) ([ksubrama](https://github.com/ksubrama))
 - Include license information for chef-server and dependencies in omnibus packages [\#775](https://github.com/chef/chef-server/pull/775) ([sersut](https://github.com/sersut))
 - Bump bundler install for chef-zero Travis to 1.10.6. [\#774](https://github.com/chef/chef-server/pull/774) ([tylercloke](https://github.com/tylercloke))
-- \[chef-server-ctl\] Fix several bugs in chef-server-ctl backup [\#770](https://github.com/chef/chef-server/pull/770) ([ryancragun](https://github.com/ryancragun))
+- \[cinc-server-ctl\] Fix several bugs in cinc-server-ctl backup [\#770](https://github.com/chef/chef-server/pull/770) ([ryancragun](https://github.com/ryancragun))
 - Added /orgs/org/users/user/keys(/key) endpoint and changed default perms on org scoped key GETs.
  [\#769](https://github.com/chef/chef-server/pull/769) ([tylercloke](https://github.com/tylercloke))
 
@@ -1263,7 +1263,7 @@ Updated Components
 - Bumping private-chef's enterprise cookbook dependency to 0.10.0 [\#737](https://github.com/chef/chef-server/pull/737) ([andy-dufour](https://github.com/andy-dufour))
 - Upgrade Posgtresql to 9.2.15. [\#735](https://github.com/chef/chef-server/pull/735) ([rhass](https://github.com/rhass))
 - Updating gatling-rsync configuration [\#734](https://github.com/chef/chef-server/pull/734) ([dmccown](https://github.com/dmccown))
-- \[chef-server-ctl\] Cleanse bookshelf database when storage\_type is sql [\#729](https://github.com/chef/chef-server/pull/729) ([stevendanna](https://github.com/stevendanna))
+- \[cinc-server-ctl\] Cleanse bookshelf database when storage\_type is sql [\#729](https://github.com/chef/chef-server/pull/729) ([stevendanna](https://github.com/stevendanna))
 - \[bookshelf\] Only do disk-related startup tasks in filesystem-mode [\#728](https://github.com/chef/chef-server/pull/728) ([stevendanna](https://github.com/stevendanna))
 - Only define LINE\_SEP on first load [\#725](https://github.com/chef/chef-server/pull/725) ([stevendanna](https://github.com/stevendanna))
 - bifrost and bookshelf schemas explicit upgrade [\#715](https://github.com/chef/chef-server/pull/715) ([marcparadise](https://github.com/marcparadise))
@@ -1305,7 +1305,7 @@ Removed Components
 
 **Fixed bugs:**
 
-- chef-server-ctl upgrade broken in 12.4.0 [\#724](https://github.com/chef/chef-server/issues/724)
+- cinc-server-ctl upgrade broken in 12.4.0 [\#724](https://github.com/chef/chef-server/issues/724)
 - Create cookbook artifacts with all fields filled in [\#714](https://github.com/chef/chef-server/pull/714) ([danielsdeleo](https://github.com/danielsdeleo))
 
 ## 12.4.0 (2016-01-27)
@@ -1337,8 +1337,8 @@ Removed Components
     * Implement RFC 14 - Add universe endpoint
     * V1 of Server Admins. Implements flexable user management global group.
 
-* `chef-server-ctl`
-    * Make sure chef-server-ctl install can do chef-manage
+* `cinc-server-ctl`
+    * Make sure cinc-server-ctl install can do chef-manage
 
 * `knife`
     * Add test for knife-opc org creation
@@ -1460,8 +1460,8 @@ Removed Components
 * `oc-id` [563](https://github.com/chef/chef-server/pull/563) - oc-id-hosted-copy
   * Just call it "Chef account" and "Chef username" and put it into the `i18n`
     config.
-* `omnibus` [579](https://github.com/chef/chef-server/pull/579) - chef-server-ctl-proxy
-  * This configuration file is used by `chef-server-ctl` to talk to the API
+* `omnibus` [579](https://github.com/chef/chef-server/pull/579) - cinc-server-ctl-proxy
+  * This configuration file is used by `cinc-server-ctl` to talk to the API
     locally. Proxy configs in the users environment often cause problems
     because the LB VIP is almost always `127.0.0.1`, which causes the proxy to
     try to connect to itself rather than back to the `chef-server`.
@@ -1512,7 +1512,7 @@ Removed Components
     `oc-id` had a blank file in that place, while the static files did not
     have one. Adding the files and the configuration to let nginx serve it.
 * `omnibus` [537](https://github.com/chef/chef-server/pull/537) - backup\_exit
-  * [chef-server/534](https://github.com/chef/chef-server/issues/534) Fix `chef-server-ctl` backup always returning 1
+  * [chef-server/534](https://github.com/chef/chef-server/issues/534) Fix `cinc-server-ctl` backup always returning 1
 * `erchef` [541](https://github.com/chef/chef-server/pull/541) - fix-conn-leak
   * Fix HTTP `500s` generated by request timeouts to bifrost
     on `high-traffic` Chef Servers.
@@ -1585,15 +1585,15 @@ Removed Components
   locally managed database) to use tcp/ip instead of local socket for
   consistency in local/remote installations.
 * add-on configuration hook framework
-* chef-server-ctl support for pre/post command hooks via omnibus-ctl
-* chef-server-ctl support for external postgresql
-* new chef-server-ctl commands: psql, backup, restore
-* chef-server-ctl will give a nice message instead of a stack trace when
+* cinc-server-ctl support for pre/post command hooks via omnibus-ctl
+* cinc-server-ctl support for external postgresql
+* new cinc-server-ctl commands: psql, backup, restore
+* cinc-server-ctl will give a nice message instead of a stack trace when
   not run as root.
 
 ### dvm
 * new option to auto-load components that live in omnibus prior to first
-  chef-server-ctl reconfigure
+  cinc-server-ctl reconfigure
 * support and auto config for an additional postgres VM.
 
 ### bifrost
@@ -1626,7 +1626,7 @@ Updated Components
 ## 12.1.2 (2015-07-16)
 
 ### chef-server
-* Fix issue where chef-server-ctl install could not fetch remote packages via apt.
+* Fix issue where cinc-server-ctl install could not fetch remote packages via apt.
 
 ## 12.1.1 (2015-07-13)
 
@@ -1648,7 +1648,7 @@ Updated Components
 ### chef-server
 * new self-contained development environment for chef server
 * Remove nested directories from log rotation template
-* Fix local-mode-cache warnings on `chef-server-ctl reconfigure`:
+* Fix local-mode-cache warnings on `cinc-server-ctl reconfigure`:
   Move the `cache_path` into /var/opt/opscode to avoid warnings
 * Float Chef and knife-opc on master
 * update chef-sever-ctl key commands to use Chef::Key.
@@ -1657,7 +1657,7 @@ Updated Components
 * Server's install of Chef now floats on master.
 * Server's install of knife-opc now floats on master.
 * Remove install message from postinst package script
-* Update chef-server-ctl key commands to use chef-client's Chef::Key object.
+* Update cinc-server-ctl key commands to use chef-client's Chef::Key object.
 * New gather-log script gathers a lot more debugging information.
 * removed unused error json and html pages. Correct doctype in default
   landing page.
@@ -1758,9 +1758,9 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 -----------------------------
 ## 12.0.8 (2015-04-20)
 
-### chef-server-ctl
-* Added rspec testing basics for chef-server-ctl commands
-* Updated and added testing for key rotation related chef-server-ctl commands
+### cinc-server-ctl
+* Added rspec testing basics for cinc-server-ctl commands
+* Updated and added testing for key rotation related cinc-server-ctl commands
 
 ### oc\_erchef 1.7.0
 * introduces server api versioning per chef-rfc/rfc-041.  As of 1.7.0
@@ -1772,7 +1772,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
   x-ops-server-api-version to the server on all requests.
 
 ### opscode-omnibus
-* use keys API for key rotation in chef-server-ctl, instead of direct
+* use keys API for key rotation in cinc-server-ctl, instead of direct
   database access.
 * lua routing tests working again
 * travis support enabled
@@ -1880,7 +1880,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
   `opscode_erchef['s3_url_expiry_window_size']`, which can have values
   in minutes (e.g. `"15m"`), percentage (e.g. `"15%"`), or just be
   `:off`.
-* Ensure shell metacharacters in arguments to chef-server-ctl user-
+* Ensure shell metacharacters in arguments to cinc-server-ctl user-
   and org- commands are properly handled.
 * Pull in chef-client 12.0.3.
 * Update rabbitmq cookbook to be compatible with modern chef-client.
@@ -1935,7 +1935,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
   and list-user-keys.
 * Pulled in Chef 11.18.0. This will fix "ffi-yajl and yajl-ruby gems
   have incompatible C libyajl libs" warning when running
-  chef-server-ctl commands.
+  cinc-server-ctl commands.
 * Ensure nginx restarts on frontends after lua-related changes
 * Updated nginx's logrotate config with proper log ownership.
 * Nginx logs $http_x_forwarded_for instead of $remote_addr if
@@ -1944,7 +1944,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
   exhausted rather than entering an infinite loop.
 * Fix installation errors caused by PERL5LIB environment
   variable
-* chef-server-ctl now returns non-zero exit codes for errors
+* cinc-server-ctl now returns non-zero exit codes for errors
   during user and organization-related commands.
 * Use -D for --download-only option in
   chef12-upgrade-download command, avoiding option name conflict.
@@ -2002,7 +2002,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
   repository instead of opscode-test, which pulled in a variety of now
   deprecated ruby repositories.
 * Update location/name of Chef’s public GPG key.
-* Fetch chef-server-ctl man page directly from chef-docs repo.
+* Fetch cinc-server-ctl man page directly from chef-docs repo.
 
 ### chef-server-bootstrap 1.0.0
 * Repository that replaces opscode-test, allowing us to deprecate several
@@ -2135,7 +2135,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 * Add and use new perms attribute
 * Add an OmnibusHelper method to provide an owner and group hash
 
-### chef-server-ctl
+### cinc-server-ctl
 * Partition server start/stop in upgrade process
 * Changed commands org-associate and org-dissociate to org-user-add and org-user-remove, respectively.
 * Update password command to use knife-opc so as to work post-removal of mixlib-authorization.
@@ -2153,7 +2153,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 * oc\_erchef updated to 0.27.4
 * Bump the chef\_max\_version to 12 (this is the max chef client version that Chef Server will accept)
 * expose license configuration options
-* Add man page for chef-server-ctl.
+* Add man page for cinc-server-ctl.
 * Correct gather-logs to point to chef-server.rb
 * Disable SSLv3 support in nginx
 * Added command line options to open-source-to-chef-server-12 upgrade for finer-grained control of migration process
@@ -2193,17 +2193,17 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 * removed check for maximum client version (only checks for minimum, i.e., <10)
 * updated server flavor from 'ec' to 'cs' (Chef Server) now that servers have been merged
 
-### chef-server-ctl
-* Restricted chef-server-ctl install to known Chef packages
+### cinc-server-ctl
+* Restricted cinc-server-ctl install to known Chef packages
 * Correct show-config command/recipe to point at chef-server.rb instead of private-chef.rb
 * Updated knife-opc config so that user / org / association commands now work if non-default ports are used.
-* re-enable ctrl+c for chef-server-ctl commands by setting "client\_fork false" in solo.rb
+* re-enable ctrl+c for cinc-server-ctl commands by setting "client\_fork false" in solo.rb
 
 ### omnibus-ctl 0.3.0
 
 * Extended API with `add_command_under_category`, that allows ctl projects to group commands under categories, resulting in more logical help output.
-* Added concept of hidden services that hides certain services from those listed in `chef-server-ctl status`.
-* Any service (even hidden ones) can still be status checked via `chef-server-ctl status <service>`.
+* Added concept of hidden services that hides certain services from those listed in `cinc-server-ctl status`.
+* Any service (even hidden ones) can still be status checked via `cinc-server-ctl status <service>`.
 * opscode-chef-mover was added as a hidden service.
 
 ### oc-chef-pedant 1.0.60
@@ -2345,11 +2345,11 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 ### unicorn removed
 * No longer needed because opscode-account is gone
 
-### chef-server-ctl
+### cinc-server-ctl
 * Renamed from private-chef-ctl
-* Added chef-server-ctl upgrade command to support migrations from the open source chef 11 server
+* Added cinc-server-ctl upgrade command to support migrations from the open source chef 11 server
 * Added tooling to manage users and orgs from the command line via knife-opc
-* Added chef-server-ctl install command to install chef add-on packages (via web or local file)
+* Added cinc-server-ctl install command to install chef add-on packages (via web or local file)
 * Clarify the use of the --path options for the `install` subcommand
 
 ### omnibus-ctl

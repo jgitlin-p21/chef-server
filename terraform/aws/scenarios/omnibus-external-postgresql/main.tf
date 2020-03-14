@@ -135,7 +135,7 @@ resource "null_resource" "chef_server_config" {
       "sudo chown root:root /tmp/dhparam.pem",
       "sudo mv /tmp/chef-server.rb /etc/opscode",
       "sudo mv /tmp/dhparam.pem /etc/opscode",
-      "sudo chef-server-ctl reconfigure --chef-license=accept",
+      "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
       "echo -e '\nEND INSTALL CHEF SERVER\n'",
     ]
@@ -189,7 +189,7 @@ resource "null_resource" "chef_server_config_ssl" {
       "set -evx",
       "echo -e '\nBEGIN ENABLE SSL MODE ON CHEF SERVER\n'",
       "sudo sed -i '/sslmode/{s/disable/require/;}' /etc/opscode/chef-server.rb",
-      "sudo chef-server-ctl reconfigure --chef-license=accept",
+      "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
       "echo -e '\nEND ENABLE SSL MODE ON CHEF SERVER\n'",
     ]

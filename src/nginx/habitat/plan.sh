@@ -15,7 +15,7 @@ pkg_exports=(
 )
 pkg_binds_optional=(
   [bookshelf]="port"
-  [chef-server-ctl]="secrets"
+  [cinc-server-ctl]="secrets"
   [oc_erchef]="port data_collector_enabled data_collector_server data_collector_port"
   [oc_bifrost]="port"
   [elasticsearch]="http-port"

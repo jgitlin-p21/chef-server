@@ -71,7 +71,7 @@ add_command_under_category "set-secret", "Secrets Management", "Set or change se
   name = ARGV[2]
 
   unless is_known_credential(group, name)
-    msg = "chef-server-ctl set-secret: Unknown credential: '#{name}' (group '#{group}')"
+    msg = "cinc-server-ctl set-secret: Unknown credential: '#{name}' (group '#{group}')"
     STDERR.puts msg
     raise SystemExit.new(1, msg)
   end

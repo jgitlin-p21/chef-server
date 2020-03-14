@@ -68,7 +68,7 @@ The following components now exist as Habitat packages and are available [here](
 - oc_id
 - oc_erchef
 - oc_bifrost
-- chef-server-ctl
+- cinc-server-ctl
 
 To build the packages locally:
 
@@ -85,13 +85,13 @@ docker-compose down && docker system prune --volumes -f && docker-compose up
 Running pedant tests:
 
 ```shell
-docker-compose exec chef-server-ctl chef-server-test
+docker-compose exec cinc-server-ctl chef-server-test
 ```
 
-Running chef-server-ctl:
+Running cinc-server-ctl:
 
 ```shell
-docker-compose exec chef-server-ctl chef-server-ctl command (subcommands)
+docker-compose exec cinc-server-ctl cinc-server-ctl command (subcommands)
 ```
 
 ## Dependencies contained in other repositories

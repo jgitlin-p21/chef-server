@@ -1,5 +1,5 @@
-{{#if bind.chef-server-ctl}}
-  {{~ #eachAlive bind.chef-server-ctl.members as |member|}}
+{{#if bind.cinc-server-ctl}}
+  {{~ #eachAlive bind.cinc-server-ctl.members as |member|}}
     {{~ #if @last}}
 export SECRET_KEY_BASE="{{member.cfg.secrets.oc_id.secret_key_base}}"
     {{~ /if}}

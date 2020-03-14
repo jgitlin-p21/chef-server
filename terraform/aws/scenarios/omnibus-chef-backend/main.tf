@@ -211,7 +211,7 @@ resource "null_resource" "chef_server_config" {
       "sudo ${replace(var.upgrade_version_url, "rpm", "") != var.upgrade_version_url ? "rpm -U" : "dpkg -iEG"} /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")}",
       "sudo chown root:root /tmp/chef-server.rb",
       "sudo mv /tmp/chef-server.rb /etc/opscode",
-      "sudo chef-server-ctl reconfigure --chef-license=accept",
+      "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
       "echo -e '\nEND INSTALL CHEF SERVER\n'",
     ]

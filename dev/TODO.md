@@ -1,7 +1,7 @@
 - [ ] bug: dvm gem mount gets undone after halt/up
 - [ ] populate command to load test users and orgs
 - [ ] use runsv 'down' file to cleanly disable loaded services even
-      across chef-server-ctl reconfigure
+      across cinc-server-ctl reconfigure
 - [ ] simple merge of vm settings in config.yml and default.yml files so that
       packages and vm config can be overridden.
 - [ ] Once that's done, update config.yml  with basic skeleton to show what can be done,

@@ -22,10 +22,10 @@ Simplifying the management of Chef’s product portfolio is something that we ar
 
 - `_status` endpoint reports healthy even if data_collector is down not causing unnecessary failovers.
 - Data collector proxy-header X-Forwarded for is set as expected.
-- `chef-server-ctl` is no longer installed in the user path only the appbundled version is installed in the user path
+- `cinc-server-ctl` is no longer installed in the user path only the appbundled version is installed in the user path
 - Fixes issue with Chef Support Zendesk sign-ins when a first name is not set in Hosted Chef.
 - Added support for running the Chef Infra Server on Red Hat Enterprise Linux 8.
-- Improvements to `chef-server-ctl gather-logs`
+- Improvements to `cinc-server-ctl gather-logs`
     - Add AWS to known platforms
     - Add AWS Native Chef Server info
     - Add elasticsearch info
@@ -55,18 +55,18 @@ Simplifying the management of Chef’s product portfolio is something that we ar
 
 ### Chef Server is now Chef Infra Server
 
-Chef Server has a new name, but don’t worry, it’s the same Chef Server you’ve grown used to. You’ll notice new branding throughout the application and documentation but the command `chef-server-ctl` remains the same.
+Chef Server has a new name, but don’t worry, it’s the same Chef Server you’ve grown used to. You’ll notice new branding throughout the application and documentation but the command `cinc-server-ctl` remains the same.
 
 ### Chef EULA
 
 Chef Infra Server requires an EULA to be accepted by users before it can be installed. Users can accept the EULA in a variety of ways:
 
-- `chef-server-ctl reconfigure --chef-license accept`
-- `chef-server-ctl reconfigure --chef-license accept-no-persist`
-- `CHEF_LICENSE="accept" chef-server-ctl reconfigure`
-- `CHEF_LICENSE="accept-no-persist" chef-server-ctl reconfigure`
+- `cinc-server-ctl reconfigure --chef-license accept`
+- `cinc-server-ctl reconfigure --chef-license accept-no-persist`
+- `CHEF_LICENSE="accept" cinc-server-ctl reconfigure`
+- `CHEF_LICENSE="accept-no-persist" cinc-server-ctl reconfigure`
 
-Finally, if users run `chef-server-ctl reconfigure` without any of these options, they will receive an interactive prompt asking for license acceptance. If the license is accepted, a marker file will be written to the filesystem unless `accept-no-persist` is specified. Once this marker file is persisted, users no longer need to set any of these flags.
+Finally, if users run `cinc-server-ctl reconfigure` without any of these options, they will receive an interactive prompt asking for license acceptance. If the license is accepted, a marker file will be written to the filesystem unless `accept-no-persist` is specified. Once this marker file is persisted, users no longer need to set any of these flags.
 
 See our [Frequently Asked Questions document](https://www.chef.io/bmc-faq/) for more information on the EULA and license acceptance.
 
@@ -95,7 +95,7 @@ See our [Frequently Asked Questions document](https://www.chef.io/bmc-faq/) for 
 This release was triggered by the update to Habitat base plans. (https://blog.chef.io/2019/01/28/base-plans-refresh-is-coming-to-habitat-core-plans/)
 Omnibus release was done to keep in sync with the Habitat release.
 
-- `chef-server-ctl` leverages HAB_LISTEN_CTL envvar if available.
+- `cinc-server-ctl` leverages HAB_LISTEN_CTL envvar if available.
 
 
 ## 12.19.26 (2019-01-31)
@@ -113,9 +113,9 @@ This release contains some minor improvements and updates to include software:
 - Added configuration for pedant SSL-signed requests to include mTLS support.
 - Habitat package improvements:
     - Increased `authn:keygen_timeout` amount for `oc_erchef` hab pkg.
-    - Removed `do_end` function from `chef-server-ctl` hab plan.
-    - Enhanced `chef-server-ctl` to function in more habitat environments.
-    - `chef-server-ctl` commands pass relevant TLS options during bifrost API calls.
+    - Removed `do_end` function from `cinc-server-ctl` hab plan.
+    - Enhanced `cinc-server-ctl` to function in more habitat environments.
+    - `cinc-server-ctl` commands pass relevant TLS options during bifrost API calls.
 - Used standard ruby-cleanup definition, which shrinks install size by ~5% on disk.
 - Removed unused couchdb configurables.
 
@@ -134,7 +134,7 @@ This release contains some minor improvements and updates to include software:
 - Optional disabling of welcome page
 - Ruby updated to 2.5.1
 - Chef Client updated to 14.3
-- `chef-server-ctl` now has version subcommand
+- `cinc-server-ctl` now has version subcommand
 - Datestamps are now in UTC
 - Fixie is now shipped with chef server
 - Security issue with old doorkeeper fixed by upgrading. [CVE-2018-1000211](https://nvd.nist.gov/vuln/detail/CVE-2018-1000211)
@@ -153,11 +153,11 @@ This release upgrades the version of Ruby to 2.4.3.
   - oc_bifrost['enable_request_logging'] defaults to true
   - bookshelf['enable_request_logging'] defaults to false
     - bookshelf is a change from prior behavior as this logging is redundant with the existing nginx logs
-- `chef-server-ctl reconfigure` fixes permissions on gems with an overly restrictive umask
+- `cinc-server-ctl reconfigure` fixes permissions on gems with an overly restrictive umask
 - Make the display of the welcome page configurable
   - nginx['show_welcome_page'] defaults to true
-- Inferring the current database migration level and necessary upgrades for `chef-server-ctl upgrade`
-- Catch server_name resolution errors during `chef-server-ctl reconfigure` and continue
+- Inferring the current database migration level and necessary upgrades for `cinc-server-ctl upgrade`
+- Catch server_name resolution errors during `cinc-server-ctl reconfigure` and continue
 - Add XSS related HTTP headers when chef-manage is not installed (chef-manage adds these itself)
 - knife-opc upgraded to 12c02a to support prompting for a user password on creation
 - Do not create the default rabbitmq guest useR
@@ -228,7 +228,7 @@ PostgreSQL 9.6 upgrade process
   This update also adds two further new configurables in the ["Checkpoints" group](https://www.postgresql.org/docs/9.6/static/runtime-config-wal.html#RUNTIME-CONFIG-WAL-CHECKPOINTS), `min_wal_size` and
   `checkpoint_flush_after`.
 
-  As part of the upgrade procdure, running `chef-server-ctl cleanup` will remove Postgres 9.2's data
+  As part of the upgrade procdure, running `cinc-server-ctl cleanup` will remove Postgres 9.2's data
   and logs.
 
 * Elasticsearch 5 support: Chef Server now supports Elasticsearch 5.
@@ -248,9 +248,9 @@ PostgreSQL 9.6 upgrade process
   If an indexing queue is not used, the `chef_index` RabbitMQ vhost will not be checked.
 
 * [Notification of affected services when updating secrets with set-secret](https://github.com/chef/chef-server/pull/1313):
-  `chef-server-ctl set-secret` will notify the user of services that depend on
+  `cinc-server-ctl set-secret` will notify the user of services that depend on
   the secret being changed. With the optional flag `--with-restart`,
-  `chef-server-ctl set-secret` will attempt to automatically restart the
+  `cinc-server-ctl set-secret` will attempt to automatically restart the
   dependent services.
 
 ## 12.15.8 (2017-06-20)
@@ -425,7 +425,7 @@ to start if reconfigured with `fips true`.
 This release addresses a number of bugs, the most notable are describe
 below.
 
-### `chef-server-ctl backup` correctly backs up configuration
+### `cinc-server-ctl backup` correctly backs up configuration
 
 Starting in version 12.10.0, a bug in the backup command produced
 backups that did not include the configuration data in the resulting
@@ -453,7 +453,7 @@ As a consequence of this change, the Solr 4 GC log can now be found at
 integer. The `.current` extension denotes the log currently being
 written to.
 
-To remove the older GC logs, run `chef-server-ctl cleanup` after
+To remove the older GC logs, run `cinc-server-ctl cleanup` after
 upgrading.
 
 To suppress the GC Log completely, the Chef Server now accepts the
@@ -526,7 +526,7 @@ Further, Chef Server is now available on the s390x platform.
 - The default allowed SSL ciphers now include AES256-GCM-SHA384 to
   ensure compatibility with AWS's Classic ELB health check tool.
 
-- `chef-server-ctl psql` previously revealed the postgresql password
+- `cinc-server-ctl psql` previously revealed the postgresql password
   via `ps`.
 
 ## 12.10.0 (2016-10-31)
@@ -534,11 +534,11 @@ Further, Chef Server is now available on the s390x platform.
 ### Chef Server
 - Smaller download - the download size has been reduced by around 35% via removal of redundant, cached, and unused components. The installed size has been similarly reduced.
 - add retry support to opscode-expander
-- `chef-server-ctl reindex` will now continue even if some objects are
+- `cinc-server-ctl reindex` will now continue even if some objects are
   not indexable, and will show which objects failed at the conclusion
   of the run.
 - Data Collector support for Policyfiles.
-- `chef-server-ctl install` add-on installation now pulls from the
+- `cinc-server-ctl install` add-on installation now pulls from the
   correct source.
 - Regression fix: that caused errors on reconfigure when LDAP bind password
   is nil has been fixed.
@@ -557,7 +557,7 @@ Further, Chef Server is now available on the s390x platform.
    release will resolve this.
    * Alternatively, you can set `nginx['ssl_protocols']` in
      `/etc/opscode/chef-server.rb` to a set of ciphers that are
-     compatible with your tooling, then running `chef-server-ctl
+     compatible with your tooling, then running `cinc-server-ctl
      reconfigure` to pick up the changes.
 2. With this TLS cipher suite change, the Reporting add-on will report
    errors when `opscode-reporting-ctl test` is run.  A fix for this is
@@ -612,7 +612,7 @@ ssl_version :TLSv1_2
   * See important compatibility note below.
 * ACL updates now permit adding a client to ACLs when a user of the same
   name exists in the system [111](https://github.com/chef/chef-server/issues/111)
-* chef-server-ctl user-delete will now report in which organizations the
+* cinc-server-ctl user-delete will now report in which organizations the
   user is an adminstrator of when that blocks deletion.  It also
   provides a new option to attempt to auto-remove those users from the
   admin groups, but will prevent removal if doing so would leave the

@@ -1,7 +1,7 @@
-## chef-server-ctl commands
+## cinc-server-ctl commands
 
 This folder contains the additional commands that are added to
-chef-server-ctl for managing the server. These are commands for
+cinc-server-ctl for managing the server. These are commands for
 performing various admin related tasks on the chef-server box itself.
 
 #### Testing

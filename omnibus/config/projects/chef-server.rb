@@ -15,7 +15,7 @@
 #
 
 name "chef-server"
-maintainer "CINC Software, Inc. <maintainers@chef.io>"
+maintainer "CINC Software, Inc. <maintainers@cinc.sh>"
 homepage   "https://www.chef.io"
 license "Chef EULA"
 license_file "CHEF-EULA.md"

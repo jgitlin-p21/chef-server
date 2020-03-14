@@ -19,7 +19,7 @@ require "omnibus_ctl_helper"
 module Omnibus
   class Ctl
     def credentials
-      # This is defined in chef-server-ctl, but chef-server-ctl isn't
+      # This is defined in cinc-server-ctl, but cinc-server-ctl isn't
       # actually loaded as part of these tests and attempting to load
       # it would require some code changes since it expects to be able
       # to run the command specified in ARGV.
@@ -27,7 +27,7 @@ module Omnibus
   end
 end
 
-describe "chef-server-ctl set-secret" do
+describe "cinc-server-ctl set-secret" do
   subject do
     OmnibusCtlHelper.new(["./plugins/secrets.rb"])
   end

@@ -170,7 +170,7 @@ File.open(Partybus.config.migration_state_file, File::RDWR | File::CREAT) do |f|
 
       if !migration_state_has_content?
         log "ERROR: migration-level not initialized."
-        log "ERROR: If this is an existing CINC Server install try running `chef-server-ctl rebuild-migration-state` and then retry the upgrade"
+        log "ERROR: If this is an existing CINC Server install try running `cinc-server-ctl rebuild-migration-state` and then retry the upgrade"
         exit(1)
       end
 

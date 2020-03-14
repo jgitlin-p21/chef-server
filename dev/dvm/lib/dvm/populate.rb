@@ -30,7 +30,7 @@ module DVM
       if File.exists? validator
         puts "Validator for #{name} exists, skipping org creation"
       else
-        `chef-server-ctl org-create #{name} #{name} > #{validator}`
+        `cinc-server-ctl org-create #{name} #{name} > #{validator}`
       end
       org.users.each do |user|
         make_user(user)
@@ -48,7 +48,7 @@ module DVM
         return
       end
       File.mkdir_p userdir
-      `chef-server-ctl org-user-add #{orgname} #{username} -a #{admin}`
+      `cinc-server-ctl org-user-add #{orgname} #{username} -a #{admin}`
 
     end
     def make_user(user)
@@ -57,7 +57,7 @@ module DVM
         puts "Skipping user #{user}, key already exists"
       else
         # TODO we probably should care if this fails...
-        `chef-server-ctl user-create #{user} #{user} test-user #{username}@dvm.com password > #{key}`
+        `cinc-server-ctl user-create #{user} #{user} test-user #{username}@dvm.com password > #{key}`
       end
     end
     def user_key_path(username)
@@ -102,7 +102,7 @@ end
     # TODO turn of strict host checking in all knife.rbs
     # TODO knife in path?
     # TODO pivotal or just use validator?
-    #command "chef-server-ctl user-create #{username} #{username} test-user #{username}@#{orgname}.com password > #{private_key}"
+    #command "cinc-server-ctl user-create #{username} #{username} test-user #{username}@#{orgname}.com password > #{private_key}"
     #command "knife client create #{nodename} -u #{orgname}-validator -k #{org_validator} -s https://api.chef-server.dev > #{node_key_path}"
     #command "knife node create #{nodename} -u #{nodename} -k #{node_key_path} -s https://api.chef-server.dev"
     # Populate .chef/chef.rb for nodes, .chef/knife.rb for users

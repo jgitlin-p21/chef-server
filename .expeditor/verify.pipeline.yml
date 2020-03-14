@@ -55,17 +55,17 @@ steps:
           - LUALIB=~/.luarocks/lib/lua/5.2
           - COMPONENT=omnibus
 
-- label: chef-server-ctl
+- label: cinc-server-ctl
   command:
     - /workdir/scripts/bk_tests/bk_install.sh
-    - cd /workdir/src/chef-server-ctl; make install
+    - cd /workdir/src/cinc-server-ctl; make install
     - make ci
   expeditor:
     executor:
       docker:
         image: "chefes/a1-buildkite"
         environment:
-          - COMPONENT=src/chef-server-ctl
+          - COMPONENT=src/cinc-server-ctl
 
 - label: oc_erchef_unit
   command:

@@ -26,8 +26,8 @@ dependency "rb-readline" # a replacement for readline due to
 dependency "redis-gem" # gem for interacting with redis
 dependency "openresty-lpeg"  # lua-based routing
 dependency "runit"
-dependency "chef_backup-gem" # chef-server-ctl backup
-dependency "veil-gem" # chef-server-ctl rotate-credentials
+dependency "chef_backup-gem" # cinc-server-ctl backup
+dependency "veil-gem" # cinc-server-ctl rotate-credentials
 dependency "erlang-crypto2"
 dependency "openssl-fips-config" if fips_mode? 
 
@@ -47,7 +47,7 @@ dependency "chef" # for embedded chef-client -z runs (built from master - build 
 
 dependency "private-chef-ctl" # additional project-specific private-chef-ctl subcommands
 
-# Pull in knife-opc which is wrapped by chef-server-ctl to
+# Pull in knife-opc which is wrapped by cinc-server-ctl to
 # allow user to create users and orgs, and handle org associations
 # without manage installed.
 dependency "knife-opc-gem"

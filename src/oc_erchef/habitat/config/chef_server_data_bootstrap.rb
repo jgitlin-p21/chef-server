@@ -103,7 +103,7 @@ class ChefServerDataBootstrap
   end
 
   def bootstrap
-    # TODO: Need to cleanly guard that we only do this in one instance of chef-server-ctl
+    # TODO: Need to cleanly guard that we only do this in one instance of cinc-server-ctl
 
 
     puts "Bootstrapping CINC Server Data"
@@ -369,8 +369,8 @@ class ChefServerDataBootstrap
 
   # These are factored out and put at the end because mustache confuses my editors ruby mode
   def load_superuser_public_key()
-{{#if bind.chef-server-ctl}}
-  {{~ #eachAlive bind.chef-server-ctl.members as |member|}}
+{{#if bind.cinc-server-ctl}}
+  {{~ #eachAlive bind.cinc-server-ctl.members as |member|}}
     {{~ #if @last}}
     @superuser_public_key = <<-EOF
 {{ member.cfg.secrets.chef-server.superuser_pub_key }}

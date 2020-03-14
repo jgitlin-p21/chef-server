@@ -117,7 +117,7 @@ resource "null_resource" "chef_server_config" {
       "sudo mv /tmp/chef-server.rb /etc/opscode",
       "sudo mv /tmp/dhparam.pem /etc/opscode",
       "cat /tmp/pedant_config.rb | sudo tee -a /opt/opscode/embedded/cookbooks/private-chef/templates/default/pedant_config.rb.erb",
-      "sudo chef-server-ctl reconfigure --chef-license=accept",
+      "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
       "echo -e '\nEND INSTALL CHEF SERVER\n'",
     ]

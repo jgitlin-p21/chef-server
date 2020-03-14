@@ -56,7 +56,7 @@ REQUIRED_SECRETS = {
 }
 
 def secrets_apply_loop
-  toml_cfg = TOML.load_file('/hab/svc/chef-server-ctl/config/hab-secrets-config.toml')
+  toml_cfg = TOML.load_file('/hab/svc/cinc-server-ctl/config/hab-secrets-config.toml')
   new_secrets = Marshal.load(Marshal.dump(toml_cfg))
   changes_to_apply = false
 
@@ -90,7 +90,7 @@ def secrets_apply_loop
     puts 'Changed Secrets need to be applied.'
     File.write('{{pkg.svc_data_path}}/hab-secrets-modified.toml', TOML::Generator.new(new_secrets).body)
     version = Time.now.getutc.to_i
-    cmd = "hab config apply chef-server-ctl.default #{version} {{pkg.svc_data_path}}/hab-secrets-modified.toml"
+    cmd = "hab config apply cinc-server-ctl.default #{version} {{pkg.svc_data_path}}/hab-secrets-modified.toml"
     sup_listen_ctl = ENV['HAB_LISTEN_CTL']
     cmd += " --remote-sup #{sup_listen_ctl}" if sup_listen_ctl
     system cmd

@@ -26,7 +26,7 @@ end
 
 # These should always be running by this point, but let's be certain.
 %w(postgresql oc_bifrost).each do |service|
-  execute "/opt/opscode/bin/chef-server-ctl start #{service}" do
+  execute "/opt/opscode/bin/cinc-server-ctl start #{service}" do
     not_if { OmnibusHelper.has_been_bootstrapped? }
   end
 end

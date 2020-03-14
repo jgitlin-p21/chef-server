@@ -5,7 +5,7 @@ require "chef_server_ctl/version"
 
 
 Gem::Specification.new do |spec|
-  spec.name          = "chef-server-ctl"
+  spec.name          = "cinc-server-ctl"
   spec.version       = ChefServerCtl::VERSION
   spec.authors       = ["Mark Anderson"]
   spec.email         = ["mark@chef.io"]
@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
 
   spec.files         = %w{LICENSE README.md} + Dir.glob("{bin,doc,helpers,lib,plugins,spec}/**/*")
   spec.bindir        = "bin"
-  spec.executables   = "chef-server-ctl"
+  spec.executables   = "cinc-server-ctl"
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "sequel"
   spec.add_runtime_dependency "redis"
   # TODO
-  # chef-server-ctl server-admins commands dep, will be removed in server-admins V2
+  # cinc-server-ctl server-admins commands dep, will be removed in server-admins V2
   # https://gist.github.com/tylercloke/a8d4bc1b915b958ac160#version-2
   spec.add_runtime_dependency "rest-client"
   spec.add_runtime_dependency "knife-opc"

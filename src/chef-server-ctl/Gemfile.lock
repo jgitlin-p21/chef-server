@@ -15,7 +15,7 @@ GIT
 PATH
   remote: .
   specs:
-    chef-server-ctl (1.1.0)
+    cinc-server-ctl (1.1.0)
       appbundler
       chef (~> 15.8.23)
       chef_backup
@@ -287,7 +287,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
-  chef-server-ctl!
+  cinc-server-ctl!
   chef_backup
   chefstyle
   omnibus-ctl!

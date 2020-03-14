@@ -377,7 +377,7 @@ default['private_chef']['opscode-erchef']['enable_request_logging'] = true
 # will want to tune opscode-expander.
 #
 # These configuration items are consulted during reindex requests.
-# Such requests originate from users running chef-server-ctl reindex.
+# Such requests originate from users running cinc-server-ctl reindex.
 #
 #   reindex_batch_size - Number of items to fetch from the database
 #                        and send to the search index at a time.

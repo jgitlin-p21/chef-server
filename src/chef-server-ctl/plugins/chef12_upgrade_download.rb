@@ -4,7 +4,7 @@
 # All Rights Reserved
 #
 
-# TODO refactor this for gemified chef-server-ctl
+# TODO refactor this for gemified cinc-server-ctl
 require_relative "open_source_chef12_upgrade"
 require 'optparse'
 require 'ostruct'
@@ -23,7 +23,7 @@ add_command_under_category "chef12-upgrade-download", "open-source-upgrade", "Do
     @options.chef11_admin_client_key = "/etc/chef-server/admin.pem"
 
     opt_parser = OptionParser.new do |opts|
-      opts.banner = "Usage: chef-server-ctl chef12-upgrade-download [options]"
+      opts.banner = "Usage: cinc-server-ctl chef12-upgrade-download [options]"
 
       opts.on("-d", "--chef11-data-dir [directory]", String, "Directory to store open source Chef 11 server data. Defaults to a created tmp dir.") do |chef11_dir|
         @options.chef11_data_dir = chef11_dir

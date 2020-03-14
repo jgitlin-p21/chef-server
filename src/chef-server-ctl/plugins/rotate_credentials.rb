@@ -12,7 +12,7 @@ add_command_under_category "rotate-credentials", "Secrets Management", "Rotate C
   ensure_configured!
 
   OptionParser.new do |opts|
-    opts.banner = "Usage: chef-server-ctl rotate-credentials $service_name"
+    opts.banner = "Usage: cinc-server-ctl rotate-credentials $service_name"
 
     opts.on("-h", "--help", "Show this message") do
       puts opts
@@ -47,7 +47,7 @@ add_command_under_category "rotate-credentials", "Secrets Management", "Rotate C
     if status.success?
       remove_backup_file(backup_file)
       log("#{service}'s credentials have been rotated!", :notice)
-      log("Run 'chef-server-ctl rotate-credentials #{service}' on each CINC Server", :notice)
+      log("Run 'cinc-server-ctl rotate-credentials #{service}' on each CINC Server", :notice)
       exit(0)
     else
       log("Credential rotation failed", :error)
@@ -87,7 +87,7 @@ add_command_under_category "rotate-all-credentials", "Secrets Management", "Rota
     if status.success?
       remove_backup_file(backup_file)
       log("All credentials have been rotated!", :notice)
-      log("Run 'chef-server-ctl rotate-all-credentials' on each CINC Server", :notice)
+      log("Run 'cinc-server-ctl rotate-all-credentials' on each CINC Server", :notice)
       exit(0)
     else
       log("Credential rotation failed", :error)
@@ -127,7 +127,7 @@ add_command_under_category "rotate-shared-secrets", "Secrets Management", "Rotat
     if status.success?
       remove_backup_file(backup_file)
       log("The shared secrets and all service credentials have been rotated!", :notice)
-      log("Please copy #{secrets_file_path} to each CINC Server and run 'chef-server-ctl reconfigure'", :notice)
+      log("Please copy #{secrets_file_path} to each CINC Server and run 'cinc-server-ctl reconfigure'", :notice)
       exit(0)
     else
       log("Shared credential rotation failed", :error)
@@ -161,7 +161,7 @@ add_command_under_category "require-credential-rotation", "Secrets Management", 
   @ui = HighLine.new
 
   OptionParser.new do |opts|
-    opts.banner = "Usage: chef-server-ctl require-credential-rotation [--yes]"
+    opts.banner = "Usage: cinc-server-ctl require-credential-rotation [--yes]"
 
     opts.on("-h", "--help", "Show this message") do
       puts opts
@@ -191,7 +191,7 @@ add_command_under_category "require-credential-rotation", "Secrets Management", 
   FileUtils.touch(credential_rotation_required_file)
 
   log("The CINC Server has been disabled until credentials have been rotated. "\
-      "Run 'sudo chef-server-ctl rotate-shared-secrets' to rotate them.")
+      "Run 'sudo cinc-server-ctl rotate-shared-secrets' to rotate them.")
 
   exit(0)
 end
@@ -200,14 +200,14 @@ add_global_pre_hook "require_credential_rotation" do
   # exit if credential rotation is not required
   return unless File.exist?(credential_rotation_required_file)
 
-  # Allow running "chef-server-ctl rotate-shared-secrets"
-  # "chef-server-ctl" is a wrapper that runs "omnibus-ctl opscode $command"
+  # Allow running "cinc-server-ctl rotate-shared-secrets"
+  # "cinc-server-ctl" is a wrapper that runs "omnibus-ctl opscode $command"
   # so we'll look for that in ARGV
   # TODO RETHINK AS PART OF GEM CONVERSION
   return if ARGV == %w{omnibus-ctl opscode rotate-shared-secrets}
 
   raise("You must rotate the CINC Server credentials to enable the CINC Server. "\
-        "Please run 'sudo chef-server-ctl rotate-shared-secrets'")
+        "Please run 'sudo cinc-server-ctl rotate-shared-secrets'")
 end
 
 def backup_secrets_file(backup_file = nil)

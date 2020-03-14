@@ -21,7 +21,7 @@ pkg_exposes=(port)
 
 pkg_binds_optional=(
   [database]="port"
-  [chef-server-ctl]="secrets"
+  [cinc-server-ctl]="secrets"
 )
 
 pkg_version() {

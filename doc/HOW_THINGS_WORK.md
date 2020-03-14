@@ -284,7 +284,7 @@ Current Status:
 v1:
 - The user is not allowed to edit the public\_key via the /users endpoint,
 it must be managed via the /keys endpoint instead
-- chef-server-ctl uses v1
+- cinc-server-ctl uses v1
 
 ## Keys table is the only source of truth for public\_key
 

@@ -4,7 +4,7 @@ directories:
   - ./
   - ./src/bookshelf
   - ./src/chef-mover
-  - ./src/chef-server-ctl
+  - ./src/cinc-server-ctl
   - ./src/nginx
   - ./src/oc_bifrost
   - ./src/oc_erchef

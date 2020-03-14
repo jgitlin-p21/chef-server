@@ -1,4 +1,4 @@
-pkg_name=chef-server-ctl
+pkg_name=cinc-server-ctl
 pkg_origin=chef
 pkg_maintainer="The CINC Server Maintainers <maintainers@cinc.sh>"
 pkg_license=('Apache-2.0')
@@ -109,7 +109,7 @@ EOF
   wrapper_bin_path="${pkg_prefix}/bin"
   install $PLAN_CONTEXT/bin/oc-chef-pedant.sh $wrapper_bin_path/chef-server-test
   install $PLAN_CONTEXT/bin/knife-pivotal.sh $wrapper_bin_path/knife
-  install $PLAN_CONTEXT/bin/chef-server-ctl.sh $wrapper_bin_path/chef-server-ctl
+  install $PLAN_CONTEXT/bin/cinc-server-ctl.sh $wrapper_bin_path/cinc-server-ctl
 }
 
 do_check() {

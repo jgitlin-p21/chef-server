@@ -43,7 +43,7 @@ starting and after you complete the updates.
 
 - src/opscode-expander/Gemfile.lock
 - src/oc\_erchef/apps/chef_objects/priv/depselector\_rb/Gemfile.lock
-- src/chef-server-ctl/Gemfile.lock
+- src/cinc-server-ctl/Gemfile.lock
 - src/oc_bifrost/oc-bifrost-pedant/Gemfile.lock
 
 Note:
@@ -70,8 +70,8 @@ copying files back from the dev-vm to the host.
 - Ensure that the versions in the following locations are consistent.
     - omnibus_overrides.rb
       You will also need to update Ohai
-    - src/chef-server-ctl/chef-server-ctl.gemspec
-      Don't forget to update the src/chef-server-ctl/Gemfile.lock
+    - src/cinc-server-ctl/cinc-server-ctl.gemspec
+      Don't forget to update the src/cinc-server-ctl/Gemfile.lock
 
     - src/oc-id/ [leave alone for now]
       chef-client is neededed to provide the Chef Server API.
@@ -79,9 +79,9 @@ copying files back from the dev-vm to the host.
       around rails upgrades. We should either fix that debt or find
       another library for the Chef Server API.
 
-    - src/chef-server-ctl/Gemfile.local
+    - src/cinc-server-ctl/Gemfile.local
 
-- Build Chef Server, and do a chef-server-ctl reconfigure. Fix any new
+- Build Chef Server, and do a cinc-server-ctl reconfigure. Fix any new
   warnings about deprecations and the like.
 
 ## Updating rebar3

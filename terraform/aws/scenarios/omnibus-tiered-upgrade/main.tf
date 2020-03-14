@@ -89,7 +89,7 @@ resource "null_resource" "back_end_config" {
       "sudo mv /tmp/chef-server.rb /etc/opscode",
       "sudo mv /tmp/dhparam.pem /etc/opscode",
       "sudo mv /tmp/hosts /etc/hosts",
-      "sudo chef-server-ctl reconfigure --chef-license=accept",
+      "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
       "echo -e '\nEND INSTALL CHEF SERVER (BACK-END)\n'",
     ]
@@ -138,7 +138,7 @@ resource "null_resource" "front_end_config" {
       "sudo tar -C /etc -xzf /tmp/opscode.tgz",
       "curl -vo /tmp/${replace(var.install_version_url, "/^.*\\//", "")} ${var.install_version_url}",
       "sudo ${replace(var.install_version_url, "rpm", "") != var.install_version_url ? "rpm -U" : "dpkg -iEG"} /tmp/${replace(var.install_version_url, "/^.*\\//", "")}",
-      "sudo chef-server-ctl reconfigure --chef-license=accept",
+      "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
       "echo -e '\nEND INSTALL CHEF SERVER (FRONT-END)\n'",
     ]
@@ -163,9 +163,9 @@ resource "null_resource" "back_end_upgrade" {
       "echo -e '\nBEGIN UPGRADE CHEF SERVER (BACK-END)\n'",
       "curl -vo /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")} ${var.upgrade_version_url}",
       "sudo ${replace(var.upgrade_version_url, "rpm", "") != var.upgrade_version_url ? "rpm -U" : "dpkg -iEG"} /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")}",
-      "sudo CHEF_LICENSE='accept' chef-server-ctl upgrade",
-      "sudo chef-server-ctl start",
-      "sudo chef-server-ctl cleanup",
+      "sudo CHEF_LICENSE='accept' cinc-server-ctl upgrade",
+      "sudo cinc-server-ctl start",
+      "sudo cinc-server-ctl cleanup",
       "sleep 120",
       "echo -e '\nEND UPGRADE CHEF SERVER (BACK-END)\n'",
     ]
@@ -190,9 +190,9 @@ resource "null_resource" "front_end_upgrade" {
       "echo -e '\nBEGIN UPGRADE CHEF SERVER (FRONT-END)\n'",
       "curl -vo /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")} ${var.upgrade_version_url}",
       "sudo ${replace(var.upgrade_version_url, "rpm", "") != var.upgrade_version_url ? "rpm -U" : "dpkg -iEG"} /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")}",
-      "sudo CHEF_LICENSE='accept' chef-server-ctl upgrade",
-      "sudo chef-server-ctl start",
-      "sudo chef-server-ctl cleanup",
+      "sudo CHEF_LICENSE='accept' cinc-server-ctl upgrade",
+      "sudo cinc-server-ctl start",
+      "sudo cinc-server-ctl cleanup",
       "sleep 30",
       "echo -e '\nEND UPGRADE CHEF SERVER (FRONT-END)\n'",
     ]

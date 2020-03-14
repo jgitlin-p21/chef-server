@@ -43,7 +43,7 @@ resource "null_resource" "chef_server_config" {
       "sudo mv /tmp/chef-server.rb /etc/opscode",
       "sudo mv /tmp/dhparam.pem /etc/opscode",
       "export CHEF_LICENSE=accept",
-      "sudo chef-server-ctl reconfigure",
+      "sudo cinc-server-ctl reconfigure",
       "sleep 120",
       "echo -e '\nEND INSTALL CHEF SERVER\n'",
     ]
@@ -59,7 +59,7 @@ resource "null_resource" "chef_server_config" {
   provisioner "remote-exec" {
     inline = [
       "echo -e '\nBEGIN RESTORE BACKUP\n'",
-      "sudo chef-server-ctl restore /tmp/chef-backup.tgz",
+      "sudo cinc-server-ctl restore /tmp/chef-backup.tgz",
       "echo -e '\nEND RESTORE BACKUP\n'",
     ]
   }

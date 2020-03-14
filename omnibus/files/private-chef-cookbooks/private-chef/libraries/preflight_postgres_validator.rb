@@ -74,7 +74,7 @@ class PostgresqlPreflightValidator < PreflightValidator
 
   # We do not support changing from managed to external DB or vice-versa, so the
   # 'external' flag may not be changed in any scenario - it must be set from the first run
-  # of chef-server-ctl reconfigure.
+  # of cinc-server-ctl reconfigure.
   def verify_unchanged_external_flag
     # Given that someone may  move a back-end to a new instance and update the
     # front-ends with the shared chef-server.rb, we may reasonably expect to
@@ -215,7 +215,7 @@ class PostgresqlPreflightValidator < PreflightValidator
   def err_CSPG001_cannot_change_external_flag
     <<~EOM
       CSPG001: The value of postgresql['external'] must be set prior to the initial
-               run of chef-server-ctl reconfigure and cannot be changed.
+               run of cinc-server-ctl reconfigure and cannot be changed.
 
                See https://docs.chef.io/error_messages.html#cspg001-changed-setting
                for more information on how you can transition an existing chef-server
@@ -228,7 +228,7 @@ class PostgresqlPreflightValidator < PreflightValidator
       CSPG002: You have not set a database superuser name under
                "postgresql['db_superuser']" in chef-server.rb.  This is required
                for external database support - please set it now and
-               then re-run 'chef-server-ctl reconfigure'.
+               then re-run 'cinc-server-ctl reconfigure'.
 
                See https://docs.chef.io/server_components.html#postgresql-settings
                for more information.
@@ -238,9 +238,9 @@ class PostgresqlPreflightValidator < PreflightValidator
   def err_CSPG003_missing_superuser_password
     <<~EOM
       CSPG003: You have not set a database superuser password using
-               chef-server-ctl set-db-superuser-password. This is required
+               cinc-server-ctl set-db-superuser-password. This is required
                for external database support - please run this now, then
-               re-run 'chef-server-ctl reconfigure'.
+               re-run 'cinc-server-ctl reconfigure'.
 
                See https://docs.chef.io/server_components.html#postgresql-settings
                for more information.
@@ -263,7 +263,7 @@ class PostgresqlPreflightValidator < PreflightValidator
       CSPG010: I cannot make a connection to the host #{cs_pg_attr['vip']}.  Please
                verify that the host is online and reachable from this node, and that
                you have configured postgresql['port'] if it's not the standard
-               port 5432, then run 'chef-server-ctl reconfigure' again.
+               port 5432, then run 'cinc-server-ctl reconfigure' again.
 
                See https://docs.chef.io/error_messages.html#cspg010-cannot-connect
                for more information about postgresql networking requirements.

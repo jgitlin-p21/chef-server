@@ -5,7 +5,7 @@ releases can be found [RELEASE\_NOTES.md](RELEASE_NOTES.md).
 ## 12.7.0 (2016-06-20)
 
 ### Chef Server
-  * Add support for service credential rotation via [Veil](https://github.com/chef/chef-server/blob/3ff412b5a2e6ad54cfa79bca6865e1bbca28fe5e/omnibus/files/veil/README.md), and for requiring it via the added `require-credential-rotation` command of `chef-server-ctl`.
+  * Add support for service credential rotation via [Veil](https://github.com/chef/chef-server/blob/3ff412b5a2e6ad54cfa79bca6865e1bbca28fe5e/omnibus/files/veil/README.md), and for requiring it via the added `require-credential-rotation` command of `cinc-server-ctl`.
   * Fixed existing process detection in oc_id which caused high CPU utilization
   * Fixed bug where deleting a user would not delete pending invites.
   * Allow filtering users by their external_authentication_uid, allowing for SAML-authentication in Chef-Manage.
@@ -47,7 +47,7 @@ es/)).
 		The above org-scoped user keys endpoints are new and access to them can be controlled by an admin by editing memebership
 		of the public_key_read_access group.
 	* Added support for Ubuntu 14 Trusty.
-	* Bugfixes for chef-server-ctl backup.
+	* Bugfixes for cinc-server-ctl backup.
 
 ### JRE
   * Updated to 8u74.
@@ -135,11 +135,11 @@ es/)).
   case insensitve, preventing login failures where case does not match
 * [528](https://github.com/chef/chef-server/pull/528) - fix spurious 400s that
   clients with persistent connections could receive after requesting `/_status`
-* [536](https://github.com/chef/chef-server/pull/536)  - chef-server-ctl
+* [536](https://github.com/chef/chef-server/pull/536)  - cinc-server-ctl
   ha-status no longer considers hidden services status
 * [541](https://github.com/chef/chef-server/pull/541) - fix `HTTP 500` errors
   resulting from connection leaks to bifrost when under heavy load.
-* [534](https://github.com/chef/chef-server/issues/534) - `chef-server-ctl backup`
+* [534](https://github.com/chef/chef-server/issues/534) - `cinc-server-ctl backup`
   now properly exits with return code 0 unless an error occurs
 * [597](https://github.com/chef/chef-server/issues/597) - add retries to
   the bootstrap-platform execute resource in case required services are still
@@ -327,21 +327,21 @@ chef-server configuration to restore the previous case-sensitive behavior.
       not supported at this time.  Instead,  back up the existing Chef
       Server using knife ec backup, bring up a new Chef Server with
       external PostgreSQL configure, then use knife ec restore.
-    * If you wish to use `chef-server-ctl cleanse` and have it delete
+    * If you wish to use `cinc-server-ctl cleanse` and have it delete
       data from an external PostgreSQL instance as well, you must use
       the new flag `--with-external`.
 
-#### chef-server-ctl
+#### cinc-server-ctl
 
   * New commands `backup` and `restore` which you can use to back up
     to/restore a Chef Server's data in its entirety.
       * To use this feature at this time, you will need to ensure that
         `rsync` is installed on the server ahead of time.
       * If you have enabled external postgresql, use `knife ec backup'
-        instead of chef-server-ctl backup/restore backup/restore, as
-        chef-server-ctl backup/restore are not yet compatible with
+        instead of cinc-server-ctl backup/restore backup/restore, as
+        cinc-server-ctl backup/restore are not yet compatible with
         external data stores.
-  * New command `chef-server-ctl psql <service-name>` to log in via `psql` with
+  * New command `cinc-server-ctl psql <service-name>` to log in via `psql` with
     read-only access to the the postgresql database used by the named
     service.  This is now the preferred way to log into a Chef Server
     database, and will automatically handle authentication. Use
@@ -352,12 +352,12 @@ chef-server configuration to restore the previous case-sensitive behavior.
     errors and - where appropriate - links to supporting documentation.
     This is an ongoing process, so further improvements should be expected
     in this space.
-  * Enhancements to the chef-server-ctl add-on framework now permit custom
+  * Enhancements to the cinc-server-ctl add-on framework now permit custom
     topologies.
   * `status`, `cleanse`, `service-list` commands have been updated to
     support external PostgreSQL.  Other service commands have been
     disabled when external PostgreSQL is in use.
-  * chef-server-ctl will now refuse to run as anyone other than root,
+  * cinc-server-ctl will now refuse to run as anyone other than root,
     instead of giving a confusing stack trace when this is attempted.
 
 #### Chef Server Development Environment Improvements
@@ -441,7 +441,7 @@ There are no deprecations to announce in this release.
 
 ## 12.1.2 (2015-07-16)
 
-Fix issue where chef-server-ctl install could not fetch remote packages via apt.
+Fix issue where cinc-server-ctl install could not fetch remote packages via apt.
 
 ## 12.1.1 (2015-07-13)
 
@@ -470,10 +470,10 @@ consolidated into the overall 12.1.0 release notes as part of the final
     protocol. To send statsd-formatted statistics,
     set `estatsd['protocol'] = "statsd"` in chef-server.rb.
   * expose postgres WAL configurables in chef-server.rb
-  * chef-server-ctl key commands now use the keys API
+  * cinc-server-ctl key commands now use the keys API
   * remove darklaunch flags that controlled routing of requests to couch
     vs postgres, and oc_erchef vs opscode-account.
-  * Fix local-mode-cache warnings on `chef-server-ctl reconfigure`
+  * Fix local-mode-cache warnings on `cinc-server-ctl reconfigure`
   * Erlang runtime upgraded to 17.5
 
 #### Chef Server Development Improvements
@@ -546,19 +546,19 @@ consolidated into the overall 12.1.0 release notes as part of the final
 
   * API requests made by a user that shares a name with a client in the
     same org wil no longer fail with a 401.
-  * Fix bug where chef-server-ctl install command would
+  * Fix bug where cinc-server-ctl install command would
     always attempt to reinstall previously installed packages.
   * Fix a fatal `oc_erchef` crash that occurred when `folsom_graphite` is configured,
     but no server is avaiable or the server goes away.
   * Prevent graphite failures from causing `oc_erchef` to crash when
     `folsom_graphite` is enabled.
   * Pull in newest folsom and bear to address `folsome_graphite` crashes.
-  * Fix local-mode-cache warnings on `chef-server-ctl reconfigure`
+  * Fix local-mode-cache warnings on `cinc-server-ctl reconfigure`
     (Issue #106)
   * Restart procps server to ensure sysctl tuning is applied.
   * Correct path to DRBD split brain notification script.
   * Remove install message from postinst package script
-  * Fix bug where `chef-server-ctl reconfigure` would
+  * Fix bug where `cinc-server-ctl reconfigure` would
     fail if rabbitmq['nodename'] had been changed.
   * Fixes chef-server issue #119 which prevented some LDAP users from
     successfully logging in.
@@ -672,9 +672,9 @@ The following items are new since Chef Server 12.0.7 and/or are changes from pre
 * oc\_erchef
   * Server API Versioning is now enabled and current API version is `0`.
     See chef-rfc/rfc-041 for details on server API versioning support.
-* `chef-server-ctl`
+* `cinc-server-ctl`
   * has been updated to use the Keys API for key management commands.
-  * `--enable-external-auth` option to command `chef-server-ctl password` has been fixed
+  * `--enable-external-auth` option to command `cinc-server-ctl password` has been fixed
 
 ### Security Updates
 
@@ -793,7 +793,7 @@ For specific breakdown of breakdown of updated components, refer to CHANGELOG.md
     * re-enhancement: re-added support for `group_dn` ldap attribute to require users to be in the named group.
       This change was originally in 12.0.1 but was lost in our transition to a new repository.
       Thanks to Brian Felton for the original enhancement.
-* `chef-server-ctl` has been fixed to properly escape shell metacharacters
+* `cinc-server-ctl` has been fixed to properly escape shell metacharacters
   in arguments to user- and org- commands.
 * `knife-ec-backup` has been updated with key rotation support
 * `chef-server.rb` tunables
@@ -838,9 +838,9 @@ For specific breakdown of breakdown of updated components, refer to CHANGELOG.md
 ### What's New:
 
 * Chef 11.18.0
-  * Chef 11.18.0 was vendored into the server. This will fix ffi-yajl related warning when running chef-server-ctl commands.
+  * Chef 11.18.0 was vendored into the server. This will fix ffi-yajl related warning when running cinc-server-ctl commands.
 
-* chef-server-ctl
+* cinc-server-ctl
   * Added key management and rotation commands add-client-key,
     add-user-key, delete-user-key, delete-client-key,
     list-client-keys, and list-user-keys.  This is considered a beta
@@ -906,12 +906,12 @@ The following items are new since Enterprise Chef 11.2.1 and/or are changes from
     you can enable it via `ldap['start_tls'] = true` in `/etc/opscode/chef-server.rb`.
   * the `ldap['encryption']` setting is deprecated. (See Deprecations
     section, below.)
-* chef-server-ctl
-  * `chef-server-ctl` replaces `private-chef-ctl` though
+* cinc-server-ctl
+  * `cinc-server-ctl` replaces `private-chef-ctl` though
     `private-chef-ctl` will also work in CS12.
   * Several commands added related to the management of users and
     organizations, allowing management of organizations without the management console
-    or original webui. You can find information about these commands via `chef-server-ctl help`.
+    or original webui. You can find information about these commands via `cinc-server-ctl help`.
     and looking under "Organization and User Management Commands".  You can find usage
     examples at this location: https://docs.chef.io/install_server.html
   * new `gather-logs` command to create a tarball of important logs and system information.
@@ -925,9 +925,9 @@ The following items are new since Enterprise Chef 11.2.1 and/or are changes from
   * `oc_chef_authz` settings are now tuneable
   * postgesql slow query logging can now be configured
 * Upgrades from Open Source Chef 11.1
-  * The `chef-server-ctl upgrade` command has been augmented to support upgrading from Open Source Chef 11.1
+  * The `cinc-server-ctl upgrade` command has been augmented to support upgrading from Open Source Chef 11.1
      or greater.
-    * In addition, three additional chef-server-ctl commands have been added:
+    * In addition, three additional cinc-server-ctl commands have been added:
       `chef12-upgrade-download`, `chef12-upgrade-data-transform`, and `chef12-upgrade-upload`, which allow
        the upgrade process to be broken down into discrete steps if more control is desired than the upgrade
        command alone provides.

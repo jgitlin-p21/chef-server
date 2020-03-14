@@ -1,7 +1,7 @@
 name: chef-server-smoke
 title: InSpec Profile
-maintainer: Chef Software, Inc.
-copyright: Chef Software, Inc.
+maintainer: CINC Software, Inc.
+copyright: CINC Software, Inc.
 copyright_email: engineering@chef.io
 license: All Rights Reserved
 summary: CINC Server smoke tests

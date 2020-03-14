@@ -1,5 +1,5 @@
 name 'chef-server-deploy'
-maintainer 'Chef Software Inc Engineering'
+maintainer 'CINC Software Inc Engineering'
 maintainer_email 'engineering@chef.io'
 license 'Apache-2.0'
 description 'Installs/Configures CINC Server in ACC'

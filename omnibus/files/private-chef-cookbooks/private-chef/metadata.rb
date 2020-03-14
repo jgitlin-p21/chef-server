@@ -1,5 +1,5 @@
 name              'private-chef'
-maintainer        'Chef Software, Inc.'
+maintainer        'CINC Software, Inc.'
 maintainer_email  'cookbooks@chef.io'
 license           'Apache-2.0'
 description       'Installs and configures CINC Server from Omnibus'

@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name          = 'oc-bifrost-pedant'
   s.version       = '0.0.1'
   s.summary       = "CINC Server API Testing Framework"
-  s.authors       = ["Chef Software Engineering"]
+  s.authors       = ["CINC Software Engineering"]
   s.email         = 'dev@chef.io'
   s.require_paths = ['lib', 'spec']
   s.files         = Dir['lib/**/*'] + Dir['spec/**/*'] + Dir['bin/*'] + Dir['fixtures/**/*']

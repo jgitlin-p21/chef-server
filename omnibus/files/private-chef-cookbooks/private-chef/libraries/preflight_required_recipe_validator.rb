@@ -50,7 +50,7 @@ class RequiredRecipePreflightValidator < PreflightValidator
     unless stat.uid == 0
       fail_with <<~EOF
         The required_recipe file must be owned by root. Please change the owner to root
-        and reconfigure the Chef server:
+        and reconfigure the CINC Server:
 
             chown root:root #{@required_recipe['path']}
             cinc-server-ctl reconfigure
@@ -62,7 +62,7 @@ class RequiredRecipePreflightValidator < PreflightValidator
     unless stat.gid == 0
       fail_with <<~EOF
         The required_recipe file must be in the root group. Please change the group to
-        root and reconfigure the Chef server:
+        root and reconfigure the CINC Server:
 
             chown root:root #{@required_recipe['path']}
             cinc-server-ctl reconfigure
@@ -74,7 +74,7 @@ class RequiredRecipePreflightValidator < PreflightValidator
     unless %w(600 644).include?(format('%o', stat.mode)[3..-1])
       fail_with <<~"EOF"
         The required_recipe must have a mode of 644 or 600. Please set a compatible mode
-        and reconfigure the Chef server:
+        and reconfigure the CINC Server:
 
             chmod 600 #{@required_recipe['path']}
             cinc-server-ctl reconfigure

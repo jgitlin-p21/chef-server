@@ -1,5 +1,5 @@
 # oc-chef-pedant
-This is the pedant test suite for Chef Server.
+This is the pedant test suite for CINC Server.
 
 ## License
 
@@ -61,7 +61,7 @@ them.
 ## Shared Functionality
 
 Where functionality in OPC is shared/identical to that in Open Source
-Chef Server, this test suite uses tests from
+CINC Server, this test suite uses tests from
 [chef-pedant](https://github.com/chef/chef-pedant). By default, dev
 VM is configured to mount your local chef-pedant checkout into the VM
 when loading `oc-chef-pedant`. See the [dev VM config](https://github.com/chef/opscode-dev-vm/blob/master/config/projects.json)

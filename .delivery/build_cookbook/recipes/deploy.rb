@@ -33,7 +33,7 @@ infra_nodes.each do |infra_node|
   end
 end
 
-# Execute a CCR on the instances to bring up Chef Server
+# Execute a CCR on the instances to bring up CINC Server
 parallel_remote_execute "Run CCR on #{infra_node_names}" do
   command 'sudo CHEF_LICENSE=accept-no-persist /opt/chef/bin/chef-client --no-fork'
   hosts infra_node_names

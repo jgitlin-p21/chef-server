@@ -1,10 +1,10 @@
-oc_erchef - Chef Server API
+oc_erchef - CINC Server API
 ===========================
 
 [![Build Status Master](https://travis-ci.org/chef/oc_erchef.svg?branch=master)](https://travis-ci.org/chef/oc_erchef)
 
 This is the top-level project for the Erlang implementation of the
-Chef Server's REST API.
+CINC Server's REST API.
 
 This project exists to build the `oc_erchef` OTP release system and
 manage the complete list of dependencies that constitute an
@@ -13,7 +13,7 @@ manage the complete list of dependencies that constitute an
 # Chef 11
 
 In Chef 11, the `erchef` project held the equivalent code for the Open
-Source Chef Server. In Chef 12, the Enterprise and Open Source Chef
+Source CINC Server. In Chef 12, the Enterprise and Open Source Chef
 Server code-bases merged and this became the main repository.
 
 ## License

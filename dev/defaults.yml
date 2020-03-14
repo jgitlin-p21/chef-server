@@ -44,7 +44,7 @@ vm:
     #start: true
     # The major version family to use - either "2" or "5".
     #version: "5"
-  # Override this in config.yml if you want to install chef server plugins with
+  # Override this in config.yml if you want to install cINC Server plugins with
   # specific packages.
   #external_solr:
     # enable a separate external vm
@@ -115,7 +115,7 @@ vm:
   node-attributes:
     placeholder: true
   # Overriding config.vm.start-custom to true will create an empty VM of the same
-  # distro as the chef server, with 2GB/2core, using CUSTOM_VM_ADDRESS
+  # distro as the cINC Server, with 2GB/2core, using CUSTOM_VM_ADDRESS
   start-custom: false
   #
   # oc_id:
@@ -306,7 +306,7 @@ projects:
 
 quickstart:
   cinc-server:
-    description: "Load up all the things used for most chef server dev: pedant, cookbooks, commands, erchef.  Starts oc_erchef without a console."
+    description: "Load up all the things used for most cINC Server dev: pedant, cookbooks, commands, erchef.  Starts oc_erchef without a console."
     load:
       - omnibus private-chef-cookbooks
       - omnibus ctl-commands

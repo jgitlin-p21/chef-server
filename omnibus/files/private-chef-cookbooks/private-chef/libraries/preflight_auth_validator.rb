@@ -24,7 +24,7 @@ class AuthPreflightValidator < PreflightValidator
   def run!
     # Sanity check: for any configuration we should expect that
     # both LDAP and SAML auth cannot be enabled simultaneously
-    # across Chef Server and Chef Manage
+    # across CINC Server and Chef Manage
     validate_sane_state
   end
 

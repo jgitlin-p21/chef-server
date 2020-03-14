@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Assumes Chef Server Latest is installed.
+# Assumes CINC Server Latest is installed.
 set -e
 echo "CINC Server, Reporting Latest, Shared CINC Server DB"
 

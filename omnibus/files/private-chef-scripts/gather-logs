@@ -44,7 +44,7 @@ then
         exit 1
     fi
 
-    echo "Gathering logs from Open Source Chef server 11."
+    echo "Gathering logs from Open Source CINC Server 11."
 elif [[ $type == 'Analytics' ]];
 then
     path='opscode-analytics'

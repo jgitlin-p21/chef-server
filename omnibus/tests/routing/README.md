@@ -5,7 +5,7 @@ These tests that can be run in a non-functional server environment.
 You should not need a running cinc-server to perform these tests.
 You simply have to set a few environment variables.
 
-### If Running These Tests From A Functioning Chef Server
+### If Running These Tests From A Functioning CINC Server
 
 There Should be sane defaults for all the environment variables. Simply run:
 

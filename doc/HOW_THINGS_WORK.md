@@ -1,12 +1,12 @@
 The goal of this document is to provide high-level overviews of how
-various systems work inside Chef Server. If you encounter a process
+various systems work inside CINC Server. If you encounter a process
 or feature that isn’t straightforward or took you time to understand,
 consider writing an explanation here.
 
 ## Search Indexing
 
-Chef Server performs searches by querying a search index. This index
-is updated on every write to the Chef Server. That is, every time we
+CINC Server performs searches by querying a search index. This index
+is updated on every write to the CINC Server. That is, every time we
 write to oc_erchef's postgresql database to update an object (such as
 a node, data bag, role, etc.), we usually also need to write to the
 search index.
@@ -14,17 +14,17 @@ search index.
 This section describes how data gets from erchef to the search index.
 For how we query this data later, see Search Queries.
 
-Chef Server supports two backends for the search index:
+CINC Server supports two backends for the search index:
 
 - Solr, and
 - Elasticsearch
 
-Solr is the default and is shipped inside the Chef Server package.. It
+Solr is the default and is shipped inside the CINC Server package.. It
 has been supported for longer and is more battle tested. ElasticSearch
 is the default for Chef Backend because of its easy-to-use replication
 clustering.
 
-Chef Server has 3 different "search_queue_mode"s:
+CINC Server has 3 different "search_queue_mode"s:
 
 - rabbitmq (Solr-only)
 - batch (Solr or ES)
@@ -230,7 +230,7 @@ object types and organizations.
 ## FIPS Integration
 
 This assumes you understand what the FIPS 140-2 validation is. Putting the
-Chef Server into *FIPS mode* means:
+CINC Server into *FIPS mode* means:
 
 1. It sets `OPENSSL_FIPS=1` in the environment, so shelling out to `openssl`
 will activate the FIPS module.

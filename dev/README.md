@@ -18,7 +18,7 @@ Requirements:
 
 * VirtualBox 4.3+
 * Vagrant 1.7+
-* At least one recent Chef Server 12.0.9+ debian package download,
+* At least one recent CINC Server 12.0.9+ debian package download,
   which you can get using this command (if you have the most recent chefdk) `mixlib-install download cinc-server -p ubuntu -a x86_64 -l 14`. dvm will then look for the package in either the Downloads dir
   on your machine or the omnibus/pkg directory under the cinc-server repo
   where dvm is running. You can also set the INSTALLER environment variable
@@ -51,7 +51,7 @@ In a separate terminal session/pane/window:
     sudo -i
     dvm quickstart oc_erchef
 
-To use your running Chef Server through standard commands such as knife,
+To use your running CINC Server through standard commands such as knife,
 you'll need to create an organisation and a user, and then create a
 knife config on your workstation.
 
@@ -123,9 +123,9 @@ available.
 
 Ruby project dependency loading support coming soon.
 
-### Installing Chef Server Plugins
+### Installing CINC Server Plugins
 
-If you wish to install Chef Server plugins with pre-downloaded or pre-built
+If you wish to install CINC Server plugins with pre-downloaded or pre-built
 binaries, set the corresponding attribute in your `config.yml` to true. 
 The corresponding package needs to be either in `~/Downloads`, `../omnibus/pkg`,
 or you can set an environment variable with the path to the package.
@@ -146,7 +146,7 @@ vm:
 
 ### Configuring LDAP
 
-If you wish to setup your Chef Server to use an external LDAP service, please set
+If you wish to setup your CINC Server to use an external LDAP service, please set
 `ldap start` to true in your config.yml. This LDAP server comes pre-configured
 with two users: `child` and `douglas`. You can add more by adding more LDIF files
 in the ldap-data directory of the provisioning cookbook.
@@ -299,7 +299,7 @@ defaults.yml, in which project definitions and other things are set up.
 
 # Using external databases
 
-To use an external database for Chef Server (and Reporting), create a `config.yml` file with the following contents:
+To use an external database for CINC Server (and Reporting), create a `config.yml` file with the following contents:
 
 ```
 vm:
@@ -308,7 +308,7 @@ vm:
     use-external: true
 ```
 
-To use an external Azure database for Chef Server, create a `config.yml` file with the following contents:
+To use an external Azure database for CINC Server, create a `config.yml` file with the following contents:
 
 ```
 vm:
@@ -319,7 +319,7 @@ vm:
     ip-azure:     <AZURE POSTGRESQL IP ADDRESS>
 ```
 
-To use separate external databases for Chef Server and Chef Reporting, create a `config.yml` file with the following contents:
+To use separate external databases for CINC Server and Chef Reporting, create a `config.yml` file with the following contents:
 
 ```
 vm:

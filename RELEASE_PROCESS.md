@@ -1,4 +1,4 @@
-# Chef Server Release Process
+# CINC Server Release Process
 
 ## Document Purpose
 
@@ -6,7 +6,7 @@ The purpose of this document is to describe the *current* release
 process such that any member of the team can do a release.  As we
 improve the automation around the release process, the document should
 be updated such that it always has the exact steps required to release
-Chef Server.
+CINC Server.
 
 This document is NOT aspirational.  We have a number of automation
 tools that we intend to use to improve the release release process;
@@ -97,4 +97,4 @@ The git SHA of the build you are testing can be found in
   Discourse can be found on the wiki under the Engineering section ->
   Policy and Processes -> Release Announcements and Security Alerts
 
-Chef Server is now released.
+CINC Server is now released.

@@ -1,7 +1,7 @@
-Writing Tests for Chef Server with pgTAP
+Writing Tests for CINC Server with pgTAP
 ========================================
 
-Currently, the Chef Server schema tests are expressed as stored
+Currently, the CINC Server schema tests are expressed as stored
 procedures; see the `*.sql` files in the [t](../t) directory.  You can add
 as many functions to these files as you like, but all _test_ functions
 must start with the word "test".  Similarly, each SQL file that

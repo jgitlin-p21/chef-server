@@ -28,7 +28,7 @@
          statements/1
      ]).
 
-%% @doc Private Chef Server queries. Merges base statements with OPC statements
+%% @doc Private CINC Server queries. Merges base statements with OPC statements
 %% This is the function you for setting up sqerl in oc_erchef.config
 statements(DbType) ->
     BaseStatements = statements(DbType, default),

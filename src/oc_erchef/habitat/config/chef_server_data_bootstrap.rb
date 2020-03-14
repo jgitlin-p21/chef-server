@@ -136,7 +136,7 @@ class ChefServerDataBootstrap
 
     # touch the bootstrapped file
     # FileUtils.touch '{{pkg.svc_data_path}}/bootstrapped'
-    puts "Chef server successfully bootstrapped"
+    puts "CINC Server successfully bootstrapped"
   end
 
   private
@@ -401,7 +401,7 @@ EOF
 end
 
 #if File.exist?('{{pkg.svc_data_path}}/bootstrapped')
-#  puts 'Chef Server Data already bootstrapped - Skipping.'
+#  puts 'CINC Server Data already bootstrapped - Skipping.'
 #else
   ChefServerDataBootstrap.new.bootstrap
 #end

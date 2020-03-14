@@ -1,7 +1,7 @@
-Chef Server PostgreSQL Schema
+CINC Server PostgreSQL Schema
 =============================
 
-This directory defines the Chef Server schema.  It depends upon the
+This directory defines the CINC Server schema.  It depends upon the
 schema present in the baseline/ directory being applied first.
 
 *NOTE*: This _does not_ turn an Open Source database into an
@@ -11,7 +11,7 @@ schema present in the baseline/ directory being applied first.
 
 # Modifying the Schema
 
-The schema for the Chef Server is managed using [sqitch][], a
+The schema for the CINC Server is managed using [sqitch][], a
 database-agnostic tool for managing schema changes using plain old
 SQL.
 
@@ -24,7 +24,7 @@ We use [pgTAP][] to test both the schema and the stored procedures in
 the database.
 
 * [Developer Setup for Local Testing](doc/setup_pgtap.md)
-* [Writing pgTAP Tests for Chef Server](doc/writing_tests.md)
+* [Writing pgTAP Tests for CINC Server](doc/writing_tests.md)
 
 # Bringing It All Together
 

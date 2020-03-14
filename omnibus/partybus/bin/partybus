@@ -70,7 +70,7 @@ end
 #   https://github.com/chef/cinc-server/tree/11.1.0/files/private-chef-upgrades/001
 #
 # We also know that migration 1.14 through 1.19 landed together in
-# Chef Server 12.0.
+# CINC Server 12.0.
 #
 # Luckily for us, migration 1.20 shipped a sqitch tag.  Further luck:
 # migrations above 1.20 generally appear to be safe-to-reapply so we
@@ -95,7 +95,7 @@ def infer_migration_state(migrations, force)
       log "#{m}: NOT APPLIED"
     end
 
-    # A number of migrations before 1.20 (the Chef Server 12.0) are
+    # A number of migrations before 1.20 (the CINC Server 12.0) are
     # mover migrations that are harder to check for.  If we make it
     # all the way to here, we stop checking and hope one of the two
     # special cases below apply.
@@ -122,7 +122,7 @@ def infer_migration_state(migrations, force)
       exit(0)
     end
 
-    # Since migrations 14-19 shipped as a set in Chef Server 12.0.0
+    # Since migrations 14-19 shipped as a set in CINC Server 12.0.0
     # and since we don't support upgrades from versions before
     # migration 1.13, we either have 1.13 or we fail:
     migration_13 = migrations.find {|m| m.major == 1 && m.minor == 13}

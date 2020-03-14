@@ -1,4 +1,4 @@
-# Chef Server Changelog
+# CINC Server Changelog
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 <!-- latest_release 13.1.58 -->
 ## [13.1.58](https://github.com/chef/cinc-server/tree/13.1.58) (2020-02-27)
@@ -248,7 +248,7 @@
 - Upgrade to Chef 14 [#1506](https://github.com/chef/cinc-server/pull/1506) ([markan](https://github.com/markan))
 - Segment-free cookbook data (RFC 67) [#1034](https://github.com/chef/cinc-server/pull/1034) ([thommay](https://github.com/thommay))
 - Update os versions in omnibus kitchen.yml [#1505](https://github.com/chef/cinc-server/pull/1505) ([markan](https://github.com/markan))
-- MSYS-848 : Prevent Chef Server headers from exposing openresty name and version [#1514](https://github.com/chef/cinc-server/pull/1514) ([piyushawasthi](https://github.com/piyushawasthi))
+- MSYS-848 : Prevent CINC Server headers from exposing openresty name and version [#1514](https://github.com/chef/cinc-server/pull/1514) ([piyushawasthi](https://github.com/piyushawasthi))
 - Ma/appbundle and move [#1516](https://github.com/chef/cinc-server/pull/1516) ([markan](https://github.com/markan))
 - Update oc_id gems [#1518](https://github.com/chef/cinc-server/pull/1518) ([markan](https://github.com/markan))
 - Ma/timestamps in utc [#1503](https://github.com/chef/cinc-server/pull/1503) ([markan](https://github.com/markan))
@@ -261,7 +261,7 @@
 - Update custom resource in cinc-server-deploy. [#1525](https://github.com/chef/cinc-server/pull/1525) ([rhass](https://github.com/rhass))
 - Update the Release Process document [#1409](https://github.com/chef/cinc-server/pull/1409) ([PrajaktaPurohit](https://github.com/PrajaktaPurohit))
 - Trigger an RC build. [#1527](https://github.com/chef/cinc-server/pull/1527) ([rhass](https://github.com/rhass))
-- Prepare 12.18 Chef Server release. [#1528](https://github.com/chef/cinc-server/pull/1528) ([rhass](https://github.com/rhass))
+- Prepare 12.18 CINC Server release. [#1528](https://github.com/chef/cinc-server/pull/1528) ([rhass](https://github.com/rhass))
 - Fix habitat build for the cinc-server-ctl container [#1524](https://github.com/chef/cinc-server/pull/1524) ([irvingpop](https://github.com/irvingpop))
 - Update sqerl [#1537](https://github.com/chef/cinc-server/pull/1537) ([jaym](https://github.com/jaym))
 - [oc-id] Update Gemfile to pick up new rubyzip [#1534](https://github.com/chef/cinc-server/pull/1534) ([markan](https://github.com/markan))
@@ -371,7 +371,7 @@
 
 **Closed issues:**
 
-- Wrong token used by Chef server to send data to Chef Automate [\#1281](https://github.com/chef/cinc-server/issues/1281)
+- Wrong token used by CINC Server to send data to Chef Automate [\#1281](https://github.com/chef/cinc-server/issues/1281)
 - Fresh server install on Jessie fails during client run - exception handlers [\#1178](https://github.com/chef/cinc-server/issues/1178)
 
 **Merged pull requests:**
@@ -539,13 +539,13 @@ Updated Components
 **Implemented enhancements:**
 
 - LDAP: Synthesize a displayname from surname, givenname [\#151](https://github.com/chef/cinc-server/issues/151)
-- Mapping Capability Between LDAP and Chef Server 12 Attributes [\#104](https://github.com/chef/cinc-server/issues/104)
+- Mapping Capability Between LDAP and CINC Server 12 Attributes [\#104](https://github.com/chef/cinc-server/issues/104)
 - Enhance API to handle global groups in local contexts [\#1159](https://github.com/chef/cinc-server/pull/1159) ([markan](https://github.com/markan))
 
 **Closed issues:**
 
 - Failure upgrading RabbitMQ from Migration 1.30 to 1.31 [\#1220](https://github.com/chef/cinc-server/issues/1220)
-- Allow setting LDAP "displayName" attribute in Chef Server [\#800](https://github.com/chef/cinc-server/issues/800)
+- Allow setting LDAP "displayName" attribute in CINC Server [\#800](https://github.com/chef/cinc-server/issues/800)
 - LDAP user name mojibake [\#675](https://github.com/chef/cinc-server/issues/675)
 
 **Merged pull requests:**
@@ -623,7 +623,7 @@ Updated Components
 - fix typo in external postgres validator [\#1194](https://github.com/chef/cinc-server/pull/1194) ([srenatus](https://github.com/srenatus))
 - make rabbitmq password migration a noop if local rabbitmq is not enabled [\#1193](https://github.com/chef/cinc-server/pull/1193) ([srenatus](https://github.com/srenatus))
 - Stop service before the reconfigure during upgrades [\#1192](https://github.com/chef/cinc-server/pull/1192) ([stevendanna](https://github.com/stevendanna))
-- Make sure chef server provision recipe runs [\#1191](https://github.com/chef/cinc-server/pull/1191) ([marcparadise](https://github.com/marcparadise))
+- Make sure cINC Server provision recipe runs [\#1191](https://github.com/chef/cinc-server/pull/1191) ([marcparadise](https://github.com/marcparadise))
 - ensure that all guests have a correct hosts file [\#1190](https://github.com/chef/cinc-server/pull/1190) ([marcparadise](https://github.com/marcparadise))
 - delete SVDIR for chef 11 upgrades [\#1189](https://github.com/chef/cinc-server/pull/1189) ([srenatus](https://github.com/srenatus))
 - Don't shortcut out of adding the webui key [\#1188](https://github.com/chef/cinc-server/pull/1188) ([marcparadise](https://github.com/marcparadise))
@@ -784,7 +784,7 @@ Updated Components
 **Fixed bugs:**
 
 - cinc-server-ctl password command does not accept special characters  [\#366](https://github.com/chef/cinc-server/issues/366)
-- Chef Server API should not allow usernames with spaces [\#90](https://github.com/chef/cinc-server/issues/90)
+- CINC Server API should not allow usernames with spaces [\#90](https://github.com/chef/cinc-server/issues/90)
 - Confusing error message with duplicate email address [\#59](https://github.com/chef/cinc-server/issues/59)
 
 **Closed issues:**
@@ -867,7 +867,7 @@ Updated Components
 - Bump version, update RELEASE\_PROCESS [\#990](https://github.com/chef/cinc-server/pull/990) ([stevendanna](https://github.com/stevendanna))
 - omnibus: Add arm build support for opscode-solr4 [\#985](https://github.com/chef/cinc-server/pull/985) ([elthariel](https://github.com/elthariel))
 - Security features for /data-collector/ endpoint [\#984](https://github.com/chef/cinc-server/pull/984) ([sersut](https://github.com/sersut))
-- Add validation endpoint to Chef Server. [\#982](https://github.com/chef/cinc-server/pull/982)  ([markan](https://github.com/markan))
+- Add validation endpoint to CINC Server. [\#982](https://github.com/chef/cinc-server/pull/982)  ([markan](https://github.com/markan))
 
 ### Components
 Updated Components
@@ -900,9 +900,9 @@ Updated Components
 
 - /etc/opscode/pivotal.pem is missing [\#986](https://github.com/chef/cinc-server/issues/986)
 - Disabling redirect with "non\_ssl\_port" and "enable\_non\_ssl" does not work as expected. [\#973](https://github.com/chef/cinc-server/issues/973)
-- Intermittent "401 Unauthorized" failures from Chef server using Chef client [\#968](https://github.com/chef/cinc-server/issues/968)
+- Intermittent "401 Unauthorized" failures from CINC Server using Chef client [\#968](https://github.com/chef/cinc-server/issues/968)
 - Problems creating new nodes after restoring Chef 12 server from backup [\#893](https://github.com/chef/cinc-server/issues/893)
-- chef server core 12.0 rc6 rpm thinks its newer than ga [\#40](https://github.com/chef/cinc-server/issues/40)
+- cINC Server core 12.0 rc6 rpm thinks its newer than ga [\#40](https://github.com/chef/cinc-server/issues/40)
 
 **Merged pull requests:**
 
@@ -1018,7 +1018,7 @@ Updated Components
 - Add a 'detail=granular' query option to GET ACL endpoint [\#917](https://github.com/chef/cinc-server/pull/917) ([marcparadise](https://github.com/marcparadise))
 - Add plugin support to DVM [\#913](https://github.com/chef/cinc-server/pull/913) ([tduffield](https://github.com/tduffield))
 - Allow the ACLs endpoint to accept 'clients' and 'users' [\#912](https://github.com/chef/cinc-server/pull/912) ([marcparadise](https://github.com/marcparadise))
-- Add licensing information for the transitive dependencies of Chef Server [\#911](https://github.com/chef/cinc-server/pull/911) ([sersut](https://github.com/sersut))
+- Add licensing information for the transitive dependencies of CINC Server [\#911](https://github.com/chef/cinc-server/pull/911) ([sersut](https://github.com/sersut))
 - Downgrade Ruby to 2.2.5 [\#910](https://github.com/chef/cinc-server/pull/910) ([tduffield](https://github.com/tduffield))
 - Update Gemfile.lock [\#909](https://github.com/chef/cinc-server/pull/909) ([tduffield](https://github.com/tduffield))
 - Bring in omnibus branch with mysys2 fixes [\#908](https://github.com/chef/cinc-server/pull/908) ([tduffield](https://github.com/tduffield))
@@ -1035,7 +1035,7 @@ Updated Components
 - Use Timeout::timeout for net/http [\#894](https://github.com/chef/cinc-server/pull/894) ([thommay](https://github.com/thommay))
 - Added db init and max pool size options [\#891](https://github.com/chef/cinc-server/pull/891) ([paulmooring](https://github.com/paulmooring))
 - Add .mailmap [\#888](https://github.com/chef/cinc-server/pull/888) ([stevendanna](https://github.com/stevendanna))
-- Add option to proxy insights data collector via the chef server [\#887](https://github.com/chef/cinc-server/pull/887) ([stephenbm](https://github.com/stephenbm))
+- Add option to proxy insights data collector via the cINC Server [\#887](https://github.com/chef/cinc-server/pull/887) ([stephenbm](https://github.com/stephenbm))
 - if pivotal.pem \(and webui pair\) exists, ensure permissions in default recipe [\#885](https://github.com/chef/cinc-server/pull/885) ([srenatus](https://github.com/srenatus))
 - Ignore debs in the dev folder and fix Vagrant file [\#883](https://github.com/chef/cinc-server/pull/883) ([stevendanna](https://github.com/stevendanna))
 - Add pedant test coverage for 1.3 signing proto [\#882](https://github.com/chef/cinc-server/pull/882) ([stevendanna](https://github.com/stevendanna))
@@ -1086,7 +1086,7 @@ Removed Components
 
 **Implemented enhancements:**
 
-- Bootstrapping a Chef server should not delete databases [\#79](https://github.com/chef/cinc-server/issues/79)
+- Bootstrapping a CINC Server should not delete databases [\#79](https://github.com/chef/cinc-server/issues/79)
 
 **Fixed bugs:**
 
@@ -1115,7 +1115,7 @@ Removed Components
 - Remove chef-sync from the known add on packages for the install command [\#838](https://github.com/chef/cinc-server/pull/838) ([mmzyk](https://github.com/mmzyk))
 - release process updates [\#836](https://github.com/chef/cinc-server/pull/836) ([patrick-wright](https://github.com/patrick-wright))
 - \[omnibus\] bypass\_bootstrap? should ensure both creds exist [\#835](https://github.com/chef/cinc-server/pull/835) ([stevendanna](https://github.com/stevendanna))
-- Add Ryan Cragun as a Chef Server maintainer [\#834](https://github.com/chef/cinc-server/pull/834) ([ryancragun](https://github.com/ryancragun))
+- Add Ryan Cragun as a CINC Server maintainer [\#834](https://github.com/chef/cinc-server/pull/834) ([ryancragun](https://github.com/ryancragun))
 - Fixing pedant/bookshelf when nginx on non-standard port [\#833](https://github.com/chef/cinc-server/pull/833) ([adamleff](https://github.com/adamleff))
 - Update opscode-solr4 JAVA\_OPTS to include whitespace [\#830](https://github.com/chef/cinc-server/pull/830) ([bigbam505](https://github.com/bigbam505))
 - Update cinc-server release process documentation. [\#829](https://github.com/chef/cinc-server/pull/829) ([rmoshier](https://github.com/rmoshier))
@@ -1209,11 +1209,11 @@ Updated Components
 - PUT method  /organizations/NAME/node/NAME reset automatic attributes. [\#783](https://github.com/chef/cinc-server/issues/783)
 - 500 error after upgrade [\#762](https://github.com/chef/cinc-server/issues/762)
 - ubuntu\_supported\_codenames should include trusty instead of natty [\#759](https://github.com/chef/cinc-server/issues/759)
-- Where can I edit the hostname used by Chef Server? [\#752](https://github.com/chef/cinc-server/issues/752)
+- Where can I edit the hostname used by CINC Server? [\#752](https://github.com/chef/cinc-server/issues/752)
 - service postgresql is running externally and cannot be managed [\#733](https://github.com/chef/cinc-server/issues/733)
-- 502 errors from nginx while reaching erchef server [\#732](https://github.com/chef/cinc-server/issues/732)
+- 502 errors from nginx while reaching ercINC Server [\#732](https://github.com/chef/cinc-server/issues/732)
 - oc-bifrost-pedant not merged into the repository [\#670](https://github.com/chef/cinc-server/issues/670)
-- Chef Server 12: View Public Keys of all Users, including clients [\#649](https://github.com/chef/cinc-server/issues/649)
+- CINC Server 12: View Public Keys of all Users, including clients [\#649](https://github.com/chef/cinc-server/issues/649)
 - Instructions are incorrect after installing a package during upgrade [\#646](https://github.com/chef/cinc-server/issues/646)
 
 **Merged pull requests:**
@@ -1445,7 +1445,7 @@ Removed Components
 * `omnibus`, `erchef` [591](https://github.com/chef/cinc-server/pull/591) - dp\_queue\_mon\_affects\_overall\_status
   * queue monitor doesn't affect `overall_status` by default
 * `oc-chef-pedant`, `omnibus`, `erchef` [589](https://github.com/chef/cinc-server/pull/589) - fcs
-  * Chef Server now supports Elasticsearch as a search
+  * CINC Server now supports Elasticsearch as a search
     indexing backend in addition to solr.
   * Once an ElasticSearch node is configured, you can
 * `omnibus`, `erchef` [570](https://github.com/chef/cinc-server/pull/570) - dp\_rabbit\_monitoring
@@ -1515,7 +1515,7 @@ Removed Components
   * [cinc-server/534](https://github.com/chef/cinc-server/issues/534) Fix `cinc-server-ctl` backup always returning 1
 * `erchef` [541](https://github.com/chef/cinc-server/pull/541) - fix-conn-leak
   * Fix HTTP `500s` generated by request timeouts to bifrost
-    on `high-traffic` Chef Servers.
+    on `high-traffic` CINC Servers.
 * `omnibus` [524](https://github.com/chef/cinc-server/pull/524) - cleanup-static-nginx-files
   * Make the default index.html message more informative.
   * delete unused javsacript files from nginx deploy
@@ -1631,9 +1631,9 @@ Updated Components
 ## 12.1.1 (2015-07-13)
 
 ### cinc-server
-* Fix problems with upgrades from Open Source Chef Server 11 related
+* Fix problems with upgrades from Open Source CINC Server 11 related
   to client and user uploads.
-* Fix problems with upgrades from Enterprise Chef Server 11 related to a failed chef-mover migration.
+* Fix problems with upgrades from Enterprise CINC Server 11 related to a failed chef-mover migration.
 * Upgrade to openssl 1.0.1p
 
 * Upgrade to libxml 2.9.2
@@ -1641,12 +1641,12 @@ Updated Components
 ### Components
 
 ### knife-ec-backup
-* Version 2.0.4 pulled in to fix Open Source Chef Server 11 upgrade bugs related to API versioning.
+* Version 2.0.4 pulled in to fix Open Source CINC Server 11 upgrade bugs related to API versioning.
 
 ## 12.1.0 (2015-06-19)
 
 ### cinc-server
-* new self-contained development environment for chef server
+* new self-contained development environment for cINC Server
 * Remove nested directories from log rotation template
 * Fix local-mode-cache warnings on `cinc-server-ctl reconfigure`:
   Move the `cache_path` into /var/opt/opscode to avoid warnings
@@ -2051,7 +2051,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 ### oc\_erchef 0.29.4
 * fix issue in which local mode auth was not handled correctly,
   preventing accounts on an LDAP server from being associated
-  with existing Chef Server accounts when the login name differed.
+  with existing CINC Server accounts when the login name differed.
 
 ### oc-chef-pedant 1.0.67
 * Modify test of local mode authentication to be correct
@@ -2151,7 +2151,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 * properly configure ldap under erchef, and add some safeguards
   against incorrect encryption configuration.
 * oc\_erchef updated to 0.27.4
-* Bump the chef\_max\_version to 12 (this is the max chef client version that Chef Server will accept)
+* Bump the chef\_max\_version to 12 (this is the max chef client version that CINC Server will accept)
 * expose license configuration options
 * Add man page for cinc-server-ctl.
 * Correct gather-logs to point to cinc-server.rb
@@ -2191,7 +2191,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 
 ### rest server API
 * removed check for maximum client version (only checks for minimum, i.e., <10)
-* updated server flavor from 'ec' to 'cs' (Chef Server) now that servers have been merged
+* updated server flavor from 'ec' to 'cs' (CINC Server) now that servers have been merged
 
 ### cinc-server-ctl
 * Restricted cinc-server-ctl install to known Chef packages
@@ -2221,7 +2221,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 
 ## 12.0.0
 
-### Renamed chef server core instead of Private Chef or Enterprise Chef.
+### Renamed cINC Server core instead of Private Chef or Enterprise Chef.
 
 ### opscode-omnibus
 * Change to using /etc/opscode/cinc-server.rb from /etc/opscode/private-chef.rb
@@ -2255,7 +2255,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 * Replaced R15, which was only used by the services we removed.
 
 ### knife-ec-backup
-* Add support for tools to backup and restore from chef servers.
+* Add support for tools to backup and restore from cINC Servers.
 
 ### oc-chef-pedant 1.0.57
 * Remove /system-recovery endpoint tests
@@ -2463,7 +2463,7 @@ https://raw.githubusercontent.com/antirez/redis/2.8/00-RELEASENOTES
 * [OC-11490] Explicitly set keepalived directory ownership
 * [OC-11297] EC 11 fresh install not saving migration state
 * [OC-11656] Set explicit owner and group for services without them
-* Address a PostgreSQL configuration error. The defect allows any local user on the system hosting the Chef Server’s PostgreSQL components full access to databases.
+* Address a PostgreSQL configuration error. The defect allows any local user on the system hosting the CINC Server’s PostgreSQL components full access to databases.
 * [OC-11662] Separate redis\_keepalive\_timeout from redis\_connection\_timeout and increase their default values from 60ms to 1000 and 2000ms, respectively.
 
 ### private-chef-ctl

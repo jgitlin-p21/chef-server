@@ -10,7 +10,7 @@ require "license_acceptance/acceptor"
 
 module Omnibus
   # This implements callbacks for handling commands related to the
-  # external services supported by Chef Server. As additional services
+  # external services supported by CINC Server. As additional services
   # are external-enabled, controls/configuration will need to be added here.
   class ChefServerCtl < Omnibus::Ctl
     def db_data

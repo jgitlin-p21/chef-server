@@ -16,7 +16,7 @@ pedant before merge.
 
 - Expeditor and BuildKite scripts
   It is best to keep the version we're using for tests the same as
-  what we're shipping in Chef Server (match with omnibus_overrides)
+  what we're shipping in CINC Server (match with omnibus_overrides)
     - scripts/bk\_tests/bk\_install.sh
     - .expeditor/verify.pipeline.yml
     - .expeditor/license_scout.sh
@@ -74,14 +74,14 @@ copying files back from the dev-vm to the host.
       Don't forget to update the src/cinc-server-ctl/Gemfile.lock
 
     - src/oc-id/ [leave alone for now]
-      chef-client is neededed to provide the Chef Server API.
+      chef-client is neededed to provide the CINC Server API.
       We are currently using an old version of chef due to tech debt
       around rails upgrades. We should either fix that debt or find
-      another library for the Chef Server API.
+      another library for the CINC Server API.
 
     - src/cinc-server-ctl/Gemfile.local
 
-- Build Chef Server, and do a cinc-server-ctl reconfigure. Fix any new
+- Build CINC Server, and do a cinc-server-ctl reconfigure. Fix any new
   warnings about deprecations and the like.
 
 ## Updating rebar3

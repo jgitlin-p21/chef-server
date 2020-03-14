@@ -23,14 +23,14 @@ node.default['cinc-server-deploy']['supermarket_fqdn'] = server_fqdn_for('superm
 node.default['cinc-server-deploy']['enable_liveness_agent'] = environment == 'delivered'
 
 # By default we daemonize chef-client across all of our infrastructure nodes. We
-# do not want this behavior on the Chef Server instances as we want the pipeline
+# do not want this behavior on the CINC Server instances as we want the pipeline
 # to control the roll out of changes.
 edit_resource(:service, 'chef-client') do
   action [:disable, :stop]
 end
 
 ################################################################################
-# Chef Server
+# CINC Server
 ################################################################################
 
 cert_filename = "/etc/opscode/#{node['cinc-server-deploy']['chef_cert_filename']}"
@@ -157,7 +157,7 @@ end
 #########################################################################
 
 # This ensures the admin user's password is set to a known value across all
-# environments. The password can be found in the `chef-cd Chef Server Admin User`
+# environments. The password can be found in the `chef-cd CINC Server Admin User`
 # record in LastPass.
 chef_user 'admin' do
   first_name 'Chef-CD'

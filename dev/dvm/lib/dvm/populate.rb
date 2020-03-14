@@ -1,4 +1,4 @@
-require "erubis" # available courtesy of chef server.
+require "erubis" # available courtesy of cINC Server.
 require "fileutils"
 
 # Note: we might want to use the API for all this, but for now it's

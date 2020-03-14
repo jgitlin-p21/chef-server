@@ -100,7 +100,7 @@ default['private_chef']['opscode-solr']['data_dir'] = '/var/opt/opscode/opscode-
 
 ####
 # Server API Version - is not used in server configuration, but rather in the configuration
-# of components that need to know how to talk to the erchef server.
+# of components that need to know how to talk to the ercINC Server.
 #
 # This is set to the current minimally supported version.
 ####
@@ -343,7 +343,7 @@ elasticsearch['heap_size'] = Elasticsearch.heap_size_default(node)
 elasticsearch['new_size'] = Elasticsearch.new_size_default(node)
 
 ####
-# Erlang Chef Server API
+# Erlang CINC Server API
 ####
 default['private_chef']['opscode-erchef']['enable'] = true
 default['private_chef']['opscode-erchef']['ha'] = false
@@ -493,7 +493,7 @@ default['private_chef']['opscode-erchef']['stats_password_file'] = '/var/opt/ops
 default['private_chef']['opscode-chef']['checksum_path'] = '/var/opt/opscode/opscode-chef/checksum'
 
 ####
-# Chef Server WebUI (legacy required for manage install to work)
+# CINC Server WebUI (legacy required for manage install to work)
 ####
 default['private_chef']['opscode-webui']['enable'] = false
 
@@ -506,9 +506,9 @@ default['private_chef']['oc-chef-pedant']['log_http_requests'] = true
 default['private_chef']['oc-chef-pedant']['log_rotation']['file_maxbytes'] = 104857600
 default['private_chef']['oc-chef-pedant']['log_rotation']['num_to_keep'] = 10
 default['private_chef']['oc-chef-pedant']['debug_org_creation'] = false
-# Set this if you want to override pedant's chef server URL from the nginx ssl
+# Set this if you want to override pedant's cINC Server URL from the nginx ssl
 # URL. This is useful for special cases where you want to run pedant through
-# a proxy that sits in front of the chef server.
+# a proxy that sits in front of the cINC Server.
 default['private_chef']['oc-chef-pedant']['chef_server'] = nil
 
 ###

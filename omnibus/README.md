@@ -1,4 +1,4 @@
-Chef Server Omnibus Project
+CINC Server Omnibus Project
 ============================
 
 [![Build Status Master](https://travis-ci.org/chef/opscode-omnibus.svg?branch=master)](https://travis-ci.org/chef/opscode-omnibus)

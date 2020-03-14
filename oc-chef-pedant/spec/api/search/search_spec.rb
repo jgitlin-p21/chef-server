@@ -535,7 +535,7 @@ describe 'Search API endpoint', :search do
     end
 
     context 'Search tokenizer' do
-      context 'When the Chef server has data bag items with "foo" and "foo-bar"' do
+      context 'When the CINC Server has data bag items with "foo" and "foo-bar"' do
         data_bag 'x',
           'foo' => '{ "id": "foo" }',
           'foo-bar' => '{ "id": "foo-bar" }'
@@ -555,7 +555,7 @@ describe 'Search API endpoint', :search do
     end
 
     context 'Special characters' do
-      context 'When the Chef server has data bag items with "foo/bar"' do
+      context 'When the CINC Server has data bag items with "foo/bar"' do
         data_bag 'x',
           'foo' => '{ "id": "foo", "path": "foo/bar" }'
 

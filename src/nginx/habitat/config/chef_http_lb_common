@@ -104,7 +104,7 @@
     location ~ "^/organizations/([^/]+)/required_recipe$" {
       # This endpoint is unique because it is defined via nginx and is not
       # handled by an upstream like oc_erchef. In order to make responses
-      # consistent between Chef server and chef-zero we'll always enable
+      # consistent between CINC Server and chef-zero we'll always enable
       # the location but explicitly return a 404 when the feature is disabled,
       # rather than leave it undefined. If we were to leave it undefined any
       # non-signed requests would be routed to the main index page and return
@@ -126,7 +126,7 @@
 
     # erchef stats endpoint
     location ~ "^/_stats/?$" {
-      auth_basic "Chef Server Admin Stats";
+      auth_basic "CINC Server Admin Stats";
       # HABITAT: CHECK maybe store in ring
       auth_basic_user_file {{../pkg.svc_config_path}}/stats_htpasswd;
       types { }

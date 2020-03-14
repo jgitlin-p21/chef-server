@@ -96,7 +96,7 @@ resource "null_resource" "postgresql_config" {
   }
 }
 
-# update chef server
+# update cINC Server
 resource "null_resource" "chef_server_config" {
   depends_on = ["null_resource.postgresql_config"]
 
@@ -126,7 +126,7 @@ resource "null_resource" "chef_server_config" {
   provisioner "remote-exec" {
     inline = [
       "set -evx",
-      "echo -e '\nBEGIN INSTALL CHEF SERVER\n'",
+      "echo -e '\nBEGIN INSTALL CINC Server\n'",
       "sudo chown root:root /tmp/hosts",
       "sudo mv /tmp/hosts /etc/hosts",
       "curl -vo /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")} ${var.upgrade_version_url}",
@@ -137,7 +137,7 @@ resource "null_resource" "chef_server_config" {
       "sudo mv /tmp/dhparam.pem /etc/opscode",
       "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
-      "echo -e '\nEND INSTALL CHEF SERVER\n'",
+      "echo -e '\nEND INSTALL CINC Server\n'",
     ]
   }
 
@@ -187,11 +187,11 @@ resource "null_resource" "chef_server_config_ssl" {
   provisioner "remote-exec" {
     inline = [
       "set -evx",
-      "echo -e '\nBEGIN ENABLE SSL MODE ON CHEF SERVER\n'",
+      "echo -e '\nBEGIN ENABLE SSL MODE ON CINC Server\n'",
       "sudo sed -i '/sslmode/{s/disable/require/;}' /etc/opscode/cinc-server.rb",
       "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
-      "echo -e '\nEND ENABLE SSL MODE ON CHEF SERVER\n'",
+      "echo -e '\nEND ENABLE SSL MODE ON CINC Server\n'",
     ]
   }
 }

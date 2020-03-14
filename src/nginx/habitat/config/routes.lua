@@ -185,7 +185,7 @@ local p_acl_endpoint = (p_named_org_prefix * p_all_until_acl * Cendpoint(p_acl) 
                        (p_named_user * Cendpoint(p_acl) * (p_sep + p_eol))
 
 
--- Default org endpoints. This is to help with migrating from OSC 11 to Chef Server 12
+-- Default org endpoints. This is to help with migrating from OSC 11 to CINC Server 12
 local p_default_org_endpoints = p_search + p_nodes + p_cookbooks + p_data + p_roles + p_sandboxes +
       p_environments + p_clients + p_runs + p_principals + p_groups + p_containers
 

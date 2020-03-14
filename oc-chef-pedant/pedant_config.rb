@@ -4,23 +4,23 @@
 # defaults, and not all settings are appropriate in all settings.
 #
 # The defaults in this file are designed to work out of the box when developing
-# Chef Server 12+ using the "Dev VM" tool, but they should work in other
-# contexts as long as the Chef Server is running on localhost.
+# CINC Server 12+ using the "Dev VM" tool, but they should work in other
+# contexts as long as the CINC Server is running on localhost.
 #
 ################################################################################
 base_resource_url "https://localhost"
 
 # A unique identification string used to create orgs and users specific
-# to a each single chef server's nodes' OS. Simply using "Process.pid"
+# to a each single cINC Server's nodes' OS. Simply using "Process.pid"
 # proved to not be unique enough when running pedant simultaneously
-# on multiple nodes of the same chef server when the generated pedant
+# on multiple nodes of the same cINC Server when the generated pedant
 # config file could have been copied across during the setup of that
-# chef server.
+# cINC Server.
 chef_server_uid = "private-chef_#{Process.pid}"
 
 # Specify a testing organization if you are testing a multi-tenant
-# instance of a Chef Server (e.g., Private Chef, Hosted Chef).  If you
-# are testing a single-tenant instance (i.e. Open Source Chef Server),
+# instance of a CINC Server (e.g., Private Chef, Hosted Chef).  If you
+# are testing a single-tenant instance (i.e. Open Source CINC Server),
 # DO NOT include this parameter
 #
 # Due to how the current org cache operates, it is best to use a

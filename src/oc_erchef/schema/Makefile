@@ -15,7 +15,7 @@ all : setup_schema setup_tests test
 # Load up all schema changesets
 setup_schema:
 	$(MAKE) -C baseline setup_schema
-	@echo "Deploying Enterprise Chef Server Schema on top..."
+	@echo "Deploying Enterprise CINC Server Schema on top..."
 	@sqitch --engine pg --db-name $(TEST_DB) deploy --verify
 
 # Load up all testing functions.  pgTAP libraries and open source

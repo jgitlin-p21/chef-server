@@ -1,4 +1,4 @@
-Setup Mac OS X for Running Chef Server pgTAP Tests
+Setup Mac OS X for Running CINC Server pgTAP Tests
 ==================================================
 
 For running on Mac OS X, [Postgres.app][] is hands-down the easiest.

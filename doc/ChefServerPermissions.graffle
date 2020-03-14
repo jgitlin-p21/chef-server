@@ -150,14 +150,14 @@ the roles container to list roles and the create permission on the roles contain
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs24 \cf0 The permissions system talked about in this doc pertains to Chef server 12 and later.\
+\f0\fs24 \cf0 The permissions system talked about in this doc pertains to CINC Server 12 and later.\
 \
-This same permissions system also applies to the older Enterprise Chef server. It does not apply\
-to any version of the old open source Chef server, which used a much simplified permission system\
+This same permissions system also applies to the older Enterprise CINC Server. It does not apply\
+to any version of the old open source CINC Server, which used a much simplified permission system\
 without ACLs.\
 \
-As of this writing, the code that implements this permission system in Chef server 12 is entirely in \
-Erlang. Previous version of the Enterprise Chef server used a version of the ACL system written in \
+As of this writing, the code that implements this permission system in CINC Server 12 is entirely in \
+Erlang. Previous version of the Enterprise CINC Server used a version of the ACL system written in \
 Ruby.}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
@@ -210,7 +210,7 @@ Ruby.}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\b\fs24 \cf0 Chef server versions using ACLs}</string>
+\f0\b\fs24 \cf0 CINC Server versions using ACLs}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -288,7 +288,7 @@ the users group into that group as well, which will mean that users within the s
 \
 - Document exactly where USAGS are used in the system\
 \
-- Add a diagram that shows the entire system - chef server, oc-id, analytics, supermarket, etc,\
+- Add a diagram that shows the entire system - cINC Server, oc-id, analytics, supermarket, etc,\
 and how it all fits together}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
@@ -343,19 +343,19 @@ and how it all fits together}</string>
 
 \f0\fs24 \cf0 How does oc-id factor into this picture?\
 \
-oc-id stands for opcode-identity. oc-id ships as part of the Chef server. It is an OAuth2\
+oc-id stands for opcode-identity. oc-id ships as part of the CINC Server. It is an OAuth2\
 provider and is intended to be the place that a Chef user will manage their identity.\
 \
 oc-id does not factor into the permissions here. Instead the way it is is used is that other\
-applications that interact with the Chef server, such as the Supermarket and Analytics,\
+applications that interact with the CINC Server, such as the Supermarket and Analytics,\
 call out to oc-id when a user signs on. The user enters their login information into oc-id, \
-which then verifies this with the Chef server auth system. Once verified, oc-id issues a token\
+which then verifies this with the CINC Server auth system. Once verified, oc-id issues a token\
 to the calling application and the application then uses this token as a user's authorization.\
 \
-This allows the Chef server to act as a central auth point without each application needing \
+This allows the CINC Server to act as a central auth point without each application needing \
 to provide their own auth system. oc-id however is a blunt instrument. It simply provides a yes\
-or no answer on if a user is who they say they are to the Chef server. It does not provide any\
-of the finer grain permissions that the Chef server uses to any of the other applications.}</string>
+or no answer on if a user is who they say they are to the CINC Server. It does not provide any\
+of the finer grain permissions that the CINC Server uses to any of the other applications.}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -571,10 +571,10 @@ v1.3 - Mark Mzyk - add container as an object in object list, it was inadvertent
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs24 \cf0 All of these systems are part of the Chef server and can be found in the Chef server \
+\f0\fs24 \cf0 All of these systems are part of the CINC Server and can be found in the CINC Server \
 repository on GitHub. oc_chef_authz and oc_chef_wm are part of Erchef, while oc_bifrost \
 (often just referred to as bifrost) is a separate component that lives along side Erchef in the \
-Chef server repo.\
+CINC Server repo.\
 \
 The main entry point for ACL modification starts at oc_chef_wm_acl.erl and \
 oc_chef_wm_acl_permission.erl. Consult the dispatch.conf file in the priv directory under\
@@ -658,7 +658,7 @@ oc_chef_wm}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs24 \cf0 The Chef server permission system is primarily implemented in three places:}</string>
+\f0\fs24 \cf0 The CINC Server permission system is primarily implemented in three places:}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -763,7 +763,7 @@ oc_chef_wm}</string>
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs24 \cf0 USAGS (User Specific Association Groups) are a concept that is mentioned from time to time\
-with the Chef server permission system. The idea behind a USAG is that it is a group that \
+with the CINC Server permission system. The idea behind a USAG is that it is a group that \
 contains only a single user. So if we had a user Bob, there would exist a group, let's say it's called\
 Bob's Group, that contains only Bob.\
 \
@@ -1115,7 +1115,7 @@ and added to the org's admin group.}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\b\fs24 \cf0 What kind of permissions system does the Chef server implement?}</string>
+\f0\b\fs24 \cf0 What kind of permissions system does the CINC Server implement?}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -1355,8 +1355,8 @@ Users}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs24 \cf0 There are many default containers in a Chef server. These\
-tend to change as new functionality is added to the Chef server.\
+\f0\fs24 \cf0 There are many default containers in a CINC Server. These\
+tend to change as new functionality is added to the CINC Server.\
 For instance, the policies and policy_groups containers are\
 relatively new additions to support the policy file functionality.\
 \
@@ -1448,14 +1448,14 @@ cookbook_artifacts}</string>
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs24 \cf0 There are four default groups created for any \
-Chef server. \
+CINC Server. \
 \
 Note that while billing-admins exists as a group\
-in every Chef server, it only has significance\
+in every CINC Server, it only has significance\
 and is used in Hosted Chef. In all other cases\
 it can be ignored.\
 \
-As the Chef server changes over time it is possible\
+As the CINC Server changes over time it is possible\
 the default groups will also change, although this\
 tends to happen infrequently.}</string>
 				<key>VerticalPad</key>
@@ -1537,7 +1537,7 @@ users\
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs24 \cf0 The Chef Server permission system is a DAC (Discretionary Access Control) system implemented\
+\f0\fs24 \cf0 The CINC Server permission system is a DAC (Discretionary Access Control) system implemented\
 using ACLs (Access Control Lists). This is in contrast to a MAC (Mandatory Access Control) \
 system.\
 \
@@ -1546,7 +1546,7 @@ actors or objects of the system. In a MAC all permissions are centrally controll
 simplified and of course these types of systems blur in actual use. If you want further information,\
 the DAC and MAC pages on Wikipedia are suggested reading.\
 \
-We often call the Chef Server permission system a RBAC (Role Based Access Control) system,\
+We often call the CINC Server permission system a RBAC (Role Based Access Control) system,\
 but this isn't technically true. In an RBAC system permissions are defined based on specific\
 operations (roles) within the system. The classic example is the permissions a bank teller has\
 as compared to the permissions that a bank manager has. By contrast, in an ACL system, the\
@@ -1554,7 +1554,7 @@ objects themselves are assigned the permissions (so to strain the analogy, the b
 store if the bank teller and/or manager could open it, vs. the teller or manager having the permission\
 to open the bank vault). \
 \
-An ACL system that has groups can mimic RBAC, so it is therefore possible for the Chef Server to \
+An ACL system that has groups can mimic RBAC, so it is therefore possible for the CINC Server to \
 implement a full RBAC system. At the moment however it does not implement the permissions in\
 such a way as to mimic true RBAC. Our use of the term RBAC for describing the permissions system\
 is inaccurate. \
@@ -2018,7 +2018,7 @@ Grant}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs24 \cf0 The Chef Server permission system is made of of the following:\
+\f0\fs24 \cf0 The CINC Server permission system is made of of the following:\
 Objects, Actors, Groups, Containers, ACLs, and ACEs.}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>

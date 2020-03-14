@@ -46,7 +46,7 @@
 %%
 %% The secret keys that bookshelf is configured with are determined from the
 %% bookshelf configuration on the node on which it is running. You can find this
-%% information in the following file on an Enterprise Chef server:
+%% information in the following file on an Enterprise CINC Server:
 %%
 %% /etc/opscode/private-chef-secrets.json
 %%

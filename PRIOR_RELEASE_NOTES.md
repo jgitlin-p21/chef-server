@@ -4,7 +4,7 @@ releases can be found [RELEASE\_NOTES.md](RELEASE_NOTES.md).
 
 ## 12.7.0 (2016-06-20)
 
-### Chef Server
+### CINC Server
   * Add support for service credential rotation via [Veil](https://github.com/chef/cinc-server/blob/3ff412b5a2e6ad54cfa79bca6865e1bbca28fe5e/omnibus/files/veil/README.md), and for requiring it via the added `require-credential-rotation` command of `cinc-server-ctl`.
   * Fixed existing process detection in oc_id which caused high CPU utilization
   * Fixed bug where deleting a user would not delete pending invites.
@@ -29,7 +29,7 @@ releases can be found [RELEASE\_NOTES.md](RELEASE_NOTES.md).
 
 ## 12.6.0 (2016-04-30)
 
-### Chef Server
+### CINC Server
   * Fixed false failures for postgres preflight check.
   * Fixed bug where public\_key\_read\_access group was not properly being respected for access on org-scoped user and client public key reads.
   * Update licensing handling to make licensing information easier to find (see [here](https://www.chef.io/blog/2016/04/26/changes-to-how-chef-products-handle-licens
@@ -37,7 +37,7 @@ es/)).
 
 ## 12.5.0 (2016-03-22)
 
-### Chef Server
+### CINC Server
   * Added /orgs/org/users/user/keys(/key) endpoint and changed default perms on org scoped key GETs.
 		The following endpoints' GET methods can now be accessed by any requestor that is a member of the same organization:
 		/organizations/:org/clients/:client/keys
@@ -69,10 +69,10 @@ es/)).
 ### `oc-id`
   * Pulled in a new version of Rails for `oc-id` due to critical vulnerabilities found in Rails: http://weblog.rubyonrails.org/2016/1/25/Rails-5-0-0-beta1-1-4-2-5-1-4-1-14-1-3-2-22-1-and-rails-html-sanitizer-1-0-3-have-been-released/
 
-### Chef Server
+### CINC Server
   * There is now a Universe endpoint, which provides the same output
     as the Supermarket or berkshelf-api universe endpoints.
-  * Implemented Server Admins. Server Admins is a list of users that that full permissions access on the users endpoint. You can add and remove users from the Server Admins list. This allows non-superusers to perform creation, deletion, editing, and listing on all users (except the superuser) in a Chef Server, granting great flexibility around user management.
+  * Implemented Server Admins. Server Admins is a list of users that that full permissions access on the users endpoint. You can add and remove users from the Server Admins list. This allows non-superusers to perform creation, deletion, editing, and listing on all users (except the superuser) in a CINC Server, granting great flexibility around user management.
   * Implemented Chef Authentication Signing Protocol v1.3 [rfc065](https://github.com/chef/chef-rfc/blob/master/rfc065-sign-v1.3.md)
 
 ### API Changes and Additions
@@ -80,7 +80,7 @@ es/)).
 
 ## 12.3.0 (2015-11-12)
 
-### Chef Server
+### CINC Server
   * `policy_name` and `policy_group` are now node attributes that will
     be returned with the node object, can be set via `POST` or `PUT` to
     a node, and can be used in node searches.
@@ -88,7 +88,7 @@ es/)).
     *  Elasticsearch is now supported as a search provider.  See 'Search'
     * You can now provide your own Solr instance instead of using the one
       bundled with cinc-server.
-    * It is now possible for Chef Server to post updates directly to the
+    * It is now possible for CINC Server to post updates directly to the
       search provider bypassing rabbitmq and expander. See 'Search' in the
       Configuration section below.
     * See 'Search' in the 'Configuration Changes' section
@@ -129,7 +129,7 @@ es/)).
 ### Bug Fixes / Closed Issues
 
 * [459](https://github.com/chef/cinc-server/issues/459) - allow
-  Chef Server to work when the postgresql port has been set in
+  CINC Server to work when the postgresql port has been set in
   `cinc-server.rb`
 * [540](https://github.com/chef/cinc-server/pull/540) - default ldap to
   case insensitve, preventing login failures where case does not match
@@ -177,14 +177,14 @@ es/)).
 ### Contributors
 
 Special thanks to the following people for taking some of their own time
-to contribute to Chef Server project:
+to contribute to CINC Server project:
 
 * Joe DeVivo
 * Shruthi Venkateswaran
 * Phil Oliva
 * Ryan Hass
 
-### Chef Server Development Environment Improvements
+### CINC Server Development Environment Improvements
 
   * sync tool talks less and gives only relevant information
   * fixes to loading of various projects that got broken when we moved
@@ -199,11 +199,11 @@ There are no deprecations to announce in this release.
 
 ### Configuration Changes
 
-Below are the most relevant configuration options made available under Chef Server 12.3.0.  Unless
+Below are the most relevant configuration options made available under CINC Server 12.3.0.  Unless
 otherwise stated, the values shown are the default values.
 
 For a complete listing of all available settings, see
-[Chef Server Configuration](https://docs.chef.io/config_rb_server.html).
+[CINC Server Configuration](https://docs.chef.io/config_rb_server.html).
 
 #### Search
 
@@ -224,7 +224,7 @@ attempt to configure the correct indexes/schema.
 
 ##### Direct-to-Solr Indexing
 
-Chef Server can now index directly to solr, bypassing rabbitmq
+CINC Server can now index directly to solr, bypassing rabbitmq
 and opscode-expander.  To enable this, the following
 configuration options have been added:
 
@@ -234,7 +234,7 @@ configuration options have been added:
 
 ##### Elasticsearch Search Indexing
 
-Chef Server now supports indexing to an external elasticsearch instance.
+CINC Server now supports indexing to an external elasticsearch instance.
 Enable this as follows:
 
     opscode_erchef['search_provider'] = "elasticsearch"
@@ -242,11 +242,11 @@ Enable this as follows:
     opscode_solr4['external_url'] = "https://PATH_TO_ELASTICSEARCH"
     opscode_erchef['search_queue_mode'] = "batch"
 
-NOTE: Chef Server will not provision an elasticsearch server.
+NOTE: CINC Server will not provision an elasticsearch server.
 
 ##### nginx
 
-By default, each Chef Server node now has locally enabled the
+By default, each CINC Server node now has locally enabled the
 `/nginx_status` endpoint on port 9999. This can be controlled with the
 following settings:
 
@@ -257,7 +257,7 @@ following settings:
 
 ##### Queue Monitoring
 
-Chef Server now monitors the analytics queue and will stop attempting to
+CINC Server now monitors the analytics queue and will stop attempting to
 write to it when it is full.  Below are the relevant settings.
 
     # IPs permitted to access the endpoint
@@ -285,7 +285,7 @@ write to it when it is full.  Below are the relevant settings.
     # prevent erchef from starting if queue is at capacity
     rabbitmq['prevent_erchef_startup_on_full_capacity'] = false
 
-    # If true and capacity is reached, the chef server `/_status` endpoint
+    # If true and capacity is reached, the cINC Server `/_status` endpoint
     # will report 500 when the analytics queue is at capacity.
     rabbitmq['queue_at_capacity_affects_overall_status'] = false
 
@@ -301,7 +301,7 @@ flooding of logs.  Any log messages in excess of this number per second are drop
 
 *LDAP Case Sensitivity*
 
-By default, Chef Server will use case insensitive authentication against
+By default, CINC Server will use case insensitive authentication against
 LDAP servers, as shown below.  Set the value to `true` in your
 cinc-server configuration to restore the previous case-sensitive behavior.
 
@@ -309,7 +309,7 @@ cinc-server configuration to restore the previous case-sensitive behavior.
 
 ## 12.2.0 (2015-09-01)
 
-### Chef Server
+### CINC Server
 
   * New Policyfile endpoints have been added to enable cleanup of policy
     objects.  See API Changes below for more detail.
@@ -320,12 +320,12 @@ cinc-server configuration to restore the previous case-sensitive behavior.
     * users in the same org can now by default read each others' user
       records.
     * See "Organization Policy Changes" below for more details.
-  * It is now possible to configure a new installation of Chef Server to
+  * It is now possible to configure a new installation of CINC Server to
     use a self-hosted PostgreSQL instance, including Amazon RDS
     PostgreSQL. See [this page](https://docs.chef.io/release/server_12-2/release_notes.html#external-postgresql) for details.
     * Note that direct upgrades to an external postgresql instance are
       not supported at this time.  Instead,  back up the existing Chef
-      Server using knife ec backup, bring up a new Chef Server with
+      Server using knife ec backup, bring up a new CINC Server with
       external PostgreSQL configure, then use knife ec restore.
     * If you wish to use `cinc-server-ctl cleanse` and have it delete
       data from an external PostgreSQL instance as well, you must use
@@ -334,7 +334,7 @@ cinc-server configuration to restore the previous case-sensitive behavior.
 #### cinc-server-ctl
 
   * New commands `backup` and `restore` which you can use to back up
-    to/restore a Chef Server's data in its entirety.
+    to/restore a CINC Server's data in its entirety.
       * To use this feature at this time, you will need to ensure that
         `rsync` is installed on the server ahead of time.
       * If you have enabled external postgresql, use `knife ec backup'
@@ -343,7 +343,7 @@ cinc-server configuration to restore the previous case-sensitive behavior.
         external data stores.
   * New command `cinc-server-ctl psql <service-name>` to log in via `psql` with
     read-only access to the the postgresql database used by the named
-    service.  This is now the preferred way to log into a Chef Server
+    service.  This is now the preferred way to log into a CINC Server
     database, and will automatically handle authentication. Use
     `--write` to enable write access.
   * `reindex` now supports server-wide reindexing.
@@ -360,21 +360,21 @@ cinc-server configuration to restore the previous case-sensitive behavior.
   * cinc-server-ctl will now refuse to run as anyone other than root,
     instead of giving a confusing stack trace when this is attempted.
 
-#### Chef Server Development Environment Improvements
+#### CINC Server Development Environment Improvements
 
-  * Chef Server's self-contained development environment 'dvm' has been
+  * CINC Server's self-contained development environment 'dvm' has been
     updated to support loading of omnibus gems, and with support for
     auto-loading omnibus components before the first VM reconfigure has
     been run.
   * For testing/experimenting with external PostgreSQL,
     `dev/config.yml.example` shows how to enable a second `database` VM
     in dvm. This will hosting an external PostgreSQL database, and
-    configures Chef Server to enable on the primary VM.
+    configures CINC Server to enable on the primary VM.
 
 ### Authorization Service (oc\_bifrost)
  * A deadlock has been resolved that can occur when concurrent
    updates to the same actor are made.  Consistent with the overall
-   Chef Server API, the last update in will be the one that takes
+   CINC Server API, the last update in will be the one that takes
    precedence.
 
 ### Identity Service (oc\_id)
@@ -389,7 +389,7 @@ There are no deprecations to announce in this release.
 
 ### Bug Fixes / Closed Issues
 * [CHEF-SERVER-154](https://github.com/chef/cinc-server/issues/154)
-  Do not enable automatic/unattended upgrades of Chef Server on RHEL when
+  Do not enable automatic/unattended upgrades of CINC Server on RHEL when
   the packagecloud repository has been added for add-ons are present.
   If this has already been enabled prior to this point, disable it on
   the next reconfigure.
@@ -419,7 +419,7 @@ There are no deprecations to announce in this release.
    403.
 
 ### Security Updates
- * upgraded to openssl-1.0.1p for CVE-2015-1793.   Note that Chef Server
+ * upgraded to openssl-1.0.1p for CVE-2015-1793.   Note that CINC Server
    was not directly affected by this CVE.
 
 ### Organization Policy Changes
@@ -433,7 +433,7 @@ There are no deprecations to announce in this release.
   This allows users to encrypt data bag items for each other using `knife-vault`
   without granting these users admin access.
   * Being able to read another user's user object means you can look up that
-    person's public keys registered with the chef server, shared organizations,
+    person's public keys registered with the cINC Server, shared organizations,
     email address, and name.
   * Users can *only* see the org memberships when those organizations
     are in common to both users.  They can *not* see organziation
@@ -448,13 +448,13 @@ Fix issue where cinc-server-ctl install could not fetch remote packages via apt.
 This is a bug fix release which fixes bugs related to upgrades from
 Open Source and Enterprise Chef 11.
 
-This release also ships openssl 1.0.1p; however, Chef Server was not
-vulnerable to CVE-2015-1793 since no version of Chef Server shipped
+This release also ships openssl 1.0.1p; however, CINC Server was not
+vulnerable to CVE-2015-1793 since no version of CINC Server shipped
 the affected versions.
 
 ## 12.1.0 (2015-06-18)
 
-The following items are new since Chef Server 12.0.8 and/or are changes from
+The following items are new since CINC Server 12.0.8 and/or are changes from
 previous versions.  For specific breakdown of updated components, refer to
 CHANGELOG.md.
 
@@ -462,7 +462,7 @@ Additional items will be highlighted here for further RC updates, then
 consolidated into the overall 12.1.0 release notes as part of the final
 12.1.0 release.
 
-### Chef Server
+### CINC Server
   * Expose queue configuration for erchef and bifrost connection pools
   * A new gather-log script gathers a lot more debugging information for
     use in support requests.
@@ -476,19 +476,19 @@ consolidated into the overall 12.1.0 release notes as part of the final
   * Fix local-mode-cache warnings on `cinc-server-ctl reconfigure`
   * Erlang runtime upgraded to 17.5
 
-#### Chef Server Development Improvements
+#### CINC Server Development Improvements
 
-* Many of Chef Server's components have been consolidated, allowing
+* Many of CINC Server's components have been consolidated, allowing
   Chef to increase the rate at which we can deliver improvements. The
   new consolidated repository can be found at
   https://github.com/chef/cinc-server.
 * A new self-contained development environment greatly simplifies and
-  speeds up the process of developing Chef Server components.  This
+  speeds up the process of developing CINC Server components.  This
   also eases the path for those outside of the Chef organization
-  who wish to contribute to Chef Server. You can find this here:
+  who wish to contribute to CINC Server. You can find this here:
   https://github.com/chef/cinc-server/tree/master/dev.  Feedback and
   suggestions are welcome.
-* Many less-visible improvements all contribute to making Chef Server
+* Many less-visible improvements all contribute to making CINC Server
   easier to enhance and maintain, including improved test coverage,
   better static code analysis, coverage analysis, removal of redundant
   paths, unified build/make process, and extensive refactoring of code.
@@ -567,7 +567,7 @@ consolidated into the overall 12.1.0 release notes as part of the final
 
 ### Security Updates
 
-The following items are the security updates that have been applied since Chef Server 12.0.8:
+The following items are the security updates that have been applied since CINC Server 12.0.8:
 
 * PostgreSQL 9.2.10
   * CVE-2015-0241 - Fix buffer overruns in `to_char()`
@@ -653,7 +653,7 @@ v0, until that version is desupported.
   * Current server Add-Ons will work with 12.1.0.  However, reporting,
     push server, and analytics may not work correctly if multiple keys are
     configured for clients or users. Updates to these products to enable
-    support for Chef Server API v1 and multi-key are forthcoming.
+    support for CINC Server API v1 and multi-key are forthcoming.
   * If you are upgrading from 12.0.7 or earlier and have any existing
     organizations that does not have the default `users`, `admins`, and/or
     `clients` groups, then policyfiles, policy groups, and cookbook artifacts
@@ -667,7 +667,7 @@ v0, until that version is desupported.
 
 ## 12.0.8 (2015-04-20)
 
-The following items are new since Chef Server 12.0.7 and/or are changes from previous versions.  For specific breakdown of updated components, refer to CHANGELOG.md
+The following items are new since CINC Server 12.0.7 and/or are changes from previous versions.  For specific breakdown of updated components, refer to CHANGELOG.md
 
 * oc\_erchef
   * Server API Versioning is now enabled and current API version is `0`.
@@ -678,7 +678,7 @@ The following items are new since Chef Server 12.0.7 and/or are changes from pre
 
 ### Security Updates
 
-The following items are the security updates that have been applied since Chef Server 12.0.7
+The following items are the security updates that have been applied since CINC Server 12.0.7
 
 * OpenResty 1.7.7.10 (nginx)
   * CVE-2013-2028 - a stack-based buffer overflow might occur in a worker process while handling a specially crafted request, potentially resulting in a   rbitrary code execution
@@ -694,7 +694,7 @@ The following items are the security updates that have been applied since Chef S
 
 ## 12.0.7 (2015-03-26)
 
-The following items are new since Chef Server 12.0.6 and/or are changes from previous versions.
+The following items are new since CINC Server 12.0.6 and/or are changes from previous versions.
 For specific breakdown of updated components, refer to CHANGELOG.md
 
   * Implements the minimum set of Policyfile endpoints required for end
@@ -712,7 +712,7 @@ For specific breakdown of updated components, refer to CHANGELOG.md
 
 ## 12.0.6 (2015-03-19)
 
-The following items are new since Chef Server 12.0.5 and/or are changes from previous versions.
+The following items are new since CINC Server 12.0.5 and/or are changes from previous versions.
 For specific breakdown of updated components, refer to CHANGELOG.md
 
 * opscode-omnibus
@@ -751,7 +751,7 @@ For specific breakdown of updated components, refer to CHANGELOG.md
 
 ### What's New
 
-The following items are new since Chef Server 12.0.4 and/or are changes from previous versions.
+The following items are new since CINC Server 12.0.4 and/or are changes from previous versions.
 For specific breakdown of updated components, refer to CHANGELOG.md
 
 * oc\_erchef
@@ -779,7 +779,7 @@ For specific breakdown of updated components, refer to CHANGELOG.md
 
 ### What's New:
 
-The following items are new since Chef Server 12.0.3 and/or are changes from previous versions.
+The following items are new since CINC Server 12.0.3 and/or are changes from previous versions.
 For specific breakdown of breakdown of updated components, refer to CHANGELOG.md
 
 * oc\_erchef
@@ -821,7 +821,7 @@ For specific breakdown of breakdown of updated components, refer to CHANGELOG.md
 
 ### Component Upgrades
   * Ruby 2.1.4
-  * Chef 12.0.3 - Chef Server is now internally using Chef Client 12 in local mode
+  * Chef 12.0.3 - CINC Server is now internally using Chef Client 12 in local mode
     for its installation and configuration.
 
 ### API Changes and Additions
@@ -859,7 +859,7 @@ For specific breakdown of breakdown of updated components, refer to CHANGELOG.md
 
 ## 12.0.2 (2015-01-27)
 
-The following items are the set of bug fixes that have been applied since Chef Server 12.0.1:
+The following items are the set of bug fixes that have been applied since CINC Server 12.0.1:
 
 * `chef-mover` can hang during long-running migrations of organizations and user associations.
 
@@ -1006,7 +1006,7 @@ from admins being able to remove themselves from an organization,
 particularly when they are the last admin in the organization (but not
 necessarily limited to this).
 
-To help prevent this class of troubles, Chef Server now enforces that a
+To help prevent this class of troubles, CINC Server now enforces that a
 member of an organization's "admins" group cannot be removed from the
 organization without first being removed from the "admins" group.
 
@@ -1046,7 +1046,7 @@ changes from previous versions:
 * [private-chef-ctl] Add a gather-logs command to create a tarball of
   important logs and system information.
 * [oc-id] Add Chef Identity Service.  This enables Supermaket authentication
-  with the Chef Server.
+  with the CINC Server.
 * [opscode-analytics]
   * `dark_launch['actions']` defaults to true.  You no longer
   need to manually set this in the private-chef.rb
@@ -1178,4 +1178,4 @@ applied since Enterprise Chef 11.1.2:
 
 The following items are the set of security fixes that have been applied since Enterprise Chef 11.1.1:
 
-* [opscode-webui] Don't log or email the Rails session or environment from the exception handler. Doing so can cause user-submitted form values like passwords to be logged and emailed to administrators of the Enterprise Chef server when exceptions occur on the Management Console.
+* [opscode-webui] Don't log or email the Rails session or environment from the exception handler. Doing so can cause user-submitted form values like passwords to be logged and emailed to administrators of the Enterprise CINC Server when exceptions occur on the Management Console.

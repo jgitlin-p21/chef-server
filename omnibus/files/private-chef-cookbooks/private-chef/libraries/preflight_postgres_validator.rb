@@ -118,7 +118,7 @@ class PostgresqlPreflightValidator < PreflightValidator
         # This indicates we were successfully able to connect to Postgres
         # AND we authenticated! This is likely because the pg_hba is set
         # to trust our connection. Such an example would be configuring
-        # Chef Server to use an "external" Postgres, such as Delivery's,
+        # CINC Server to use an "external" Postgres, such as Delivery's,
         # when running on the same host.
       when /.*no pg_hba.conf entry.*/
         # This is also possible, depending on if they've set up pg_hba

@@ -72,7 +72,7 @@ resource "null_resource" "ldap_cookbook" {
   }
 }
 
-# update chef server
+# update cINC Server
 resource "null_resource" "chef_server_config" {
   depends_on = ["null_resource.ldap_cookbook"]
 
@@ -107,7 +107,7 @@ resource "null_resource" "chef_server_config" {
   provisioner "remote-exec" {
     inline = [
       "set -evx",
-      "echo -e '\nBEGIN INSTALL CHEF SERVER\n'",
+      "echo -e '\nBEGIN INSTALL CINC Server\n'",
       "sudo chown root:root /tmp/hosts",
       "sudo mv /tmp/hosts /etc/hosts",
       "curl -vo /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")} ${var.upgrade_version_url}",
@@ -119,7 +119,7 @@ resource "null_resource" "chef_server_config" {
       "cat /tmp/pedant_config.rb | sudo tee -a /opt/opscode/embedded/cookbooks/private-chef/templates/default/pedant_config.rb.erb",
       "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
-      "echo -e '\nEND INSTALL CHEF SERVER\n'",
+      "echo -e '\nEND INSTALL CINC Server\n'",
     ]
   }
 

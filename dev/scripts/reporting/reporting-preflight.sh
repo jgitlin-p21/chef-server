@@ -16,7 +16,7 @@
 #
 # scripts/reporting.sh: Run basic reporting tests.
 #
-# This script assumes you are starting with a VM with Chef Server
+# This script assumes you are starting with a VM with CINC Server
 # Latest installed and external DBs set up.
 #
 # Required Environment Variables

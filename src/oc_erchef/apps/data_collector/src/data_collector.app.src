@@ -22,7 +22,7 @@
 %%
 
 {application, data_collector, [
-    {description, "Chef Server Data Collector"},
+    {description, "CINC Server Data Collector"},
     {vsn, {cmd,"cat ../../VERSION | awk '{print $0}'"}},
     {registered, []},
     {applications, [

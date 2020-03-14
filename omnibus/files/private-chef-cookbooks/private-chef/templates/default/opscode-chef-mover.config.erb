@@ -84,7 +84,7 @@
                   %%
                   %% This is the reason that the only supported configuration for the fips
                   %% package is standalone. We will allow http over localhost so that the
-                  %% chef server can talk to bookshelf.
+                  %% cINC Server can talk to bookshelf.
                   {s3_url, "http://<%= node['private_chef']['bookshelf']['listen'] %>:<%= node['private_chef']['bookshelf']['port'] %>"},
                   <% else -%>
                   {s3_url, "<%= node['private_chef']['nginx']['x_forwarded_proto'] %>://<%= @helper.vip_for_uri('bookshelf') %>"},

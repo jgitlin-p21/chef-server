@@ -39,7 +39,7 @@
         ]).
 
 %% "Grab Bag" common functionality - we may want to consider relocating these
-%% since most aren't core operations of webmachine in chef server
+%% since most aren't core operations of webmachine in cINC Server
 -export([check_cookbook_authz/3,
          delete_object/3,
          object_creation_hook/2,
@@ -238,7 +238,7 @@ create_in_container(client=Container, Req,
     %% templates".  We'll take a look at this in an upcoming version of Bifrost.
     %%
     %% Oh, and validators shouldn't be able to create other validators (to mirror the behavior
-    %% of the Open Source Chef Server), so we need to check the contents of the
+    %% of the Open Source CINC Server), so we need to check the contents of the
     %% client-to-be's data, which is a proplist, and so not very amenable to pattern
     %% matching :(
     CreatingAValidator = ej:get({<<"validator">>}, Data),

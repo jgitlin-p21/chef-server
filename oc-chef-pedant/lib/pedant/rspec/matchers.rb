@@ -114,7 +114,7 @@ module RSpec
       # opscode_erchef['base_resource_url'] might be different than the actual host/port that erchef
       # is listening on. For example, in an automate/opsworks configuration the server might be
       # listening on FQDN:8443), but the correct URI to return would be
-      # based off of the automate FQDN:443. However, the chef server tests universally use the listening
+      # based off of the automate FQDN:443. However, the cINC Server tests universally use the listening
       # port for the server as the base for the API resources, and worse, they conflate the API to
       # access and the resource expected.
       #

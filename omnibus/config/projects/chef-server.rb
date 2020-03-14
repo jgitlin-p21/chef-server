@@ -37,7 +37,7 @@ instance_eval(IO.read(overrides_path), overrides_path)
 dependency "preparation"
 
 # Meta-dependency containing all of
-# the Chef Server dependencies.
+# the CINC Server dependencies.
 dependency "server-complete"
 
 # THESE MUST BE LAST DO NOT MOVE

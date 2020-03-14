@@ -52,7 +52,7 @@ data "template_file" "chef_server_config" {
   }
 }
 
-# update back-end chef server
+# update back-end cINC Server
 resource "null_resource" "back_end_config" {
   # provide some connection info
   connection {
@@ -80,7 +80,7 @@ resource "null_resource" "back_end_config" {
   provisioner "remote-exec" {
     inline = [
       "set -evx",
-      "echo -e '\nBEGIN INSTALL CHEF SERVER (BACK-END)\n'",
+      "echo -e '\nBEGIN INSTALL CINC Server (BACK-END)\n'",
       "curl -vo /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")} ${var.upgrade_version_url}",
       "sudo ${replace(var.upgrade_version_url, "rpm", "") != var.upgrade_version_url ? "rpm -U" : "dpkg -iEG"} /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")}",
       "sudo chown root:root /tmp/cinc-server.rb",
@@ -91,7 +91,7 @@ resource "null_resource" "back_end_config" {
       "sudo mv /tmp/hosts /etc/hosts",
       "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
-      "echo -e '\nEND INSTALL CHEF SERVER (BACK-END)\n'",
+      "echo -e '\nEND INSTALL CINC Server (BACK-END)\n'",
     ]
   }
 
@@ -112,7 +112,7 @@ resource "null_resource" "back_end_config" {
   }
 }
 
-# update front-end chef server
+# update front-end cINC Server
 resource "null_resource" "front_end_config" {
   depends_on = ["null_resource.back_end_config"]
 
@@ -132,7 +132,7 @@ resource "null_resource" "front_end_config" {
   provisioner "remote-exec" {
     inline = [
       "set -evx",
-      "echo -e '\nBEGIN INSTALL CHEF SERVER (FRONT-END)\n'",
+      "echo -e '\nBEGIN INSTALL CINC Server (FRONT-END)\n'",
       "sudo chown root:root /tmp/hosts",
       "sudo mv /tmp/hosts /etc/hosts",
       "sudo tar -C /etc -xzf /tmp/opscode.tgz",
@@ -140,7 +140,7 @@ resource "null_resource" "front_end_config" {
       "sudo ${replace(var.upgrade_version_url, "rpm", "") != var.upgrade_version_url ? "rpm -U" : "dpkg -iEG"} /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")}",
       "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
-      "echo -e '\nEND INSTALL CHEF SERVER (FRONT-END)\n'",
+      "echo -e '\nEND INSTALL CINC Server (FRONT-END)\n'",
     ]
   }
 }

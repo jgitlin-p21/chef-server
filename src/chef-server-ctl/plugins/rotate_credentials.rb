@@ -146,15 +146,15 @@ add_command_under_category "show-service-credentials", "Secrets Management", "Sh
   exit(0)
 end
 
-# require-credential-rotation is designed to put the Chef Server in a state
+# require-credential-rotation is designed to put the CINC Server in a state
 # where it's offline and requires complete credential rotation to restart.
-# This sort of thing is useful if you're creating public Chef Server images
-# and you want to make sure that the Chef Server doesn't start up until all
+# This sort of thing is useful if you're creating public CINC Server images
+# and you want to make sure that the CINC Server doesn't start up until all
 # secrets have been rotated. It's important to note that credential rotation
-# does not rotate the pivotal, user or client keys, or remove any Chef Server
+# does not rotate the pivotal, user or client keys, or remove any CINC Server
 # policy or cookbooks that have been uploaded. When the user rotates the shared
 # credentials the chef-client reconfigure run will re-enable/link the services,
-# restart the Chef Server and remove the sentinel file that enables the
+# restart the CINC Server and remove the sentinel file that enables the
 # pre-hook.
 add_command_under_category "require-credential-rotation", "Secrets Management", "Disable the CINC Server and require credential rotation", 2 do
   @agree_to_disable = false
@@ -178,7 +178,7 @@ add_command_under_category "require-credential-rotation", "Secrets Management", 
           "\n Type 'yes' to confirm: "
   exit(1) unless @agree_to_disable || @ui.ask("<%= color(%Q(#{msg}), :yellow) %>") =~ /yes/i
 
-  # Shut down Chef Server
+  # Shut down CINC Server
   run_sv_command("stop")
 
   # Disable services

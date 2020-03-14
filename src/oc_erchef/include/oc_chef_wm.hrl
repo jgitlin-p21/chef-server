@@ -109,7 +109,7 @@
           %% balancer
           reqid_header_name :: string() | undefined,
 
-          %% String containing chef server product version.
+          %% String containing cINC Server product version.
           %% TODO this is also set as part of x-ops-api-info, which could be confusing.
           %% Let's make this reporting of version a versioned change itself:
           api_version :: string() | undefined,
@@ -121,10 +121,10 @@
           %% still attempt to capture it to log in finish_request.
           server_api_version  = -1 :: integer() | 'bad_value_requested',
 
-          %% OTP information for the Erchef server in {ReleaseName, OtpVersion} form.
+          %% OTP information for the ErcINC Server in {ReleaseName, OtpVersion} form.
           otp_info :: {string(), string()} | undefined,
 
-          %% Indicates what variant of Chef Server this is (e.g. "osc" => Open Source Chef,
+          %% Indicates what variant of CINC Server this is (e.g. "osc" => Open Source Chef,
           %% "opc" = Opscode Private Chef, etc).
           server_flavor :: string() | undefined,
 

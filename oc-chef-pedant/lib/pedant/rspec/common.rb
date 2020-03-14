@@ -89,7 +89,7 @@ module Pedant
 
         # When creating a Chef object, not all of the fields we accept
         # in JSON request bodies need to be present; if missing, the
-        # Chef Server will set them to sensible default values.
+        # CINC Server will set them to sensible default values.
         #
         # This should be used in a context that has values already set
         # for request_url, request_method (assumed to be POST, or PUT

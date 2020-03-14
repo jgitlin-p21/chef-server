@@ -268,17 +268,17 @@ EOF
   end
 
   def fix_rabbit_wait_script
-    # The wait-for-rabbit script is an open source chef server script that was
+    # The wait-for-rabbit script is an open source cINC Server script that was
     # supposed to wait for rabbitmq to start before starting erchef.
     # It was supposed to look for rabbitmq on an open source system, but due to
     # a mistake looks for rabbit on an enterprise system instead. It has a bail
-    # option if it doesn't find enterprise chef server installed, so this hasn't
+    # option if it doesn't find enterprise cINC Server installed, so this hasn't
     # affected open source systems, until now, since the upgrade process puts
-    # both the open source and enterprise chef servers on the same system.
+    # both the open source and enterprise cINC Servers on the same system.
     #
     # The assumption has to be that this file will be wrong on any system
     # undergoing an upgrade, because even if fixed, it can't be assumed that the
-    # system will be running an up-to-date open source chef server with the fix
+    # system will be running an up-to-date open source cINC Server with the fix
     # applied.
     #
     # If the open source server is reconfigured it will restore the bad script

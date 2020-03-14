@@ -1,4 +1,4 @@
-Baseline Chef Server PostgreSQL Schema
+Baseline CINC Server PostgreSQL Schema
 ======================================
 
 This directory contains the original cinc-server-schema that the

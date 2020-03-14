@@ -1,6 +1,6 @@
-# Contributing to Chef Server
+# Contributing to CINC Server
 
-Thank you for your interest in Chef Server!  We use **GitHub Issues**
+Thank you for your interest in CINC Server!  We use **GitHub Issues**
 for issue tracking and contributions:
 
 1. Reporting an issue or making a feature request

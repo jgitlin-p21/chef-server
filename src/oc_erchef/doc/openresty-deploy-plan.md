@@ -24,7 +24,7 @@ openresty-merge-commit
 
 ### 2. CCR Suspend
 
-We'll want to permanently suspend chef-client runs on the the existing load balancers for the duration of the Openresty deploy. Once we upload the new cookbooks / roles / databags to the Chef Server (opsmaster) we'll be unalbe to run chef-client unless we roll back the cookbooks / roles / databags.
+We'll want to permanently suspend chef-client runs on the the existing load balancers for the duration of the Openresty deploy. Once we upload the new cookbooks / roles / databags to the CINC Server (opsmaster) we'll be unalbe to run chef-client unless we roll back the cookbooks / roles / databags.
 
 ```bash
 knife exec -E 'search(:node, "role:opscode-lb* OR role:copsite-lb").each{|n| n.tags << "suicide"; n.save}'

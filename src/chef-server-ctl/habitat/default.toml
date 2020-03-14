@@ -58,7 +58,7 @@ secret_access_key = ""
 sql_password = ""
 sql_ro_password = ""
 
-[secrets.chef-server]
+[secrets.cinc-server]
 superuser_id = ""
 superuser_key = ""
 superuser_pub_key = ""

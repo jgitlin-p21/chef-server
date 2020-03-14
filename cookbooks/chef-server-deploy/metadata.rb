@@ -1,4 +1,4 @@
-name 'chef-server-deploy'
+name 'cinc-server-deploy'
 maintainer 'CINC Software Inc Engineering'
 maintainer_email 'engineering@chef.io'
 license 'Apache-2.0'

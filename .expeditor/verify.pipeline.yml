@@ -20,9 +20,9 @@ steps:
     executor:
       docker:
 
-- label: lint-chef-server-deploy-cookbook-cookstyle
+- label: lint-cinc-server-deploy-cookbook-cookstyle
   command:
-    - cd /workdir/cookbooks/chef-server-deploy
+    - cd /workdir/cookbooks/cinc-server-deploy
     - chef exec cookstyle
   expeditor:
     executor:

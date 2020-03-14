@@ -76,7 +76,7 @@ module Omnibus
         if exec_list.empty?
           path = nil
         else
-          path = Time.now.strftime('/root/%FT%R-chef-server-manual-postgresql-cleanup.sql')
+          path = Time.now.strftime('/root/%FT%R-cinc-server-manual-postgresql-cleanup.sql')
           dump_exec_list_to_file(path, exec_list)
         end
         # Note - we're just showing the error and not exiting, so that

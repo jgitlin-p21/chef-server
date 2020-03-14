@@ -7,7 +7,7 @@ require "fileutils"
 load "dvmtools.rb"
 
 Variant = ENV['VAGRANT_MACHINE_VARIANT'] ? ("-" + ENV['VAGRANT_MACHINE_VARIANT'] ) : ''
-VMName = "chef-server#{Variant}" 
+VMName = "cinc-server#{Variant}"
 
 IPS = {
   cs: "192.168.33.100",
@@ -20,7 +20,7 @@ IPS = {
   solr: "192.168.33.157"
 }
 
-# to run a chef-server vm with external postgresql,
+# to run a cinc-server vm with external postgresql,
 # edit your config.yml file, and set postgresql start and use-external
 # to true. for external AZURE postgresql, also set postgresql use-azure
 # to true, and set postgresql ip-azure to the ip address
@@ -141,7 +141,7 @@ end
 
 
 def define_chef_server(config, attributes)
-  provisioning, installer, installer_path = prepare('INSTALLER', 'chef-server-core', 'CINC Server 12+')
+  provisioning, installer, installer_path = prepare('INSTALLER', 'cinc-server-core', 'CINC Server 12+')
   _m_provisioning, m_installer, _m_installer_path = prepare('MANAGE_PKG', 'chef-manage', 'Chef Manage 1.4+') if plugin_active?('chef-manage', attributes)
   _ps_provisioning, ps_installer, _ps_installer_path = prepare('PUSH_JOBS_PKG', 'opscode-push-jobs-server', 'Push Jobs Server 1.1+') if plugin_active?('push-jobs-server', attributes)
   _r_provisioning, r_installer, _r_installer_path = prepare('REPORTING_PKG', 'opscode-reporting', 'Chef Reporting 1.6+') if plugin_active?('reporting', attributes)
@@ -181,7 +181,7 @@ def define_chef_server(config, attributes)
                   "oc_id['sql_connection_user']" => "'oc_id@#{IPS[:db]}'"
                 }) if USE_AZURE
 
-      json = simple_deep_merge(json, { "provisioning" => { "chef-server-config" => pg } })
+      json = simple_deep_merge(json, { "provisioning" => { "cinc-server-config" => pg } })
     end
 
     if vmattr["reporting_postgresql"]["start"] and vmattr["reporting_postgresql"]["use-external"]
@@ -196,13 +196,13 @@ def define_chef_server(config, attributes)
 
     if vmattr['ldap']['start']
       backend_compat_message('ldap') if chef_backend_active?(attributes)
-      ldap = { "ldap['base_dn']" => '"ou=chefs,dc=chef-server,dc=dev"',
-               "ldap['bind_dn']" => '"cn=admin,dc=chef-server,dc=dev"',
+      ldap = { "ldap['base_dn']" => '"ou=chefs,dc=cinc-server,dc=dev"',
+               "ldap['bind_dn']" => '"cn=admin,dc=cinc-server,dc=dev"',
                "ldap['bind_password']" => "'#{LDAP_PASSWORD}'",
                "ldap['host']" => "'#{IPS[:ldap]}'",
                "ldap['login_attribute']" => '"uid"'
       }
-      json = simple_deep_merge(json, { "provisioning" => { "chef-server-config" => ldap } })
+      json = simple_deep_merge(json, { "provisioning" => { "cinc-server-config" => ldap } })
     end
 
     if vmattr['elasticsearch'] && vmattr['elasticsearch']['start']
@@ -211,7 +211,7 @@ def define_chef_server(config, attributes)
                         "opscode_erchef['search_provider']" => '"elasticsearch"',
                         "opscode_erchef['search_queue_mode']" => '"batch"'
       }
-      json = simple_deep_merge(json, { "provisioning" => { "chef-server-config" => elasticsearch } })
+      json = simple_deep_merge(json, { "provisioning" => { "cinc-server-config" => elasticsearch } })
     end
 
     if vmattr['external_solr'] && vmattr['external_solr']['start']
@@ -220,7 +220,7 @@ def define_chef_server(config, attributes)
                         "opscode_erchef['search_provider']" => '"solr"',
                         "opscode_erchef['search_queue_mode']" => '"batch"'
       }
-      json = simple_deep_merge(json, { "provisioning" => { "chef-server-config" => external_solr } })
+      json = simple_deep_merge(json, { "provisioning" => { "cinc-server-config" => external_solr } })
     end
 
     if vmattr['oc_id']
@@ -240,21 +240,21 @@ def define_chef_server(config, attributes)
 
     # Preserve gitconfig from host
     config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
-    # Install the chef-server package now so that its chef client is available to us
+    # Install the cinc-server package now so that its chef client is available to us
     config.vm.provision "shell", inline: install_hack(installer, 'opscode')
     # Force the path we want for root - this may no longer be needed...
     config.vm.provision "shell", inline: 'echo "PATH=/opt/opscode/embedded/bin:$PATH" > /root/.bashrc'
 
     # Set up the chef-zero recipes to run
-    recipes = %w{provisioning::hosts provisioning::chef-server
-                 provisioning::chef-server-rb
+    recipes = %w{provisioning::hosts provisioning::cinc-server
+                 provisioning::cinc-server-rb
                  dev::system dev::user-env dev::dvm}
     set_chef_zero_provisioning(config, accept_license: installer.match(/(?<=_)\d+/)[0].to_i >= 13 ? true : false, recipes: recipes, binary_path: "/opt/opscode/embedded/bin", json: json)
 
     if chef_backend_active?(attributes)
-      # Grab the chef-server.rb that chef-backend generates for us and overwrite the one we
+      # Grab the cinc-server.rb that chef-backend generates for us and overwrite the one we
       # made in provisioning
-      config.vm.provision "shell", inline: "cp /installers/api.#{VMName}.dev.rb /etc/opscode/chef-server.rb"
+      config.vm.provision "shell", inline: "cp /installers/api.#{VMName}.dev.rb /etc/opscode/cinc-server.rb"
     end
 
     # We do a number of things that can affect the initial configuration - by
@@ -385,7 +385,7 @@ end
 # Internals
 ##############
 # These functions are used for provisioning, and ensuring that the VM has
-# what it needs to load up and install chef-server
+# what it needs to load up and install cinc-server
 ##############
 
 

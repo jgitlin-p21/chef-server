@@ -27,7 +27,7 @@ class PreflightValidator
     @previous_run = node['previous_run']
 
     # Note that PrivateChef['postgresql'] will currently contain
-    # ONLY the settings specified in chef-server.rb plus some
+    # ONLY the settings specified in cinc-server.rb plus some
     # attributes set on initialization of the class.
     @cs_pg_attr = PrivateChef['postgresql']
 
@@ -49,14 +49,14 @@ class PreflightValidator
   # we'll be able to make this better...
   def secrets_exists?
     len = PrivateChef.credentials.length
-    len -= 1 if PrivateChef.credentials.exist?('chef-server', 'webui_key')
-    len -= 1 if PrivateChef.credentials.exist?('chef-server', 'superuser_key')
+    len -= 1 if PrivateChef.credentials.exist?('cinc-server', 'webui_key')
+    len -= 1 if PrivateChef.credentials.exist?('cinc-server', 'superuser_key')
     len > 0
   end
 
   def backend?
     #
-    # When these preflight checks are run, the chef-server.rb has been ingested into
+    # When these preflight checks are run, the cinc-server.rb has been ingested into
     # PrivateChef but has not been merged into the node. This means for accurate results, we'll
     # need to provide an assembled node object that contains the configuration that
     # the backend check needs.
@@ -128,7 +128,7 @@ class PreflightChecks
   # Stop the run immediately if a validation failure occurs, bypassing normal error handlers
   # so we can output the error message without a stack trace to muddy things.
   #
-  # Validators are expected to be run after chef-server.rb entries are loaded but before
+  # Validators are expected to be run after cinc-server.rb entries are loaded but before
   # they're ingested into the node, and before any defaults are configured via libraries/private_chef.rb
   # This allows us to check the values that are explicitly configured independently of
   # the defaults set in the recipe.

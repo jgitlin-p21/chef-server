@@ -240,7 +240,7 @@ calls.
 unsupported (IE, MD5) in the OpenSSL FIPS module with direct Erlang code.
 
 The server can be switched into and out of FIPS mode at runtime. Edit the
-`chef-server.rb` config by adding `fips true` or `fips false` to force FIPS
+`cinc-server.rb` config by adding `fips true` or `fips false` to force FIPS
 mode as necessary. On systems where FIPS is enabled at the kernel level this
 config is defaulted to true. On all other systems it is defaulted to false. FIPS
 mode is currently only supported on RHEL systems.
@@ -292,14 +292,14 @@ Phase1(Currently implemented):
 - Add a function for add\_user and update\_user that inserts only the sentinel
 value into the public\_key field in the users table.
 - The add and update triggers in keys\_update\_trigger.sql are present to maintain
-compatibility with older versions of chef-server.
+compatibility with older versions of cinc-server.
 
 Phase2(To be implemented):
 Todo:
 - Delete the and and update triggers in keys\_update\_trigger.sql.
 - Delete the public\_key column in users (and perhaps clients) table.
 Notes:
-- This should be easier once all the users are on Phase1 release of chef-server.
+- This should be easier once all the users are on Phase1 release of cinc-server.
 - The code will then only interact with the add\_user and update\_user functions in
 the back.
 - The upgrade path after Phase2 rollout will include upgrading to a release with

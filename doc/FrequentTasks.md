@@ -103,7 +103,7 @@ copying files back from the dev-vm to the host.
   - From the dev-vm (Preferred method)
   - From the host machine (mac in most cases)
 - Updating the erlang deps from the dev-vm
-  - cd chef-server/dev
+  - cd cinc-server/dev
   - vagrant up
   - vagrant ssh
   - In another window/tab on the host machine 
@@ -116,10 +116,10 @@ copying files back from the dev-vm to the host.
   - This will create an updated rebar.lock file.
   - cp rebar.lock /dotfiles #dotfiles folder is shared on host
   - On the host (mac)
-    - cp chef-server/dev/dotfiles/rebar.lock chef-server/src/oc_erchef
+    - cp cinc-server/dev/dotfiles/rebar.lock cinc-server/src/oc_erchef
   - Repeat the above steps for all the erlang apps.
 - Updating the erlang deps from the host machine
-  - cd chef-server/src/oc_erchef
+  - cd cinc-server/src/oc_erchef
   - rm -fr \_build
   - ./rebar3 upgrade
   - rm -fr \_build # not removing this can cause strange build problems where omnibus builds pick up mac architecture libraries

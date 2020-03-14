@@ -7,7 +7,7 @@ require 'chef_server_ctl/log'
 # various subcommands.
 #
 # Configuration is based on environment variables to make it easy to
-# implement wrappers in our Habitat packaged versions of chef-server.
+# implement wrappers in our Habitat packaged versions of cinc-server.
 #
 # If the environment variables become too unwieldy, we can change them
 # as long as we remember to go fix the Habitat wrappers.
@@ -31,7 +31,7 @@ module ChefServerCtl
       Log.debug("Using RABBITMQCTL_BIN=#{self.rabbitmqctl_bin}")
       Log.debug("Using ERCHEF_REINDEX_SCRIPT=#{self.erchef_reindex_script}")
       Log.debug("Using HABITAT_MODE=#{self.habitat_mode}")
-      # We don't always get run with a full chef-server-running.json
+      # We don't always get run with a full cinc-server-running.json
       # so any setting that fallsback to running_config or
       # credentials we can't print here. :(
       # Log.debug("Using BIFROST_URL=#{self.bifrost_url}")
@@ -67,7 +67,7 @@ module ChefServerCtl
       end
     end
 
-    # fips_enabled indicates whether the chef-server is running in
+    # fips_enabled indicates whether the cinc-server is running in
     # fips mode.
     def self.fips_enabled
       if ENV['CSC_FIPS_ENABLED']

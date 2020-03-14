@@ -5,7 +5,7 @@ set -evx
 if [ "${ENABLE_SMOKE_TEST:-true}" = 'true' ]; then
     echo -e '\nBEGIN SMOKE TEST\n'
 
-    if sudo grep -q 'fips true' /etc/opscode/chef-server.rb; then
+    if sudo grep -q 'fips true' /etc/opscode/cinc-server.rb; then
         sudo cinc-server-ctl test -J pedant-fips.xml --smoke
     else
         sudo cinc-server-ctl test

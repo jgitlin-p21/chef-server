@@ -7,7 +7,7 @@
 #
 
 # The base_resource_url gets set whenever we are operating behind a proxy,
-# notably in the automate-chef-server all in one installation
+# notably in the automate-cinc-server all in one installation
 #
 <%- if @base_resource_url && @base_resource_url.to_s != "host_header" %>
 base_resource_url "<%= @base_resource_url %>"

@@ -23,7 +23,7 @@ end
 
 execute 'create snakeoil certificate' do
   command <<-EOH
-/opt/chef/embedded/bin/openssl req -subj "/CN=chef-server.dev" \
+/opt/chef/embedded/bin/openssl req -subj "/CN=cinc-server.dev" \
   -new \
   -newkey rsa:2048 \
   -days 365 \

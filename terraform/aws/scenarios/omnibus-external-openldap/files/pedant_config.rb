@@ -7,7 +7,7 @@ ldap(
   "common_name": "User One",
   "country": "unknown",
   "city": "unknown",
-  "email": "user1@chef-server.dev",
+  "email": "user1@cinc-server.dev",
   "username": "user1",
   "external_authentication_uid": "user1",
   "recovery_authentication_enabled": false,

@@ -2,7 +2,7 @@
 
 This directory contains tests related to the lua routing code. 
 These tests that can be run in a non-functional server environment.
-You should not need a running chef-server to perform these tests.
+You should not need a running cinc-server to perform these tests.
 You simply have to set a few environment variables.
 
 ### If Running These Tests From A Functioning Chef Server

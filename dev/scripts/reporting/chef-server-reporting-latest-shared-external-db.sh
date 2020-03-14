@@ -22,7 +22,7 @@ source reporting-functions.sh
 prepare_all
 
 dpkg -i /vagrant/$REPORTING_LATEST
-cp /tmp/external-postgres-1.rb /etc/opscode/chef-server.rb
+cp /tmp/external-postgres-1.rb /etc/opscode/cinc-server.rb
 cp /tmp/external-postgres-1.rb /etc/opscode-reporting/opscode-reporting.rb
 
 reconfigure_and_test

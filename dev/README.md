@@ -1,7 +1,7 @@
 ##  Welcome!
 
-You have found the chef-server self-contained development environment.
-It aims to get you up and hacking on chef-server components in a
+You have found the cinc-server self-contained development environment.
+It aims to get you up and hacking on cinc-server components in a
 safe, pain-free manner.
 
 In short it will create a simple Vagrant VM, while still allowing you to do
@@ -11,7 +11,7 @@ sync support) or otherwise made available on the guest VM.
 
 ## Quick Start
 
-This assumes familiarity with the components of chef-server and that you
+This assumes familiarity with the components of cinc-server and that you
 want to run oc\_erchef off of your local machine.
 
 Requirements:
@@ -19,8 +19,8 @@ Requirements:
 * VirtualBox 4.3+
 * Vagrant 1.7+
 * At least one recent Chef Server 12.0.9+ debian package download,
-  which you can get using this command (if you have the most recent chefdk) `mixlib-install download chef-server -p ubuntu -a x86_64 -l 14`. dvm will then look for the package in either the Downloads dir
-  on your machine or the omnibus/pkg directory under the chef-server repo
+  which you can get using this command (if you have the most recent chefdk) `mixlib-install download cinc-server -p ubuntu -a x86_64 -l 14`. dvm will then look for the package in either the Downloads dir
+  on your machine or the omnibus/pkg directory under the cinc-server repo
   where dvm is running. You can also set the INSTALLER environment variable
   to tell dvm where to find the package if it is not in one of those locations.
 * A text editor on your machine.
@@ -30,14 +30,14 @@ Requirements:
 
 First, add the following configuration to your `/etc/hosts` file:
 
-    192.168.33.100 api.chef-server.dev manage.chef-server.dev
-    192.168.33.150 database.chef-server.dev
-    192.168.33.151 backend.chef-server.dev
-    192.168.33.152 ldap.chef-server.dev
-    192.168.33.153 custom.chef-server.dev
-    192.168.33.155 reportingdb.chef-server.dev
-    192.168.33.156 elasticsearch.chef-server.dev
-    192.168.33.157 solr.chef-server.dev
+    192.168.33.100 api.cinc-server.dev manage.cinc-server.dev
+    192.168.33.150 database.cinc-server.dev
+    192.168.33.151 backend.cinc-server.dev
+    192.168.33.152 ldap.cinc-server.dev
+    192.168.33.153 custom.cinc-server.dev
+    192.168.33.155 reportingdb.cinc-server.dev
+    192.168.33.156 elasticsearch.cinc-server.dev
+    192.168.33.157 solr.cinc-server.dev
 
 Next, bring up the VMs!
 
@@ -65,14 +65,14 @@ knife config on your workstation.
     cinc-server-ctl org-user-add test admin
 
 Now on your workstation, create `.chef/knife.rb` in the root of your
-chef-server checkout, with the following:
+cinc-server checkout, with the following:
 
     current_dir = File.dirname(__FILE__)
 	log_level                :info
 	log_location             STDOUT
 	node_name                "admin"
 	client_key               "#{current_dir}/admin.pem"
-	chef_server_url          "https://api.chef-server.dev/organizations/test"
+	chef_server_url          "https://api.cinc-server.dev/organizations/test"
 
 Then place `/tmp/admin.pem` from the vagrant node into the `.chef` directory.
 
@@ -111,7 +111,7 @@ editing it. It will link it into the project deps directory and hot-load
 it into the running VM[2].  This is available for nearly all dependencies
 declared in a project's rebar.config.
 
-[1] NOTE: Presently this will clone into chef-server directory. We will be
+[1] NOTE: Presently this will clone into cinc-server directory. We will be
  fixing this, it's a side effect of the recent project merge.
 [2] There is currently a limitation here in that the owning project must
 be running to pick up the changes. We will be fixing that shortly.
@@ -169,7 +169,7 @@ and $AUTOPACKAGE to 1.
 ### Multiple vms
 
 If you are fortunate enough to have a host beefy enough to run
-multiple VMs you will hit a snag; the 'chef-server' VM name is
+multiple VMs you will hit a snag; the 'cinc-server' VM name is
 global, and there can only be one. To use a different name, set the
 environment variable export VAGRANT\_MACHINE\_VARIANT to add a suffix
 to the vm names.
@@ -195,7 +195,7 @@ To reset coverage stats for one or all modules:
 
     dvm cover PROJECT reset [MODULE_NAME]
 
-To write coverage results to file (chef-server/testdata/coverage) use:
+To write coverage results to file (cinc-server/testdata/coverage) use:
 
     dvm cover PROJECT report [MODULE_NAME]
 

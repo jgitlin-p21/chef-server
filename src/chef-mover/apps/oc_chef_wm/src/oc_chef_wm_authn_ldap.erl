@@ -160,7 +160,7 @@ result_to_user_ejson(LoginAttr, _, [{eldap_entry, CN, DataIn}|_]) ->
 
     % If you are debugging an issue where a new user has authenticated successfully
     % via opscode-manage , but received an odd 400 message when trying to create a
-    % new linked chef-server account, you've found the right place.
+    % new linked cinc-server account, you've found the right place.
     %
     % The reason for this problem is that the user's directory entry with
     % the ldap provider does not have any valid email address associated with the

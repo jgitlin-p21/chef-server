@@ -70,7 +70,7 @@ variable "scenario" {
 
 variable "upgrade_version_url" {
   type        = "string"
-  description = "The URL to a chef-server used during initial install."
+  description = "The URL to a cinc-server used during initial install."
 }
 
 #########################################################################

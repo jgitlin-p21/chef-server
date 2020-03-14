@@ -14,13 +14,13 @@
 # limitations under the License.
 #
 
-name "chef-server"
+name "cinc-server"
 maintainer "CINC Software, Inc. <maintainers@cinc.sh>"
 homepage   "https://www.chef.io"
 license "Chef EULA"
 license_file "CHEF-EULA.md"
 
-package_name    "chef-server-core"
+package_name    "cinc-server-core"
 replace         "private-chef"
 conflict        "private-chef"
 install_dir     "/opt/opscode"

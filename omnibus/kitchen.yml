@@ -5,7 +5,7 @@ driver:
     cpus: 4
     memory: 4096
   synced_folders:
-    - ['..', '/home/vagrant/chef-server']
+    - ['..', '/home/vagrant/cinc-server']
 
 provisioner:
   name: chef_zero

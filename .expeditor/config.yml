@@ -1,14 +1,14 @@
 # Documentation available at https://expeditor.chef.io/docs/getting-started/
 ---
-product_key: chef-server
+product_key: cinc-server
 
 # Slack channel in Chef Software slack to send notifications about build failures, etc
 slack:
-  notify_channel: chef-server-notify
+  notify_channel: cinc-server-notify
 
 automate:
   organization: products
-  project: chef-server
+  project: cinc-server
 
 github:
   delete_branch_on_merge: true
@@ -79,20 +79,20 @@ merge_actions:
 subscriptions:
   # Subscription to workload action of pull request merge to master branch on
   # omnibus-software project will allow us to trigger an uncached omnibus build
-  # for chef-server when the omnibus-software has modified software config files.
+  # for cinc-server when the omnibus-software has modified software config files.
   # chef/omnibus-software
   - workload: pull_request_merged:chef/omnibus-software:master:*
     actions:
       - trigger_pipeline:omnibus/adhoc:
           only_if_modified:
             - config/software/*
-  - workload: artifact_published:current:chef-server:*
+  - workload: artifact_published:current:cinc-server:*
     actions:
       - bash:.expeditor/promote_harts_and_containers.sh:
           post_commit: true
       - bash:.expeditor/purge_cdn.sh:
           post_commit: true
-  - workload: artifact_published:stable:chef-server:*
+  - workload: artifact_published:stable:cinc-server:*
     actions:
       - built_in:rollover_changelog
       - bash:.expeditor/promote_harts_and_containers.sh:
@@ -100,7 +100,7 @@ subscriptions:
       - bash:.expeditor/purge_cdn.sh:
           post_commit: true
       - built_in:notify_chefio_slack_channels
-  - workload: schedule_triggered:chef/chef-server:master:nightly_build:*
+  - workload: schedule_triggered:chef/cinc-server:master:nightly_build:*
     actions:
       - trigger_pipeline:omnibus/adhoc
   # Run these actions when the freshly built Habitat packages have been uploaded to Depot

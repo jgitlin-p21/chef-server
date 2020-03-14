@@ -1,5 +1,5 @@
 #
-# Cookbook:: chef-server-deploy
+# Cookbook:: cinc-server-deploy
 # Attributes:: default
 #
 # Copyright:: Copyright 2017 Chef Software, Inc.
@@ -19,20 +19,20 @@
 #
 
 # Domain/org names
-default['chef-server-deploy']['automate_server_fqdn'] = 'automate.chef.fake'
-default['chef-server-deploy']['chef_server_fqdn'] = 'chef.chef.fake'
-default['chef-server-deploy']['supermarket_fqdn'] = 'supermarket.chef.fake'
-default['chef-server-deploy']['delivery_chef_org'] = 'delivery'
+default['cinc-server-deploy']['automate_server_fqdn'] = 'automate.chef.fake'
+default['cinc-server-deploy']['chef_server_fqdn'] = 'chef.chef.fake'
+default['cinc-server-deploy']['supermarket_fqdn'] = 'supermarket.chef.fake'
+default['cinc-server-deploy']['delivery_chef_org'] = 'delivery'
 
 # Key locations
-default['chef-server-deploy']['chef_cert_filename'] = 'wildcard.chef.co.crt'
-default['chef-server-deploy']['chef_key_filename'] = 'wildcard.chef.co.key'
+default['cinc-server-deploy']['chef_cert_filename'] = 'wildcard.chef.co.crt'
+default['cinc-server-deploy']['chef_key_filename'] = 'wildcard.chef.co.key'
 
 # Automatic node run data collection (token randomly generated with `SecureRandom.hex(32)`)
-default['chef-server-deploy']['data_collection_token'] = 'e120f9ed31db404889bf0f40d83673fddf0d07d1b906643717675733ae56ea55'
+default['cinc-server-deploy']['data_collection_token'] = 'e120f9ed31db404889bf0f40d83673fddf0d07d1b906643717675733ae56ea55'
 
 # SAML (on chef server)
-default['chef-server-deploy']['enable_saml'] = true
+default['cinc-server-deploy']['enable_saml'] = true
 
 # Automate Liveness Agent
-default['chef-server-deploy']['enable_liveness_agent'] = true
+default['cinc-server-deploy']['enable_liveness_agent'] = true

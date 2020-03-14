@@ -28,7 +28,7 @@
       by default, instead of '--smoke' (this may be a change in behavior
       of pedant itself due to other recent changes)
 - [ ] modify auto clone/load of erlang project deps so that it won't clutter up
-      the chef-server dir on the host.
+      the cinc-server dir on the host.
 - [ ] add oc_id supprt
 - [ ] add indexer support (is this worth it?)
 - [ ] ruby project dep loading support. Should just be able to reference

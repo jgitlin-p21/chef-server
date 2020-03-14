@@ -73,7 +73,7 @@ end
 
 cluster_name = "ChefInfraServer-#{SecureRandom.hex(4)}"
 
-# No discovery settings since we will have only one chef-server backend node.
+# No discovery settings since we will have only one cinc-server backend node.
 
 # Remove the old env config to ensre it's not left over after an upgrade.
 directory '/opt/opscode/service/elasticsearch/env' do

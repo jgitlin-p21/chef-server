@@ -31,7 +31,7 @@ end
   end
 end
 
-ruby_block 'bootstrap-chef-server-data' do
+ruby_block 'bootstrap-cinc-server-data' do
   block do
     ChefServerDataBootstrap.new(node).bootstrap
   end

@@ -72,8 +72,8 @@ See our [Frequently Asked Questions document](https://www.chef.io/bmc-faq/) for 
 
 ### Deprecation notice
 
-- [Deprecated PowerPC and s390x platforms](https://blog.chef.io/2018/11/01/end-of-life-announcement-for-chef-server-for-linux-on-ibm-z-and-linux-on-ibm-power-systems/)
-- [Deprecated Keepalived/DRBD-based HA](https://blog.chef.io/2018/10/02/end-of-life-announcement-for-drbd-based-ha-support-in-chef-server/)
+- [Deprecated PowerPC and s390x platforms](https://blog.chef.io/2018/11/01/end-of-life-announcement-for-cinc-server-for-linux-on-ibm-z-and-linux-on-ibm-power-systems/)
+- [Deprecated Keepalived/DRBD-based HA](https://blog.chef.io/2018/10/02/end-of-life-announcement-for-drbd-based-ha-support-in-cinc-server/)
 - Deprecated Ubuntu 14.04 support. (Ubuntu 14 was EoL’d at the end of April 2019)
 
 ### Updates and Improvements
@@ -127,7 +127,7 @@ This release contains some minor improvements and updates to include software:
 - Enhance bifrost to use SSL/TLS
 - Updates to ruby libraries (rubyzip)
 - Updates to erlang libraries (sqerl, epgsql)
-- Improvements to the habitized chef-server 
+- Improvements to the habitized cinc-server 
 - Segment free cookbooks are implemented. (https://github.com/chef/chef-rfc/blob/master/rfc067-cookbook-segment-deprecation.md) This bumps the API version
 - acl for cookbook artifacts
 - Security headers for HTTP
@@ -201,12 +201,12 @@ PostgreSQL 9.6 upgrade process
 
 ## 12.16.1 (2017-08-15)
 
-* [Upgrade to PostgreSQL 9.6](https://github.com/chef/chef-server/pull/1310),
+* [Upgrade to PostgreSQL 9.6](https://github.com/chef/cinc-server/pull/1310),
   Chef Server now uses the latest stable version of the 9.6 series (9.6.3). Upgrades of existing
   installations are done automatically, but creating backups is advised.
 
   The information below only applies if you have set a custom value for `checkpoint_segments`
-  in your `/etc/opscode/chef-server.rb`. If you have not set a custom value, there is nothing to
+  in your `/etc/opscode/cinc-server.rb`. If you have not set a custom value, there is nothing to
   change:
 
   The `checkpoint_segments` configuration setting is gone, so if you before have set
@@ -234,20 +234,20 @@ PostgreSQL 9.6 upgrade process
 * Elasticsearch 5 support: Chef Server now supports Elasticsearch 5.
   This allows Chef Server and Chef Automate 1.6 to use the same Elasticsearch instance.
 
-* [EPMD patch](https://github.com/chef/chef-server/pull/1328): The Erlang Port Mapper Daemon (EPMD)
+* [EPMD patch](https://github.com/chef/cinc-server/pull/1328): The Erlang Port Mapper Daemon (EPMD)
   included in this package is now patched to only listen on the addresses specified in
   `ERL_EPMD_ADDRESS`. Before, it would implicitly add ::1 and 127.0.0.1 to the set of addresses to
   listen on, causing trouble for systems without a ::1.
 
   The preflight check that was in place to catch these situations has been removed.
 
-* [RabbitMQ health check in status endpoint](https://github.com/chef/chef-server/pull/1345): Chef Server's
+* [RabbitMQ health check in status endpoint](https://github.com/chef/cinc-server/pull/1345): Chef Server's
   `_status` endpoint now checks the health of the analytics and internal RabbitMQ vhosts. For these checks
   to work, the RabbitMQ management plugin must be installed. If it is not, the checks are not done. If
   Chef Server is configured not to use Actions, a check will not be performed against the Actions vhost.
   If an indexing queue is not used, the `chef_index` RabbitMQ vhost will not be checked.
 
-* [Notification of affected services when updating secrets with set-secret](https://github.com/chef/chef-server/pull/1313):
+* [Notification of affected services when updating secrets with set-secret](https://github.com/chef/cinc-server/pull/1313):
   `cinc-server-ctl set-secret` will notify the user of services that depend on
   the secret being changed. With the optional flag `--with-restart`,
   `cinc-server-ctl set-secret` will attempt to automatically restart the
@@ -255,52 +255,52 @@ PostgreSQL 9.6 upgrade process
 
 ## 12.15.8 (2017-06-20)
 
-* [Stricter validation of non-functional user record fields](https://github.com/chef/chef-server/pull/1294),
+* [Stricter validation of non-functional user record fields](https://github.com/chef/cinc-server/pull/1294),
   Chef Server now uses a regular expression to validate first, middle, and last name of a user
   on creation. The regex used is `[[:word:][:digit:]!'. -]*` (UTF-8). This tries to accommodate
   a wide range of names, while also strengthening Chef Server's role in preventing XSS attacks
   in web-based API clients. For compatibility reasons, a user's first, middle, or last name may
   also be `""` (empty string).
-* [Search user by email case-insensitively](https://github.com/chef/chef-server/pull/1283):
+* [Search user by email case-insensitively](https://github.com/chef/cinc-server/pull/1283):
   while technically only the host-part of an email address is to be treated case-insensitively,
   most email providers treat the _entire_ email address as case-insensitive. Chef Server now
   adopts that behaviour for _searching users_: querying for `user@host` (`GET /users?email=user%40host`)
   will now also return users with the recorded email of `USER@HOST` etc.
-* API requests including an _unknown group_ now return 404 instead of 500 ([#1286](https://github.com/chef/chef-server/pull/1286))
-* `opscode-erchef` now allows for configuring an optional ulimit via `opscode_erchef['memory_maxbytes']` ([#1279](https://github.com/chef/chef-server/pull/1279)).
+* API requests including an _unknown group_ now return 404 instead of 500 ([#1286](https://github.com/chef/cinc-server/pull/1286))
+* `opscode-erchef` now allows for configuring an optional ulimit via `opscode_erchef['memory_maxbytes']` ([#1279](https://github.com/chef/cinc-server/pull/1279)).
 
-* Fixed [regression](https://github.com/chef/chef-server/pull/1305) where credentials consumed
+* Fixed [regression](https://github.com/chef/cinc-server/pull/1305) where credentials consumed
   by Analytics would be left plainly on disk after the `insecure_addon_compat` option was set to `false`.
-* Fixed [regression](https://github.com/chef/chef-server/issues/1281) where parts of the available data
+* Fixed [regression](https://github.com/chef/cinc-server/issues/1281) where parts of the available data
   (e.g. cookbook upload events) weren't sent to Chef Automate with the proper data collector token.
 
 ### Security Updates
 
-* [Upgrade zlib to 1.2.11](https://github.com/chef/chef-server/pull/1311): this addresses [CVE-2016-9841](https://nvd.nist.gov/vuln/detail/CVE-2016-9841), [CVE-2016-9842](https://nvd.nist.gov/vuln/detail/CVE-2016-9842), and [CVE-2016-9843](https://nvd.nist.gov/vuln/detail/CVE-2016-9843).
+* [Upgrade zlib to 1.2.11](https://github.com/chef/cinc-server/pull/1311): this addresses [CVE-2016-9841](https://nvd.nist.gov/vuln/detail/CVE-2016-9841), [CVE-2016-9842](https://nvd.nist.gov/vuln/detail/CVE-2016-9842), and [CVE-2016-9843](https://nvd.nist.gov/vuln/detail/CVE-2016-9843).
 
 ## 12.15.7 (2017-05-16)
 
-* Fixed [regression](https://github.com/chef/chef-server/issues/1274) that prevented
+* Fixed [regression](https://github.com/chef/cinc-server/issues/1274) that prevented
   some Open Source Chef 11 upgrades due to too-strict validations on object names in ACLs. This
   issue would also prevent editing of ACLs directly on node objects if the
   node name contained a ".".  This issue was introduced in 12.15.0
-* Fixed [regression](https://github.com/chef/chef-server/pull/1272) that prevented the `reindex`
+* Fixed [regression](https://github.com/chef/cinc-server/pull/1272) that prevented the `reindex`
   command from working. This issue was a side effect of consolidating the multiple Erlang runtimes
   that we distributed with Chef Server into one for 12.15.0.
 
 ## 12.15.6 (2017-05-05)
 
-* Fixed [regression](https://github.com/chef/chef-server/pull/1257) in oc-id.
+* Fixed [regression](https://github.com/chef/cinc-server/pull/1257) in oc-id.
   The identity service was using the wrong Chef Server API version level.
   .
 ## 12.15.5 (2017-05-04)
 
-* Fixed [regression](https://github.com/chef/chef-server/pull/1253) in the nginx proxy
+* Fixed [regression](https://github.com/chef/cinc-server/pull/1253) in the nginx proxy
   that prevented Automate-based Compliance profiles from being reachable
 
 ## 12.15.3 (2017-05-03)
 
-* Fixed [regression](https://github.com/chef/chef-server/pull/1246) in Bookshelf's preflight checks.
+* Fixed [regression](https://github.com/chef/cinc-server/pull/1246) in Bookshelf's preflight checks.
 * Fixed regression that would cause Manage to be misconfigured
   to enable LDAP by default.
 * PUT to `/users/USERNAME/_acl/PERM` will no longer return a 400 when the
@@ -327,10 +327,10 @@ enabled.
 `/organizations/<orgname>/required_recipe` returns the required recipe and
 200 when the endpoint is enabled and requested by an authorized client.
 
-`required_recipe["enable"]` in chef-server.rb enables the required recipe
+`required_recipe["enable"]` in cinc-server.rb enables the required recipe
 feature.
 
-`required_recipe["path"]` in chef-server.rb specifies the recipe file to
+`required_recipe["path"]` in cinc-server.rb specifies the recipe file to
 serve.
 
 ### ACLs and groups can refer to global groups
@@ -374,12 +374,12 @@ updated to the latest releases of all add-ons, you can set:
 
    insecure_addon_compat false
 
-in chef-server.rb and remove these other occurrences of secrets as
+in cinc-server.rb and remove these other occurrences of secrets as
 well.
 
 If you are using LDAP integration, external postgresql, or other
 Chef Server features that require providing passwords in
-`/etc/opscode/chef-server.rb`, we've also provided commands that
+`/etc/opscode/cinc-server.rb`, we've also provided commands that
 allow you to set these passwords outside of the configuration
 file. For information about these commands see:
 
@@ -390,7 +390,7 @@ passwords related to keepalived and DRBD in /var/opt/opscode.
 
 For further information see:
 
-See [Chef Server Secrets Management](https://docs.chef.io/server_security.html#chef-server-credentials-management)
+See [Chef Server Secrets Management](https://docs.chef.io/server_security.html#cinc-server-credentials-management)
 for more details.
 
 ## 12.13.0 (2017-02-20)
@@ -407,12 +407,12 @@ them via adding
 
     opscode_solr4['enable_full_admin_api'] = true
 
-to `chef-server.rb`.
+to `cinc-server.rb`.
 
 ### FIPS runtime flag exposed
 
 The Chef Server package now exposes a `fips` configuration flag in
-`chef-server.rb`. Setting `fips true` and reconfiguring will start the
+`cinc-server.rb`. Setting `fips true` and reconfiguring will start the
 server in FIPS mode. The default value of this flag is `false` except
 on systems where FIPS is enabled at the Kernel where it defaults to `true`.
 
@@ -457,7 +457,7 @@ To remove the older GC logs, run `cinc-server-ctl cleanup` after
 upgrading.
 
 To suppress the GC Log completely, the Chef Server now accepts the
-following option in `/etc/opscode/chef-server.rb`:
+following option in `/etc/opscode/cinc-server.rb`:
 
     # true (default) to enable gc logging,
     # false to disable gc logging
@@ -467,7 +467,7 @@ following option in `/etc/opscode/chef-server.rb`:
 
 The oc_id service now includes configuration for outbound email to
 ensure password reset emails can be sent correctly.  Chef Server now
-accepts the following options in `/etc/opscode/chef-server.rb`:
+accepts the following options in `/etc/opscode/cinc-server.rb`:
 
     # defaults to the value of the from_email configuration option
     oc_id['email_from_address'] = "oc_id@example.com"
@@ -503,7 +503,7 @@ Further, Chef Server is now available on the s390x platform.
   data-collector service after authenticating the request using Chef
   Server's standard authentication headers.  To use this endpoint,
   users must set both of the following options in
-  `/etc/opscode/chef-server.rb`:
+  `/etc/opscode/cinc-server.rb`:
 
         data_collector['token']
         data_collector['root_url']
@@ -516,7 +516,7 @@ Further, Chef Server is now available on the s390x platform.
   profiles to a user-configurable Chef Automate server after
   authenticating the request using Chef Server's standard
   authentication headers. To use this endpoint, users must set both
-  of the following options in `/etc/opscode/chef-server.rb`:
+  of the following options in `/etc/opscode/cinc-server.rb`:
 
         profiles['root_url']
         data_collector['token']
@@ -552,11 +552,11 @@ Further, Chef Server is now available on the s390x platform.
 
 1. The change of TLS ciphers can cause older tooling to fail to negotiate
    SSL sessions with the Chef Server. The changes to the cipher list are
-   captured [here](https://github.com/chef/chef-server/pull/918#issuecomment-244430458).
+   captured [here](https://github.com/chef/cinc-server/pull/918#issuecomment-244430458).
    Upgrading any custom clients of the Chef Server API to use a current SSL
    release will resolve this.
    * Alternatively, you can set `nginx['ssl_protocols']` in
-     `/etc/opscode/chef-server.rb` to a set of ciphers that are
+     `/etc/opscode/cinc-server.rb` to a set of ciphers that are
      compatible with your tooling, then running `cinc-server-ctl
      reconfigure` to pick up the changes.
 2. With this TLS cipher suite change, the Reporting add-on will report
@@ -611,7 +611,7 @@ ssl_version :TLSv1_2
     control membership based on your organizational policies
   * See important compatibility note below.
 * ACL updates now permit adding a client to ACLs when a user of the same
-  name exists in the system [111](https://github.com/chef/chef-server/issues/111)
+  name exists in the system [111](https://github.com/chef/cinc-server/issues/111)
 * cinc-server-ctl user-delete will now report in which organizations the
   user is an adminstrator of when that blocks deletion.  It also
   provides a new option to attempt to auto-remove those users from the
@@ -630,8 +630,8 @@ ssl_version :TLSv1_2
 #### Security
 
 * This release includes a fix for an issue where policies of the
-  same name could be accessed across organizations [643](https://github.com/chef/chef-server/pull/643)
-* Fixed logging LDAP password in event of some errors [156](https://github.com/chef/chef-server/issues/156)
+  same name could be accessed across organizations [643](https://github.com/chef/cinc-server/pull/643)
+* Fixed logging LDAP password in event of some errors [156](https://github.com/chef/cinc-server/issues/156)
 
 #### API Changes
 
@@ -665,7 +665,7 @@ ssl_version :TLSv1_2
   If you make internal use of PUTs to this endpoint, please wait to
   upgrade.
 
-  This change is being tracked as [#938](https://github.com/chef/chef-server/issues/938).
+  This change is being tracked as [#938](https://github.com/chef/cinc-server/issues/938).
 * ACLs: users must be a member of an organization in order to be added
   to the ACLs of an object within an organization. If you GET an ACE
   that contains a user not in the org, you will not be able to re-PUT

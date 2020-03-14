@@ -90,7 +90,7 @@ class SolrPreflightValidator < PreflightValidator
 
           opscode_erchef['search_queue_mode'] = 'batch'
 
-          in /etc/opscode/chef-server.rb
+          in /etc/opscode/cinc-server.rb
 
         EOM
       end

@@ -68,7 +68,7 @@ class BootstrapPreflightValidator < PreflightValidator
 
   # In order to support a stateless standalone that connects to all-external
   # backend components, allow data bootstrapping to be bypassed when
-  # no chef-server-running.json is present but a secrets file is present.
+  # no cinc-server-running.json is present but a secrets file is present.
   def bypass_bootstrap?
     first_run? && all_creds_exist? && PrivateChef['postgresql']['external']
   end
@@ -84,7 +84,7 @@ class BootstrapPreflightValidator < PreflightValidator
   end
 
   def secrets_contains_pivotal?
-    PrivateChef.credentials.exist?('chef-server', 'superuser_key')
+    PrivateChef.credentials.exist?('cinc-server', 'superuser_key')
   end
 
   def pivotal_key_exists?
@@ -162,7 +162,7 @@ class BootstrapPreflightValidator < PreflightValidator
   def err_BOOT008_pivotal_public_key_mismatch
     <<~EOM
       BOOT008: The pivotal key in /etc/opscode/private-chef-secrets.json exists, but its public key
-               does not match the key for the pivotal user in chef-server.
+               does not match the key for the pivotal user in cinc-server.
 
                Critical maintenance operations cannot be performed.
 

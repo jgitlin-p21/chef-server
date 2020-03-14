@@ -5,7 +5,7 @@ secrets_file = ENV['SECRETS_FILE'] || "/etc/opscode/private-chef-secrets.json"
 credentials = Veil::CredentialCollection::ChefSecretsFile.from_file(secrets_file)
 
 key = Tempfile.new("latovip")
-key.puts credentials.get("chef-server", "superuser_key")
+key.puts credentials.get("cinc-server", "superuser_key")
 key.flush
 key.close
 

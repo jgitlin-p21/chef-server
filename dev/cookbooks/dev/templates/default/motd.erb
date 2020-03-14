@@ -1,12 +1,12 @@
 DVM QuickStart
 ---------------
-1. On the host, cd to chef-server/dev, and run the below command. Leave it running.
+1. On the host, cd to cinc-server/dev, and run the below command. Leave it running.
       $ ./sync
 2. In your active shell (this one!) use "sudo -i" to gain root. dvm needs it.
-3. To load the chef-server repo's erchef project and run it in the active shell:
+3. To load the cinc-server repo's erchef project and run it in the active shell:
       # dvm quickstart oc_erchef
 4. To load the things you'll usually want - erchef, pedant, omnibus cookbooks:
-      # dvm quickstart chef-server
+      # dvm quickstart cinc-server
 4. To run oc-chef-pedant, the server REST API spec suite:
       # dvm load oc-chef-pedant
       # dvm run oc-chef-pedant [--pedant-flags,...]
@@ -14,7 +14,7 @@ DVM QuickStart
       # dvm psql $PROJECT
 
 Use dvm list for a list of loadable projects, and dvm list $PROJECT for a list of loadable deps.
-For a lot more information about dvm see chef-server/dev/README.md
+For a lot more information about dvm see cinc-server/dev/README.md
 
 Note that supported erlang projects will automatically hot-load your changes -
 just save them from the host and they'll loaded within a few seconds.

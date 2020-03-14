@@ -20,12 +20,12 @@
 #
 # TODO: extract this into something that add-ons can use; no sense
 # cargo-culting it around everywhere
-if File.exist?('/etc/opscode/chef-server-running.json')
-  old_config = JSON.parse(IO.read('/etc/opscode/chef-server-running.json'))
+if File.exist?('/etc/opscode/cinc-server-running.json')
+  old_config = JSON.parse(IO.read('/etc/opscode/cinc-server-running.json'))
 
   # We're stashing these outside the "private_chef" attributes tree to
   # prevent us from carrying them along forever when we write out the
-  # chef-server-running.json file at the end of the run.
+  # cinc-server-running.json file at the end of the run.
   #
   # For example, to access the old version of the attribute
   # ['private_chef']['foo']['bar'], you'll look at
@@ -38,14 +38,14 @@ if File.exist?('/etc/opscode/chef-server-running.json')
   node.consume_attributes('previous_run' => old_config['private_chef'])
 end
 
-if File.exist?('/etc/opscode/chef-server.json') &&
-   !(File.exist?('/etc/opscode/private-chef.rb') || File.exist?('/etc/opscode/chef-server.rb'))
-  Chef::Log.fatal('Configuration via /etc/opscode/chef-server.json is not supported. Please use /etc/opscode/chef-server.rb')
+if File.exist?('/etc/opscode/cinc-server.json') &&
+   !(File.exist?('/etc/opscode/private-chef.rb') || File.exist?('/etc/opscode/cinc-server.rb'))
+  Chef::Log.fatal('Configuration via /etc/opscode/cinc-server.json is not supported. Please use /etc/opscode/cinc-server.rb')
   exit!(1)
 else
   PrivateChef[:node] = node
   private_chef_path = '/etc/opscode/private-chef.rb'
-  chef_server_path = '/etc/opscode/chef-server.rb'
+  chef_server_path = '/etc/opscode/cinc-server.rb'
   private_chef_rb_exists = File.exist?(private_chef_path)
   private_chef_rb_not_symlink = !File.symlink?(private_chef_path)
   chef_server_rb_exists = File.exist?(chef_server_path)
@@ -56,24 +56,24 @@ else
 
   # Things are a bit tricky here, because there are multiple scenarios.  But the
   # upshot is, if we have a private-chef.rb and don't have (or have an empty)
-  # chef-server.rb, then copy it over and link back.  Otherwise warn.
+  # cinc-server.rb, then copy it over and link back.  Otherwise warn.
   if private_chef_rb_exists && private_chef_rb_not_symlink && chef_server_rb_exists &&
      chef_server_rb_not_empty
-    Chef::Log.warn('/etc/opscode/private-chef.rb is deprecated and should be removed. Using /etc/opscode/chef-server.rb')
+    Chef::Log.warn('/etc/opscode/private-chef.rb is deprecated and should be removed. Using /etc/opscode/cinc-server.rb')
   elsif private_chef_rb_exists && private_chef_rb_not_symlink
-    Chef::Log.warn('Moving to /etc/opscode/chef-server.rb for configuration - /etc/opscode/private-chef.rb is deprecated.')
+    Chef::Log.warn('Moving to /etc/opscode/cinc-server.rb for configuration - /etc/opscode/private-chef.rb is deprecated.')
     FileUtils.mv(private_chef_path, chef_server_path)
     FileUtils.ln_s(chef_server_path, private_chef_path)
     chef_server_rb_exists = true
   end
 
-  if File.exist?('/etc/opscode/chef-server.json')
-    Chef::Log.warn('Ignoring unsupported configuration file /etc/opscode/chef-server.json.')
-    Chef::Log.warn('Using /etc/opscode/chef-server.rb instead.')
+  if File.exist?('/etc/opscode/cinc-server.json')
+    Chef::Log.warn('Ignoring unsupported configuration file /etc/opscode/cinc-server.json.')
+    Chef::Log.warn('Using /etc/opscode/cinc-server.rb instead.')
   end
 
   if chef_server_rb_exists
-    # Restrict 'other' permissions on chef-server.rb as it may contain sensitive info,
+    # Restrict 'other' permissions on cinc-server.rb as it may contain sensitive info,
     # such as the LDAP bind password. Using FileUtils to fix, as a file resource only
     # sets permissions in absolute mode. This addresses config files created before the
     # fix was implemented in the postinst script.
@@ -85,7 +85,7 @@ else
   # NOTE: Over time, we can move the validation done in private_chef.rb
   #       here as well.
   #
-  # Preflight checks are executed prior to merging chef-server.rb (here as PrivateChef)
+  # Preflight checks are executed prior to merging cinc-server.rb (here as PrivateChef)
   # into the node, so that we can validate the settings explicitly set by
   # the customer, and be aware of those that were not set.
   #

@@ -1,8 +1,8 @@
 # Chef Server
 
-[![Build Status](https://badge.buildkite.com/ccdefb69f938db51cb23f092e54030aa41608e6472cfe4aa7e.svg)](https://buildkite.com/chef/chef-chef-server-master-omnibus-adhoc)
+[![Build Status](https://badge.buildkite.com/ccdefb69f938db51cb23f092e54030aa41608e6472cfe4aa7e.svg)](https://buildkite.com/chef/chef-cinc-server-master-omnibus-adhoc)
 
-**Umbrella Project**: [Chef Infra](https://github.com/chef/chef-oss-practices/blob/master/projects/chef-server-infra.md)
+**Umbrella Project**: [Chef Infra](https://github.com/chef/chef-oss-practices/blob/master/projects/cinc-server-infra.md)
 
 **Project State**: [Active](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md#active)
 
@@ -46,7 +46,7 @@ This repository contains the core services that make up the Chef Server.
 ## Working on the Chef Server
 
 The quickest way to get a Chef Server development environment is to
-follow the [instructions](https://github.com/chef/chef-server/blob/master/dev/README.md) in the `dev` directory.
+follow the [instructions](https://github.com/chef/cinc-server/blob/master/dev/README.md) in the `dev` directory.
 This environment is based on Vagrant and features hot reloading of code.
 
 ## Building a Chef Server package locally:
@@ -62,7 +62,7 @@ Once the build is complete, the package should be in omnibus/pkg. By default the
 
 ## Habitized Chef Server
 
-The following components now exist as Habitat packages and are available [here](https://bldr.habitat.sh/#/origins/chef-server/packages):
+The following components now exist as Habitat packages and are available [here](https://bldr.habitat.sh/#/origins/cinc-server/packages):
 - nginx
 - bookshelf
 - oc_id
@@ -85,7 +85,7 @@ docker-compose down && docker system prune --volumes -f && docker-compose up
 Running pedant tests:
 
 ```shell
-docker-compose exec cinc-server-ctl chef-server-test
+docker-compose exec cinc-server-ctl cinc-server-test
 ```
 
 Running cinc-server-ctl:
@@ -117,9 +117,9 @@ If you're looking to contribute to certain parts of the Chef server, familiarity
 
 ## ACC Pipeline & Chef Expeditor
 
-Chef Software, Inc. leverages an internal Chef Automate installation, commonly referred to as ACC, to "drink our own champagne" and easily test and leverage builds of our products as they are created. The `chef/chef-server` repository, like many other Chef Software repositories, leverages an internal utility called Chef Expeditor to create a pub-sub model of actions across our various CI/CD utilities.
+Chef Software, Inc. leverages an internal Chef Automate installation, commonly referred to as ACC, to "drink our own champagne" and easily test and leverage builds of our products as they are created. The `chef/cinc-server` repository, like many other Chef Software repositories, leverages an internal utility called Chef Expeditor to create a pub-sub model of actions across our various CI/CD utilities.
 
-One of those actions is creating a change in our internal Chef Automate instance every time we successfully generate an omnibus build of Chef Server. This change allows us to easily perform a complex matrix of test suites, followed by a deployment to our internal Chef Server that we use to drive our internal infrastructure. While there is code to support this pipeline in the repository (`.delivery/**`, `terraform/**`, and `cookbooks/chef-server-deploy/**`), this repository does not depend on Chef Automate to handle pull requests.
+One of those actions is creating a change in our internal Chef Automate instance every time we successfully generate an omnibus build of Chef Server. This change allows us to easily perform a complex matrix of test suites, followed by a deployment to our internal Chef Server that we use to drive our internal infrastructure. While there is code to support this pipeline in the repository (`.delivery/**`, `terraform/**`, and `cookbooks/cinc-server-deploy/**`), this repository does not depend on Chef Automate to handle pull requests.
 
 The resources listed above that drive this pipeline, while open source, are not intended or supported for use outside of ACC as they have dependencies that are unique to Chef Software. However, please feel free to reference them for your own implementations. If you have any questions about these resources, please feel free to reach out in the [Chef Community Slack](http://community-slack.chef.io/).
 

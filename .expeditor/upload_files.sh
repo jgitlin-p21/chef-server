@@ -12,15 +12,15 @@ export OCTOKIT_ACCESS_TOKEN
 .expeditor/license_scout.sh
 
 # Upload the License Scout Dependency Manifest to the S3 bucket
-aws s3 cp chef-server-dependency-licenses.json "s3://chef-automate-artifacts/licenses/chef-server/$VERSION.json" --acl public-read --profile chef-cd
-aws s3 cp chef-server-dependency-licenses.json "s3://chef-automate-artifacts/unstable/latest/chef-server/licenses.json" --acl public-read --profile chef-cd
+aws s3 cp cinc-server-dependency-licenses.json "s3://chef-automate-artifacts/licenses/cinc-server/$VERSION.json" --acl public-read --profile chef-cd
+aws s3 cp cinc-server-dependency-licenses.json "s3://chef-automate-artifacts/unstable/latest/cinc-server/licenses.json" --acl public-read --profile chef-cd
 
 #
 # Generate the manifest.json
 #
 
 # Download or create the versions file
-aws s3 cp "s3://chef-automate-artifacts/unstable/latest/chef-server/versions.json" existing-versions.json --profile chef-cd || echo "[]" > existing-versions.json
+aws s3 cp "s3://chef-automate-artifacts/unstable/latest/cinc-server/versions.json" existing-versions.json --profile chef-cd || echo "[]" > existing-versions.json
 
 # Use create_manifest.rb to generate the manifest.json file
 ruby .expeditor/create_manifest.rb
@@ -29,9 +29,9 @@ ruby .expeditor/create_manifest.rb
 jq ". |= .+ [\"$VERSION\"]" existing-versions.json > updated-versions.json
 
 # Upload the manifest to the S3 bucket
-aws s3 cp "$VERSION.json" "s3://chef-automate-artifacts/manifests/chef-server/$VERSION.json" --acl public-read --profile chef-cd
-aws s3 cp "$VERSION.json" "s3://chef-automate-artifacts/unstable/latest/chef-server/manifest.json" --acl public-read --profile chef-cd
-aws s3 cp updated-versions.json "s3://chef-automate-artifacts/unstable/latest/chef-server/versions.json" --acl public-read --profile chef-cd
+aws s3 cp "$VERSION.json" "s3://chef-automate-artifacts/manifests/cinc-server/$VERSION.json" --acl public-read --profile chef-cd
+aws s3 cp "$VERSION.json" "s3://chef-automate-artifacts/unstable/latest/cinc-server/manifest.json" --acl public-read --profile chef-cd
+aws s3 cp updated-versions.json "s3://chef-automate-artifacts/unstable/latest/cinc-server/versions.json" --acl public-read --profile chef-cd
 
 #
 # Cleanup

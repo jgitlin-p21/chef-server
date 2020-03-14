@@ -130,7 +130,7 @@ EOM
           end
         else
           # UGH _ note we're still stuck on not having /do-not-use - because if we clone to external-deps it will not get nuked!
-          raise DVMArgumentError, "Project not available. Clone or link it into chef-server/external-deps directory onto your host machine, or update the project git settings."
+          raise DVMArgumentError, "Project not available. Clone or link it into cinc-server/external-deps directory onto your host machine, or update the project git settings."
         end
       end
 
@@ -172,7 +172,7 @@ EOM
       # write invalid config to the omnibus managed copy, leaving you with a
       # broken configuration. So we need to nuke those links first.
       purge_links
-      # TODO currently we only load projects that are maintained by Chef and live in chef-server/src.
+      # TODO currently we only load projects that are maintained by Chef and live in cinc-server/src.
       # If this changes, we'll need to support specification of alternative build commands.
       # TODO2: add build.env since only erchef needs use_system_gecode...
       make_target = project['make-target'] ? project['make-target'] : 'dvm'

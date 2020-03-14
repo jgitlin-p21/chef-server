@@ -2,7 +2,7 @@
 # This portion comes from chef_http_lb_common via {{parent}}
   server {
     listen {{port}};
-    server_name api.chef-server.dev;
+    server_name api.cinc-server.dev;
 
     {{#if ../bind.cinc-server-ctl ~}}
        {{#eachAlive ../bind.cinc-server-ctl.members as |member| ~}}

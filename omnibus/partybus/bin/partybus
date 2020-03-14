@@ -67,7 +67,7 @@ end
 # We know we can not support upgrades from further back than
 # Enterprise Chef 11.1, which shipped migration 1.13:
 #
-#   https://github.com/chef/chef-server/tree/11.1.0/files/private-chef-upgrades/001
+#   https://github.com/chef/cinc-server/tree/11.1.0/files/private-chef-upgrades/001
 #
 # We also know that migration 1.14 through 1.19 landed together in
 # Chef Server 12.0.

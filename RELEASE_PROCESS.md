@@ -30,7 +30,7 @@ In order to release, you will need the following accounts/permissions:
 
 ### Informing everyone of a pending release.
 
-- [ ] Announce your intention to drive the release to #cft-announce and #chef-server on slack.
+- [ ] Announce your intention to drive the release to #cft-announce and #cinc-server on slack.
 
 ### Getting the build to be released into current with a minor/major version bump.
 
@@ -46,7 +46,7 @@ In order to release, you will need the following accounts/permissions:
 
 > This process is currently manual. There is working being done to fold this into a testing pipeline.
 
-Every merge to chef-server master is built and this clean build is tested
+Every merge to cinc-server master is built and this clean build is tested
 with all pedant tests. We only run smoke tests for the FIPS mode. Upgrade
 and addon testing must be done in advance of the release.
 
@@ -76,9 +76,9 @@ The git SHA of the build you are testing can be found in
   Make sure that this version has gone through the upgrade testing. 
 - [ ] Use expeditor to promote the build:
 
-        /expeditor promote chef/chef-server:master VERSION
+        /expeditor promote chef/cinc-server:master VERSION
 
-  Please do this in the `#chef-server-notify` room.  Once this is
+  Please do this in the `#cinc-server-notify` room.  Once this is
   done, the release is available to the public via the APT and YUM
   repositories and downloads.chef.io.
 

@@ -41,7 +41,7 @@ pkg_version() {
 do_before() {
   do_default_before
   if [ ! -f "$PLAN_CONTEXT/../../../VERSION" ]; then
-    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the chef-server project root." 56
+    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the cinc-server project root." 56
   fi
   update_pkg_version
 }

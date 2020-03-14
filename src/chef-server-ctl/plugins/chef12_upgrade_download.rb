@@ -20,7 +20,7 @@ add_command_under_category "chef12-upgrade-download", "open-source-upgrade", "Do
     @options.skip_cleanup = false
     @options.chef11_server_url = "https://localhost"
     @options.chef11_admin_client_name = "admin"
-    @options.chef11_admin_client_key = "/etc/chef-server/admin.pem"
+    @options.chef11_admin_client_key = "/etc/cinc-server/admin.pem"
 
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: cinc-server-ctl chef12-upgrade-download [options]"

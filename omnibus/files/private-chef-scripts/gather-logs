@@ -34,9 +34,9 @@ then
     fi
 elif [[ $type == 'OSC' ]];
 then
-    path='chef-server'
+    path='cinc-server'
     ctl_cmd='cinc-server-ctl'
-    config_name='chef-server.rb'
+    config_name='cinc-server.rb'
 
     if [[ ! -e "/opt/$path/bin/$ctl_cmd" ]];
     then

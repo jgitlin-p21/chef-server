@@ -1,7 +1,7 @@
-api_fqdn "api.chef-server.dev"
+api_fqdn "api.cinc-server.dev"
 
 topology "standalone"
-<% node['provisioning']['chef-server-config'].each_pair do |k, v| %>
+<% node['provisioning']['cinc-server-config'].each_pair do |k, v| %>
 <%= k%>=<%= v%>
 <% end %>
 

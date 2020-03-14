@@ -53,7 +53,7 @@ enterprise_reconfigure_and_test() {
 
 install_enterprise_chef_server() {
     cinc-server-ctl cleanse yes --with-external
-    apt-get remove chef-server-core -y
+    apt-get remove cinc-server-core -y
     dpkg -i /vagrant/$ENTERPRISE_CHEF_SERVER_11
     private-chef-ctl reconfigure
 }

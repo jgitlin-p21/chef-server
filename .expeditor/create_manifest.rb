@@ -66,7 +66,7 @@ pkg_origin = "chef"
 %w{
   openresty-noroot
   oc_id
-  chef-server-nginx
+  cinc-server-nginx
   bookshelf
   cinc-server-ctl
   oc_bifrost

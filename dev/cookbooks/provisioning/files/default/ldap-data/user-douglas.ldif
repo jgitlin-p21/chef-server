@@ -1,4 +1,4 @@
-dn: cn=Tom Douglas,ou=chefs,dc=chef-server,dc=dev
+dn: cn=Tom Douglas,ou=chefs,dc=cinc-server,dc=dev
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
@@ -7,6 +7,6 @@ cn: Tom Douglas
 sn: Douglas
 displayName: Tom Douglas
 givenName: Tom
-mail: douglas@chef-server.dev
+mail: douglas@cinc-server.dev
 uid: douglas
 userPassword: douglas

@@ -12,10 +12,10 @@ fi
 # version EXPEDITOR_VERSION is promoted to EXPEDITOR_CHANNEL
 
 # Download the manifest
-aws s3 cp "s3://chef-automate-artifacts/manifests/chef-server/${EXPEDITOR_VERSION}.json" manifest.json --profile chef-cd
+aws s3 cp "s3://chef-automate-artifacts/manifests/cinc-server/${EXPEDITOR_VERSION}.json" manifest.json --profile chef-cd
 
 # Download or create the versions file
-aws s3 cp "s3://chef-automate-artifacts/${EXPEDITOR_CHANNEL}/latest/chef-server/versions.json" existing-versions.json --profile chef-cd || echo "[]" > existing-versions.json
+aws s3 cp "s3://chef-automate-artifacts/${EXPEDITOR_CHANNEL}/latest/cinc-server/versions.json" existing-versions.json --profile chef-cd || echo "[]" > existing-versions.json
 
 # Promote the artifacts in Habitat Depot
 jq -r -c ".packages[]" manifest.json | while read service_ident; do
@@ -59,11 +59,11 @@ done
 jq ". |= .+ [\"$(jq -r -c ".build" manifest.json)\"]" existing-versions.json > updated-versions.json
 
 # Promote the License Scout Dependency Manifest
-aws s3 cp "s3://chef-automate-artifacts/licenses/chef-server/${EXPEDITOR_VERSION}.json" "s3://chef-automate-artifacts/${EXPEDITOR_CHANNEL}/latest/chef-server/licenses.json" --acl public-read  --profile chef-cd
+aws s3 cp "s3://chef-automate-artifacts/licenses/cinc-server/${EXPEDITOR_VERSION}.json" "s3://chef-automate-artifacts/${EXPEDITOR_CHANNEL}/latest/cinc-server/licenses.json" --acl public-read  --profile chef-cd
 # Promote the manifest
-aws s3 cp manifest.json "s3://chef-automate-artifacts/${EXPEDITOR_CHANNEL}/latest/chef-server/manifest.json" --acl public-read  --profile chef-cd
+aws s3 cp manifest.json "s3://chef-automate-artifacts/${EXPEDITOR_CHANNEL}/latest/cinc-server/manifest.json" --acl public-read  --profile chef-cd
 # Upload the updated versions file
-aws s3 cp updated-versions.json "s3://chef-automate-artifacts/${EXPEDITOR_CHANNEL}/latest/chef-server/versions.json" --acl public-read  --profile chef-cd
+aws s3 cp updated-versions.json "s3://chef-automate-artifacts/${EXPEDITOR_CHANNEL}/latest/cinc-server/versions.json" --acl public-read  --profile chef-cd
 
 # Cleanup
 rm manifest.json

@@ -66,12 +66,12 @@ variable "backend_version_url" {
 
 variable "upgrade_version_url" {
   type        = "string"
-  description = "The URL to a chef-server used during initial install."
+  description = "The URL to a cinc-server used during initial install."
 }
 
 variable "enable_ipv6" {
   type        = "string"
-  description = "Use IPv6 in the chef-server.rb config and /etc/hosts."
+  description = "Use IPv6 in the cinc-server.rb config and /etc/hosts."
 }
 
 #########################################################################

@@ -5,7 +5,7 @@ releases can be found [RELEASE\_NOTES.md](RELEASE_NOTES.md).
 ## 12.7.0 (2016-06-20)
 
 ### Chef Server
-  * Add support for service credential rotation via [Veil](https://github.com/chef/chef-server/blob/3ff412b5a2e6ad54cfa79bca6865e1bbca28fe5e/omnibus/files/veil/README.md), and for requiring it via the added `require-credential-rotation` command of `cinc-server-ctl`.
+  * Add support for service credential rotation via [Veil](https://github.com/chef/cinc-server/blob/3ff412b5a2e6ad54cfa79bca6865e1bbca28fe5e/omnibus/files/veil/README.md), and for requiring it via the added `require-credential-rotation` command of `cinc-server-ctl`.
   * Fixed existing process detection in oc_id which caused high CPU utilization
   * Fixed bug where deleting a user would not delete pending invites.
   * Allow filtering users by their external_authentication_uid, allowing for SAML-authentication in Chef-Manage.
@@ -87,15 +87,15 @@ es/)).
   * Search Improvements:
     *  Elasticsearch is now supported as a search provider.  See 'Search'
     * You can now provide your own Solr instance instead of using the one
-      bundled with chef-server.
+      bundled with cinc-server.
     * It is now possible for Chef Server to post updates directly to the
       search provider bypassing rabbitmq and expander. See 'Search' in the
       Configuration section below.
     * See 'Search' in the 'Configuration Changes' section
       for information about how to enable these changes.
-  * The analytics queue is now monitored, and chef-server will stop sending messages
+  * The analytics queue is now monitored, and cinc-server will stop sending messages
     to it when it is full.  This resolves issues where a full queue (due
-    to analytics being offline) could make the chef-server
+    to analytics being offline) could make the cinc-server
     unusable.  Status has been added to the `/_status` endpoint.
 
     *Important Note*: this enables the management interface of rabbitmq,
@@ -104,7 +104,7 @@ es/)).
   * Connection leaks that could occur under heavy and sudden load have
     been addressed.
   * The nginx status endpoint is now available and enabled by default
-    for localhost access for each chef-server node via
+    for localhost access for each cinc-server node via
     [`/nginx_status`](http://nginx.org/en/docs/http/ngx_http_stub_status_module.html)
     See 'nginx' in the configuration section below.
   * An issue where mismatched cases would prevent LDAP login has been
@@ -128,23 +128,23 @@ es/)).
 
 ### Bug Fixes / Closed Issues
 
-* [459](https://github.com/chef/chef-server/issues/459) - allow
+* [459](https://github.com/chef/cinc-server/issues/459) - allow
   Chef Server to work when the postgresql port has been set in
-  `chef-server.rb`
-* [540](https://github.com/chef/chef-server/pull/540) - default ldap to
+  `cinc-server.rb`
+* [540](https://github.com/chef/cinc-server/pull/540) - default ldap to
   case insensitve, preventing login failures where case does not match
-* [528](https://github.com/chef/chef-server/pull/528) - fix spurious 400s that
+* [528](https://github.com/chef/cinc-server/pull/528) - fix spurious 400s that
   clients with persistent connections could receive after requesting `/_status`
-* [536](https://github.com/chef/chef-server/pull/536)  - cinc-server-ctl
+* [536](https://github.com/chef/cinc-server/pull/536)  - cinc-server-ctl
   ha-status no longer considers hidden services status
-* [541](https://github.com/chef/chef-server/pull/541) - fix `HTTP 500` errors
+* [541](https://github.com/chef/cinc-server/pull/541) - fix `HTTP 500` errors
   resulting from connection leaks to bifrost when under heavy load.
-* [534](https://github.com/chef/chef-server/issues/534) - `cinc-server-ctl backup`
+* [534](https://github.com/chef/cinc-server/issues/534) - `cinc-server-ctl backup`
   now properly exits with return code 0 unless an error occurs
-* [597](https://github.com/chef/chef-server/issues/597) - add retries to
+* [597](https://github.com/chef/cinc-server/issues/597) - add retries to
   the bootstrap-platform execute resource in case required services are still
   spinning up.
-* [606](https://github.com/chef/chef-server/pull/606) - oc-id now checks
+* [606](https://github.com/chef/cinc-server/pull/606) - oc-id now checks
   for nil username on login, fixing failure that occurred from analytics
   login.
 
@@ -219,7 +219,7 @@ When `external` is false, a local solr instance is configured and
 used for search indexing.  When it is true, we assume that a solr
 instance lives at the URL provided in `external_url`.
 
-NOTE: In the case of an external solr, chef-server makes no
+NOTE: In the case of an external solr, cinc-server makes no
 attempt to configure the correct indexes/schema.
 
 ##### Direct-to-Solr Indexing
@@ -303,7 +303,7 @@ flooding of logs.  Any log messages in excess of this number per second are drop
 
 By default, Chef Server will use case insensitive authentication against
 LDAP servers, as shown below.  Set the value to `true` in your
-chef-server configuration to restore the previous case-sensitive behavior.
+cinc-server configuration to restore the previous case-sensitive behavior.
 
     ldap['case_sensitive_login_attribute'] = false
 
@@ -347,7 +347,7 @@ chef-server configuration to restore the previous case-sensitive behavior.
     database, and will automatically handle authentication. Use
     `--write` to enable write access.
   * `reindex` now supports server-wide reindexing.
-  * Improved error output.  When errors exist in `chef-server.rb`
+  * Improved error output.  When errors exist in `cinc-server.rb`
     or we detect errors in external postgresql setup, we now provide clear
     errors and - where appropriate - links to supporting documentation.
     This is an ongoing process, so further improvements should be expected
@@ -388,12 +388,12 @@ chef-server configuration to restore the previous case-sensitive behavior.
 There are no deprecations to announce in this release.
 
 ### Bug Fixes / Closed Issues
-* [CHEF-SERVER-154](https://github.com/chef/chef-server/issues/154)
+* [CHEF-SERVER-154](https://github.com/chef/cinc-server/issues/154)
   Do not enable automatic/unattended upgrades of Chef Server on RHEL when
   the packagecloud repository has been added for add-ons are present.
   If this has already been enabled prior to this point, disable it on
   the next reconfigure.
-* [CHEF-SERVER-437](https://github.com/chef/chef-server/issues/437)
+* [CHEF-SERVER-437](https://github.com/chef/cinc-server/issues/437)
   The license endpoint now only reports on nodes associated with an
   organization.
 * When there is a username/client collision and the request originates
@@ -468,8 +468,8 @@ consolidated into the overall 12.1.0 release notes as part of the final
     use in support requests.
   * Optionally send application statistics using the statsd
     protocol. To send statsd-formatted statistics,
-    set `estatsd['protocol'] = "statsd"` in chef-server.rb.
-  * expose postgres WAL configurables in chef-server.rb
+    set `estatsd['protocol'] = "statsd"` in cinc-server.rb.
+  * expose postgres WAL configurables in cinc-server.rb
   * cinc-server-ctl key commands now use the keys API
   * remove darklaunch flags that controlled routing of requests to couch
     vs postgres, and oc_erchef vs opscode-account.
@@ -481,12 +481,12 @@ consolidated into the overall 12.1.0 release notes as part of the final
 * Many of Chef Server's components have been consolidated, allowing
   Chef to increase the rate at which we can deliver improvements. The
   new consolidated repository can be found at
-  https://github.com/chef/chef-server.
+  https://github.com/chef/cinc-server.
 * A new self-contained development environment greatly simplifies and
   speeds up the process of developing Chef Server components.  This
   also eases the path for those outside of the Chef organization
   who wish to contribute to Chef Server. You can find this here:
-  https://github.com/chef/chef-server/tree/master/dev.  Feedback and
+  https://github.com/chef/cinc-server/tree/master/dev.  Feedback and
   suggestions are welcome.
 * Many less-visible improvements all contribute to making Chef Server
   easier to enhance and maintain, including improved test coverage,
@@ -560,7 +560,7 @@ consolidated into the overall 12.1.0 release notes as part of the final
   * Remove install message from postinst package script
   * Fix bug where `cinc-server-ctl reconfigure` would
     fail if rabbitmq['nodename'] had been changed.
-  * Fixes chef-server issue #119 which prevented some LDAP users from
+  * Fixes cinc-server issue #119 which prevented some LDAP users from
     successfully logging in.
   * Correct path to DRBD split brain notification script.
   * Redact password from actions data, if present.
@@ -690,7 +690,7 @@ The following items are the security updates that have been applied since Chef S
 
 ### Issue Fixes
   * [opscode-omnibus-744](https://github.com/chef/opscode-omnibus/issues/744)
-  * [chef-server-142](https://github.com/chef/chef-server/issues/142)
+  * [cinc-server-142](https://github.com/chef/cinc-server/issues/142)
 
 ## 12.0.7 (2015-03-26)
 
@@ -701,13 +701,13 @@ For specific breakdown of updated components, refer to CHANGELOG.md
     to end usage of Policyfiles. Requires Chef Client 12.2+ and ChefDK
     0.5+. The upgrade process is still being tested so this only works
     with a brand new installation, and you must set
-    `lb["xdl_defaults"]["policies"] = true` in the `chef-server.rb`
+    `lb["xdl_defaults"]["policies"] = true` in the `cinc-server.rb`
     file. Chef Client and ChefDK also require feature flags in their
     respective configurations to enable "native" Policyfile APIs.
 
   * Search results respect ACLs. (Disabled by default)
     To enable, ensure that `opscode_erchef['strict_search_result_acls']`
-    is set to `true` in `chef-server.rb`. This will default to enabled
+    is set to `true` in `cinc-server.rb`. This will default to enabled
     in the next major version.
 
 ## 12.0.6 (2015-03-19)
@@ -723,9 +723,9 @@ For specific breakdown of updated components, refer to CHANGELOG.md
   * Policyfile validation support. (See API Changes, below.)
 
 ### Closed Issues
-* [chef-server-119](https://github.com/chef/chef-server/issues/119)
-* [chef-server-97](https://github.com/chef/chef-server/issues/97)
-* [chef-server-17](https://github.com/chef/chef-server/issues/17)
+* [cinc-server-119](https://github.com/chef/cinc-server/issues/119)
+* [cinc-server-97](https://github.com/chef/cinc-server/issues/97)
+* [cinc-server-17](https://github.com/chef/cinc-server/issues/17)
 * [opscode-omnibus-648](https://github.com/chef/opscode-omnibus/issues/648)
 
 
@@ -762,8 +762,8 @@ For specific breakdown of updated components, refer to CHANGELOG.md
   * Policyfile API additions. (See API Changes, below.)
 
 ### Closed Issues
-* [chef-server-110](https://github.com/chef/chef-server/issues/110)
-* [chef-server-66](https://github.com/chef/chef-server/issues/66)
+* [cinc-server-110](https://github.com/chef/cinc-server/issues/110)
+* [cinc-server-66](https://github.com/chef/cinc-server/issues/66)
 
 ### API Changes and Additions
 * new: `POST` to `/organizations/ORGNAME/clients/CLIENTNAME/keys`
@@ -783,7 +783,7 @@ The following items are new since Chef Server 12.0.3 and/or are changes from pre
 For specific breakdown of breakdown of updated components, refer to CHANGELOG.md
 
 * oc\_erchef
-  * Cookbook caching is now available. It is off by default - see chef-server.rb tunables
+  * Cookbook caching is now available. It is off by default - see cinc-server.rb tunables
     below for information on how to enable this.
   * Keys API support to list client and user keys. (See API Changes, below.)
   * Policyfile initial API support. (See API Changes, below.)
@@ -796,7 +796,7 @@ For specific breakdown of breakdown of updated components, refer to CHANGELOG.md
 * `cinc-server-ctl` has been fixed to properly escape shell metacharacters
   in arguments to user- and org- commands.
 * `knife-ec-backup` has been updated with key rotation support
-* `chef-server.rb` tunables
+* `cinc-server.rb` tunables
   * `ldap['bind_dn']` can now be left unspecified for anonymous binds if
     your LDAP server supports them.  If you wish to use anonymous binding,
     also ensure that `ldap['bind_pass']` is not set.
@@ -808,16 +808,16 @@ For specific breakdown of breakdown of updated components, refer to CHANGELOG.md
       below:
     * `opscode_erchef['nginx_bookshelf_caching']` is a new setting that is
        configured `:off` by default. To enable, set it to `:on` in your
-       `chef-server.rb`.
+       `cinc-server.rb`.
     * `opscode_erchef['s3_url_expiry_window_size']` is a new setting
       that is set to `:off` by default. For details on valid values and their effects,
       see this [blog post](https://chef.io/blog/2015/02/18/cookbook-caching).
       and [this comment](https://github.com/chef/oc_erchef/blob/master/apps/chef_objects/src/chef_objects.app.src#L89)
 
 ### Bug Fixes
-  * [chef-server-84](https://github.com/chef/chef-server/issues/84)
-  * [chef-server-68](https://github.com/chef/chef-server/issues/68)
-  * [chef-server-71](https://github.com/chef/chef-server/issues/71)
+  * [cinc-server-84](https://github.com/chef/cinc-server/issues/84)
+  * [cinc-server-68](https://github.com/chef/cinc-server/issues/68)
+  * [cinc-server-71](https://github.com/chef/cinc-server/issues/71)
 
 ### Component Upgrades
   * Ruby 2.1.4
@@ -894,16 +894,16 @@ The following items are new since Enterprise Chef 11.2.1 and/or are changes from
 * For compatibility with Open Source Chef 11, a new configuration option
   `default_orgname` has been provided.  All org-related requests that are not
   in the form '/organizations/X/...' will be assumed to have this organization name.
-* `private-chef.rb` and `chef-server.rb`
-  * `private-chef.rb`  has been replaced by `chef-server.rb`
+* `private-chef.rb` and `cinc-server.rb`
+  * `private-chef.rb`  has been replaced by `cinc-server.rb`
   * if you are upgrading from EC11 and have a `private-chef.rb` in place,
-    a symlink from `chef-server.rb` to `private-chef.rb` will be created for
+    a symlink from `cinc-server.rb` to `private-chef.rb` will be created for
     you when you upgrade.
-  * If you do not have a `private-chef.rb` or `chef-server.rb`, a `chef-server.rb`
+  * If you do not have a `private-chef.rb` or `cinc-server.rb`, a `cinc-server.rb`
     will be created for you at installation.
 * LDAP
   * STARTTLS is now properly supported for LDAP.  If your LDAP server supports it
-    you can enable it via `ldap['start_tls'] = true` in `/etc/opscode/chef-server.rb`.
+    you can enable it via `ldap['start_tls'] = true` in `/etc/opscode/cinc-server.rb`.
   * the `ldap['encryption']` setting is deprecated. (See Deprecations
     section, below.)
 * cinc-server-ctl
@@ -932,7 +932,7 @@ The following items are new since Enterprise Chef 11.2.1 and/or are changes from
        the upgrade process to be broken down into discrete steps if more control is desired than the upgrade
        command alone provides.
     * Run any of these commands with -h to see the full help menu and all the possible options that can be set.
-      In addition, refer to the docs at https://docs.chef.io/upgrade_server.html#from-chef-server-osc and
+      In addition, refer to the docs at https://docs.chef.io/upgrade_server.html#from-cinc-server-osc and
       https://docs.chef.io/upgrade_server_open_source_notes.html#manual-upgrades for more information.
 
 ### Bug Fixes:

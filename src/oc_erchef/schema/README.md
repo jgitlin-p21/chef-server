@@ -46,11 +46,11 @@ targets for each of them; consult the [Makefile](Makefile)
 
 ## History
 
-This directory was originally the enterprise-chef-server-schema at
+This directory was originally the enterprise-cinc-server-schema at
 tag 2.9.0.  All schema changes since that tag have happened here and
 not in the older repository.
 
-The baseline/ directory is the chef-server-schema directory as of
+The baseline/ directory is the cinc-server-schema directory as of
 tag 1.0.4.
 
 ## License
@@ -100,4 +100,4 @@ make
 
 The targets of the [Makefile](Makefile) actually call out to
 corresponding targets in the
-[Open Source Makefile](https://github.com/opscode/chef-server-schema/blob/master/Makefile).
+[Open Source Makefile](https://github.com/opscode/cinc-server-schema/blob/master/Makefile).

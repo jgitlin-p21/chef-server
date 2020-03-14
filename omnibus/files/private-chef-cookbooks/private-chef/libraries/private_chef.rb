@@ -108,7 +108,7 @@ module PrivateChef
 
   # - legacy config mashes -
   # these config values are here so that if any config has been previously
-  # set for these projects in an older version of private-chef/chef-server.rb
+  # set for these projects in an older version of private-chef/cinc-server.rb
   # then we do not error out during the reconfigure
   opscode_webui Mash.new
   opscode_solr Mash.new
@@ -512,13 +512,13 @@ module PrivateChef
       if pass_in_secrets != pass_in_config
         warning = <<~WARN
           #{config_key_desc} in secrets store does not match the value
-          configured in chef-server.rb -- overriding secrets store password with
+          configured in cinc-server.rb -- overriding secrets store password with
           configuration file password.
         WARN
         if command_name
           warning << <<~WARN2
             If this is unexpected, consider removing the secret from
-            chef-server.rb and setting the correct value with:
+            cinc-server.rb and setting the correct value with:
 
                 cinc-server-ctl #{command_name}
           WARN2
@@ -527,8 +527,8 @@ module PrivateChef
         unless PrivateChef['insecure_addon_compat']
           warning = <<~WARN
             #{config_key_desc} has been saved to the secrets store
-            but is also still in chef-server.rb. Please remove this from
-            chef-server.rb.
+            but is also still in cinc-server.rb. Please remove this from
+            cinc-server.rb.
           WARN
         end
       end
@@ -683,7 +683,7 @@ module PrivateChef
     def assert_server_config(node_name)
       unless PrivateChef['servers'].key?(node_name)
         Chef::Log.fatal <<~EOF
-          No server configuration found for "#{node_name}" in /etc/opscode/chef-server.rb.
+          No server configuration found for "#{node_name}" in /etc/opscode/cinc-server.rb.
           Server configuration exists for the following hostnames:
 
             #{PrivateChef['servers'].keys.sort.join("\n  ")}
@@ -705,7 +705,7 @@ module PrivateChef
           disabled in CINC Server 13.
 
           See this post for more details:
-          https://blog.chef.io/2018/10/02/end-of-life-announcement-for-drbd-based-ha-support-in-chef-server/
+          https://blog.chef.io/2018/10/02/end-of-life-announcement-for-drbd-based-ha-support-in-cinc-server/
 
           What are my options?
 
@@ -715,7 +715,7 @@ module PrivateChef
 
           For more information on migrating from DRBD HA to Chef Backend or other HA, see this blog
           post and webinar: Best Practices for Migrating your CINC Server at
-          https://blog.chef.io/2018/04/06/best-practices-for-migrating-your-chef-server/
+          https://blog.chef.io/2018/04/06/best-practices-for-migrating-your-cinc-server/
 
           Customers in cloud environments are also encouraged to look at AWS OpsWorks
           and the Chef Automate Managed Service for Azure.
@@ -751,8 +751,8 @@ module PrivateChef
 
     # If known private keys are on disk, add them to Veil and commit them.
     def migrate_keys
-      did_something = add_key_from_file_if_present('chef-server', 'superuser_key', '/etc/opscode/pivotal.pem')
-      did_something |= add_key_from_file_if_present('chef-server', 'webui_key', '/etc/opscode/webui_priv.pem')
+      did_something = add_key_from_file_if_present('cinc-server', 'superuser_key', '/etc/opscode/pivotal.pem')
+      did_something |= add_key_from_file_if_present('cinc-server', 'webui_key', '/etc/opscode/webui_priv.pem')
       # Ensure these are committed to disk before continuing -
       # the secrets recipe will delete the old files.
       credentials.save if did_something

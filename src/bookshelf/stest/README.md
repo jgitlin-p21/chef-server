@@ -4,7 +4,7 @@ Stress tests for bookshelf.
 
 ## Usage
 
-The basho_bench tests in bookshelf_bench are intended to run against an externally running instance of bookshelf. The easiest way to get bookshelf running externally is to run it in a vm as a component of either chef-server or private-chef. bookshelf is easily limited by CPU, so limiting the number of CPUs available to the VM makes it easier to push bookshelf to the limits. To avoid SSL negotiation, the default bookshelf_bench config connects to localhost:4321, so setting up SSH port forwarding is an easy way to get access to bookshelf on a local port. With bookshelf running on a VM, we'll call it `api.bookshelf.vm`, do the following:
+The basho_bench tests in bookshelf_bench are intended to run against an externally running instance of bookshelf. The easiest way to get bookshelf running externally is to run it in a vm as a component of either cinc-server or private-chef. bookshelf is easily limited by CPU, so limiting the number of CPUs available to the VM makes it easier to push bookshelf to the limits. To avoid SSL negotiation, the default bookshelf_bench config connects to localhost:4321, so setting up SSH port forwarding is an easy way to get access to bookshelf on a local port. With bookshelf running on a VM, we'll call it `api.bookshelf.vm`, do the following:
 
 In a separate session, set up the ssh tunnel:
 

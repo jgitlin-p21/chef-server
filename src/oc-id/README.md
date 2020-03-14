@@ -5,13 +5,13 @@ oc-id
 
 Chef identity: An [OAuth 2](http://oauth.net/2/) provider for Chef.
 
-For an introduction to oc-id and how it works, please see this blog post [oc-id on Chef Server: An Introduction](https://www.chef.io/blog/2015/06/09/oc-id-on-chef-server-an-introduction/)
+For an introduction to oc-id and how it works, please see this blog post [oc-id on Chef Server: An Introduction](https://www.chef.io/blog/2015/06/09/oc-id-on-cinc-server-an-introduction/)
 
 ## System Requirements
 
 Chef identity is included with Chef server ≥ 12 and Enterprise Chef server ≥
 11.2. If you're running either of these you already have it running at
-https://your-chef-server-url/id.
+https://your-cinc-server-url/id.
 
 To run this app you'll need:
 
@@ -27,7 +27,7 @@ To run this app you'll need:
 
 For instructions on configuring the Chef identity that is included with Chef
 server, see the
-[chef-server.rb Settings documentation](https://docs.chef.io/config_rb_server_optional_settings.html#oc-id).
+[cinc-server.rb Settings documentation](https://docs.chef.io/config_rb_server_optional_settings.html#oc-id).
 
 [RailsConfig](https://github.com/railsconfig/rails_config) is used for
 application configuration. The defaults are in config/settings.yml. You can

@@ -90,10 +90,10 @@ Start
     $>  ./_build/default/rel/bookshelf/bin/bookshelf console
 
 
-Notes on chef-server/dev environment
+Notes on cinc-server/dev environment
 ---------------------
 The easiest way to work on bookshelf improvements is to use the
-chef-server/dev env
+cinc-server/dev env
 
 Start up dev environment and sync process
 
@@ -108,8 +108,8 @@ cd /host/src/bookshelf
 
 It's often worth tunneling 4321 (the bookshelf port) through to the
 host box; the easiest way is to:
-    $> cd chef-server/dev
-    $> ssh vagrant@127.0.0.1 -p 2222 -o Compression=yes -o DSAAuthentication=yes -o LogLevel=FATAL -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes -i .vagrant/machines/chef-server/virtualbox/private_key -o ForwardAgent=yes -L4321:localhost:4321
+    $> cd cinc-server/dev
+    $> ssh vagrant@127.0.0.1 -p 2222 -o Compression=yes -o DSAAuthentication=yes -o LogLevel=FATAL -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes -i .vagrant/machines/cinc-server/virtualbox/private_key -o ForwardAgent=yes -L4321:localhost:4321
 
 The port (2222 here) may change depending on what other VMs are running.
 

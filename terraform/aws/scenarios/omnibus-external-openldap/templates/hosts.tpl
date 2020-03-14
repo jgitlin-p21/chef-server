@@ -10,4 +10,4 @@ ff02::3 ip6-allhosts
 
 ${chef_server_ip} chefserver.internal
 
-${ldap_ip} ldap.internal ldap.chef-server.dev
+${ldap_ip} ldap.internal ldap.cinc-server.dev

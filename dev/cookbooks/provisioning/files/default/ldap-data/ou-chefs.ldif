@@ -1,4 +1,4 @@
-dn: ou=chefs,dc=chef-server,dc=dev
+dn: ou=chefs,dc=cinc-server,dc=dev
 objectClass: top
 objectClass: organizationalUnit
 description: Famous Chefs

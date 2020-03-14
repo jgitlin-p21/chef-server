@@ -5,7 +5,7 @@ plan_path = "src/openresty-noroot"
 plan_path = "src/oc-id"
 export_targets = ["docker"]
 
-[chef-server-nginx]
+[cinc-server-nginx]
 plan_path = "src/nginx"
 export_targets = ["docker"]
 

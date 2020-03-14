@@ -11,9 +11,9 @@ NOTE: RUN EVERYTHING IN A TMUX SESSION!!!!!!!!!
 
 #### Upgrade schema
 
-1. Update env databag to point at latest enterprise-chef-server-schema
+1. Update env databag to point at latest enterprise-cinc-server-schema
 2. Bump prod data bag, log onto `role:chef-pgsql` boxes sequentially and:
-   + `cd /srv/enterprise-chef-server-schema/ && EC_TARGET=@2.4.0 OSC_TARGET=@1.0.4 DB_USER=opscode_chef make deploy`
+   + `cd /srv/enterprise-cinc-server-schema/ && EC_TARGET=@2.4.0 OSC_TARGET=@1.0.4 DB_USER=opscode_chef make deploy`
 
 ##### Cleanup Duplicate Orgs
 

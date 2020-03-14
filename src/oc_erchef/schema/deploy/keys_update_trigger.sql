@@ -1,7 +1,7 @@
 -- Deploy keys_update_trigger
 --
 -- This keeps the keys table consistent when the clients and user tables update their keys
--- We need these triggers to maintain compatibility with older versions of chef-server.
+-- We need these triggers to maintain compatibility with older versions of cinc-server.
 BEGIN;
 
 CREATE OR REPLACE FUNCTION add_key() RETURNS TRIGGER AS $add_key$

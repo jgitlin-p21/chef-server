@@ -284,7 +284,7 @@ the users group into that group as well, which will mean that users within the s
  to see each other's user objects\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
-{\field{\*\fldinst{HYPERLINK "https://github.com/chef/chef-server/pull/244"}}{\fldrslt \cf0 https://github.com/chef/chef-server/pull/244}}\
+{\field{\*\fldinst{HYPERLINK "https://github.com/chef/cinc-server/pull/244"}}{\fldrslt \cf0 https://github.com/chef/cinc-server/pull/244}}\
 \
 - Document exactly where USAGS are used in the system\
 \

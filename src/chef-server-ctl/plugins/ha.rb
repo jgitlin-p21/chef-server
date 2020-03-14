@@ -38,7 +38,7 @@ The DRBD/keepalived based HA subsystem was deprecated as of CINC Server
 disabled in CINC Server 13.
 
 See this post for more details:
-https://blog.chef.io/2018/10/02/end-of-life-announcement-for-drbd-based-ha-support-in-chef-server/
+https://blog.chef.io/2018/10/02/end-of-life-announcement-for-drbd-based-ha-support-in-cinc-server/
 
 What are my options?
 
@@ -48,7 +48,7 @@ of a Chef Infra License.
 
 For more information on migrating from DRBD HA to Chef Backend or other HA, see this blog
 post and webinar: Best Practices for Migrating your CINC Server at
-https://blog.chef.io/2018/04/06/best-practices-for-migrating-your-chef-server/
+https://blog.chef.io/2018/04/06/best-practices-for-migrating-your-cinc-server/
 
 Customers in cloud environments are also encouraged to look at AWS OpsWorks
 and the Chef Automate Managed Service for Azure.

@@ -1,11 +1,11 @@
 #!/bin/bash
 #
 # import-components: A one-time script to document the import
-# procedure of the chef-server component repositories
+# procedure of the cinc-server component repositories
 #
 set -e
 
-PROJECTS="bookshelf chef-mover chef-server-bootstrap oc-chef-pedant oc-id oc_bifrost oc_erchef opscode-expander"
+PROJECTS="bookshelf chef-mover cinc-server-bootstrap oc-chef-pedant oc-id oc_bifrost oc_erchef opscode-expander"
 
 # Enable dotglob and extglob to enable generating git mv commands more
 # easily
@@ -54,7 +54,7 @@ import_component() {
     checkout_project $proj
     move_files $proj
     git checkout master
-    git merge "${proj}-master" -m "Import $proj into chef-server repository"
+    git merge "${proj}-master" -m "Import $proj into cinc-server repository"
 }
 
 
@@ -66,7 +66,7 @@ mkdir omnibus
 git mv !(omnibus|.git) omnibus/
 git commit -m "Move opscode-omnibus files into omnibus/"
 git checkout master
-git merge opscode-omnibus-master -m "Import opscode-omnibus into chef-server repository"
+git merge opscode-omnibus-master -m "Import opscode-omnibus into cinc-server repository"
 
 for proj in $PROJECTS; do
     echo "Adding remote for $proj"

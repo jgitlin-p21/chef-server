@@ -11,7 +11,7 @@ module Partybus
   class Config
 
     SECRETS_FILE = "/etc/opscode/private-chef-secrets.json"
-    RUNNING_CONFIG_FILE = "/etc/opscode/chef-server-running.json"
+    RUNNING_CONFIG_FILE = "/etc/opscode/cinc-server-running.json"
 
     attr_accessor :database_connection_string
     attr_accessor :database_unix_user

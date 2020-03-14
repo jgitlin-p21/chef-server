@@ -373,7 +373,7 @@ class ChefServerDataBootstrap
   {{~ #eachAlive bind.cinc-server-ctl.members as |member|}}
     {{~ #if @last}}
     @superuser_public_key = <<-EOF
-{{ member.cfg.secrets.chef-server.superuser_pub_key }}
+{{ member.cfg.secrets.cinc-server.superuser_pub_key }}
 EOF
     {{~ /if}}
   {{~ /eachAlive}}

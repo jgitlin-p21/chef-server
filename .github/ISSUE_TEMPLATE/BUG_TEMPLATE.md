@@ -12,7 +12,7 @@ labels: "Status: Untriaged"
 [Operating system distribution and release version. Cloud provider and instance type if running in the cloud. Total/Free RAM and disk space. Is this running in a container?]
 
 ### Configuration
-[Standalone, Tiered, HA, Chef Backend? New install or upgrade? Ideally include your /etc/opscode/chef-server.rb or otherwise provide details of changes from the default]
+[Standalone, Tiered, HA, Chef Backend? New install or upgrade? Ideally include your /etc/opscode/cinc-server.rb or otherwise provide details of changes from the default]
 
 ### Scenario:
 [What you are trying to achieve and you can't?]

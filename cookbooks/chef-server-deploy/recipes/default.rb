@@ -1,5 +1,5 @@
 #
-# Cookbook:: chef-server-deploy
+# Cookbook:: cinc-server-deploy
 # Recipe:: default
 #
 # Copyright:: Copyright 2017 Chef Software, Inc.

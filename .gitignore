@@ -39,7 +39,7 @@ results
 
 # CI
 manifest.json
-chef-server-dependency-licenses.json
+cinc-server-dependency-licenses.json
 
 license-cache
 

@@ -12,7 +12,7 @@ pkg_deps=(
 pkg_build_deps=(core/make core/git core/gcc)
 pkg_bin_dirs=(bin)
 pkg_description="Bookshelf is an S3 API compatible object store."
-pkg_upstream_url="https://github.com/chef/chef-server"
+pkg_upstream_url="https://github.com/chef/cinc-server"
 pkg_exports=(
   [port]="port"
 )
@@ -30,7 +30,7 @@ pkg_version() {
 do_before() {
   do_default_before
   if [ ! -f "$PLAN_CONTEXT/../../../VERSION" ]; then
-    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the chef-server project root." 56
+    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the cinc-server project root." 56
   fi
   update_pkg_version
 }

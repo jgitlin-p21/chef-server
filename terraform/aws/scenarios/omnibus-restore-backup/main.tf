@@ -22,8 +22,8 @@ resource "null_resource" "chef_server_config" {
   }
 
   provisioner "file" {
-    source      = "${path.module}/files/chef-server.rb"
-    destination = "/tmp/chef-server.rb"
+    source      = "${path.module}/files/cinc-server.rb"
+    destination = "/tmp/cinc-server.rb"
   }
 
   provisioner "file" {
@@ -31,16 +31,16 @@ resource "null_resource" "chef_server_config" {
     destination = "/tmp/dhparam.pem"
   }
 
-  # install chef-server
+  # install cinc-server
   provisioner "remote-exec" {
     inline = [
       "set -evx",
       "echo -e '\nBEGIN INSTALL CHEF SERVER\n'",
       "curl -vo /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")} ${var.upgrade_version_url}",
       "sudo ${replace(var.upgrade_version_url, "rpm", "") != var.upgrade_version_url ? "rpm -U" : "dpkg -iEG"} /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")}",
-      "sudo chown root:root /tmp/chef-server.rb",
+      "sudo chown root:root /tmp/cinc-server.rb",
       "sudo chown root:root /tmp/dhparam.pem",
-      "sudo mv /tmp/chef-server.rb /etc/opscode",
+      "sudo mv /tmp/cinc-server.rb /etc/opscode",
       "sudo mv /tmp/dhparam.pem /etc/opscode",
       "export CHEF_LICENSE=accept",
       "sudo cinc-server-ctl reconfigure",
@@ -49,7 +49,7 @@ resource "null_resource" "chef_server_config" {
     ]
   }
 
-  # Copy across existing backup. This is very dependent on matching the version of chef-server the backup
+  # Copy across existing backup. This is very dependent on matching the version of cinc-server the backup
   # was generated from.
   provisioner "file" {
     source      = "${var.backup_location}"

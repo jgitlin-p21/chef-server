@@ -2,22 +2,22 @@
 #
 vm:
   # Override this in config.yml if you want to bring up the
-  # postgres box, and if you want to automatically configure chef-server
+  # postgres box, and if you want to automatically configure cinc-server
   # to use it as an externally managed postgres instance.
   postgresql:
     # enable a separate postgres vm but do not use it unless
     # use-external is set.
     start: false
     # When this is set true, and start is true,
-    # the chef-server node will be configured to use
+    # the cinc-server node will be configured to use
     # this vm as an external postgresql server from the start.
     use-external: true
     # When this is set true, and start is true, and use-external is true,
-    # the chef-server node will be configured to use
+    # the cinc-server node will be configured to use
     # this vm as an external azure postgresql server from the start.
     use-azure: false
   # Override this in config.yml if you want to bring up a separate reporting
-  # postgres box, and if you want to automatically configure chef-server
+  # postgres box, and if you want to automatically configure cinc-server
   # to use it as an externally managed reporting postgres instance.
   reporting_postgresql:
     # enable a separate postgres vm but do not use it unless
@@ -28,7 +28,7 @@ vm:
     # this vm as an external postgresql server from the start.
     use-external: true
   # Override this in config.yml if you want to bring up a separate chef-backend
-  # box, and if you want to automatically configure chef-server to use it in a
+  # box, and if you want to automatically configure cinc-server to use it in a
   # 1 FE / 1 BE topology.
   chef-backend:
     # enable a separate backend vm but do not use it unless
@@ -38,7 +38,7 @@ vm:
     # enable a separate ldap vm but do not use it unless
     # use-external is set.
     start: false
-  # Brings up elasticsearch 5 - not connected to chef-server right now.
+  # Brings up elasticsearch 5 - not connected to cinc-server right now.
   # This is experimental.
   #elasticsearch:
     #start: true
@@ -49,13 +49,13 @@ vm:
   #external_solr:
     # enable a separate external vm
     #start: true
-  # These will map directly to entries in the generated chef-server.rb
+  # These will map directly to entries in the generated cinc-server.rb
   plugins:
     chef-manage: false
     reporting: false
     push-jobs-server: false
 
-  # All settings below apply only to the chef-server vm
+  # All settings below apply only to the cinc-server vm
   cpus: 4
   memory: 4096
   # nodejs is included here so that we can run asset compile phase of
@@ -137,7 +137,7 @@ projects:
       secrets:
         args: --use-file
         list:
-          - chef-server.webui_pub_key
+          - cinc-server.webui_pub_key
           - opscode_erchef.sql_password
           - bookshelf.access_key_id
           - bookshelf.secret_access_key
@@ -165,7 +165,7 @@ projects:
       secrets:
         args: --use-file
         list:
-          - chef-server.webui_key
+          - cinc-server.webui_key
           - oc_id.sql_password
           - oc_id.secret_key_base
   oc_bifrost:
@@ -194,8 +194,8 @@ projects:
       secrets:
         args: --pack
         list:
-          - chef-server.superuser_key
-          - chef-server.webui_pub_key
+          - cinc-server.superuser_key
+          - cinc-server.webui_pub_key
           - opscode-reporting.sql_password
           - rabbitmq.actions_password
   chef-mover:
@@ -264,8 +264,8 @@ projects:
         args:
         list:
           - opscode_erchef.stats_password
-          - chef-server.webui_key
-          - chef-server.superuser_key
+          - cinc-server.webui_key
+          - cinc-server.superuser_key
 
   #
   # External Components
@@ -305,7 +305,7 @@ projects:
     run: ./oc-reporting-pedant -c /etc/opscode-reporting/pedant_config.rb
 
 quickstart:
-  chef-server:
+  cinc-server:
     description: "Load up all the things used for most chef server dev: pedant, cookbooks, commands, erchef.  Starts oc_erchef without a console."
     load:
       - omnibus private-chef-cookbooks

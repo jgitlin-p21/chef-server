@@ -33,9 +33,9 @@ SERVICES_REQUIRING_RESTART = {
   "bookshelf.access_key_id" => ["opscode-erchef", "bookshelf"],
   "bookshelf.secret_access_key" => ["opscode-erchef", "bookshelf"],
   "bookshelf.sql_password" => ["bookshelf"],
-  "chef-server.superuser_key" => ["opscode-reporting"],
-  "chef-server.webui_key" => ["oc_id"],
-  "chef-server.webui_pub_key" => ["opscode-erchef", "opscode-reporting"],
+  "cinc-server.superuser_key" => ["opscode-reporting"],
+  "cinc-server.webui_key" => ["oc_id"],
+  "cinc-server.webui_pub_key" => ["opscode-erchef", "opscode-reporting"],
   "data_collector.token" => ["opscode-erchef", "nginx"],
   "ldap.bind_password" => ["opscode-erchef"],
   "manage.secret_key_base" => ["chef-manage"],
@@ -86,7 +86,7 @@ add_command_under_category "remove-secret", "Secrets Management", "Remove secret
   group = ARGV[1]
   name = ARGV[2]
 
-  confirm_continue!("WARN: Removing a secret may render your chef-server inoperable.  Are you sure?")
+  confirm_continue!("WARN: Removing a secret may render your cinc-server inoperable.  Are you sure?")
   credentials.remove(group, name)
   credentials.save
 end

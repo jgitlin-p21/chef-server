@@ -40,9 +40,9 @@ data "template_file" "hosts_config" {
   }
 }
 
-# generate chef-server.rb configuration
+# generate cinc-server.rb configuration
 data "template_file" "chef_server_config" {
-  template = "${file("${path.module}/templates/chef-server.rb.tpl")}"
+  template = "${file("${path.module}/templates/cinc-server.rb.tpl")}"
 
   vars {
     enable_ipv6  = "${var.enable_ipv6}"
@@ -68,7 +68,7 @@ resource "null_resource" "back_end_config" {
 
   provisioner "file" {
     content     = "${data.template_file.chef_server_config.rendered}"
-    destination = "/tmp/chef-server.rb"
+    destination = "/tmp/cinc-server.rb"
   }
 
   provisioner "file" {
@@ -76,17 +76,17 @@ resource "null_resource" "back_end_config" {
     destination = "/tmp/dhparam.pem"
   }
 
-  # install chef-server
+  # install cinc-server
   provisioner "remote-exec" {
     inline = [
       "set -evx",
       "echo -e '\nBEGIN INSTALL CHEF SERVER (BACK-END)\n'",
       "curl -vo /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")} ${var.upgrade_version_url}",
       "sudo ${replace(var.upgrade_version_url, "rpm", "") != var.upgrade_version_url ? "rpm -U" : "dpkg -iEG"} /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")}",
-      "sudo chown root:root /tmp/chef-server.rb",
+      "sudo chown root:root /tmp/cinc-server.rb",
       "sudo chown root:root /tmp/dhparam.pem",
       "sudo chown root:root /tmp/hosts",
-      "sudo mv /tmp/chef-server.rb /etc/opscode",
+      "sudo mv /tmp/cinc-server.rb /etc/opscode",
       "sudo mv /tmp/dhparam.pem /etc/opscode",
       "sudo mv /tmp/hosts /etc/hosts",
       "sudo cinc-server-ctl reconfigure --chef-license=accept",
@@ -128,7 +128,7 @@ resource "null_resource" "front_end_config" {
     destination = "/tmp/hosts"
   }
 
-  # install chef-server
+  # install cinc-server
   provisioner "remote-exec" {
     inline = [
       "set -evx",

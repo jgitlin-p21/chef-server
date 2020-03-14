@@ -40,7 +40,7 @@ REQUIRED_SECRETS = {
     sql_password: { length: 80 },
     sql_ro_password: { length: 80 }
   },
-  'chef-server': {
+  'cinc-server': {
                    superuser_id: { length: 32 },
                    superuser_key: { length: 2048, type: 'rsa', private: true, pub_key_name: 'superuser_pub_key' },
                    superuser_pub_key: { type: 'rsa', private: false },

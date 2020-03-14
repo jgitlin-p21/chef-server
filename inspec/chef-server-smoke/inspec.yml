@@ -1,4 +1,4 @@
-name: chef-server-smoke
+name: cinc-server-smoke
 title: InSpec Profile
 maintainer: CINC Software, Inc.
 copyright: CINC Software, Inc.

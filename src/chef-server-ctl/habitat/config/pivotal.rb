@@ -1,6 +1,6 @@
 node_name "pivotal"
-{{~#if bind.chef-server-nginx}}
-  {{~#eachAlive bind.chef-server-nginx.members as |member|}}
+{{~#if bind.cinc-server-nginx}}
+  {{~#eachAlive bind.cinc-server-nginx.members as |member|}}
     {{~#if @last}}
 chef_server_url "https://{{member.sys.ip}}:{{member.cfg.ssl-port}}"
 chef_server_root "https://{{member.sys.ip}}:{{member.cfg.ssl-port}}"

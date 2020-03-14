@@ -7,7 +7,7 @@
 #
 
 # The base_resource_url gets set whenever we are operating behind a proxy,
-# notably in the automate-chef-server all in one installation
+# notably in the automate-cinc-server all in one installation
 #
 # base_resource_url "host_header"
 
@@ -17,7 +17,7 @@
 # on multiple nodes of the same chef server when the generated pedant
 # config file could have been copied across during the setup of that
 # chef server.
-chef_server_uid = "chef-server_#{Process.pid}".downcase
+chef_server_uid = "cinc-server_#{Process.pid}".downcase
 
 # Specify a testing organization if you are testing a multi-tenant
 # instance of a Chef Server (e.g., Private Chef, Hosted Chef).  If you
@@ -51,8 +51,8 @@ delete_org true
 
 # You MUST specify the address of the server the API requests will be
 # sent to.  Only specify protocol, hostname, and port.
-{{~#if bind.chef-server-nginx}}
-  {{~#eachAlive bind.chef-server-nginx.members as |member|}}
+{{~#if bind.cinc-server-nginx}}
+  {{~#eachAlive bind.cinc-server-nginx.members as |member|}}
     {{~#if @last}}
 chef_server "https://{{member.sys.ip}}:{{member.cfg.ssl-port}}"
     {{~/if}}

@@ -11,7 +11,7 @@ license :project_license
 # It was recently removed (2017Q1) from most of these components as a dep, and
 # build flags were updated to not link it into the components.
 #
-# This led to chef-server no longer pulling it indirectly. This broke popt, which
+# This led to cinc-server no longer pulling it indirectly. This broke popt, which
 # is defined upstream and pulled in by logrotate.
 #
 # TODO mp 2017-04-06 - a little further digging to see if the right answer is to

@@ -79,8 +79,8 @@ services:
         server = "${AUTOMATE_SERVER:-localhost}"
         port = 443
 
-  chef-server-nginx:
-    image: ${DOCKER_ORIGIN:-chef}/chef-server-nginx:${VERSION:-stable}
+  cinc-server-nginx:
+    image: ${DOCKER_ORIGIN:-chef}/cinc-server-nginx:${VERSION:-stable}
     tty: true
     stdin_open: true
     command: --peer postgresql

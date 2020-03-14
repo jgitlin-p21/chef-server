@@ -26,7 +26,7 @@ add_command_under_category "version", "general", "Display current version of CIN
     # we are offline.
     if File.exist?('/hab/svc/cinc-server-ctl/PID')
       ident_file = File.read('../IDENT')
-      version = "chef-server #{ident_file.split('/')[2]}"
+      version = "cinc-server #{ident_file.split('/')[2]}"
     else
       version = JSON.parse(File.read('/opt/opscode/version-manifest.json'))['build_version']
     end

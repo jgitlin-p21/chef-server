@@ -24,7 +24,7 @@ pkg_exports=(
   [secrets]=secrets
 )
 pkg_binds_optional=(
-  [chef-server-nginx]="port ssl-port"
+  [cinc-server-nginx]="port ssl-port"
 )
 pkg_interpreters=(bin/bash)
 pkg_svc_user="hab"
@@ -38,7 +38,7 @@ pkg_version() {
 do_before() {
   do_default_before
   if [ ! -f "$PLAN_CONTEXT/../../../VERSION" ]; then
-    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the chef-server project root." 56
+    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the cinc-server project root." 56
   fi
   update_pkg_version
 }
@@ -59,7 +59,7 @@ do_install() {
   echo "====== BUILDING OC-CHEF-PEDANT ==== "
   export pedant_src_dir=$(abspath $PLAN_CONTEXT/../../../oc-chef-pedant)
   if [ ! "${pedant_src_dir}" ]; then
-    exit_with "Cannot find oc-chef-pedant src directory. You must run \"hab studio enter\" from the chef-server project root." 56
+    exit_with "Cannot find oc-chef-pedant src directory. You must run \"hab studio enter\" from the cinc-server project root." 56
   fi
   cp -pr ${pedant_src_dir} ${pkg_prefix}
   export pedant_dir="${pkg_prefix}/oc-chef-pedant"
@@ -107,7 +107,7 @@ EOF
 
   # Install wrapper binaries
   wrapper_bin_path="${pkg_prefix}/bin"
-  install $PLAN_CONTEXT/bin/oc-chef-pedant.sh $wrapper_bin_path/chef-server-test
+  install $PLAN_CONTEXT/bin/oc-chef-pedant.sh $wrapper_bin_path/cinc-server-test
   install $PLAN_CONTEXT/bin/knife-pivotal.sh $wrapper_bin_path/knife
   install $PLAN_CONTEXT/bin/cinc-server-ctl.sh $wrapper_bin_path/cinc-server-ctl
 }

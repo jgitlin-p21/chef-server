@@ -1,4 +1,4 @@
-dn: cn=User One,ou=chefs,dc=chef-server,dc=dev
+dn: cn=User One,ou=chefs,dc=cinc-server,dc=dev
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
@@ -7,6 +7,6 @@ cn: User One
 sn: One
 displayName: User One
 givenName: User
-mail: user1@chef-server.dev
+mail: user1@cinc-server.dev
 uid: user1
 userPassword: password

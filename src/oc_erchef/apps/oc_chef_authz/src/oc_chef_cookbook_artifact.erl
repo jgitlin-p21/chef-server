@@ -153,7 +153,7 @@ exists_by_authz_id(AuthzId) ->
 %% Note that the reverse check (i.e. not deleting files that
 %% are still referenced by a cookbook version when deleting a
 %% cookbook artifact version) is handled directly in the DB:
-%% https://github.com/chef/enterprise-chef-server-schema/blob/2.8.0/deploy/delete_cookbook_artifact_version.sql#L68-L72
+%% https://github.com/chef/enterprise-cinc-server-schema/blob/2.8.0/deploy/delete_cookbook_artifact_version.sql#L68-L72
 -spec filter_checksums_to_delete(OrgId :: object_id(),
                                  Checksums :: [binary()]) -> [binary()] | {error, _Why}.
 filter_checksums_to_delete(OrgId, Checksums) ->

@@ -21,8 +21,8 @@ start_db(Config) ->
     DbName = "oc_chef_wm_itests",
     DbDataDir = filename:join([PrivDir, "db_data"]),
     DbLog = filename:join([PrivDir, "db.log"]),
-    ECSchema = filename:join([DataDir, "deps", "enterprise-chef-server-schema"]),
-    OSCSchema = filename:join([ECSchema, "deps", "chef-server-schema"]),
+    ECSchema = filename:join([DataDir, "deps", "enterprise-cinc-server-schema"]),
+    OSCSchema = filename:join([ECSchema, "deps", "cinc-server-schema"]),
     DbPort = random_bogus_port(),
     PortString = integer_to_list(DbPort),
 

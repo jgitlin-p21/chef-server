@@ -1,5 +1,5 @@
 ---
-project-name: chef-server
+project-name: cinc-server
 config: omnibus/omnibus.rb
 install-dir: /opt/opscode
 test-path: omnibus/omnibus-test.sh

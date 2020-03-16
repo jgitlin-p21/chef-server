@@ -37,7 +37,7 @@ module Partybus
 ***
 ERROR: Cannot find #{RUNNING_CONFIG_FILE}
 ***
-Try running `chef-server-ctl reconfigure` first.
+Try running `#{Chef::Dist::SERVER_CTL} reconfigure` first.
 
 EOF
         exit(1)
@@ -50,7 +50,7 @@ EOF
 ***
 ERROR: Cannot find or access #{SECRETS_FILE}
 ***
-Try running `chef-server-ctl reconfigure` first.
+Try running `#{Chef::Dist::SERVER_CTL} reconfigure` first.
 
 EOF
         exit(1)

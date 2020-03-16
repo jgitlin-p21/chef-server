@@ -520,7 +520,7 @@ module PrivateChef
             If this is unexpected, consider removing the secret from
             chef-server.rb and setting the correct value with:
 
-                chef-server-ctl #{command_name}
+                #{Chef::Dist::SERVER_CTL} #{command_name}
           WARN2
         end
       elsif pass_in_config

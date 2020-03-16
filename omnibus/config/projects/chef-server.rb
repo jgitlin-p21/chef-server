@@ -14,13 +14,13 @@
 # limitations under the License.
 #
 
-name "chef-server"
+name "#{Chef::Dist::SERVER}"
 maintainer "Chef Software, Inc. <maintainers@chef.io>"
 homepage   "https://www.chef.io"
 license "Chef EULA"
 license_file "CHEF-EULA.md"
 
-package_name    "chef-server-core"
+package_name    "#{Chef::Dist::SERVER}-core"
 replace         "private-chef"
 conflict        "private-chef"
 install_dir     "/opt/opscode"

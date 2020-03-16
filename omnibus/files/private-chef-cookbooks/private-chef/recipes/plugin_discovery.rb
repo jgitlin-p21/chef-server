@@ -16,7 +16,7 @@
 #
 
 # TODO: Does this go away with HA?
-BACKUP_PLUGIN_LOCATIONS = %w(/opt/opscode/chef-server-plugin.rb).freeze
+BACKUP_PLUGIN_LOCATIONS = %W(/opt/opscode/#{Chef::Dist::SERVER}-plugin.rb).freeze
 
 node.default['available-plugins'] = EnterprisePluginCollection.from_glob('/var/opt/opscode/plugins/*.rb')
 

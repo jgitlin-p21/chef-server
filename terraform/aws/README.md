@@ -1,6 +1,6 @@
-# Chef Infra Server Project - Terraform
+# CINC Infra Server Project - Terraform
 
-This directory contains the Terraform code used to enable Chef Infra Server developers the ability to launch ephemeral systems in different topology scenarios to enable integration test coverage.
+This directory contains the Terraform code used to enable CINC Infra Server developers the ability to launch ephemeral systems in different topology scenarios to enable integration test coverage.
 
 ## Pre-Requisites
 
@@ -56,10 +56,10 @@ Environment variables are used to control how the scenarios are executed and can
 | `AWS_DEFAULT_INSTANCE_TYPE` | The AWS instance type that determines the amount of resources server instances are allocated. | t3.medium (default) |
 | `PLATFORM` | The operating system used by server instances. | rhel-6, rhel-7, rhel-8, ubuntu-16.04, ubuntu-18.04, sles-12 |
 | `ENABLE_IPV6` | Use IPv6 in the cinc-server.rb config and /etc/hosts | true (default) |
-| `ENABLE_SMOKE_TEST` | Enable Chef Infra Server smoke test. | true (default) |
-| `ENABLE_PEDANT_TEST` | Enable full Chef Infra Server pedant test. | true (default) |
-| `ENABLE_PSQL_TEST` | Enable testing of Chef Infra Server PostgreSQL database. | true (default) |
-| `ENABLE_GATHER_LOGS_TEST` | Enable testing of Chef Infra Server gathering logs. | true (default) |
+| `ENABLE_SMOKE_TEST` | Enable CINC Infra Server smoke test. | true (default) |
+| `ENABLE_PEDANT_TEST` | Enable full CINC Infra Server pedant test. | true (default) |
+| `ENABLE_PSQL_TEST` | Enable testing of CINC Infra Server PostgreSQL database. | true (default) |
+| `ENABLE_GATHER_LOGS_TEST` | Enable testing of CINC Infra Server gathering logs. | true (default) |
 | `ENABLE_ADDON_PUSH_JOBS` | Enable testing of Push Jobs addon. | true (default) |
 | `ENABLE_ADDON_CHEF_MANAGE` | Enable testing of Chef Manage addon. | true (default) |
 | `ENABLE_CHEF_BACKEND_DEMOTION` | Enable testing of chef-backend leadership demotion. | true (default) |

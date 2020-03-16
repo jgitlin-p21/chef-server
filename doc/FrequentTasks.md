@@ -87,7 +87,7 @@ copying files back from the dev-vm to the host.
 ## Updating rebar3
 
 - It is helpful to periodically update the copy of the rebar3 tooling
-  that is included with Chef Infra Server.
+  that is included with CINC Infra Server.
 - The following erlang apps need to be updated:
   - bookshelf
   - chef-mover

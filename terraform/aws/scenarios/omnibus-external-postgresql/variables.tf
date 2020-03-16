@@ -75,25 +75,25 @@ variable "enable_ipv6" {
 
 variable "enable_smoke_test" {
   type        = "string"
-  description = "Enable Chef Infra Server smoke test."
+  description = "Enable CINC Infra Server smoke test."
   default     = "true"
 }
 
 variable "enable_pedant_test" {
   type        = "string"
-  description = "Enable full Chef Infra Server pedant test."
+  description = "Enable full CINC Infra Server pedant test."
   default     = "true"
 }
 
 variable "enable_psql_test" {
   type        = "string"
-  description = "Enable testing of Chef Infra Server PostgreSQL database."
+  description = "Enable testing of CINC Infra Server PostgreSQL database."
   default     = "true"
 }
 
 variable "enable_gather_logs_test" {
   type        = "string"
-  description = "Enable testing of Chef Infra Server gathering logs."
+  description = "Enable testing of CINC Infra Server gathering logs."
   default     = "true"
 }
 

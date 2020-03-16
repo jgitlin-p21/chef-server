@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-open_source_11_sv_dir = '/opt/chef-server/sv'
+open_source_11_sv_dir = "/opt/#{Chef::Dist::SERVER}/sv"
 
 return unless Dir.exist?(open_source_11_sv_dir)
 

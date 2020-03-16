@@ -96,11 +96,11 @@ EOM
     end
 
     def enable_service
-      run_command("chef-server-ctl start #{service['name']}", "Starting #{omnibus_project} #{service['name']}")
+      run_command("#{Chef::Dist::SERVER_CTL} start #{service['name']}", "Starting #{omnibus_project} #{service['name']}")
     end
 
     def disable_service
-      run_command("chef-server-ctl stop #{service['name']}", "Stopping #{omnibus_project} #{service['name']}")
+      run_command("#{Chef::Dist::SERVER_CTL} stop #{service['name']}", "Stopping #{omnibus_project} #{service['name']}")
     end
 
     def is_running?

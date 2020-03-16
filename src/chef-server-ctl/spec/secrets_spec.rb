@@ -27,7 +27,7 @@ module Omnibus
   end
 end
 
-describe "chef-server-ctl set-secret" do
+describe "#{Chef::Dist::SERVER_CTL} set-secret" do
   subject do
     OmnibusCtlHelper.new(["./plugins/secrets.rb"])
   end

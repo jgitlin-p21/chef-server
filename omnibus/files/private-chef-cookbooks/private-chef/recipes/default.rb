@@ -50,6 +50,12 @@ include_recipe 'private-chef::plugin_discovery'
 include_recipe 'private-chef::plugin_config_extensions'
 include_recipe 'private-chef::config'
 
+if node['private_chef']['elasticsearch']['first_internal_install']
+  node.override['private_chef']['opscode-solr4']['enable'] = false
+  node.override['private_chef']['rabbitmq']['enable'] = false
+  node.override['private_chef']['opscode-expander']['enable'] = false
+end
+
 if node['private_chef']['fips_enabled']
   include_recipe 'private-chef::fips'
 end
@@ -126,16 +132,16 @@ include_recipe 'private-chef::fix_permissions'
   postgresql
   oc_bifrost
   oc_id
+  elasticsearch
   opscode-solr4
   opscode-expander
   bookshelf
   opscode-erchef
+  nginx
+  rabbitmq
   bootstrap
   opscode-chef-mover
   redis_lb
-  nginx
-  rabbitmq
-  elasticsearch
 ).each do |service|
   if node['private_chef'][service]['external']
     begin

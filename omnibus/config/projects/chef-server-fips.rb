@@ -13,12 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-chef_server_path = File.expand_path("../#{Chef::Dist::SERVER}.rb", __FILE__)
+chef_server_path = File.expand_path("../#{Chef::Dist::Server::SHORT}.rb", __FILE__)
 instance_eval(IO.read(chef_server_path), chef_server_path)
 
-name "#{Chef::Dist::SERVER}-fips"
-package_name "#{Chef::Dist::SERVER}-fips-core"
+name "#{Chef::Dist::Server::SHORT}-fips"
+package_name "#{Chef::Dist::Server::SHORT}-fips-core"
 
 # Use chef's scripts for everything.
-resources_path "#{resources_path}/../#{Chef::Dist::SERVER}"
-package_scripts_path "#{package_scripts_path}/../#{Chef::Dist::SERVER}"
+resources_path "#{resources_path}/../#{Chef::Dist::Server::SHORT}"
+package_scripts_path "#{package_scripts_path}/../#{Chef::Dist::Server::SHORT}"

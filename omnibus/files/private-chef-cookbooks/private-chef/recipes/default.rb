@@ -22,7 +22,7 @@ require 'openssl'
 # Because these symlinks get removed during the postrm
 # of the chef-server and private-chef packages, we should
 # ensure that they're always here.
-%W(private-#{ChefConfig::Dist::SHORT}-ctl #{Chef::Dist::SERVER}-ctl).each do |bin|
+%W(private-#{ChefConfig::Dist::SHORT}-ctl #{Chef::Dist::Server::SHORT}-ctl).each do |bin|
   link "/usr/bin/#{bin}" do
     to "/opt/opscode/bin/#{bin}"
   end
@@ -181,7 +181,7 @@ include_recipe 'private-chef::partybus'
 include_recipe 'private-chef::ctl_config'
 include_recipe 'private-chef::disable_chef_server_11'
 
-file "/etc/opscode/#{Chef::Dist::SERVER}-running.json" do
+file "/etc/opscode/#{Chef::Dist::Server::SHORT}-running.json" do
   owner OmnibusHelper.new(node).ownership['owner']
   group 'root'
   mode '0600'

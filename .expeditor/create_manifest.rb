@@ -66,9 +66,9 @@ pkg_origin = "chef"
 %W{
   openresty-noroot
   oc_id
-  #{Chef::Dist::SERVER}-nginx
+  #{Chef::Dist::Server::SHORT}-nginx
   bookshelf
-  #{Chef::Dist::SERVER_CTL}
+  #{Chef::Dist::Server::CTL}
   oc_bifrost
   oc_erchef
 }.each do |pkg_name|

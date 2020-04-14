@@ -30,7 +30,7 @@ module DVM
       if File.exists? validator
         puts "Validator for #{name} exists, skipping org creation"
       else
-        `#{Chef::Dist::SERVER_CTL} org-create #{name} #{name} > #{validator}`
+        `#{Chef::Dist::Server::CTL} org-create #{name} #{name} > #{validator}`
       end
       org.users.each do |user|
         make_user(user)
@@ -48,7 +48,7 @@ module DVM
         return
       end
       File.mkdir_p userdir
-      `#{Chef::Dist::SERVER_CTL} org-user-add #{orgname} #{username} -a #{admin}`
+      `#{Chef::Dist::Server::CTL} org-user-add #{orgname} #{username} -a #{admin}`
 
     end
     def make_user(user)
@@ -57,7 +57,7 @@ module DVM
         puts "Skipping user #{user}, key already exists"
       else
         # TODO we probably should care if this fails...
-        `#{Chef::Dist::SERVER_CTL} user-create #{user} #{user} test-user #{username}@dvm.com password > #{key}`
+        `#{Chef::Dist::Server::CTL} user-create #{user} #{user} test-user #{username}@dvm.com password > #{key}`
       end
     end
     def user_key_path(username)

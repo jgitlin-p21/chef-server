@@ -7,6 +7,9 @@ action=
 AWS_TOKEN_TIMEOUT=3600
 export AWS_TOKEN_TIMEOUT
 
+# point to consul backend
+export CONSUL_HTTP_ADDR='http://consul.chef.co'
+
 # verify command dependencies
 [[ "$(command -v terraform)" ]] || error 'terraform command is not available'
 
@@ -127,7 +130,11 @@ setup () {
 EOF
 
   # initialize the terraform scenario
-  [[ -d .terraform ]] || terraform init
+  if [[ ! -d .terraform ]]; then
+	tfenv install min-required
+	tfenv use min-required
+	terraform init
+  fi
 
   # switch terraform workspace
   terraform workspace select "$workspace" || terraform workspace new "$workspace"
@@ -185,7 +192,7 @@ apply () {
 
   echo -e "+++ :terraform: Execute \033[38;5;62m\033[1m${TF_VAR_scenario}\033[0m scenario"
 
-  #capture output to /tmp/integration_test.log
+  #capture output to /workdir/integration_test.log
   {
     cat <<EOF
 
@@ -225,7 +232,7 @@ EOF
     fi
 
     exit $ret
-  } | tee /tmp/integration_test.log
+  } | tee /workdir/integration_test.log
 
   exit ${PIPESTATUS[0]}
 }
@@ -289,8 +296,12 @@ destroy-all () {
 
   echo "--- Destroying all Terraform workspaces associated with build number $BUILD_NUMBER"
 
-  # verify command dependencies
-  [[ "$(command -v consul)" ]] || error 'consul command is not available'
+  # ensure consul is installed
+  if [[ ! "$(command -v consul)" ]]; then
+    asdf plugin-add consul
+    asdf install consul 1.6.2
+    asdf local consul 1.6.2
+  fi
 
   # iterate across workspaces left in consul
   for workspace in $(consul kv get -keys terraform/chef-server/ | sed -n "/${BUILD_NUMBER}/{s/.*:\(${BUILD_NUMBER}-.*$\)/\1/;s/\///;p;}" | sort -u); do

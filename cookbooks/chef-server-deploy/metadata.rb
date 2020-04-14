@@ -1,4 +1,4 @@
-name "#{Chef::Dist::SERVER}-deploy"
+name "#{Chef::Dist::Server::SHORT}-deploy"
 maintainer 'Chef Software Inc Engineering'
 maintainer_email 'engineering@chef.io'
 license 'Apache-2.0'

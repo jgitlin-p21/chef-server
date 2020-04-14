@@ -24,9 +24,9 @@
 # present (that is, it was copied here), or will be generated because _this_
 # is the node adding the pivotal user.
 
-unless PrivateChef.credentials.exist?("#{Chef::Dist::SERVER}", 'superuser_key')
+unless PrivateChef.credentials.exist?("#{Chef::Dist::Server::SHORT}", 'superuser_key')
   pivotal_key = OpenSSL::PKey::RSA.generate(2048)
-  PrivateChef.credentials.add("#{Chef::Dist::SERVER}", 'superuser_key',
+  PrivateChef.credentials.add("#{Chef::Dist::Server::SHORT}", 'superuser_key',
     value: pivotal_key.to_pem,
     frozen: true)
 
@@ -35,26 +35,26 @@ unless PrivateChef.credentials.exist?("#{Chef::Dist::SERVER}", 'superuser_key')
   PrivateChef.credentials.save
 end
 
-if !PrivateChef.credentials.exist?("#{Chef::Dist::SERVER}", 'webui_key')
+if !PrivateChef.credentials.exist?("#{Chef::Dist::Server::SHORT}", 'webui_key')
   webui_key = OpenSSL::PKey::RSA.generate(2048)
-  PrivateChef.credentials.add("#{Chef::Dist::SERVER}", 'webui_key',
+  PrivateChef.credentials.add("#{Chef::Dist::Server::SHORT}", 'webui_key',
     value: webui_key.to_pem,
     frozen: true)
   # Store the public key in its own key for easy access
-  PrivateChef.credentials.add("#{Chef::Dist::SERVER}", 'webui_pub_key',
+  PrivateChef.credentials.add("#{Chef::Dist::Server::SHORT}", 'webui_pub_key',
     value: webui_key.public_key.to_s,
     frozen: true)
   PrivateChef.credentials.save
-elsif !PrivateChef.credentials.exist?("#{Chef::Dist::SERVER}", 'webui_pub_key')
-  webui_string = PrivateChef.credentials.get("#{Chef::Dist::SERVER}", 'webui_key')
+elsif !PrivateChef.credentials.exist?("#{Chef::Dist::Server::SHORT}", 'webui_pub_key')
+  webui_string = PrivateChef.credentials.get("#{Chef::Dist::Server::SHORT}", 'webui_key')
   webui_key = OpenSSL::PKey::RSA.new(webui_string)
-  PrivateChef.credentials.add("#{Chef::Dist::SERVER}", 'webui_pub_key',
+  PrivateChef.credentials.add("#{Chef::Dist::Server::SHORT}", 'webui_pub_key',
     value: webui_key.public_key.to_s,
     frozen: true)
   PrivateChef.credentials.save
 end
 
-webui_key = OpenSSL::PKey::RSA.new(PrivateChef.credentials.get("#{Chef::Dist::SERVER}", 'webui_key'))
+webui_key = OpenSSL::PKey::RSA.new(PrivateChef.credentials.get("#{Chef::Dist::Server::SHORT}", 'webui_key'))
 
 if node['private_chef']['insecure_addon_compat']
   file '/etc/opscode/pivotal.pem'  do
@@ -62,7 +62,7 @@ if node['private_chef']['insecure_addon_compat']
     group 'root'
     mode '0600'
     sensitive true
-    content PrivateChef.credentials.get("#{Chef::Dist::SERVER}", 'superuser_key')
+    content PrivateChef.credentials.get("#{Chef::Dist::Server::SHORT}", 'superuser_key')
   end
 
   file '/etc/opscode/webui_priv.pem' do

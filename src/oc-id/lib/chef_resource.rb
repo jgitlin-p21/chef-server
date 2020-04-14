@@ -25,7 +25,7 @@ module ChefResource
   end
 
   def key
-    Secrets.get("#{Chef::Dist::SERVER}", "webui_key")
+    Secrets.get("#{Chef::Dist::Server::SHORT}", "webui_key")
   end
 
   def parameters

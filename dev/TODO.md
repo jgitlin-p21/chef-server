@@ -1,7 +1,7 @@
 - [ ] bug: dvm gem mount gets undone after halt/up
 - [ ] populate command to load test users and orgs
 - [ ] use runsv 'down' file to cleanly disable loaded services even
-      across chef-server-ctl reconfigure
+      across cinc-server-ctl reconfigure
 - [ ] simple merge of vm settings in config.yml and default.yml files so that
       packages and vm config can be overridden.
 - [ ] Once that's done, update config.yml  with basic skeleton to show what can be done,
@@ -28,7 +28,7 @@
       by default, instead of '--smoke' (this may be a change in behavior
       of pedant itself due to other recent changes)
 - [ ] modify auto clone/load of erlang project deps so that it won't clutter up
-      the chef-server dir on the host.
+      the cinc-server dir on the host.
 - [ ] add oc_id supprt
 - [ ] add indexer support (is this worth it?)
 - [ ] ruby project dep loading support. Should just be able to reference

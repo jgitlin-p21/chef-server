@@ -16,7 +16,7 @@
 
 cleanse_all_cs() {
     opscode-reporting-ctl cleanse yes --with-external
-    chef-server-ctl cleanse yes --with-external
+    cinc-server-ctl cleanse yes --with-external
 }
 
 ensure_config_dirs_exist() {
@@ -25,7 +25,7 @@ ensure_config_dirs_exist() {
 }
 
 reconfigure_all_cs() {
-    chef-server-ctl reconfigure
+    cinc-server-ctl reconfigure
     opscode-reporting-ctl reconfigure
 }
 
@@ -35,15 +35,15 @@ prepare_all() {
 }
 
 reconfigure_and_test() {
-    echo "Testing with Chef Server $FORCE_INSTALL"
+    echo "Testing with CINC Server $FORCE_INSTALL"
     reconfigure_all_cs
     sleep 120
     opscode-reporting-ctl test --all
-    chef-server-ctl test
+    cinc-server-ctl test
 }
 
 enterprise_reconfigure_and_test() {
-    echo "Testing with Chef Server $FORCE_INSTALL"
+    echo "Testing with CINC Server $FORCE_INSTALL"
     private-chef-ctl reconfigure
     opscode-reporting-ctl reconfigure
     sleep 120
@@ -52,8 +52,8 @@ enterprise_reconfigure_and_test() {
 }
 
 install_enterprise_chef_server() {
-    chef-server-ctl cleanse yes --with-external
-    apt-get remove chef-server-core -y
+    cinc-server-ctl cleanse yes --with-external
+    apt-get remove cinc-server-core -y
     dpkg -i /vagrant/$ENTERPRISE_CHEF_SERVER_11
     private-chef-ctl reconfigure
 }

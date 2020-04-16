@@ -1,8 +1,8 @@
 require 'json'
 require 'pedant/rspec/common'
 
-describe "running configs required by chef-server-ctl", :config do
-  let (:complete_config) { JSON.parse(IO.read("/etc/opscode/chef-server-running.json")) }
+describe "running configs required by cinc-server-ctl", :config do
+  let (:complete_config) { JSON.parse(IO.read("/etc/opscode/cinc-server-running.json")) }
   let (:config) { complete_config['private_chef'] }
 
   context "partybus upgrade framework" do
@@ -82,7 +82,7 @@ describe "running configs required by chef-server-ctl", :config do
 
   context "reconfigure" do
     #
-    # The cookbooks themselves require chef-server-running.json to
+    # The cookbooks themselves require cinc-server-running.json to
     # populate previous_run.
     #
     it "bookshelf/storage_type" do

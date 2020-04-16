@@ -1,4 +1,4 @@
-require "erubis" # available courtesy of chef server.
+require "erubis" # available courtesy of cINC Server.
 require "fileutils"
 
 # Note: we might want to use the API for all this, but for now it's
@@ -30,7 +30,7 @@ module DVM
       if File.exists? validator
         puts "Validator for #{name} exists, skipping org creation"
       else
-        `chef-server-ctl org-create #{name} #{name} > #{validator}`
+        `cinc-server-ctl org-create #{name} #{name} > #{validator}`
       end
       org.users.each do |user|
         make_user(user)
@@ -48,7 +48,7 @@ module DVM
         return
       end
       File.mkdir_p userdir
-      `chef-server-ctl org-user-add #{orgname} #{username} -a #{admin}`
+      `cinc-server-ctl org-user-add #{orgname} #{username} -a #{admin}`
 
     end
     def make_user(user)
@@ -57,7 +57,7 @@ module DVM
         puts "Skipping user #{user}, key already exists"
       else
         # TODO we probably should care if this fails...
-        `chef-server-ctl user-create #{user} #{user} test-user #{username}@dvm.com password > #{key}`
+        `cinc-server-ctl user-create #{user} #{user} test-user #{username}@dvm.com password > #{key}`
       end
     end
     def user_key_path(username)
@@ -77,7 +77,7 @@ node_name                "#{username}"
 client_key               "#{keypath}"
 validation_client_name   "#{@current_org}-validator"
 validation_key           "#{validatorpath}"
-chef_server_url          "https://api.chef-server.dev/organizations/#{orgname}"
+chef_server_url          "https://api.cinc-server.dev/organizations/#{orgname}"
 cache_type               'BasicFile'
 cache_options( :path => "/vagrant/testdata/cookbookcache" )
 cookbook_path            ["/vagrant/testdata/cookbooks"]
@@ -89,7 +89,7 @@ ssl_verify_mode  :verify_none
 log_level                :info
 log_location     STDOUT
 client_key       "#{client_key_path(orgname, nodename)}"
-chef_server_url  "https://api.chef-server.dev/organizations/#{orgname}
+chef_server_url  "https://api.cinc-server.dev/organizations/#{orgname}
 validation_client_name "#{orgname}-validator"
 node_name "#{nodename}"
 ssl_verify_mode  :verify_none
@@ -102,9 +102,9 @@ end
     # TODO turn of strict host checking in all knife.rbs
     # TODO knife in path?
     # TODO pivotal or just use validator?
-    #command "chef-server-ctl user-create #{username} #{username} test-user #{username}@#{orgname}.com password > #{private_key}"
-    #command "knife client create #{nodename} -u #{orgname}-validator -k #{org_validator} -s https://api.chef-server.dev > #{node_key_path}"
-    #command "knife node create #{nodename} -u #{nodename} -k #{node_key_path} -s https://api.chef-server.dev"
+    #command "cinc-server-ctl user-create #{username} #{username} test-user #{username}@#{orgname}.com password > #{private_key}"
+    #command "knife client create #{nodename} -u #{orgname}-validator -k #{org_validator} -s https://api.cinc-server.dev > #{node_key_path}"
+    #command "knife node create #{nodename} -u #{nodename} -k #{node_key_path} -s https://api.cinc-server.dev"
     # Populate .chef/chef.rb for nodes, .chef/knife.rb for users
     #dot_chef = "#{org_root}/#{nodename}/.chef"
     #private_key = "#{user_root}/#{nodename}.pem"
@@ -113,10 +113,10 @@ end
       #variables(
         #:username => username,
         #:orgname => orgname,
-        #:server_fqdn => 'api.chef-server.dev'
+        #:server_fqdn => 'api.cinc-server.dev'
       #)
       #mode "0777"
       #action :create
     #end
-    # knife_command = "/opt/opscode/embedded/knife -s api.chef-server.dev -k /etc/opscode/pivotal.pem"
+    # knife_command = "/opt/opscode/embedded/knife -s api.cinc-server.dev -k /etc/opscode/pivotal.pem"
 

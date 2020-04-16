@@ -80,8 +80,8 @@ init_pg_db(Config) ->
     DbName = "oc_chef_authz_itests",
     CommonDir = filename:join([DataDir, "../common"]),
     Schema = filename:join([CommonDir, "schema.sql"]),
-    ECSchema = filename:join([CommonDir, "deps", "enterprise-chef-server-schema"]),
-    OSCSchema = filename:join([ECSchema, "deps", "chef-server-schema"]),
+    ECSchema = filename:join([CommonDir, "deps", "enterprise-cinc-server-schema"]),
+    OSCSchema = filename:join([ECSchema, "deps", "cinc-server-schema"]),
 
     PgData = filename:join(DataDir, "pg_data"),
     PgLog = filename:join(DataDir, "pg.log"),

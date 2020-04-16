@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-# Generate knife config that chef-server-ctl commands
+# Generate knife config that cinc-server-ctl commands
 # that wrap knife-opc use to make knife calls.
 
 vip_root = node['private_chef']['lb']['vip']

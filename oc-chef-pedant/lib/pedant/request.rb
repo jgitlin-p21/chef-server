@@ -66,7 +66,7 @@ module Pedant
       }
     end
 
-    # Execute an authenticated request against a Chef Server
+    # Execute an authenticated request against a CINC Server
     #
     # `method` is an HTTP verb, as an uppercase symbol, e.g., :GET
     #
@@ -110,7 +110,7 @@ module Pedant
       do_request(method, url, headers, payload, &validator)
     end
 
-    # Construct an authenticated request against a Chef Server
+    # Construct an authenticated request against a CINC Server
     def construct_request(method, url, requestor, opts={})
       user_headers = opts[:headers] || {}
       version = opts[:server_api_version]

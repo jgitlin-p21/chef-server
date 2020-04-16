@@ -89,13 +89,13 @@
           %% balancer
           reqid_header_name :: string() | undefined,
 
-          %% String containing API version info for the chef server
+          %% String containing API version info for the cINC Server
           api_version :: string() | undefined,
 
-          %% OTP information for the Erchef server in {ReleaseName, OtpVersion} form.
+          %% OTP information for the ErcINC Server in {ReleaseName, OtpVersion} form.
           otp_info :: {string(), string()} | undefined,
 
-          %% Indicates what variant of Chef Server this is (e.g. "osc" => Open Source Chef,
+          %% Indicates what variant of CINC Server this is (e.g. "osc" => Open Source Chef,
           %% "opc" = Opscode Private Chef, etc).
           server_flavor :: string() | undefined,
 

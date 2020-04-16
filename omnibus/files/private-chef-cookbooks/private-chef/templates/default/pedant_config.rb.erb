@@ -7,7 +7,7 @@
 #
 
 # The base_resource_url gets set whenever we are operating behind a proxy,
-# notably in the automate-chef-server all in one installation
+# notably in the automate-cinc-server all in one installation
 #
 <%- if @base_resource_url && @base_resource_url.to_s != "host_header" %>
 base_resource_url "<%= @base_resource_url %>"
@@ -16,16 +16,16 @@ base_resource_url "<%= @base_resource_url %>"
 <%- end %>
 
 # A unique identification string used to create orgs and users specific
-# to a each single chef server's nodes' OS. Simply using "Process.pid"
+# to a each single cINC Server's nodes' OS. Simply using "Process.pid"
 # proved to not be unique enough when running pedant simultaneously
-# on multiple nodes of the same chef server when the generated pedant
+# on multiple nodes of the same cINC Server when the generated pedant
 # config file could have been copied across during the setup of that
-# chef server.
+# cINC Server.
 chef_server_uid = "<%= @hostname %>_#{Process.pid}".downcase
 
 # Specify a testing organization if you are testing a multi-tenant
-# instance of a Chef Server (e.g., Private Chef, Hosted Chef).  If you
-# are testing a single-tenant instance (i.e. Open Source Chef Server),
+# instance of a CINC Server (e.g., Private Chef, Hosted Chef).  If you
+# are testing a single-tenant instance (i.e. Open Source CINC Server),
 # DO NOT include this parameter
 #
 # Due to how the current org cache operates, it is best to use a
@@ -78,7 +78,7 @@ search_commit_url "/_refresh"
 search_url_fmt "/chef/_search?q=X_CHEF_type_CHEF_X:%{type}%%20%{query}"
 <% end %>
 
-# Some tests expect access erchef server directly, instead of routing through
+# Some tests expect access ercINC Server directly, instead of routing through
 # LB.
 #
 internal_server "http://<%= @erchef_internal_vip %>:<%= @erchef_internal_port %>"

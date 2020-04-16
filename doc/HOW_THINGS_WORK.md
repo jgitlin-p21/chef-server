@@ -1,12 +1,12 @@
 The goal of this document is to provide high-level overviews of how
-various systems work inside Chef Server. If you encounter a process
+various systems work inside CINC Server. If you encounter a process
 or feature that isn’t straightforward or took you time to understand,
 consider writing an explanation here.
 
 ## Search Indexing
 
-Chef Server performs searches by querying a search index. This index
-is updated on every write to the Chef Server. That is, every time we
+CINC Server performs searches by querying a search index. This index
+is updated on every write to the CINC Server. That is, every time we
 write to oc_erchef's postgresql database to update an object (such as
 a node, data bag, role, etc.), we usually also need to write to the
 search index.
@@ -14,17 +14,17 @@ search index.
 This section describes how data gets from erchef to the search index.
 For how we query this data later, see Search Queries.
 
-Chef Server supports two backends for the search index:
+CINC Server supports two backends for the search index:
 
 - Solr, and
 - Elasticsearch
 
-Solr is the default and is shipped inside the Chef Server package.. It
+Solr is the default and is shipped inside the CINC Server package.. It
 has been supported for longer and is more battle tested. ElasticSearch
 is the default for Chef Backend because of its easy-to-use replication
 clustering.
 
-Chef Server has 3 different "search_queue_mode"s:
+CINC Server has 3 different "search_queue_mode"s:
 
 - rabbitmq (Solr-only)
 - batch (Solr or ES)
@@ -230,7 +230,7 @@ object types and organizations.
 ## FIPS Integration
 
 This assumes you understand what the FIPS 140-2 validation is. Putting the
-Chef Server into *FIPS mode* means:
+CINC Server into *FIPS mode* means:
 
 1. It sets `OPENSSL_FIPS=1` in the environment, so shelling out to `openssl`
 will activate the FIPS module.
@@ -238,7 +238,7 @@ will activate the FIPS module.
 calls.
 
 The server can be switched into and out of FIPS mode at runtime. Edit the
-`chef-server.rb` config by adding `fips true` or `fips false` to force FIPS
+`cinc-server.rb` config by adding `fips true` or `fips false` to force FIPS
 mode as necessary. On systems where FIPS is enabled at the kernel level this
 config is defaulted to true. On all other systems it is defaulted to false. FIPS
 mode is currently only supported on RHEL systems.
@@ -275,7 +275,7 @@ Current Status:
 v1:
 - The user is not allowed to edit the public\_key via the /users endpoint,
 it must be managed via the /keys endpoint instead
-- chef-server-ctl uses v1
+- cinc-server-ctl uses v1
 
 ## Keys table is the only source of truth for public\_key
 
@@ -283,14 +283,14 @@ Phase1(Currently implemented):
 - Add a function for add\_user and update\_user that inserts only the sentinel
 value into the public\_key field in the users table.
 - The add and update triggers in keys\_update\_trigger.sql are present to maintain
-compatibility with older versions of chef-server.
+compatibility with older versions of cinc-server.
 
 Phase2(To be implemented):
 Todo:
 - Delete the and and update triggers in keys\_update\_trigger.sql.
 - Delete the public\_key column in users (and perhaps clients) table.
 Notes:
-- This should be easier once all the users are on Phase1 release of chef-server.
+- This should be easier once all the users are on Phase1 release of cinc-server.
 - The code will then only interact with the add\_user and update\_user functions in
 the back.
 - The upgrade path after Phase2 rollout will include upgrading to a release with

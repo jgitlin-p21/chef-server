@@ -18,7 +18,7 @@
 
 {application, chef_db,
  [
-  {description, "Database abstraction layer for Chef server"},
+  {description, "Database abstraction layer for CINC Server"},
   {vsn, "1.0.0.1"},
   {registered, []},
   {applications, [

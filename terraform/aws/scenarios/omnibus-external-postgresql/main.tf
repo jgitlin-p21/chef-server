@@ -42,7 +42,7 @@ data "template_file" "hosts_config" {
 
 # generate chef_server.rb configuration
 data "template_file" "chef_server_rb" {
-  template = file("${path.module}/templates/chef-server.rb.tpl")
+  template = file("${path.module}/templates/cinc-server.rb.tpl")
 
   vars = {
     postgresql_ip = var.enable_ipv6 == "true" ? module.postgresql.public_ipv6_address : module.postgresql.private_ipv4_address
@@ -65,12 +65,12 @@ resource "null_resource" "postgresql_config" {
 
   # upload private.key if running from buildkite
   provisioner "local-exec" {
-    command = "[ -n \"$BUILDKITE\" ] && { vault read -field=private.key secret/chef-server | ssh -o 'UserKnownHostsFile=/dev/null' -o 'StrictHostKeyChecking=no' ${module.postgresql.ssh_username}@${module.postgresql.public_ipv4_dns} 'cat > /tmp/private.key'; } || true"
+    command = "[ -n \"$BUILDKITE\" ] && { vault read -field=private.key secret/cinc-server | ssh -o 'UserKnownHostsFile=/dev/null' -o 'StrictHostKeyChecking=no' ${module.postgresql.ssh_username}@${module.postgresql.public_ipv4_dns} 'cat > /tmp/private.key'; } || true"
   }
 
   # upload certificate.pem if running from buildkite
   provisioner "local-exec" {
-    command = "[ -n \"$BUILDKITE\" ] && { vault read -field=certificate.pem secret/chef-server | ssh -o 'UserKnownHostsFile=/dev/null' -o 'StrictHostKeyChecking=no' ${module.postgresql.ssh_username}@${module.postgresql.public_ipv4_dns} 'cat > /tmp/certificate.pem'; } || true"
+    command = "[ -n \"$BUILDKITE\" ] && { vault read -field=certificate.pem secret/cinc-server | ssh -o 'UserKnownHostsFile=/dev/null' -o 'StrictHostKeyChecking=no' ${module.postgresql.ssh_username}@${module.postgresql.public_ipv4_dns} 'cat > /tmp/certificate.pem'; } || true"
   }
 
   provisioner "remote-exec" {
@@ -96,7 +96,7 @@ resource "null_resource" "postgresql_config" {
   }
 }
 
-# update chef server
+# update cINC Server
 resource "null_resource" "chef_server_config" {
   depends_on = [null_resource.postgresql_config]
 
@@ -114,7 +114,7 @@ resource "null_resource" "chef_server_config" {
 
   provisioner "file" {
     content     = data.template_file.chef_server_rb.rendered
-    destination = "/tmp/chef-server.rb"
+    destination = "/tmp/cinc-server.rb"
   }
 
   provisioner "file" {
@@ -122,22 +122,22 @@ resource "null_resource" "chef_server_config" {
     destination = "/tmp/dhparam.pem"
   }
 
-  # install chef-server
+  # install cinc-server
   provisioner "remote-exec" {
     inline = [
       "set -evx",
-      "echo -e '\nBEGIN INSTALL CHEF SERVER\n'",
+      "echo -e '\nBEGIN INSTALL CINC Server\n'",
       "sudo chown root:root /tmp/hosts",
       "sudo mv /tmp/hosts /etc/hosts",
       "curl -vo /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")} ${var.upgrade_version_url}",
       "sudo ${replace(var.upgrade_version_url, "rpm", "") != var.upgrade_version_url ? "rpm -U" : "dpkg -iEG"} /tmp/${replace(var.upgrade_version_url, "/^.*\\//", "")}",
-      "sudo chown root:root /tmp/chef-server.rb",
+      "sudo chown root:root /tmp/cinc-server.rb",
       "sudo chown root:root /tmp/dhparam.pem",
-      "sudo mv /tmp/chef-server.rb /etc/opscode",
+      "sudo mv /tmp/cinc-server.rb /etc/opscode",
       "sudo mv /tmp/dhparam.pem /etc/opscode",
-      "sudo chef-server-ctl reconfigure --chef-license=accept",
+      "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
-      "echo -e '\nEND INSTALL CHEF SERVER\n'",
+      "echo -e '\nEND INSTALL CINC Server\n'",
     ]
   }
 
@@ -183,15 +183,15 @@ resource "null_resource" "chef_server_config_ssl" {
     host = module.chef_server.public_ipv4_dns
   }
 
-  # enable chef-server ssl enforcement
+  # enable cinc-server ssl enforcement
   provisioner "remote-exec" {
     inline = [
       "set -evx",
-      "echo -e '\nBEGIN ENABLE SSL MODE ON CHEF SERVER\n'",
-      "sudo sed -i '/sslmode/{s/disable/require/;}' /etc/opscode/chef-server.rb",
-      "sudo chef-server-ctl reconfigure --chef-license=accept",
+      "echo -e '\nBEGIN ENABLE SSL MODE ON CINC Server\n'",
+      "sudo sed -i '/sslmode/{s/disable/require/;}' /etc/opscode/cinc-server.rb",
+      "sudo cinc-server-ctl reconfigure --chef-license=accept",
       "sleep 120",
-      "echo -e '\nEND ENABLE SSL MODE ON CHEF SERVER\n'",
+      "echo -e '\nEND ENABLE SSL MODE ON CINC Server\n'",
     ]
   }
 }

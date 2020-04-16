@@ -38,12 +38,12 @@ else
 endif
 
 ifneq ($(INSTALL_VERSION),)
-	export TF_VAR_install_version_url ?= $(shell platform=$(TF_VAR_platform); for channel in unstable current stable; do mixlib-install download chef-server --url -c $$channel -a x86_64 -p $$(echo $${platform%-*} | sed 's/rhel/el/') -l $${platform\#\#*-} -v $(INSTALL_VERSION) 2>/dev/null && break; done | head -n1)
+	export TF_VAR_install_version_url ?= $(shell platform=$(TF_VAR_platform); for channel in unstable current stable; do mixlib-install download cinc-server --url -c $$channel -a x86_64 -p $$(echo $${platform%-*} | sed 's/rhel/el/') -l $${platform\#\#*-} -v $(INSTALL_VERSION) 2>/dev/null && break; done | head -n1)
 endif
 
 export UPGRADE_VERSION ?= $(INSTALL_VERSION)
 ifneq ($(UPGRADE_VERSION),)
-	export TF_VAR_upgrade_version_url ?= $(shell platform=$(TF_VAR_platform); for channel in unstable current stable; do mixlib-install download chef-server --url -c $$channel -a x86_64 -p $$(echo $${platform%-*} | sed 's/rhel/el/') -l $${platform\#\#*-} -v $(UPGRADE_VERSION) 2>/dev/null && break; done | head -n1)
+	export TF_VAR_upgrade_version_url ?= $(shell platform=$(TF_VAR_platform); for channel in unstable current stable; do mixlib-install download cinc-server --url -c $$channel -a x86_64 -p $$(echo $${platform%-*} | sed 's/rhel/el/') -l $${platform\#\#*-} -v $(UPGRADE_VERSION) 2>/dev/null && break; done | head -n1)
 endif
 
 ifneq ($(BACKEND_VERSION),)
@@ -143,11 +143,11 @@ ifeq ($(TF_VAR_scenario),)
 endif
 
 ifeq ($(TF_VAR_install_version_url),)
-	$(error A chef-server artifact couldn't be found of version $(INSTALL_VERSION) for $(TF_VAR_platform).)
+	$(error A cinc-server artifact couldn't be found of version $(INSTALL_VERSION) for $(TF_VAR_platform).)
 endif
 
 ifeq ($(TF_VAR_upgrade_version_url),)
-	$(error A chef-server artifact couldn't be found of version $(UPGRADE_VERSION) for $(TF_VAR_platform).)
+	$(error A cinc-server artifact couldn't be found of version $(UPGRADE_VERSION) for $(TF_VAR_platform).)
 endif
 
 init: verify-scenario

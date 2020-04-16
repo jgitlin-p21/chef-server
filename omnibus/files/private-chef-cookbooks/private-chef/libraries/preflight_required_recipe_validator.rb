@@ -39,9 +39,9 @@ class RequiredRecipePreflightValidator < PreflightValidator
       fail_with <<~EOF
         Server enforced required recipe is enabled but the recipe file does not exist or
         is misconfigured. Please set the `required_recipe["path"] = /path/to/recipe` in
-        `/etc/opscode/chef-server.rb` and run:
+        `/etc/opscode/cinc-server.rb` and run:
 
-            chef-server-ctl reconfigure
+            cinc-server-ctl reconfigure
       EOF
     end
   end
@@ -50,10 +50,10 @@ class RequiredRecipePreflightValidator < PreflightValidator
     unless stat.uid == 0
       fail_with <<~EOF
         The required_recipe file must be owned by root. Please change the owner to root
-        and reconfigure the Chef server:
+        and reconfigure the CINC Server:
 
             chown root:root #{@required_recipe['path']}
-            chef-server-ctl reconfigure
+            cinc-server-ctl reconfigure
       EOF
     end
   end
@@ -62,10 +62,10 @@ class RequiredRecipePreflightValidator < PreflightValidator
     unless stat.gid == 0
       fail_with <<~EOF
         The required_recipe file must be in the root group. Please change the group to
-        root and reconfigure the Chef server:
+        root and reconfigure the CINC Server:
 
             chown root:root #{@required_recipe['path']}
-            chef-server-ctl reconfigure
+            cinc-server-ctl reconfigure
       EOF
     end
   end
@@ -74,10 +74,10 @@ class RequiredRecipePreflightValidator < PreflightValidator
     unless %w(600 644).include?(format('%o', stat.mode)[3..-1])
       fail_with <<~"EOF"
         The required_recipe must have a mode of 644 or 600. Please set a compatible mode
-        and reconfigure the Chef server:
+        and reconfigure the CINC Server:
 
             chmod 600 #{@required_recipe['path']}
-            chef-server-ctl reconfigure
+            cinc-server-ctl reconfigure
       EOF
     end
   end

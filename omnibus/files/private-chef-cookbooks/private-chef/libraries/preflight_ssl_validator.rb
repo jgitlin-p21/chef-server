@@ -29,7 +29,7 @@ class SslPreflightValidator < PreflightValidator
   def verify_fips_sanity
     if PrivateChef['fips'] && !fips_supported_ssl?
       fail_with <<~EOF
-        You have enabled FIPS-mode in chef-server.rb but FIPS does not appear
+        You have enabled FIPS-mode in cinc-server.rb but FIPS does not appear
         to be supported on this platform.
 
         #{openssl_exe} reported its version as:

@@ -96,7 +96,7 @@ class ChefServerDataBootstrap
   def create_superuser_in_erchef(conn)
     require 'openssl'
 
-    raw_key = PrivateChef.credentials.get('chef-server', 'superuser_key')
+    raw_key = PrivateChef.credentials.get('cinc-server', 'superuser_key')
     public_key = OpenSSL::PKey::RSA.new(raw_key).public_key.to_s
 
     user_id = SecureRandom.uuid.gsub('-', '')
@@ -120,7 +120,7 @@ class ChefServerDataBootstrap
       serialized_object: JSON.generate(
         first_name: 'Chef',
         last_name: 'Server',
-        display_name: 'Chef Server Superuser'
+        display_name: 'CINC Server Superuser'
       ))
   end
 

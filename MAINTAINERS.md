@@ -1,8 +1,8 @@
-This file lists the official maintainers of the Chef Server project.
+This file lists the official maintainers of the CINC Server project.
 
 Refer to this list to find out who needs to review your pull request.  Two maintainer approvals are required to merge a change.
 
-If undertaking a large change, ping the @chef/chef-server-maintainers group for discussion and guidance.
+If undertaking a large change, ping the @chef/cinc-server-maintainers group for discussion and guidance.
 
 # Maintainers
 

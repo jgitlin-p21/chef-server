@@ -9,7 +9,7 @@ Bifrost PostgreSQL Schema
 
 ## Ensuring Modifications are Applied in Upgrades
 
-Upgrades are not automatically applied when chef-server upgrades are
+Upgrades are not automatically applied when cinc-server upgrades are
 installed/reconfigured.  In order to have a schema change applied,
 you must add a partybus migration with content similar to the following:
 

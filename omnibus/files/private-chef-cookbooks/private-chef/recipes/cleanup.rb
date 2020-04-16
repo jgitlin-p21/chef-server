@@ -33,19 +33,19 @@ directory '/opt/opscode/sv/postgres' do
 end
 
 #
-# Bootstrap Service Cleanup from Chef Server 12.3.1 and earlier.
+# Bootstrap Service Cleanup from CINC Server 12.3.1 and earlier.
 #
 
 # Bootstrap is now part of the private_chef cookbook itself and is
 # no longer an additional component - remove any traces of it.
-directory '/opt/opscode/embedded/service/chef-server-bootstrap' do
+directory '/opt/opscode/embedded/service/cinc-server-bootstrap' do
   action :delete
   recursive true
   ignore_failure true
 end
 
 #
-# Opscode Expander Reindexer from Chef Server 12.3.1 and earlier
+# Opscode Expander Reindexer from CINC Server 12.3.1 and earlier
 #
 
 # opscode-expander-reindexer was removed in 56c156bc71201dc8bf921ef69cfff4db3e9ff898

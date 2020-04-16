@@ -11,7 +11,7 @@ license :project_license
 # It was recently removed (2017Q1) from most of these components as a dep, and
 # build flags were updated to not link it into the components.
 #
-# This led to chef-server no longer pulling it indirectly. This broke popt, which
+# This led to cinc-server no longer pulling it indirectly. This broke popt, which
 # is defined upstream and pulled in by logrotate.
 #
 # TODO mp 2017-04-06 - a little further digging to see if the right answer is to
@@ -28,7 +28,8 @@ dependency "openresty-lpeg"  # lua-based routing
 dependency "runit"
 dependency "chef_backup-gem" # chef-server-ctl backup
 dependency "veil-gem" # chef-server-ctl rotate-credentials
-dependency "openssl-fips-config" if fips_mode? 
+dependency "erlang-crypto2"
+dependency "openssl-fips-config" if fips_mode?
 
 # the backend
 dependency "postgresql92-bin" # for upgrading 9.2 -> 9.6
@@ -46,7 +47,7 @@ dependency "chef" # for embedded chef-client -z runs (built from master - build 
 
 dependency "private-chef-ctl" # additional project-specific private-chef-ctl subcommands
 
-# Pull in knife-opc which is wrapped by chef-server-ctl to
+# Pull in knife-opc which is wrapped by cinc-server-ctl to
 # allow user to create users and orgs, and handle org associations
 # without manage installed.
 dependency "knife-opc-gem"

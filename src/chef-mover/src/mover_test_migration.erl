@@ -7,15 +7,15 @@
 %% the components it needs (postgres, redis, bifrost)
 %%
 %% In order to use it first create some orgs:
-%%    chef-server-ctl org-create org1 org1
-%%    chef-server-ctl org-create org2 org2
+%%    cinc-server-ctl org-create org1 org1
+%%    cinc-server-ctl org-create org2 org2
 %%
 %% mover_manager:migrate(all, 1, mover_test_migration).
 %%
 %% If this is a live box, remember to delete the orgs:
 %%
-%%    chef-server-ctl org-delete org1
-%%    chef-server-ctl org-delete org2
+%%    cinc-server-ctl org-delete org1
+%%    cinc-server-ctl org-delete org2
 %%
 -module(mover_test_migration).
 

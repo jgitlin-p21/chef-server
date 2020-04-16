@@ -1,8 +1,8 @@
 name              'private-chef'
-maintainer        'Chef Software, Inc.'
+maintainer        'CINC Software, Inc.'
 maintainer_email  'cookbooks@chef.io'
 license           'Apache-2.0'
-description       'Installs and configures Chef Server from Omnibus'
+description       'Installs and configures CINC Server from Omnibus'
 version           '0.1.1'
 
 %w( ubuntu debian redhat centos oracle scientific fedora amazon ).each do |os|

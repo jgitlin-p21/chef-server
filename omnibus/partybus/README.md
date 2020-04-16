@@ -55,7 +55,7 @@ define_upgrade 'its_a_futurama_party', :api_version => 2 do
 end
 ```
 
-## Chef Server Services
+## CINC Server Services
 
 ### How To Handle Services In Your Partybus Upgrade
 

@@ -26,7 +26,7 @@ if [[ "${EXPEDITOR:-false}" == "true" ]]; then
 fi
 
 bundle_install_dirs=(
-  chef-server-ctl
+  cinc-server-ctl
   oc-id
   opscode-expander
 )

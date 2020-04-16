@@ -1,4 +1,4 @@
-dn: cn=Julia Child,ou=chefs,dc=chef-server,dc=dev
+dn: cn=Julia Child,ou=chefs,dc=cinc-server,dc=dev
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
@@ -7,6 +7,6 @@ cn: Julia Child
 sn: Child
 displayName: Julia Child
 givenName: Julia
-mail: child@chef-server.dev
+mail: child@cinc-server.dev
 uid: child
 userPassword: child

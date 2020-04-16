@@ -50,13 +50,13 @@ describe PasswordResetsController do
       end
     end
 
-    describe 'nebulous errors talking to the chef server' do
+    describe 'nebulous errors talking to the cINC Server' do
       before do
         user = double('user', username: 'jimmy')
         allow(User).to receive(:find).and_return(user)
       end
 
-      describe 'chef server returns a 404' do
+      describe 'cINC Server returns a 404' do
         before do
           r = Net::HTTPNotFound.new('1.0', '404', 'Not Found')
           e = Net::HTTPServerException.new('fake exception', r)
@@ -77,7 +77,7 @@ describe PasswordResetsController do
         end
       end
 
-      describe 'chef server returns a 406' do
+      describe 'cINC Server returns a 406' do
         before do
           r = Net::HTTPNotAcceptable.new('1.0', '406', 'Not Acceptable')
           e = Net::HTTPServerException.new('fake exception', r)
@@ -218,8 +218,8 @@ describe PasswordResetsController do
       Timecop.freeze(Time.utc(2015, 2, 19, 12, 12, 12)) do
         let!(:expires) { 1.day.from_now.to_i }
 
-        describe 'nebulous errors talking to the chef server' do
-          describe 'chef server returns a 404' do
+        describe 'nebulous errors talking to the cINC Server' do
+          describe 'cINC Server returns a 404' do
             before do
               r = Net::HTTPNotFound.new('1.0', '404', 'Not Found')
               e = Net::HTTPServerException.new('fake exception', r)
@@ -236,7 +236,7 @@ describe PasswordResetsController do
             end
           end
 
-          describe 'chef server returns a 400' do
+          describe 'cINC Server returns a 400' do
             before do
               r = Net::HTTPBadRequest.new('1.0', '400', 'Bad Request')
               e = Net::HTTPServerException.new('fake exception', r)

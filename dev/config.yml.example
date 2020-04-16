@@ -18,7 +18,7 @@ vm:
   # sync, add them here:
   sync-exclude: []
 
-  # Leaving this set will auto-load omnibus cookbooks from your chef-server clone
+  # Leaving this set will auto-load omnibus cookbooks from your cinc-server clone
   # *before* the first reconfigure:
   omnibus-autoload: [private-chef-cookbooks]
 
@@ -28,7 +28,7 @@ vm:
   # start: true
 
   # When this is set true, and start is true,
-  # the chef-server node will be configured to use
+  # the cinc-server node will be configured to use
   # this vm as an external postgresql server from the start.
   #  use-external: true
 
@@ -40,7 +40,7 @@ vm:
   # external_solr:
   # enable a separate external vm
   # start: true
-  # These will map directly to entries in the generated chef-server.rb
+  # These will map directly to entries in the generated cinc-server.rb
 
   # ldap:
   # enable a separate ldap vm but do not use it unless use-external is set.
@@ -55,7 +55,7 @@ vm:
       # This assumes that that you've configured a local superuser with user/pass below
       # and that you've configured a local superuser with user/pass below
       # and tcp-based access.
-      #chef-server-config:
+      #cinc-server-config:
       #  postgresql['external']: true
       #  postgresql['vip']:  "\"192.168.33.1\""
       #  postgresql['port']: 5432

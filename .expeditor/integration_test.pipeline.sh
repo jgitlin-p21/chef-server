@@ -123,7 +123,7 @@ setup () {
     backend "consul" {
       address = "http://consul.chef.co"
       scheme  = "https"
-      path    = "terraform/chef-server/test-scenario"
+      path    = "terraform/cinc-server/test-scenario"
       gzip    = true
     }
   }
@@ -175,17 +175,17 @@ apply () {
   [[ $(ssh-add -l | wc -l) -gt 0 ]] || error 'ssh-agent does not have any keys loaded!'
 
   echo '--- :chef: Identify product versions and download URLs'
-  [[ -z "$INSTALL_VERSION" ]] && INSTALL_VERSION="$(mixlib-install list-versions chef-server stable | tail -n 1)"
+  [[ -z "$INSTALL_VERSION" ]] && INSTALL_VERSION="$(mixlib-install list-versions cinc-server stable | tail -n 1)"
   export INSTALL_VERSION
-  [[ -z "$UPGRADE_VERSION" ]] && UPGRADE_VERSION="$(mixlib-install list-versions chef-server current | tail -n 1)"
+  [[ -z "$UPGRADE_VERSION" ]] && UPGRADE_VERSION="$(mixlib-install list-versions cinc-server current | tail -n 1)"
   export UPGRADE_VERSION
   [[ -z "$BACKEND_VERSION" ]] && BACKEND_VERSION="$(mixlib-install list-versions chef-backend current | tail -n 1)"
   export BACKEND_VERSION
 
   echo '--- :chef: Identify product download URLs'
-  TF_VAR_install_version_url=$(for channel in unstable current stable; do mixlib-install download chef-server --url -c $channel -a x86_64 -p "$(sed 's/rhel/el/' <<<"${TF_VAR_platform%-*}")" -l "${TF_VAR_platform##*-}" -v "$INSTALL_VERSION" 2>/dev/null && break; done | head -n 1)
+  TF_VAR_install_version_url=$(for channel in unstable current stable; do mixlib-install download cinc-server --url -c $channel -a x86_64 -p "$(sed 's/rhel/el/' <<<"${TF_VAR_platform%-*}")" -l "${TF_VAR_platform##*-}" -v "$INSTALL_VERSION" 2>/dev/null && break; done | head -n 1)
   export TF_VAR_install_version_url
-  TF_VAR_upgrade_version_url=$(for channel in unstable current stable; do mixlib-install download chef-server --url -c $channel -a x86_64 -p "$(sed 's/rhel/el/' <<<"${TF_VAR_platform%-*}")" -l "${TF_VAR_platform##*-}" -v "$UPGRADE_VERSION" 2>/dev/null && break; done | head -n 1)
+  TF_VAR_upgrade_version_url=$(for channel in unstable current stable; do mixlib-install download cinc-server --url -c $channel -a x86_64 -p "$(sed 's/rhel/el/' <<<"${TF_VAR_platform%-*}")" -l "${TF_VAR_platform##*-}" -v "$UPGRADE_VERSION" 2>/dev/null && break; done | head -n 1)
   export TF_VAR_upgrade_version_url
   TF_VAR_backend_version_url=$(for channel in unstable current stable; do mixlib-install download chef-backend --url -c $channel -a x86_64 -p "$(sed 's/rhel/el/' <<<"${TF_VAR_platform%-*}")" -l "${TF_VAR_platform##*-}" -v "$BACKEND_VERSION" 2>/dev/null && break; done | head -n 1)
   export TF_VAR_backend_version_url
@@ -304,7 +304,7 @@ destroy-all () {
   fi
 
   # iterate across workspaces left in consul
-  for workspace in $(consul kv get -keys terraform/chef-server/ | sed -n "/${BUILD_NUMBER}/{s/.*:\(${BUILD_NUMBER}-.*$\)/\1/;s/\///;p;}" | sort -u); do
+  for workspace in $(consul kv get -keys terraform/cinc-server/ | sed -n "/${BUILD_NUMBER}/{s/.*:\(${BUILD_NUMBER}-.*$\)/\1/;s/\///;p;}" | sort -u); do
     destroy "$workspace" || ret=1
   done
 

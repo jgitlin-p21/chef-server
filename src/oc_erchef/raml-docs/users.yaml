@@ -1,6 +1,6 @@
 #%RAML 1.0
 ---
-description: Users on the Chef server.
+description: Users on the CINC Server.
 type: list_endpoint
 
 get:
@@ -34,7 +34,7 @@ post:
           }
 
 /{user}:
-  description: A user on the Chef server.
+  description: A user on the CINC Server.
   type: item_endpoint
   uriParameters:
     user:

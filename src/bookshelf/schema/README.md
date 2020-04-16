@@ -1,11 +1,11 @@
 ## Schema Install Note
 
-The complete schema is deployed as part of the chef-server installation
+The complete schema is deployed as part of the cinc-server installation
 via the `bookshelf_database` recipe.
 
 ## Schema Upgrade Note
 
-Upgrades are not automatically applied when chef-server upgrades are
+Upgrades are not automatically applied when cinc-server upgrades are
 installed/reconfigured.  In order to have a schema change applied,
 you must add a partybus migration with content similar to the following:
 

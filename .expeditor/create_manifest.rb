@@ -66,9 +66,9 @@ pkg_origin = "chef"
 %w{
   openresty-noroot
   oc_id
-  chef-server-nginx
+  cinc-server-nginx
   bookshelf
-  chef-server-ctl
+  cinc-server-ctl
   oc_bifrost
   oc_erchef
 }.each do |pkg_name|

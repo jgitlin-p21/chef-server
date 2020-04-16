@@ -16,7 +16,7 @@ pedant before merge.
 
 - Expeditor and BuildKite scripts
   It is best to keep the version we're using for tests the same as
-  what we're shipping in Chef Server (match with omnibus_overrides)
+  what we're shipping in CINC Server (match with omnibus_overrides)
     - scripts/bk\_tests/bk\_install.sh
     - .expeditor/verify.pipeline.yml
     - .expeditor/license_scout.sh
@@ -43,7 +43,7 @@ starting and after you complete the updates.
 
 - src/opscode-expander/Gemfile.lock
 - src/oc\_erchef/apps/chef_objects/priv/depselector\_rb/Gemfile.lock
-- src/chef-server-ctl/Gemfile.lock
+- src/cinc-server-ctl/Gemfile.lock
 - src/oc_bifrost/oc-bifrost-pedant/Gemfile.lock
 
 Note:
@@ -70,24 +70,24 @@ copying files back from the dev-vm to the host.
 - Ensure that the versions in the following locations are consistent.
     - omnibus_overrides.rb
       You will also need to update Ohai
-    - src/chef-server-ctl/chef-server-ctl.gemspec
-      Don't forget to update the src/chef-server-ctl/Gemfile.lock
+    - src/cinc-server-ctl/cinc-server-ctl.gemspec
+      Don't forget to update the src/cinc-server-ctl/Gemfile.lock
 
     - src/oc-id/ [leave alone for now]
-      chef-client is neededed to provide the Chef Server API.
+      chef-client is neededed to provide the CINC Server API.
       We are currently using an old version of chef due to tech debt
       around rails upgrades. We should either fix that debt or find
-      another library for the Chef Server API.
+      another library for the CINC Server API.
 
-    - src/chef-server-ctl/Gemfile.local
+    - src/cinc-server-ctl/Gemfile.local
 
-- Build Chef Server, and do a chef-server-ctl reconfigure. Fix any new
+- Build CINC Server, and do a cinc-server-ctl reconfigure. Fix any new
   warnings about deprecations and the like.
 
 ## Updating rebar3
 
 - It is helpful to periodically update the copy of the rebar3 tooling
-  that is included with Chef Infra Server.
+  that is included with CINC Infra Server.
 - The following erlang apps need to be updated:
   - bookshelf
   - chef-mover
@@ -103,7 +103,7 @@ copying files back from the dev-vm to the host.
   - From the dev-vm (Preferred method)
   - From the host machine (mac in most cases)
 - Updating the erlang deps from the dev-vm
-  - cd chef-server/dev
+  - cd cinc-server/dev
   - vagrant up
   - vagrant ssh
   - In another window/tab on the host machine 
@@ -116,10 +116,10 @@ copying files back from the dev-vm to the host.
   - This will create an updated rebar.lock file.
   - cp rebar.lock /dotfiles #dotfiles folder is shared on host
   - On the host (mac)
-    - cp chef-server/dev/dotfiles/rebar.lock chef-server/src/oc_erchef
+    - cp cinc-server/dev/dotfiles/rebar.lock cinc-server/src/oc_erchef
   - Repeat the above steps for all the erlang apps.
 - Updating the erlang deps from the host machine
-  - cd chef-server/src/oc_erchef
+  - cd cinc-server/src/oc_erchef
   - rm -fr \_build
   - ./rebar3 upgrade
   - rm -fr \_build # not removing this can cause strange build problems where omnibus builds pick up mac architecture libraries

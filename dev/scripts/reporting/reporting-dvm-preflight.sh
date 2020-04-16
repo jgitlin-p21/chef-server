@@ -16,14 +16,14 @@
 #
 # scripts/reporting.sh: Run basic reporting tests.
 #
-# This script assumes you are starting with a VM with Chef Server
+# This script assumes you are starting with a VM with CINC Server
 # Latest installed and external DBs set up.
 #
 # Required Environment Variables
 # -------------------------------
 #
-# CHEF_SERVER_LATEST: path to last release of the chef server .deb build
-# CHEF_SERVER_LATEST_MINUS_1: path to a N-1 release of the chef server .deb build
+# CHEF_SERVER_LATEST: path to last release of the cINC Server .deb build
+# CHEF_SERVER_LATEST_MINUS_1: path to a N-1 release of the cINC Server .deb build
 # CHEF_SERVER_11: path to an open source server 11 .deb build
 # ENTERPRISE_CHEF_SERVER_11: path to a private chef .deb build
 # REPORTING_LAST_RELEASE: path to .deb of last release of reporting

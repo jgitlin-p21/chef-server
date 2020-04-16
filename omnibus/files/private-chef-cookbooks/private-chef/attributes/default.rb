@@ -54,7 +54,7 @@ default['private_chef']['required_recipe']['enable'] = false
 default['private_chef']['required_recipe']['path'] = nil
 
 ### For runit on sysvinit systems; without that we generate a empty tag value in inittab and break sysvinit.
-### Note if you happen to manage the chef-server with chef, and install your own runit, you will need to choose
+### Note if you happen to manage the cinc-server with chef, and install your own runit, you will need to choose
 ### a different value to avoid conflicts.
 default['private_chef']['sysvinit_id'] = 'SV'
 
@@ -100,7 +100,7 @@ default['private_chef']['opscode-solr']['data_dir'] = '/var/opt/opscode/opscode-
 
 ####
 # Server API Version - is not used in server configuration, but rather in the configuration
-# of components that need to know how to talk to the erchef server.
+# of components that need to know how to talk to the ercINC Server.
 #
 # This is set to the current minimally supported version.
 ####
@@ -229,7 +229,7 @@ default['private_chef']['jetty']['log_directory'] = '/var/opt/opscode/opscode-so
 default['private_chef']['opscode-solr4']['enable'] = true
 #
 # Set this to point at a solr/cloudsearch installation
-# not controlled by chef-server
+# not controlled by cinc-server
 #
 default['private_chef']['opscode-solr4']['external'] = false
 default['private_chef']['opscode-solr4']['external_url'] = nil
@@ -289,7 +289,7 @@ default['private_chef']['elasticsearch']['enable'] = false
 default['private_chef']['elasticsearch']['first_internal_install'] = false
 elasticsearch = default['private_chef']['elasticsearch']
 
-# These attributes cannot be overridden in chef-server.rb
+# These attributes cannot be overridden in cinc-server.rb
 # elasticsearch['tunable_blacklist'] = %w{dir data_dir try_start}
 # elasticsearch['try_start'] = true
 elasticsearch['dir'] = "#{var_base}/elasticsearch"
@@ -305,7 +305,7 @@ elasticsearch['enable_gc_log'] = false
 elasticsearch['initial_cluster_join_timeout'] = 90
 
 # each item in this list will be placed as-is into java_opts config file.
-# entries are set in chef-server.rb as
+# entries are set in cinc-server.rb as
 # elasticsearch.jvm_opts = [
 #  "-xoption1",
 #  "-xoption2",
@@ -314,7 +314,7 @@ elasticsearch['initial_cluster_join_timeout'] = 90
 # ]
 #
 # If you wish to override heap start/max size or new generation size, set them
-# in chef-server.rb.  The defaults are are computed in the elasticsearch
+# in cinc-server.rb.  The defaults are are computed in the elasticsearch
 # recipe based on node memory, but can be overridden as
 # elasticsearch.heap_size = $value
 # elasticsearch.new_size = $value
@@ -323,8 +323,8 @@ elasticsearch['jvm_opts'] = []
 
 #
 # NOTE: if new_size or heap_size is also specificed directly in java_opts,
-# it will be ignored in favor of the chef-server.rb values or the defaults
-# as calculated here.  Only use chef-server.rb to set heap and new sizes.
+# it will be ignored in favor of the cinc-server.rb values or the defaults
+# as calculated here.  Only use cinc-server.rb to set heap and new sizes.
 #
 # TODO - we'll want to put limits in place and validate them.
 #
@@ -344,7 +344,7 @@ elasticsearch['heap_size'] = Elasticsearch.heap_size_default(node)
 elasticsearch['new_size'] = Elasticsearch.new_size_default(node)
 
 ####
-# Erlang Chef Server API
+# Erlang CINC Server API
 ####
 default['private_chef']['opscode-erchef']['enable'] = true
 default['private_chef']['opscode-erchef']['ha'] = false
@@ -378,7 +378,7 @@ default['private_chef']['opscode-erchef']['enable_request_logging'] = true
 # will want to tune opscode-expander.
 #
 # These configuration items are consulted during reindex requests.
-# Such requests originate from users running chef-server-ctl reindex.
+# Such requests originate from users running cinc-server-ctl reindex.
 #
 #   reindex_batch_size - Number of items to fetch from the database
 #                        and send to the search index at a time.
@@ -494,7 +494,7 @@ default['private_chef']['opscode-erchef']['stats_password_file'] = '/var/opt/ops
 default['private_chef']['opscode-chef']['checksum_path'] = '/var/opt/opscode/opscode-chef/checksum'
 
 ####
-# Chef Server WebUI (legacy required for manage install to work)
+# CINC Server WebUI (legacy required for manage install to work)
 ####
 default['private_chef']['opscode-webui']['enable'] = false
 
@@ -507,9 +507,9 @@ default['private_chef']['oc-chef-pedant']['log_http_requests'] = true
 default['private_chef']['oc-chef-pedant']['log_rotation']['file_maxbytes'] = 104857600
 default['private_chef']['oc-chef-pedant']['log_rotation']['num_to_keep'] = 10
 default['private_chef']['oc-chef-pedant']['debug_org_creation'] = false
-# Set this if you want to override pedant's chef server URL from the nginx ssl
+# Set this if you want to override pedant's cINC Server URL from the nginx ssl
 # URL. This is useful for special cases where you want to run pedant through
-# a proxy that sits in front of the chef server.
+# a proxy that sits in front of the cINC Server.
 default['private_chef']['oc-chef-pedant']['chef_server'] = nil
 
 ###

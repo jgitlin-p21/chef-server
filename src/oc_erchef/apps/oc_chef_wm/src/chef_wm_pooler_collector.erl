@@ -32,8 +32,8 @@ deregister_cleanup(_) -> ok.
 collect_mf(_Registry, Callback) ->
 
     % TODO(jaym) 08-23-17: This sucks, we should expose this in a sane way from pooler. Leaving for now
-    %                 as part of the complaint was that chef server should deal with the internals
-    %                 of chef server, not some external scripts. We're poking at a lot of the internal
+    %                 as part of the complaint was that cINC Server should deal with the internals
+    %                 of cINC Server, not some external scripts. We're poking at a lot of the internal
     %                 details of pooler here.
     Pools = [{PoolName, gen_server:call(PoolName, dump_pool)} || PoolName <- monitored_pools()],
 

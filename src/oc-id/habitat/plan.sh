@@ -1,6 +1,6 @@
 pkg_name=oc_id
 pkg_origin=chef
-pkg_maintainer="The Chef Server Maintainers <support@chef.io>"
+pkg_maintainer="The CINC Server Maintainers <maintainers@cinc.sh>"
 pkg_license=('Apache-2.0')
 pkg_deps=(
   core/sqitch_pg
@@ -26,7 +26,7 @@ pkg_build_deps=(
 )
 pkg_binds_optional=(
   [database]="port"
-  [chef-server-ctl]="secrets"
+  [cinc-server-ctl]="secrets"
 )
 pkg_exports=(
   [port]="port"
@@ -41,7 +41,7 @@ pkg_version() {
 do_before() {
   do_default_before
   if [ ! -f "$PLAN_CONTEXT/../../../VERSION" ]; then
-    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the chef-server project root." 56
+    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the cinc-server project root." 56
   fi
   update_pkg_version
 }

@@ -1,7 +1,7 @@
 module DVM
   # Note that when 'system' is configured 'true', the project will
   # be overlaid into the /opt/opscode/embedded/lib/ruby/gems/X/$project directory
-  # via bind mount.  This will ensure it's available for use in chef-server-ctl commands
+  # via bind mount.  This will ensure it's available for use in cinc-server-ctl commands
   # which aren't run from in the dvm substitute environment.
   # TODO: support for 'system' in another system - like omnibus-reporting env...
   class RubyProject < Project
@@ -54,7 +54,7 @@ module DVM
 
     def run(args)
       if @project['system']
-        raise DVM::DVMArgumentError, 'Run not supported for system ruby projects - just use it normally via chef-server-ctl or otherwise, as it has been loaded into the server gemset.'
+        raise DVM::DVMArgumentError, 'Run not supported for system ruby projects - just use it normally via cinc-server-ctl or otherwise, as it has been loaded into the server gemset.'
       else
         exec "cd #{@project_dir} && #{helper} -- #{@project['run']} #{args.join(" ")}", close_others: false
       end

@@ -10,7 +10,7 @@
 -define(ERCHEF, 'erchef@127.0.0.1').
 -define(ERCHEF_COOKIE, 'erchef').
 
-%% @doc Perform server-side reindexing of an individual organization on Private Chef Server.
+%% @doc Perform server-side reindexing of an individual organization on Private CINC Server.
 %% Pre-Chef 11 servers provided a REST API endpoint to perform reindexing via knife, but
 %% this is more properly thought of as an administrative task, rather than a "user" task.
 %%

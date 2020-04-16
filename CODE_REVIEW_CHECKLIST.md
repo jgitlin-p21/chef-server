@@ -2,7 +2,7 @@
 
 The goal of the code review checklist is to start productive questions
 during code review to help ensure that we are constantly improving the
-quality of the Chef Server.
+quality of the CINC Server.
 
 Change authors should review the checklist before submitting their
 pull request. Reviewers should consult the checklist during review in

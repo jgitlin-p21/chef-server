@@ -16,15 +16,15 @@
 #
 # scripts/reporting.sh: Run basic reporting tests.
 #
-# This script assumes you are starting with a VM with Chef Server
+# This script assumes you are starting with a VM with CINC Server
 # Latest installed and external DBs set up.
 #
 # Required Environment Variables
 # -------------------------------
 #
 # Note that all files must exist in the dev directory!
-# CHEF_SERVER_LATEST: name of the file for last release of the chef server .deb build
-# CHEF_SERVER_LATEST_MINUS_1: name of the file for a N-1 release of the chef server .deb build
+# CHEF_SERVER_LATEST: name of the file for last release of the cINC Server .deb build
+# CHEF_SERVER_LATEST_MINUS_1: name of the file for a N-1 release of the cINC Server .deb build
 # ENTERPRISE_CHEF_SERVER_11: name of a file for private chef .deb build
 # REPORTING_LAST_RELEASE: name of a file for .deb of last release of reporting
 # REPORTING_LATEST: name of a file for .deb of reporting build you are testing
@@ -35,8 +35,8 @@ PURPLE='\033[0;35m'
 NC='\033[0m'
 
 send_ssh() {
-    vagrant ssh-config chef-server > ssh_config.temp
-    ssh -i .vagrant/machines/chef-server/virtualbox/private_key -F ssh_config.temp chef-server $1
+    vagrant ssh-config cinc-server > ssh_config.temp
+    ssh -i .vagrant/machines/cinc-server/virtualbox/private_key -F ssh_config.temp cinc-server $1
 }
 
 get_env() {
@@ -82,7 +82,7 @@ prepare_config_yml() {
 
 welcome_message() {
     echo "Welcome to the Automated Reporting Testing Tool."
-    echo "This tool tests various Chef Server / Reporting installation and upgrade scenarios."
+    echo "This tool tests various CINC Server / Reporting installation and upgrade scenarios."
     echo "To get started, you will need to put a build (.deb file) for each testing component into this directory:"
     pwd
     echo ""
@@ -94,7 +94,7 @@ welcome_message() {
     echo "REPORTING_LATEST"
     echo ""
     echo "Lastly, you will need to set each of the above variables to the NAME (not the path) of each corresponding file. For example:"
-    echo "export CHEF_SERVER_LATEST=chef-server-core_12.3.1-1_amd64.deb"
+    echo "export CHEF_SERVER_LATEST=cinc-server-core_12.3.1-1_amd64.deb"
     echo ""
     echo "Do this for every file, put those files in the proper directory, and this tool will use DVM serially to run through all scenarios."
     echo "This will take some time, so go play some foosball."
@@ -132,35 +132,35 @@ echo "If things look frozen, check the output of /tmp/reporting-test-logs on the
 # always select the installer we set
 export AUTOPACKAGE=1
 
-# Chef Server Latest
+# CINC Server Latest
 export INSTALLER=$CHEF_SERVER_LATEST
 
-printf "${BLUE}Chef Server Latest, Reporting Latest, Shared Chef Server DB${NC}\n"
-run_test_suite "chef-server-reporting-latest-shared-db.sh"
+printf "${BLUE}CINC Server Latest, Reporting Latest, Shared CINC Server DB${NC}\n"
+run_test_suite "cinc-server-reporting-latest-shared-db.sh"
 
-printf "${BLUE}Chef Server Latest, Reporting Latest, Shared External DB${NC}\n"
-run_test_suite "chef-server-reporting-latest-reporting-external-db.sh"
+printf "${BLUE}CINC Server Latest, Reporting Latest, Shared External DB${NC}\n"
+run_test_suite "cinc-server-reporting-latest-reporting-external-db.sh"
 
-printf "${BLUE}Chef Server Latest, Reporting Latest, Independant External DBs${NC}\n"
-run_test_suite "chef-server-reporting-latest-independant-external-dbs.sh"
+printf "${BLUE}CINC Server Latest, Reporting Latest, Independant External DBs${NC}\n"
+run_test_suite "cinc-server-reporting-latest-independant-external-dbs.sh"
 
-# Chef Server Latest Minus 1
+# CINC Server Latest Minus 1
 export INSTALLER=$CHEF_SERVER_LATEST_MINUS_1
 
-printf "${BLUE}Chef Server Latest-1, Reporting Latest, Shared Chef Server DB${NC}\n"
-run_test_suite "chef-server-reporting-latest-shared-db.sh"
+printf "${BLUE}CINC Server Latest-1, Reporting Latest, Shared CINC Server DB${NC}\n"
+run_test_suite "cinc-server-reporting-latest-shared-db.sh"
 
-printf "${BLUE}Chef Server Latest-1, Reporting Latest, Chef Server Internal DB, Reporting External DB${NC}\n"
-run_test_suite "chef-server-reporting-latest-reporting-external-db.sh"
+printf "${BLUE}CINC Server Latest-1, Reporting Latest, CINC Server Internal DB, Reporting External DB${NC}\n"
+run_test_suite "cinc-server-reporting-latest-reporting-external-db.sh"
 
-# Enterprise Chef 11 (still has to start with a Chef Server package since DVM)
-printf "${BLUE}Enterprise Chef Server 11 Latest, Reporting Latest, Shared Chef Server DB${NC}\n"
+# Enterprise Chef 11 (still has to start with a CINC Server package since DVM)
+printf "${BLUE}Enterprise CINC Server 11 Latest, Reporting Latest, Shared CINC Server DB${NC}\n"
 run_test_suite "enterprise-chef-reporting-latest-shared-db.sh"
 
 # Upgrade testing
 export INSTALLER=$CHEF_SERVER_LATEST
 
-printf "${BLUE}Chef Server Latest, Reporting Last Release Shared DB, Upgrade Reporting to Latest${NC}\n"
-run_test_suite "chef-server-reporting-upgrade-shared-db.sh"
+printf "${BLUE}CINC Server Latest, Reporting Last Release Shared DB, Upgrade Reporting to Latest${NC}\n"
+run_test_suite "cinc-server-reporting-upgrade-shared-db.sh"
 
 printf "${BLUE}All finished and successful!${NC}\n"

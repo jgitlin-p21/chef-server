@@ -74,9 +74,9 @@ prune_%:
 	ls -1t pkg/*.$*.metadata.json | tail -n+2 | xargs rm -v
 
 
-# Bundle install and build chef-server
+# Bundle install and build cinc-server
 dev-build: clear_pkg_cache prune
-	kitchen exec default-$(DEV_PLATFORM) -c "bash -l -c 'cd chef-server/omnibus && source ~/load-omnibus-toolchain.sh && bundle install && time bundle exec omnibus build chef-server'"
+	kitchen exec default-$(DEV_PLATFORM) -c "bash -l -c 'cd cinc-server/omnibus && source ~/load-omnibus-toolchain.sh && bundle install && time bundle exec omnibus build cinc-server'"
 
 install:
 	# gem install bundler -v 1.12.0

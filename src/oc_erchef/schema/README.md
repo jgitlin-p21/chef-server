@@ -1,7 +1,7 @@
-Chef Server PostgreSQL Schema
+CINC Server PostgreSQL Schema
 =============================
 
-This directory defines the Chef Server schema.  It depends upon the
+This directory defines the CINC Server schema.  It depends upon the
 schema present in the baseline/ directory being applied first.
 
 *NOTE*: This _does not_ turn an Open Source database into an
@@ -11,7 +11,7 @@ schema present in the baseline/ directory being applied first.
 
 # Modifying the Schema
 
-The schema for the Chef Server is managed using [sqitch][], a
+The schema for the CINC Server is managed using [sqitch][], a
 database-agnostic tool for managing schema changes using plain old
 SQL.
 
@@ -24,7 +24,7 @@ We use [pgTAP][] to test both the schema and the stored procedures in
 the database.
 
 * [Developer Setup for Local Testing](doc/setup_pgtap.md)
-* [Writing pgTAP Tests for Chef Server](doc/writing_tests.md)
+* [Writing pgTAP Tests for CINC Server](doc/writing_tests.md)
 
 # Bringing It All Together
 
@@ -46,11 +46,11 @@ targets for each of them; consult the [Makefile](Makefile)
 
 ## History
 
-This directory was originally the enterprise-chef-server-schema at
+This directory was originally the enterprise-cinc-server-schema at
 tag 2.9.0.  All schema changes since that tag have happened here and
 not in the older repository.
 
-The baseline/ directory is the chef-server-schema directory as of
+The baseline/ directory is the cinc-server-schema directory as of
 tag 1.0.4.
 
 ## License
@@ -100,4 +100,4 @@ make
 
 The targets of the [Makefile](Makefile) actually call out to
 corresponding targets in the
-[Open Source Makefile](https://github.com/opscode/chef-server-schema/blob/master/Makefile).
+[Open Source Makefile](https://github.com/opscode/cinc-server-schema/blob/master/Makefile).

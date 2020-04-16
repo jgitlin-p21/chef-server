@@ -6,8 +6,8 @@ set -evx
 if [ "${ENABLE_ADDON_CHEF_MANAGE:-true}" = 'true' ]; then
     echo -e '\nBEGIN INSTALL CHEF MANAGE ADDON\n'
 
-    sudo chef-server-ctl install chef-manage
-    sudo chef-server-ctl reconfigure --chef-license=accept
+    sudo cinc-server-ctl install chef-manage
+    sudo cinc-server-ctl reconfigure --chef-license=accept
     sleep 30
     sudo chef-manage-ctl reconfigure --accept-license
     sleep 30

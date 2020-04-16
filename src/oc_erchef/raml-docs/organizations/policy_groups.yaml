@@ -120,7 +120,7 @@ get:
         policy name. If no policy group with the given name exists, it will be
         created. If no policy with the given revision_id exists, it will be
         created from the document in the request body. If a policy with that
-        revision_id exists, the Chef Server simply associates that revision id
+        revision_id exists, the CINC Server simply associates that revision id
         with the given policy group.
 
         When successful, the document that was created or updated is returned.

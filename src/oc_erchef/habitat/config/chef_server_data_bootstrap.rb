@@ -103,10 +103,10 @@ class ChefServerDataBootstrap
   end
 
   def bootstrap
-    # TODO: Need to cleanly guard that we only do this in one instance of chef-server-ctl
+    # TODO: Need to cleanly guard that we only do this in one instance of cinc-server-ctl
 
 
-    puts "Bootstrapping Chef Server Data"
+    puts "Bootstrapping CINC Server Data"
     # This is done in a few stages. First we will see if the pivotal user exist
     EcPostgres.with_connection('opscode_chef') do |conn|
       get_or_create_superuser_in_erchef(conn)
@@ -136,7 +136,7 @@ class ChefServerDataBootstrap
 
     # touch the bootstrapped file
     # FileUtils.touch '{{pkg.svc_data_path}}/bootstrapped'
-    puts "Chef server successfully bootstrapped"
+    puts "CINC Server successfully bootstrapped"
   end
 
   private
@@ -202,7 +202,7 @@ class ChefServerDataBootstrap
               serialized_object: JSON.generate(
                 first_name: "Chef",
                 last_name: "Server",
-                display_name: "Chef Server Superuser"),
+                display_name: "CINC Server Superuser"),
               admin: false,
               recovery_auth_enabled: false
              }
@@ -369,11 +369,11 @@ class ChefServerDataBootstrap
 
   # These are factored out and put at the end because mustache confuses my editors ruby mode
   def load_superuser_public_key()
-{{#if bind.chef-server-ctl}}
-  {{~ #eachAlive bind.chef-server-ctl.members as |member|}}
+{{#if bind.cinc-server-ctl}}
+  {{~ #eachAlive bind.cinc-server-ctl.members as |member|}}
     {{~ #if @last}}
     @superuser_public_key = <<-EOF
-{{ member.cfg.secrets.chef-server.superuser_pub_key }}
+{{ member.cfg.secrets.cinc-server.superuser_pub_key }}
 EOF
     {{~ /if}}
   {{~ /eachAlive}}
@@ -401,7 +401,7 @@ EOF
 end
 
 #if File.exist?('{{pkg.svc_data_path}}/bootstrapped')
-#  puts 'Chef Server Data already bootstrapped - Skipping.'
+#  puts 'CINC Server Data already bootstrapped - Skipping.'
 #else
   ChefServerDataBootstrap.new.bootstrap
 #end

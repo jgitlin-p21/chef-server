@@ -1,6 +1,6 @@
-# Contributing to Chef Server
+# Contributing to CINC Server
 
-Thank you for your interest in Chef Server!  We use **GitHub Issues**
+Thank you for your interest in CINC Server!  We use **GitHub Issues**
 for issue tracking and contributions:
 
 1. Reporting an issue or making a feature request
@@ -22,7 +22,7 @@ All patches should be submitted as GitHub pull requests:
 3. Create a GitHub Pull Request.
 
 4. If you are a Chef Software employee, submit an ad-hoc
-   chef-server-12 build for your branch and post a link to in the pull
+   cinc-server-12 build for your branch and post a link to in the pull
    request. For non-Chef Software employees, your job will be
    submitted for you by one of the reviewers.
 

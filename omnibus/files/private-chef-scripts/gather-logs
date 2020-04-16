@@ -29,22 +29,22 @@ then
 
     if [[ ! -e "/opt/$path/bin/$ctl_cmd" ]];
     then
-        echo "ERROR: Chef Server may not be installed."
+        echo "ERROR: CINC Server may not be installed."
         exit 1
     fi
 elif [[ $type == 'OSC' ]];
 then
-    path='chef-server'
-    ctl_cmd='chef-server-ctl'
-    config_name='chef-server.rb'
+    path='cinc-server'
+    ctl_cmd='cinc-server-ctl'
+    config_name='cinc-server.rb'
 
     if [[ ! -e "/opt/$path/bin/$ctl_cmd" ]];
     then
-        echo "ERROR: Open Source Chef Server 11 may not be installed."
+        echo "ERROR: Open Source CINC Server 11 may not be installed."
         exit 1
     fi
 
-    echo "Gathering logs from Open Source Chef server 11."
+    echo "Gathering logs from Open Source CINC Server 11."
 elif [[ $type == 'Analytics' ]];
 then
     path='opscode-analytics'
@@ -60,8 +60,8 @@ then
     echo "Gathering logs from Analytics server."
 else
     echo "Usage: gather-logs [ CS | OSC | Analytics ]"
-    echo "CS - Enterprise or Chef Server (default)"
-    echo "OSC - Open Source Chef Server 11"
+    echo "CS - Enterprise or CINC Server (default)"
+    echo "OSC - Open Source CINC Server 11"
     echo "Analytics - Opscode Analytics server"
     exit 1
 fi
@@ -147,9 +147,9 @@ if [[ $type == 'CS' ]];
 then
     # postgres server may be external - we'll go ahead and try to gather what we can in any case, and just capture errors to the output
     # without showing them to the user
-    echo "SELECT CURRENT_TIMESTAMP; SELECT * FROM pg_stat_activity;" | chef-server-ctl psql oc_erchef --as-admin --options -tA > "$tmpdir/pg_stat_activity.txt" 2>&1
-    echo "SELECT * FROM sqitch.tags;" |  chef-server-ctl psql oc_erchef --as-admin --options -tA  > "$tmpdir/opscode_chef_sqitch_tags.txt" 2>&1
-    echo "SELECT * FROM sqitch.tags;" |  chef-server-ctl psql bifrost --as-admin --options -tA > "$tmpdir/bifrost_sqitch_tags.txt" 2>&1
+    echo "SELECT CURRENT_TIMESTAMP; SELECT * FROM pg_stat_activity;" | cinc-server-ctl psql oc_erchef --as-admin --options -tA > "$tmpdir/pg_stat_activity.txt" 2>&1
+    echo "SELECT * FROM sqitch.tags;" |  cinc-server-ctl psql oc_erchef --as-admin --options -tA  > "$tmpdir/opscode_chef_sqitch_tags.txt" 2>&1
+    echo "SELECT * FROM sqitch.tags;" |  cinc-server-ctl psql bifrost --as-admin --options -tA > "$tmpdir/bifrost_sqitch_tags.txt" 2>&1
     if [[ -S "/tmp/.s.PGSQL.5432" ]]; then
         su -m $POSTGRESQL_UNIX_USER -c 'ulimit -a' > "$tmpdir/ulimit_a_opscode-pgsql.txt"
     fi

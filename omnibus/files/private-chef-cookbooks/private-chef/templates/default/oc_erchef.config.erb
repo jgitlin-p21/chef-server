@@ -187,7 +187,7 @@
     ]},
 
     {chef_authn, [
-        {secrets_module, {chef_secrets, get, [{default, [<<"chef-server">>, <<"webui_pub_key">>]}]}},
+        {secrets_module, {chef_secrets, get, [{default, [<<"cinc-server">>, <<"webui_pub_key">>]}]}},
         <% unless node['private_chef']['opscode-erchef']['keygen_cache_workers'] == :auto -%>
         {keygen_cache_workers, <%= node['private_chef']['opscode-erchef']['keygen_cache_workers'] %>},
         <% end -%>
@@ -271,7 +271,7 @@
         %%
         %% This is the reason that the only supported configuration for the fips
         %% package is standalone. We will allow http over localhost so that the
-        %% chef server can talk to bookshelf.
+        %% cINC Server can talk to bookshelf.
         {s3_url, "http://<%= node['private_chef']['bookshelf']['listen'] %>:<%= node['private_chef']['bookshelf']['port'] %>"},
         <% else -%>
         {s3_url, "<%= @helper.bookshelf_s3_url %>"},

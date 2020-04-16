@@ -1,7 +1,7 @@
 pkg_name=bookshelf
 pkg_origin=chef
 pkg_license=('Apache-2.0')
-pkg_maintainer="The Chef Server Maintainers <support@chef.io>"
+pkg_maintainer="The CINC Server Maintainers <maintainers@cinc.sh>"
 pkg_deps=(
   core/erlang20
   core/cacerts
@@ -12,7 +12,7 @@ pkg_deps=(
 pkg_build_deps=(core/make core/git core/gcc)
 pkg_bin_dirs=(bin)
 pkg_description="Bookshelf is an S3 API compatible object store."
-pkg_upstream_url="https://github.com/chef/chef-server"
+pkg_upstream_url="https://github.com/chef/cinc-server"
 pkg_exports=(
   [port]="port"
 )
@@ -20,7 +20,7 @@ pkg_exposes=(port)
 
 pkg_binds_optional=(
   [database]="port"
-  [chef-server-ctl]="secrets"
+  [cinc-server-ctl]="secrets"
 )
 
 pkg_version() {
@@ -30,7 +30,7 @@ pkg_version() {
 do_before() {
   do_default_before
   if [ ! -f "$PLAN_CONTEXT/../../../VERSION" ]; then
-    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the chef-server project root." 56
+    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the cinc-server project root." 56
   fi
   update_pkg_version
 }

@@ -31,7 +31,7 @@ describe BootstrapPreflightValidator do
       credentials = double(Object)
       allow(PrivateChef).to receive(:credentials).and_return(credentials)
       allow(credentials).to receive(:length).and_return(secret_count)
-      allow(credentials).to receive(:exist?).with('chef-server', anything).and_return(superuser_key_exists)
+      allow(credentials).to receive(:exist?).with('cinc-server', anything).and_return(superuser_key_exists)
       allow(File).to receive(:exist?).with('/etc/opscode/private-chef-secrets.json').and_return(false)
       allow(File).to receive(:exist?).with('/etc/opscode/pivotal.pem').and_return(false)
     end

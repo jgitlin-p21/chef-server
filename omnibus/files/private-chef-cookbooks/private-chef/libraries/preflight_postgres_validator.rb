@@ -60,7 +60,7 @@ class PostgresqlPreflightValidator < PreflightValidator
     # For now we're only performing these checks for external pgsql mode:
     return unless cs_pg_attr['external']
 
-    # These values must be explictly set in chef-server.rb:
+    # These values must be explictly set in cinc-server.rb:
     fail_with err_CSPG004_missing_external_host unless cs_pg_attr.key? 'vip'
     fail_with err_CSPG002_missing_superuser_id unless cs_pg_attr.key? 'db_superuser'
     fail_with err_CSPG003_missing_superuser_password unless has_superuser_password?
@@ -74,10 +74,10 @@ class PostgresqlPreflightValidator < PreflightValidator
 
   # We do not support changing from managed to external DB or vice-versa, so the
   # 'external' flag may not be changed in any scenario - it must be set from the first run
-  # of chef-server-ctl reconfigure.
+  # of cinc-server-ctl reconfigure.
   def verify_unchanged_external_flag
     # Given that someone may  move a back-end to a new instance and update the
-    # front-ends with the shared chef-server.rb, we may reasonably expect to
+    # front-ends with the shared cinc-server.rb, we may reasonably expect to
     # see this value change on the front end - so let's not call that out as an error.
 
     # This test isn't valid until we're bootstrapped (which could
@@ -118,7 +118,7 @@ class PostgresqlPreflightValidator < PreflightValidator
         # This indicates we were successfully able to connect to Postgres
         # AND we authenticated! This is likely because the pg_hba is set
         # to trust our connection. Such an example would be configuring
-        # Chef Server to use an "external" Postgres, such as Delivery's,
+        # CINC Server to use an "external" Postgres, such as Delivery's,
         # when running on the same host.
       when /.*no pg_hba.conf entry.*/
         # This is also possible, depending on if they've set up pg_hba
@@ -215,10 +215,10 @@ class PostgresqlPreflightValidator < PreflightValidator
   def err_CSPG001_cannot_change_external_flag
     <<~EOM
       CSPG001: The value of postgresql['external'] must be set prior to the initial
-               run of chef-server-ctl reconfigure and cannot be changed.
+               run of cinc-server-ctl reconfigure and cannot be changed.
 
                See https://docs.chef.io/error_messages.html#cspg001-changed-setting
-               for more information on how you can transition an existing chef-server
+               for more information on how you can transition an existing cinc-server
                to a new instance configured for an external database and vice-versa.
     EOM
   end
@@ -226,9 +226,9 @@ class PostgresqlPreflightValidator < PreflightValidator
   def err_CSPG002_missing_superuser_id
     <<~EOM
       CSPG002: You have not set a database superuser name under
-               "postgresql['db_superuser']" in chef-server.rb.  This is required
+               "postgresql['db_superuser']" in cinc-server.rb.  This is required
                for external database support - please set it now and
-               then re-run 'chef-server-ctl reconfigure'.
+               then re-run 'cinc-server-ctl reconfigure'.
 
                See https://docs.chef.io/server_components.html#postgresql-settings
                for more information.
@@ -238,9 +238,9 @@ class PostgresqlPreflightValidator < PreflightValidator
   def err_CSPG003_missing_superuser_password
     <<~EOM
       CSPG003: You have not set a database superuser password using
-               chef-server-ctl set-db-superuser-password. This is required
+               cinc-server-ctl set-db-superuser-password. This is required
                for external database support - please run this now, then
-               re-run 'chef-server-ctl reconfigure'.
+               re-run 'cinc-server-ctl reconfigure'.
 
                See https://docs.chef.io/server_components.html#postgresql-settings
                for more information.
@@ -251,7 +251,7 @@ class PostgresqlPreflightValidator < PreflightValidator
     <<~EOM
       CSPG004: Because postgresql['external'] is set to true, you must also set
                postgresql['vip'] to the host or IP of an external postgres database
-               in chef-server.rb.
+               in cinc-server.rb.
 
                See https://docs.chef.io/server_components.html#postgresql-settings
                for more information.
@@ -263,7 +263,7 @@ class PostgresqlPreflightValidator < PreflightValidator
       CSPG010: I cannot make a connection to the host #{cs_pg_attr['vip']}.  Please
                verify that the host is online and reachable from this node, and that
                you have configured postgresql['port'] if it's not the standard
-               port 5432, then run 'chef-server-ctl reconfigure' again.
+               port 5432, then run 'cinc-server-ctl reconfigure' again.
 
                See https://docs.chef.io/error_messages.html#cspg010-cannot-connect
                for more information about postgresql networking requirements.
@@ -275,7 +275,7 @@ class PostgresqlPreflightValidator < PreflightValidator
 CSPG011: I could not authenticate to #{cs_pg_attr['vip']} as
          #{cs_pg_attr['db_connection_superuser'] || cs_pg_attr['db_superuser']} using the password provided.
          Please make sure that the the password you provided in
-         chef-server.rb under "postgresql['db_superuser_password'] is correct
+         cinc-server.rb under "postgresql['db_superuser_password'] is correct
          for this user.
 
          See https://docs.chef.io/error_messages.html#cspg011-cannot-authenticate
@@ -288,8 +288,8 @@ EOM
 CSPG012: There is a missing or incorrect pg_hba.conf entry for the
          user '#{cs_pg_attr['db_connection_superuser'] || cs_pg_attr['db_superuser']}' and/or this originating host.
          Please ensure that pg_hba.conf entries exist to allow the superuser
-         account to connect from the Chef Server backend nodes, and to
-         allow the application accounts to connect from all Chef Server
+         account to connect from the CINC Server backend nodes, and to
+         allow the application accounts to connect from all CINC Server
          nodes.
 
          See https://docs.chef.io/error_messages.html#cspg012-incorrect-rules
@@ -310,7 +310,7 @@ EOM
 
   def err_CSPG014_bad_postgres_version(ver)
     <<~EOM
-      CSPG014: Chef Server currently requires PostgreSQL version #{REQUIRED_MAJOR}.#{REQUIRED_MINOR} or greater.
+      CSPG014: CINC Server currently requires PostgreSQL version #{REQUIRED_MAJOR}.#{REQUIRED_MINOR} or greater.
                The database you have provided is running version #{ver}.
 
                See https://docs.chef.io/error_messages.html#cspg014-incorrect-version
@@ -331,7 +331,7 @@ EOM
 
   def err_CSPG016_database_exists(dbname)
     <<~EOM
-      CSPG016: The Chef Server database named '#{dbname}' already exists on the
+      CSPG016: The CINC Server database named '#{dbname}' already exists on the
                PostgreSQL server. Please remove it before proceeding.
 
                See https://docs.chef.io/error_messages.html#cspg016-database-exists
@@ -341,11 +341,11 @@ EOM
 
   def err_CSPG017_role_exists(username)
     <<~EOM
-      CSPG017: The Chef Server database role/user named '#{username}' already exists
+      CSPG017: The CINC Server database role/user named '#{username}' already exists
                on the PostgreSQL server. If possible, please remove this user
                via 'DROP ROLE "#{username}"' before proceeding, or reference the
                troubleshooting link below for information about configuring
-               Chef Server to use an alternative user name.
+               CINC Server to use an alternative user name.
 
                See https://docs.chef.io/error_messages.html#cspg017-user-exists
                for more information.

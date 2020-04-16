@@ -1,7 +1,7 @@
 ##  Welcome!
 
-You have found the chef-server self-contained development environment.
-It aims to get you up and hacking on chef-server components in a
+You have found the cinc-server self-contained development environment.
+It aims to get you up and hacking on cinc-server components in a
 safe, pain-free manner.
 
 In short it will create a simple Vagrant VM, while still allowing you to do
@@ -11,16 +11,16 @@ sync support) or otherwise made available on the guest VM.
 
 ## Quick Start
 
-This assumes familiarity with the components of chef-server and that you
+This assumes familiarity with the components of cinc-server and that you
 want to run oc\_erchef off of your local machine.
 
 Requirements:
 
 * VirtualBox 4.3+
 * Vagrant 1.7+
-* At least one recent Chef Server 12.0.9+ debian package download,
-  which you can get using this command (if you have the most recent chefdk) `mixlib-install download chef-server -p ubuntu -a x86_64 -l 14`. dvm will then look for the package in either the Downloads dir
-  on your machine or the omnibus/pkg directory under the chef-server repo
+* At least one recent CINC Server 12.0.9+ debian package download,
+  which you can get using this command (if you have the most recent chefdk) `mixlib-install download cinc-server -p ubuntu -a x86_64 -l 14`. dvm will then look for the package in either the Downloads dir
+  on your machine or the omnibus/pkg directory under the cinc-server repo
   where dvm is running. You can also set the INSTALLER environment variable
   to tell dvm where to find the package if it is not in one of those locations.
 * A text editor on your machine.
@@ -30,14 +30,14 @@ Requirements:
 
 First, add the following configuration to your `/etc/hosts` file:
 
-    192.168.33.100 api.chef-server.dev manage.chef-server.dev
-    192.168.33.150 database.chef-server.dev
-    192.168.33.151 backend.chef-server.dev
-    192.168.33.152 ldap.chef-server.dev
-    192.168.33.153 custom.chef-server.dev
-    192.168.33.155 reportingdb.chef-server.dev
-    192.168.33.156 elasticsearch.chef-server.dev
-    192.168.33.157 solr.chef-server.dev
+    192.168.33.100 api.cinc-server.dev manage.cinc-server.dev
+    192.168.33.150 database.cinc-server.dev
+    192.168.33.151 backend.cinc-server.dev
+    192.168.33.152 ldap.cinc-server.dev
+    192.168.33.153 custom.cinc-server.dev
+    192.168.33.155 reportingdb.cinc-server.dev
+    192.168.33.156 elasticsearch.cinc-server.dev
+    192.168.33.157 solr.cinc-server.dev
 
 Next, bring up the VMs!
 
@@ -51,41 +51,41 @@ In a separate terminal session/pane/window:
     sudo -i
     dvm quickstart oc_erchef
 
-To use your running Chef Server through standard commands such as knife,
+To use your running CINC Server through standard commands such as knife,
 you'll need to create an organisation and a user, and then create a
 knife config on your workstation.
 
     vagrant ssh
     sudo -i
     # create a user to access chef with
-    chef-server-ctl user-create -f /tmp/admin.pem admin Admin User admin@example.com password
+    cinc-server-ctl user-create -f /tmp/admin.pem admin Admin User admin@example.com password
     # create an organization
-    chef-server-ctl org-create -f /tmp/test-validator.pem test Test
+    cinc-server-ctl org-create -f /tmp/test-validator.pem test Test
     # associate the user with the organization
-    chef-server-ctl org-user-add test admin
+    cinc-server-ctl org-user-add test admin
 
 Now on your workstation, create `.chef/knife.rb` in the root of your
-chef-server checkout, with the following:
+cinc-server checkout, with the following:
 
     current_dir = File.dirname(__FILE__)
 	log_level                :info
 	log_location             STDOUT
 	node_name                "admin"
 	client_key               "#{current_dir}/admin.pem"
-	chef_server_url          "https://api.chef-server.dev/organizations/test"
+	chef_server_url          "https://api.cinc-server.dev/organizations/test"
 
 Then place `/tmp/admin.pem` from the vagrant node into the `.chef` directory.
 
 ### What can I do?
 
 Start editing erchef files, pedant files, cookbooks, upgrade definitions,
-and/or chef-server-ctl commands.
+and/or cinc-server-ctl commands.
 
 * Changes to erchef erlang files will be picked up and recompiled
   automatically shortly after you save them on the host.
 * To test cookbook changes, load them with `dvm load omnibus private-chef-cookbooks`.
-  Then run `chef-server-ctl reconfigure` in the VM to pick up the changes.
-* upgrades and chef-server-ctl command changes/additions will be
+  Then run `cinc-server-ctl reconfigure` in the VM to pick up the changes.
+* upgrades and cinc-server-ctl command changes/additions will be
   available very quickly after you save them on the host (< 5 seconds)
 * To run pedant tests in the VM, use `dvm run oc-chef-pedant`.  You can also provide the
   usual flags, eg `dvm run oc-chef-pedant --focus-/skip-X`, `--smoke`, `--all`, etc.
@@ -111,7 +111,7 @@ editing it. It will link it into the project deps directory and hot-load
 it into the running VM[2].  This is available for nearly all dependencies
 declared in a project's rebar.config.
 
-[1] NOTE: Presently this will clone into chef-server directory. We will be
+[1] NOTE: Presently this will clone into cinc-server directory. We will be
  fixing this, it's a side effect of the recent project merge.
 [2] There is currently a limitation here in that the owning project must
 be running to pick up the changes. We will be fixing that shortly.
@@ -123,9 +123,9 @@ available.
 
 Ruby project dependency loading support coming soon.
 
-### Installing Chef Server Plugins
+### Installing CINC Server Plugins
 
-If you wish to install Chef Server plugins with pre-downloaded or pre-built
+If you wish to install CINC Server plugins with pre-downloaded or pre-built
 binaries, set the corresponding attribute in your `config.yml` to true. 
 The corresponding package needs to be either in `~/Downloads`, `../omnibus/pkg`,
 or you can set an environment variable with the path to the package.
@@ -146,7 +146,7 @@ vm:
 
 ### Configuring LDAP
 
-If you wish to setup your Chef Server to use an external LDAP service, please set
+If you wish to setup your CINC Server to use an external LDAP service, please set
 `ldap start` to true in your config.yml. This LDAP server comes pre-configured
 with two users: `child` and `douglas`. You can add more by adding more LDIF files
 in the ldap-data directory of the provisioning cookbook.
@@ -169,7 +169,7 @@ and $AUTOPACKAGE to 1.
 ### Multiple vms
 
 If you are fortunate enough to have a host beefy enough to run
-multiple VMs you will hit a snag; the 'chef-server' VM name is
+multiple VMs you will hit a snag; the 'cinc-server' VM name is
 global, and there can only be one. To use a different name, set the
 environment variable export VAGRANT\_MACHINE\_VARIANT to add a suffix
 to the vm names.
@@ -195,7 +195,7 @@ To reset coverage stats for one or all modules:
 
     dvm cover PROJECT reset [MODULE_NAME]
 
-To write coverage results to file (chef-server/testdata/coverage) use:
+To write coverage results to file (cinc-server/testdata/coverage) use:
 
     dvm cover PROJECT report [MODULE_NAME]
 
@@ -299,7 +299,7 @@ defaults.yml, in which project definitions and other things are set up.
 
 # Using external databases
 
-To use an external database for Chef Server (and Reporting), create a `config.yml` file with the following contents:
+To use an external database for CINC Server (and Reporting), create a `config.yml` file with the following contents:
 
 ```
 vm:
@@ -308,7 +308,7 @@ vm:
     use-external: true
 ```
 
-To use an external Azure database for Chef Server, create a `config.yml` file with the following contents:
+To use an external Azure database for CINC Server, create a `config.yml` file with the following contents:
 
 ```
 vm:
@@ -319,7 +319,7 @@ vm:
     ip-azure:     <AZURE POSTGRESQL IP ADDRESS>
 ```
 
-To use separate external databases for Chef Server and Chef Reporting, create a `config.yml` file with the following contents:
+To use separate external databases for CINC Server and Chef Reporting, create a `config.yml` file with the following contents:
 
 ```
 vm:

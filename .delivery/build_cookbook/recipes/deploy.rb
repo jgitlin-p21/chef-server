@@ -27,13 +27,13 @@ infra_nodes.each do |infra_node|
     chef_server automate_chef_server_details
     run_list %W(
       recipe[cd-infrastructure-base::default]
-      recipe[chef-server-deploy::#{recipe_for(infra_node)}]
+      recipe[cinc-server-deploy::#{recipe_for(infra_node)}]
       recipe[cd-infrastructure-base::audit]
     )
   end
 end
 
-# Execute a CCR on the instances to bring up Chef Server
+# Execute a CCR on the instances to bring up CINC Server
 parallel_remote_execute "Run CCR on #{infra_node_names}" do
   command 'sudo CHEF_LICENSE=accept-no-persist /opt/chef/bin/chef-client --no-fork'
   hosts infra_node_names

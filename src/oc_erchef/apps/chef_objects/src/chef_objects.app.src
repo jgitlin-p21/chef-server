@@ -35,12 +35,12 @@
          {s3_access_key_id, undefined},
          {s3_secret_key_id, undefined},
 
-         %% s3_url is the URL that Chef Server uses to make S3
+         %% s3_url is the URL that CINC Server uses to make S3
          %% requests itself, which is different from the URL it tells
          %% chef-client to use (that's s3_external_url)
          {s3_url, undefined},
 
-         %% s3_external_url is the URL that Chef Server sends to
+         %% s3_external_url is the URL that CINC Server sends to
          %% chef-client for it to fetch cookbooks. It's for when
          %% s3_url might be something that nodes running chef-client
          %% aren't able to access
@@ -57,7 +57,7 @@
          %% chef-client;
          %%
          %% bookshelf['external_url'], for the endpoint used by the
-         %% Chef server;
+         %% CINC Server;
          %%
          %% bookshelf['access_key_id'], for user access key;
          %%
@@ -65,7 +65,7 @@
          %%
          %% opscode_erchef['s3_bucket'], for the bucket name.
          %%
-         %% Reconfigure the Chef server after changing these settings
+         %% Reconfigure the CINC Server after changing these settings
          {s3_platform_bucket_name, "bookshelf"},
 
 

@@ -141,12 +141,12 @@ bind(Session, BindDN, BindPassword) ->
     case eldap:simple_bind(Session, BindDN, BindPassword) of
         ok -> ok;
         {error, Error} ->
-            lager:error("Could not bind as ~p, please check chef-server.rb for correct bind_dn, bind_password, host, port and encrpytion values. Error: ~p", [BindDN, Error]),
+            lager:error("Could not bind as ~p, please check cinc-server.rb for correct bind_dn, bind_password, host, port and encrpytion values. Error: ~p", [BindDN, Error]),
             {error, Error}
     end.
 
 maybe_encrypt_session(_Encryption, {error, Error}, _Timeout) ->
-    lager:error("Failed to connect to ldap host or an error occurred during connection setup. Please check chef-server.rb for correct host, port, and encryption values: ~p", [Error]),
+    lager:error("Failed to connect to ldap host or an error occurred during connection setup. Please check cinc-server.rb for correct host, port, and encryption values: ~p", [Error]),
     error;
 maybe_encrypt_session(start_tls, {ok, Session}, Timeout) ->
     case eldap:start_tls(Session, [], Timeout) of
@@ -194,7 +194,7 @@ result_to_user_ejson(LoginAttr, UserName, [{eldap_entry, CN, DataIn}|_]) ->
 
     % If you are debugging an issue where a new user has authenticated successfully
     % via opscode-manage , but received an odd 400 message when trying to create a
-    % new linked chef-server account, you've found the right place.
+    % new linked cinc-server account, you've found the right place.
     %
     % The reason for this problem is that the user's directory entry with
     % the ldap provider does not have any valid email address associated with the

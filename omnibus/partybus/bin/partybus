@@ -67,10 +67,10 @@ end
 # We know we can not support upgrades from further back than
 # Enterprise Chef 11.1, which shipped migration 1.13:
 #
-#   https://github.com/chef/chef-server/tree/11.1.0/files/private-chef-upgrades/001
+#   https://github.com/chef/cinc-server/tree/11.1.0/files/private-chef-upgrades/001
 #
 # We also know that migration 1.14 through 1.19 landed together in
-# Chef Server 12.0.
+# CINC Server 12.0.
 #
 # Luckily for us, migration 1.20 shipped a sqitch tag.  Further luck:
 # migrations above 1.20 generally appear to be safe-to-reapply so we
@@ -95,7 +95,7 @@ def infer_migration_state(migrations, force)
       log "#{m}: NOT APPLIED"
     end
 
-    # A number of migrations before 1.20 (the Chef Server 12.0) are
+    # A number of migrations before 1.20 (the CINC Server 12.0) are
     # mover migrations that are harder to check for.  If we make it
     # all the way to here, we stop checking and hope one of the two
     # special cases below apply.
@@ -116,13 +116,13 @@ def infer_migration_state(migrations, force)
     # machine
     migration_16 = migrations.find {|m| m.major == 1 && m.minor == 16}
     if migration_16.run_check
-      log "Inferring migration level of Chef Server 12.0.0 (1.19) from presence of migration 16 and absence of migration 20"
+      log "Inferring migration level of CINC Server 12.0.0 (1.19) from presence of migration 16 and absence of migration 20"
       migration_19 = migrations.find {|m| m.major == 1 && m.minor == 19}
       write_migration_state(migration_19)
       exit(0)
     end
 
-    # Since migrations 14-19 shipped as a set in Chef Server 12.0.0
+    # Since migrations 14-19 shipped as a set in CINC Server 12.0.0
     # and since we don't support upgrades from versions before
     # migration 1.13, we either have 1.13 or we fail:
     migration_13 = migrations.find {|m| m.major == 1 && m.minor == 13}
@@ -131,8 +131,8 @@ def infer_migration_state(migrations, force)
       write_migration_state(migration_13)
       exit(0)
     else
-      log "Data appears to be from a version of Chef Server before Enterprise Chef 11.1 (migration 1.13)"
-      log "Please contact Chef Support (support@chef.io) for help upgrading your Enterprise Chef installation."
+      log "Data appears to be from a version of CINC Server before Enterprise Chef 11.1 (migration 1.13)"
+      log "Please contact Chef Support (maintainers@cinc.sh) for help upgrading your Enterprise Chef installation."
       exit(1)
     end
   end
@@ -170,7 +170,7 @@ File.open(Partybus.config.migration_state_file, File::RDWR | File::CREAT) do |f|
 
       if !migration_state_has_content?
         log "ERROR: migration-level not initialized."
-        log "ERROR: If this is an existing Chef Server install try running `chef-server-ctl rebuild-migration-state` and then retry the upgrade"
+        log "ERROR: If this is an existing CINC Server install try running `cinc-server-ctl rebuild-migration-state` and then retry the upgrade"
         exit(1)
       end
 

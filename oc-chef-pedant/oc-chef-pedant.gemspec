@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.version       = '2.2.0'
   s.date          = '2015-04-17'
   s.summary       = "Enterprise Chef API Testing Framework"
-  s.authors       = ["Chef Software Engineering"]
+  s.authors       = ["CINC Software Engineering"]
   s.email         = 'dev@chef.io'
   s.require_paths = ['lib', 'spec']
   s.files         = Dir['lib/**/*.rb'] + Dir['spec/**/*_spec.rb']

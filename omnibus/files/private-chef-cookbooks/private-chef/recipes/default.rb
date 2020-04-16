@@ -20,9 +20,9 @@ require 'uuidtools'
 require 'openssl'
 
 # Because these symlinks get removed during the postrm
-# of the chef-server and private-chef packages, we should
+# of the cinc-server and private-chef packages, we should
 # ensure that they're always here.
-%w(private-chef-ctl chef-server-ctl).each do |bin|
+%w(private-chef-ctl cinc-server-ctl).each do |bin|
   link "/usr/bin/#{bin}" do
     to "/opt/opscode/bin/#{bin}"
   end
@@ -187,7 +187,7 @@ include_recipe 'private-chef::partybus'
 include_recipe 'private-chef::ctl_config'
 include_recipe 'private-chef::disable_chef_server_11'
 
-file '/etc/opscode/chef-server-running.json' do
+file '/etc/opscode/cinc-server-running.json' do
   owner OmnibusHelper.new(node).ownership['owner']
   group 'root'
   mode '0600'

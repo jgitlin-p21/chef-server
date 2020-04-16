@@ -1,7 +1,7 @@
 %% -*- erlang-indent-level: 4;indent-tabs-mode: nil; fill-column: 92 -*-
 %% ex: ts=4 sw=4 et
 %%% @doc
-%%% REST resource for reporting chef server stats
+%%% REST resource for reporting cINC Server stats
 %%% @end
 %% Copyright 2017 Chef Software, Inc. All Rights Reserved.
 %%

@@ -329,7 +329,7 @@ EOF
 
       it "exits with a clear error message if it can't find a server block for the current block for the current machine" do
         expect(Chef::Log).to receive(:fatal).with <<~EOF
-          No server configuration found for "backend-passive.chef.io" in /etc/opscode/chef-server.rb.
+          No server configuration found for "backend-passive.chef.io" in /etc/opscode/cinc-server.rb.
           Server configuration exists for the following hostnames:
 
             backend.chef.io
@@ -493,8 +493,8 @@ EOF
 
     describe '#migrate_keys' do
       it 'should attempt to migrate known keys' do
-        expect(PrivateChef).to receive(:add_key_from_file_if_present).with('chef-server', 'superuser_key', superuser_key_path)
-        expect(PrivateChef).to receive(:add_key_from_file_if_present).with('chef-server', 'webui_key', webui_key_path)
+        expect(PrivateChef).to receive(:add_key_from_file_if_present).with('cinc-server', 'superuser_key', superuser_key_path)
+        expect(PrivateChef).to receive(:add_key_from_file_if_present).with('cinc-server', 'webui_key', webui_key_path)
         PrivateChef.migrate_keys
       end
     end

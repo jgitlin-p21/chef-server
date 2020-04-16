@@ -1,6 +1,6 @@
-pkg_name=chef-server-nginx
+pkg_name=cinc-server-nginx
 pkg_origin=chef
-pkg_maintainer="The Chef Server Maintainers <support@chef.io>"
+pkg_maintainer="The CINC Server Maintainers <maintainers@cinc.sh>"
 pkg_license=('Apache-2.0')
 pkg_deps=(
   core/curl
@@ -15,13 +15,13 @@ pkg_exports=(
 )
 pkg_binds_optional=(
   [bookshelf]="port"
-  [chef-server-ctl]="secrets"
+  [cinc-server-ctl]="secrets"
   [oc_erchef]="port data_collector_enabled data_collector_server data_collector_port"
   [oc_bifrost]="port"
   [elasticsearch]="http-port"
   [oc_id]="port"
 )
-pkg_description="NGINX configuration and content for Chef Server"
+pkg_description="NGINX configuration and content for CINC Server"
 pkg_upstream_url="https://docs.chef.io/server_components.html"
 pkg_svc_run="openresty -c ${pkg_svc_config_path}/nginx.conf -p ${pkg_svc_var_path}"
 
@@ -32,7 +32,7 @@ pkg_version() {
 do_before() {
   do_default_before
   if [ ! -f "$PLAN_CONTEXT/../../../VERSION" ]; then
-    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the chef-server project root." 56
+    exit_with "Cannot find VERSION file! You must run \"hab studio enter\" from the cinc-server project root." 56
   fi
   update_pkg_version
 }

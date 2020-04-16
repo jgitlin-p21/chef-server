@@ -1,11 +1,11 @@
-Chef Server Omnibus Project
+CINC Server Omnibus Project
 ============================
 
 [![Build Status Master](https://travis-ci.org/chef/opscode-omnibus.svg?branch=master)](https://travis-ci.org/chef/opscode-omnibus)
 
 
 This project creates full-stack platform-specific packages for
-`chef-server`!
+`cinc-server`!
 
 ## License
 
@@ -62,7 +62,7 @@ omnibus.rb.example.rb.  Please grab credentials from teampass.
 You create a platform-specific package using the `build project` command:
 
 ```shell
-$ bin/omnibus build chef-server
+$ bin/omnibus build cinc-server
 ```
 
 The platform/architecture type of the package created will match the platform
@@ -76,7 +76,7 @@ You can clean up all temporary files generated during the build process with
 the `clean` command:
 
 ```shell
-$ bin/omnibus clean chef-server
+$ bin/omnibus clean cinc-server
 ```
 
 Adding the `--purge` purge option removes __ALL__ files generated during the
@@ -84,7 +84,7 @@ build including the project install directory (`/opt/opscode`) and
 the package cache directory (`/var/cache/omnibus/pkg`):
 
 ```shell
-$ bin/omnibus clean chef-server --purge
+$ bin/omnibus clean cinc-server --purge
 ```
 
 ### Help
@@ -176,17 +176,17 @@ section:
 ```shell
 $ kitchen login ubuntu-1604
 [vagrant@ubuntu...] $ . load-omnibus-toolchain.sh
-[vagrant@ubuntu...] $ cd chef-server/omnibus
+[vagrant@ubuntu...] $ cd cinc-server/omnibus
 [vagrant@ubuntu...] $ sudo chown -R vagrant ~/.bundle/ 
 [vagrant@ubuntu...] $ bundle install --binstubs
 ...
-[vagrant@ubuntu...] $ bin/omnibus build chef-server -l internal
+[vagrant@ubuntu...] $ bin/omnibus build cinc-server -l internal
 ```
 
 Alternatively, paste this single line into your shell after `kitchen login ...` :
 
 ```shell
-cd && . load-omnibus-toolchain.sh && cd chef-server/omnibus && sudo chown -R vagrant ~/.bundle/  && bundle install --binstubs && bin/omnibus build chef-server -l internal
+cd && . load-omnibus-toolchain.sh && cd cinc-server/omnibus && sudo chown -R vagrant ~/.bundle/  && bundle install --binstubs && bin/omnibus build cinc-server -l internal
 ```
 
 Or if you prefer not to use binstubs and want to use bundle exec instead:
@@ -194,17 +194,17 @@ Or if you prefer not to use binstubs and want to use bundle exec instead:
 ```shell
 $ kitchen login ubuntu-1604
 [vagrant@ubuntu...] $ . load-omnibus-toolchain.sh
-[vagrant@ubuntu...] $ cd chef-server/omnibus
+[vagrant@ubuntu...] $ cd cinc-server/omnibus
 [vagrant@ubuntu...] $ sudo chown -R vagrant ~/.bundle/
 [vagrant@ubuntu...] $ bundle install
 ...
-[vagrant@ubuntu...] $ bundle exec omnibus build chef-server -l internal
+[vagrant@ubuntu...] $ bundle exec omnibus build cinc-server -l internal
 ```
 
 Alternatively, paste this single line into your shell after `kitchen login ...` :
 
 ```shell
-cd && . load-omnibus-toolchain.sh && cd chef-server/omnibus && sudo chown -R vagrant ~/.bundle/  && bundle install && bin/omnibus build chef-server -l internal
+cd && . load-omnibus-toolchain.sh && cd cinc-server/omnibus && sudo chown -R vagrant ~/.bundle/  && bundle install && bin/omnibus build cinc-server -l internal
 ```
 
 For a complete list of all commands and platforms, run `kitchen list` or

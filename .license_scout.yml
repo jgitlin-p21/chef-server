@@ -1,10 +1,10 @@
 ---
-name: chef-server
+name: cinc-server
 directories:
   - ./
   - ./src/bookshelf
   - ./src/chef-mover
-  - ./src/chef-server-ctl
+  - ./src/cinc-server-ctl
   - ./src/nginx
   - ./src/oc_bifrost
   - ./src/oc_erchef
@@ -61,7 +61,7 @@ fallbacks:
       license_content: https://github.com/smarkets/erlang-bcrypt/blob/master/LICENSE
     - name: bookshelf
       license_id: Apache-2.0
-      license_content: https://github.com/chef/chef-server/LICENSE
+      license_content: https://github.com/chef/cinc-server/LICENSE
     - name: cf
       license_id: BSD-3-Clause
       license_content: https://github.com/project-fifo/cf/blob/master/LICENSE
@@ -91,7 +91,7 @@ fallbacks:
       license_content: https://github.com/mochi/mochiweb/blob/master/LICENSE
     - name: mover
       license_id: Apache-2.0
-      license_content: https://github.com/chef/chef-server/LICENSE
+      license_content: https://github.com/chef/cinc-server/LICENSE
     - name: quickrand
       license_id: MIT
       license_content: https://github.com/okeuday/quickrand/blob/master/README.markdown

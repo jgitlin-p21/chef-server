@@ -1,6 +1,6 @@
 # SCHEMA
 
-The schema for the SQL version of Chef server is found in:
+The schema for the SQL version of CINC Server is found in:
 
 pgsql_schema.sql
 

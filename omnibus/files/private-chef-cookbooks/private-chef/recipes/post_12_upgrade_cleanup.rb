@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-# Following an upgrade to Chef Server 12, some old data will remain
+# Following an upgrade to CINC Server 12, some old data will remain
 # behind.  This recipe removes all that stuff, following the upgrade,
 # only when the user is satisfied with the state of their system.
 

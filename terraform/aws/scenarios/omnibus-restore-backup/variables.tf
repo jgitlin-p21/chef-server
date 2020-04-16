@@ -52,7 +52,7 @@ variable "build_prefix" {
 }
 
 #########################################################################
-# Chef Server
+# CINC Server
 #########################################################################
 variable "scenario" {
   type        = string
@@ -61,17 +61,17 @@ variable "scenario" {
 
 variable "install_version_url" {
   type        = string
-  description = "The URL to a chef-server used during initial install."
+  description = "The URL to a cinc-server used during initial install."
 }
 
 variable "upgrade_version_url" {
   type        = string
-  description = "The URL to a chef-server artifact used during upgrades."
+  description = "The URL to a cinc-server artifact used during upgrades."
 }
 
 variable "enable_ipv6" {
   type        = string
-  description = "Use IPv6 in the chef-server.rb config and /etc/hosts."
+  description = "Use IPv6 in the cinc-server.rb config and /etc/hosts."
 }
 
 variable "backup_location" {
@@ -85,25 +85,25 @@ variable "backup_location" {
 
 variable "enable_smoke_test" {
   type        = string
-  description = "Enable Chef Infra Server smoke test."
+  description = "Enable CINC Infra Server smoke test."
   default     = "true"
 }
 
 variable "enable_pedant_test" {
   type        = string
-  description = "Enable full Chef Infra Server pedant test."
+  description = "Enable full CINC Infra Server pedant test."
   default     = "true"
 }
 
 variable "enable_psql_test" {
   type        = string
-  description = "Enable testing of Chef Infra Server PostgreSQL database."
+  description = "Enable testing of CINC Infra Server PostgreSQL database."
   default     = "true"
 }
 
 variable "enable_gather_logs_test" {
   type        = string
-  description = "Enable testing of Chef Infra Server gathering logs."
+  description = "Enable testing of CINC Infra Server gathering logs."
   default     = "true"
 }
 

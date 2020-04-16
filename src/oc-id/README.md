@@ -5,13 +5,13 @@ oc-id
 
 Chef identity: An [OAuth 2](http://oauth.net/2/) provider for Chef.
 
-For an introduction to oc-id and how it works, please see this blog post [oc-id on Chef Server: An Introduction](https://www.chef.io/blog/2015/06/09/oc-id-on-chef-server-an-introduction/)
+For an introduction to oc-id and how it works, please see this blog post [oc-id on CINC Server: An Introduction](https://www.chef.io/blog/2015/06/09/oc-id-on-cinc-server-an-introduction/)
 
 ## System Requirements
 
-Chef identity is included with Chef server ≥ 12 and Enterprise Chef server ≥
+Chef identity is included with CINC Server ≥ 12 and Enterprise CINC Server ≥
 11.2. If you're running either of these you already have it running at
-https://your-chef-server-url/id.
+https://your-cinc-server-url/id.
 
 To run this app you'll need:
 
@@ -20,14 +20,14 @@ To run this app you'll need:
 * The `bundler` gem
 * A Postgres database instance
 * A reachable Enterprise Chef 11 or Chef 12 server URL
-* A privileged key for that Chef server (usually stored in
-  /etc/opscode/private-chef-secrets.json on the Chef server)
+* A privileged key for that CINC Server (usually stored in
+  /etc/opscode/private-chef-secrets.json on the CINC Server)
 
 ## Configuration
 
 For instructions on configuring the Chef identity that is included with Chef
 server, see the
-[chef-server.rb Settings documentation](https://docs.chef.io/config_rb_server_optional_settings.html#oc-id).
+[cinc-server.rb Settings documentation](https://docs.chef.io/config_rb_server_optional_settings.html#oc-id).
 
 [RailsConfig](https://github.com/railsconfig/rails_config) is used for
 application configuration. The defaults are in config/settings.yml. You can
@@ -42,7 +42,7 @@ Normal users can only manage their own authorized applications. Administrators
 can create and manage applications that users can authorize against.
 
 The `doorkeeper.administrators` array in the settings is a list of usernames
-(on the Chef server) that have administrative access. This is loaded when
+(on the CINC Server) that have administrative access. This is loaded when
 the application starts.
 
 ### Configuring Applications
@@ -58,7 +58,7 @@ usually something like `https://host:port/auth/chef_oauth2/callback`.
 
 You'll need all the requirements listed above. Once you have everything setup
 copy the webui\_priv.pem to the config directory of oc-id. Then update the
-settings.yml file, replacing the endpoint setting with the URL of the Chef Server
+settings.yml file, replacing the endpoint setting with the URL of the CINC Server
 you'll be using for development. Alternately, you can edit the development.yml
 file in the config/settings directory and ensure it has the endpoint setting
 set. If development.yml has the endpoint setting set this will override what is
@@ -100,7 +100,7 @@ To run the tests:
 
     bin/rspec
 
-The specs in spec/requests require a running and configured Chef server.
+The specs in spec/requests require a running and configured CINC Server.
 
 ## Production
 

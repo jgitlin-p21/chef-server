@@ -79,8 +79,8 @@ private_chef_pg_user_table_access erchef['sql_ro_user'] do
   only_if { is_data_master? }
 end
 
-# Cleanup old enterprise-chef-server-schema
-directory '/opt/opscode/embedded/service/enterprise-chef-server-schema' do
+# Cleanup old enterprise-cinc-server-schema
+directory '/opt/opscode/embedded/service/enterprise-cinc-server-schema' do
   recursive true
   action :delete
 end

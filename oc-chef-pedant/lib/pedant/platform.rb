@@ -19,7 +19,7 @@ require 'fileutils'
 require 'pedant/acl'
 module Pedant
 
-  # Representation of the Chef Server platform
+  # Representation of the CINC Server platform
   class Platform
     include Pedant::Request
 

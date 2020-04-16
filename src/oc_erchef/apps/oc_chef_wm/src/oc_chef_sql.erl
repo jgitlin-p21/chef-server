@@ -26,7 +26,7 @@
 
 -export([ statements/1 ]).
 
-%% @doc Chef Server queries. Combines base statements
+%% @doc CINC Server queries. Combines base statements
 %% from chef_sql with oc_chef_authz_db:statements.
 %%
 %% Referenced by sys.config in {sqerl, [{ prepared_staements...

@@ -8,7 +8,7 @@
 
 require 'pedant/rspec/common'
 
-describe "chef server authorization checks", :authorization do
+describe "cINC Server authorization checks", :authorization do
   def self.authorization_tests(resource_type)
     context "without starting resource" do
       before :each do

@@ -5,7 +5,7 @@
 
 # TODO: there is no LDAP testing here because to
 # accurately simulate the real use case, we would need
-# the chef-server pedant is running on to be LDAP configured,
+# the cinc-server pedant is running on to be LDAP configured,
 # and we would want that LDAP server to be down.
 #
 # This is too intergration-test-ish for pedant, but it is a case

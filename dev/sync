@@ -73,7 +73,7 @@ BEGIN {
     vagrant_cmd_string = ENV['VAGRANT_PATH'].nil? ? 'vagrant' : ENV['VAGRANT_PATH']
 
     variant = ENV['VAGRANT_MACHINE_VARIANT'] ? ("-" + ENV['VAGRANT_MACHINE_VARIANT'] ) : ''
-    @machine_name = 'chef-server' + variant
+    @machine_name = 'cinc-server' + variant
 
     `#{vagrant_cmd_string} ssh-config #{@machine_name}`.split("\n").each do |line|
       k, v = line.split(" ")

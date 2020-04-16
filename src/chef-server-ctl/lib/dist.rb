@@ -3,20 +3,20 @@ class Chef
     class Server
       # This class is not fully implemented, depending on it is not recommended!
       # When referencing a product directly, like Chef (Now Chef Infra)
-      PRODUCT = "Chef Infra Server".freeze
+      PRODUCT = "CINC Infra Server".freeze
 
       # A short designation for the product, used in Windows event logs
       # and some nomenclature.
-      SHORT = "chef-server".freeze
+      SHORT = "cinc-server".freeze
 
       # product website address
-      WEBSITE = "https://github.com/chef/chef-server".freeze
+      WEBSITE = "https://gitlab.farcry.sitepalette.com/cinc/server".freeze
 
       # The configuration directory
-      CONF_DIR = "/etc/chef-server".freeze
+      CONF_DIR = "/etc/cinc-server".freeze
 
       # The server's configuration utility
-      CTL = "chef-server-ctl".freeze
+      CTL = "cinc-server-ctl".freeze
     end
   end
 end

@@ -8,7 +8,7 @@ stages:
   script:
     - source /home/omnibus/load-omnibus-toolchain.sh
     - mkdir ${CI_PROJECT_DIR}/cinc-server
-    - cd chef-server/omnibus
+    - cd omnibus
     - bundle install --without development --path ${CI_PROJECT_DIR}/bundle/vendor --binstubs
     - bundle exec omnibus build chef-server --override append_timestamp:false
     - mv -v pkg/* ${CI_PROJECT_DIR}/cinc-server/

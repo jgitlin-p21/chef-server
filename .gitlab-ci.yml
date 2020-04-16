@@ -10,7 +10,7 @@ stages:
     - mkdir ${CI_PROJECT_DIR}/cinc-server
     - cd omnibus
     - bundle install --without development --path ${CI_PROJECT_DIR}/bundle/vendor --binstubs
-    - bundle exec omnibus build chef-server --override append_timestamp:false
+    - bundle exec omnibus build cinc-server --override append_timestamp:false
     - mv -v pkg/* ${CI_PROJECT_DIR}/cinc-server/
     - cp ../VERSION ${CI_PROJECT_DIR}/cinc-server/
   cache:

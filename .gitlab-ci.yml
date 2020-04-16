@@ -1,0 +1,40 @@
+image: p21jgitlin/cinc-docker-images:debian
+stages:
+  - build
+  - cleanup
+
+.package:
+  stage: build
+  script:
+    - source /home/omnibus/load-omnibus-toolchain.sh
+    - mkdir ${CI_PROJECT_DIR}/cinc-server
+    - cd chef-server/omnibus
+    - bundle install --without development --path ${CI_PROJECT_DIR}/bundle/vendor --binstubs
+    - bundle exec omnibus build chef-server --override append_timestamp:false
+    - mv -v pkg/* ${CI_PROJECT_DIR}/cinc-server/
+    - cp ../VERSION ${CI_PROJECT_DIR}/cinc-server/
+  cache:
+    paths:
+      - cache/*
+      - bundle/vendor/*
+  artifacts:
+    expire_in: 1mo
+    paths:
+      - cinc-server/*
+
+package:debian-10:
+  extends: .package
+  image: p21jgitlin/cinc-docker-images:debian
+  cache:
+    key: debian:10
+
+.cleanup:
+  stage: cleanup
+  dependencies: []
+  variables:
+    GIT_CHECKOUT: "false"
+  when: always
+  script:
+    - ls -la
+    - sudo rm -rf chef/ chef-server
+

@@ -238,7 +238,7 @@ EOM
     # Override reconfigure to skip license checking
     def reconfigure(*args)
 
-      LicenseAcceptance::Acceptor.check_and_persist!("infra-server", ChefServerCtl::VERSION.to_s)
+      #LicenseAcceptance::Acceptor.check_and_persist!("infra-server", ChefServerCtl::VERSION.to_s)
 
       ENV["CHEF_LICENSE"]="accept-no-persist"
 

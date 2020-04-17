@@ -36,7 +36,7 @@ package:centos-8:
 
 package:amzn2:
   extends: .package
-  image: p21jgitlin/cinc-docker-images:amzn
+  image: p21jgitlin/cinc-docker-images:amzn2
   cache:
     key: centos:8
 

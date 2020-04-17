@@ -28,6 +28,12 @@ package:debian-10:
   cache:
     key: debian:10
 
+package:centos-8:
+  extends: .package
+  image: p21jgitlin/cinc-docker-images:centos
+  cache:
+    key: centos:8
+
 .cleanup:
   stage: cleanup
   dependencies: []

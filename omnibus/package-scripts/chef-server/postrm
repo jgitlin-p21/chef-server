@@ -12,5 +12,7 @@ fi
 # (See also: http://tickets.opscode.com/browse/CHEF-3022)
 if [[ ! ( -e /etc/redhat-release || -e /etc/system-release ) || "$1" == "0" ]]; then
   rm -f /usr/bin/private-chef-ctl
+  rm -f /usr/bin/private-cinc-ctl
   rm -f /usr/bin/chef-server-ctl
+  rm -f /usr/bin/cinc-server-ctl
 fi

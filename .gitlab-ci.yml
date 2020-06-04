@@ -1,0 +1,49 @@
+image: cincproject/omnibus-debian
+stages:
+ - package
+ - test
+ - deploy
+
+variables:
+  ORIGIN: https://github.com/chef/chef-server.git
+  CHEF_SERVER_REPO: https://gitlab.com/cinc-project/upstream/chef-server.git
+  REF: master
+  CHANNEL: unstable
+
+.package:
+  stage: package
+  script:
+    - .gitlab/build.sh || .gitlab/debug_failed_build.sh
+    - cd omnibus
+    - mkdir ${CI_PROJECT_DIR}/data
+    - mv -v pkg/* ${CI_PROJECT_DIR}/data/
+    - cp ../VERSION ${CI_PROJECT_DIR}/
+  cache:
+    paths:
+      - cache/*
+      - bundle/vendor/*
+  artifacts:
+    expire_in: 1mo
+    paths:
+      - data/*
+      - VERSION
+
+package:debian-10:
+  extends: .package
+  image: p21jgitlin/cinc-docker-images:debian
+  cache:
+    key: debian:10
+  after_script:
+    - mkdir -p ${CI_PROJECT_DIR}/data/debian/10
+    - mv -v ${CI_PROJECT_DIR}/data/*.{deb,json} ${CI_PROJECT_DIR}/data/debian/10/
+
+.cleanup:
+  stage: cleanup
+  dependencies: []
+  variables:
+    GIT_CHECKOUT: "false"
+  when: always
+  script:
+    - ls -la
+    - sudo rm -rf chef/ chef-server
+

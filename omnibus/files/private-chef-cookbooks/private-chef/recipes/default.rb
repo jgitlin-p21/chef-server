@@ -19,6 +19,8 @@
 require 'uuidtools'
 require 'openssl'
 
+puts "DEBUG jgitlin omnibus/files/private-chef-cookbooks/private-chef/recipes/default.rb start"
+
 # Because these symlinks get removed during the postrm
 # of the chef-server and private-chef packages, we should
 # ensure that they're always here.

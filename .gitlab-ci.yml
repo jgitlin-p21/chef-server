@@ -53,6 +53,6 @@ smoke tests:
   cache:
     key: debian:10
   script:
-    - dpkg -i ${CI_PROJECT_DIR}/data/cinc*.deb || .gitlab/debug_failed_build.sh
+    - dpkg -i ${CI_PROJECT_DIR}/data/debian/10/chef-server-core_*.deb || .gitlab/debug_failed_build.sh
     - chef-server-ctl test || .gitlab/debug_failed_build.sh
     - chef-server-ctl test --all || .gitlab/debug_failed_build.sh

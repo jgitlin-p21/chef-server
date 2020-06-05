@@ -24,7 +24,7 @@ puts "DEBUG jgitlin omnibus/files/private-chef-cookbooks/private-chef/recipes/de
 # Because these symlinks get removed during the postrm
 # of the chef-server and private-chef packages, we should
 # ensure that they're always here.
-%W(private-#{ChefConfig::Dist::SHORT}-ctl #{Chef::Dist::Server::SHORT}-ctl).each do |bin|
+%W(private-#{node['wordmarks']['short']} #{node['wordmarks']['server']['ctl']}).each do |bin|
   link "/usr/bin/#{bin}" do
     to "/opt/opscode/bin/#{bin}"
   end
@@ -139,7 +139,7 @@ include_recipe 'private-chef::fix_permissions'
   nginx
   rabbitmq
   bootstrap
-  opscode-#{ChefConfig::Dist::SHORT}-mover
+  opscode-#{node['wordmarks']['short']}-mover
   redis_lb
 ).each do |service|
   if node['private_chef'][service]['external']

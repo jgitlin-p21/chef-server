@@ -17,7 +17,6 @@ variables:
     - cd omnibus
     - mkdir ${CI_PROJECT_DIR}/data
     - mv -v pkg/* ${CI_PROJECT_DIR}/data/
-    - cp ../VERSION ${CI_PROJECT_DIR}/
   cache:
     paths:
       - cache/*
@@ -47,3 +46,13 @@ package:debian-10:
     - ls -la
     - sudo rm -rf chef/ chef-server
 
+
+smoke tests:
+  stage: test
+  image: p21jgitlin/cinc-docker-images:debian
+  cache:
+    key: debian:10
+  script:
+    - dpkg -i ${CI_PROJECT_DIR}/data/cinc*.deb || .gitlab/debug_failed_build.sh
+    - chef-server-ctl test || .gitlab/debug_failed_build.sh
+    - chef-server-ctl test --all || .gitlab/debug_failed_build.sh

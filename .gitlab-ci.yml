@@ -17,7 +17,6 @@ variables:
     - cd omnibus
     - mkdir ${CI_PROJECT_DIR}/data
     - mv -v pkg/* ${CI_PROJECT_DIR}/data/
-    - cp ../VERSION ${CI_PROJECT_DIR}/
   cache:
     paths:
       - cache/*

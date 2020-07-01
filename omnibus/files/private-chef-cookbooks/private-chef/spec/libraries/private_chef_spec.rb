@@ -493,8 +493,8 @@ EOF
 
     describe '#migrate_keys' do
       it 'should attempt to migrate known keys' do
-        expect(PrivateChef).to receive(:add_key_from_file_if_present).with("#{Chef::Dist::Server::SHORT}", 'superuser_key', superuser_key_path)
-        expect(PrivateChef).to receive(:add_key_from_file_if_present).with("#{Chef::Dist::Server::SHORT}", 'webui_key', webui_key_path)
+        expect(PrivateChef).to receive(:add_key_from_file_if_present).with("#{node['wordmarks']['server']['short']}", 'superuser_key', superuser_key_path)
+        expect(PrivateChef).to receive(:add_key_from_file_if_present).with("#{node['wordmarks']['server']['short']}", 'webui_key', webui_key_path)
         PrivateChef.migrate_keys
       end
     end

@@ -41,7 +41,7 @@ class RequiredRecipePreflightValidator < PreflightValidator
         is misconfigured. Please set the `required_recipe["path"] = /path/to/recipe` in
         `/etc/opscode/chef-server.rb` and run:
 
-            #{Chef::Dist::Server::CTL} reconfigure
+            #{node['wordmarks']['server']['ctl']} reconfigure
       EOF
     end
   end
@@ -53,7 +53,7 @@ class RequiredRecipePreflightValidator < PreflightValidator
         and reconfigure the Chef server:
 
             chown root:root #{@required_recipe['path']}
-            #{Chef::Dist::Server::CTL} reconfigure
+            #{node['wordmarks']['server']['ctl']} reconfigure
       EOF
     end
   end
@@ -65,7 +65,7 @@ class RequiredRecipePreflightValidator < PreflightValidator
         root and reconfigure the Chef server:
 
             chown root:root #{@required_recipe['path']}
-            #{Chef::Dist::Server::CTL} reconfigure
+            #{node['wordmarks']['server']['ctl']} reconfigure
       EOF
     end
   end
@@ -77,7 +77,7 @@ class RequiredRecipePreflightValidator < PreflightValidator
         and reconfigure the Chef server:
 
             chmod 600 #{@required_recipe['path']}
-            #{Chef::Dist::Server::CTL} reconfigure
+            #{node['wordmarks']['server']['ctl']} reconfigure
       EOF
     end
   end

@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-open_source_11_sv_dir = "/opt/#{Chef::Dist::Server::SHORT}/sv"
+open_source_11_sv_dir = "/opt/#{node['wordmarks']['server']['short']}/sv"
 
 return unless Dir.exist?(open_source_11_sv_dir)
 

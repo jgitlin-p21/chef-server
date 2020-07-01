@@ -16,9 +16,9 @@
 # limitations under the License.
 #
 
-if File.exist?("/etc/opscode/#{Chef::Dist::Server::SHORT}.rb")
+if File.exist?("/etc/opscode/#{node['wordmarks']['server']['short']}.rb")
   PrivateChef[:node] = node
-  PrivateChef.from_file("/etc/opscode/#{Chef::Dist::Server::SHORT}.rb")
+  PrivateChef.from_file("/etc/opscode/#{node['wordmarks']['server']['short']}.rb")
 end
 config = PrivateChef.generate_config(node['fqdn'])
 

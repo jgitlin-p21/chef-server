@@ -184,7 +184,7 @@ include_recipe 'private-chef::partybus'
 include_recipe 'private-chef::ctl_config'
 include_recipe 'private-chef::disable_chef_server_11'
 
-file "/etc/opscode/#{Chef::Dist::Server::SHORT}-running.json" do
+file "/etc/opscode/#{node['wordmarks']['server']['short']}-running.json" do
   owner OmnibusHelper.new(node).ownership['owner']
   group 'root'
   mode '0600'

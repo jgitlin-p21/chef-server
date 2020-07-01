@@ -84,7 +84,7 @@ class BootstrapPreflightValidator < PreflightValidator
   end
 
   def secrets_contains_pivotal?
-    PrivateChef.credentials.exist?("#{Chef::Dist::Server::SHORT}", 'superuser_key')
+    PrivateChef.credentials.exist?("#{node['wordmarks']['server']['short']}", 'superuser_key')
   end
 
   def pivotal_key_exists?
